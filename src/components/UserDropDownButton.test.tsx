@@ -1,7 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { UserDropDownButton } from "./UserDropDownButton";
-import userEvent from "@testing-library/user-event";
 
 describe("UserDropDownButton Component tests", () => {
     test("There is a select box", () => {
