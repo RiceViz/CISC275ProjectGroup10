@@ -1,6 +1,8 @@
 import React from "react";
 import "../App.css";
 import { Player } from "../interfaces/player";
+import { Card, CardImg } from "react-bootstrap";
+import CardHeader from "react-bootstrap/esm/CardHeader";
 
 export default function PlayerCard({
     name,
@@ -9,12 +11,14 @@ export default function PlayerCard({
     imageURL
 }: Player) {
     return (
-        <div className="Player-card">
-            <h1>{name}</h1>
-            <h4>
-                {position} rated: {rating}
-            </h4>
-            <div className="Player-card-image">{imageURL}</div>
-        </div>
+        <Card style={{ width: "18rem" }}>
+            <CardHeader>{name}</CardHeader>
+            <CardImg
+                style={{ height: "18rem" }}
+                src={imageURL}
+                alt={imageURL}
+            ></CardImg>
+            Position: {position} Rating: {rating}
+        </Card>
     );
 }
