@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { UserDropDownButton } from "./components/UserDropDownButton";
+import PlayerCard from "./components/PlayerCard";
 
 function App(): JSX.Element {
     return (
@@ -16,6 +17,12 @@ function App(): JSX.Element {
                     options={["League Manager", "Team Manager", "Coach"]}
                 ></UserDropDownButton>
             </div>
+            <PlayerCard
+                name={"name"}
+                position={"position"}
+                rating={0}
+                imageURL={"image"}
+            ></PlayerCard>
         </div>
     );
 }

@@ -37,3 +37,21 @@
         transform: rotate(360deg);
     }
 }
+
+.Player-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
+    border: #282c34;
+    border-width: 10px;
+    border-style: groove;
+    border-radius: 10px;
+}
+
+.Player-card-image {
+    width: 200px;
+    height: 200px;
+    justify-items: center;
+}
