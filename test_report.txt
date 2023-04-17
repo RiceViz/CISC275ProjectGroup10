@@ -21,6 +21,9 @@ FAIL src/App.test.tsx
             [33mclass[39m=[32m"App-header"[39m
           [36m>[39m
             [0mCISC 275 Group 10 Website[0m
+            [36m<h5>[39m
+              [0mBy Trevor[0m
+            [36m</h5>[39m
           [36m</header>[39m
           [36m<hr />[39m
           [36m<div>[39m
@@ -99,5 +102,5 @@ All files                |      80 |      100 |      75 |      80 |
 Test Suites: 1 failed, 1 passed, 2 total
 Tests:       1 failed, 1 passed, 2 total
 Snapshots:   0 total
-Time:        2.394 s
+Time:        2.387 s
 Ran all test suites.
