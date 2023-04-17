@@ -5,7 +5,11 @@ import { UserDropDownButton } from "./components/UserDropDownButton";
 function App(): JSX.Element {
     return (
         <div className="App">
-            <header className="App-header">CISC 275 Group 10 Website</header>
+            <header className="App-header">
+                CISC 275 Group 10 Website
+                <h5>By Trevor</h5>
+            </header>
+
             <hr></hr>
             <div>
                 <UserDropDownButton
