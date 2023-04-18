@@ -152,6 +152,36 @@ export function PlayerCreator() {
             position: "Defender",
             rating: 85,
             imageURL: "/playerimages/walker.jpg"
+        },
+        {
+            name: "Bernardo Silva",
+            position: "Midfielder",
+            rating: 86,
+            imageURL: "/playerimages/bernardosilva.png"
+        },
+        {
+            name: "Bruno Fernandes",
+            position: "Midfielder",
+            rating: 88,
+            imageURL: "/playerimages/brunofernandes.png"
+        },
+        {
+            name: "Kevin De Bruyne",
+            position: "Midfielder",
+            rating: 91,
+            imageURL: "/playerimages/debruyne.png"
+        },
+        {
+            name: "Kai Havertz",
+            position: "Midfielder",
+            rating: 85,
+            imageURL: "/playerimages/havertz.png"
+        },
+        {
+            name: "Thomas Muller",
+            position: "Midfielder",
+            rating: 87,
+            imageURL: "/playerimages/muller.png"
         }
     ];
 } //end of func
