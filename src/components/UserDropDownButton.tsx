@@ -15,9 +15,8 @@ export function UserDropDownButton({
 
     return (
         <div>
-            <h3>User</h3>
             <Form.Group controlId="choices">
-                <Form.Label>Select Your User Profile</Form.Label>
+                <Form.Label>Select User</Form.Label>
                 <Form.Select value={choice} onChange={updateChoices}>
                     {options.map((choice: string) => (
                         <option key={choice} value={choice}>
