@@ -92,6 +92,66 @@ export function PlayerCreator() {
             position: "Goalkeeper",
             rating: 89,
             imageURL: "/playerimages/oblak.png"
+        },
+        {
+            name: "Trent Alexander-Arnold",
+            position: "Defender",
+            rating: 87,
+            imageURL: "/playerimages/alexanderarnold.jpg"
+        },
+        {
+            name: "Lucas Hernandez",
+            position: "Defender",
+            rating: 85,
+            imageURL: "/playerimages/hernandez.jpg"
+        },
+        {
+            name: "Reece James",
+            position: "Defender",
+            rating: 84,
+            imageURL: "/playerimages/james.jpg"
+        },
+        {
+            name: "Joao Cancelo",
+            position: "Defender",
+            rating: 88,
+            imageURL: "/playerimages/joaocancelo.jpg"
+        },
+        {
+            name: "Marquinhos",
+            position: "Defender",
+            rating: 88,
+            imageURL: "/playerimages/marquinhos.png"
+        },
+        {
+            name: "Andrew Robertson",
+            position: "Defender",
+            rating: 87,
+            imageURL: "/playerimages/robertson.jpg"
+        },
+        {
+            name: "Ruben Dias",
+            position: "Defender",
+            rating: 88,
+            imageURL: "/playerimages/rubendias.jpg"
+        },
+        {
+            name: "Antonio Rudiger",
+            position: "Defender",
+            rating: 87,
+            imageURL: "/playerimages/rudiger.jpg"
+        },
+        {
+            name: "Virgil van Dijk",
+            position: "Defender",
+            rating: 90,
+            imageURL: "/playerimages/vandijk.jpg"
+        },
+        {
+            name: "Walker Zimmerman",
+            position: "Defender",
+            rating: 85,
+            imageURL: "/playerimages/walker.jpg"
         }
     ];
 } //end of func
