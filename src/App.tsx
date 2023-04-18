@@ -7,7 +7,7 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
-                CISC 275 Group 10 Website
+                Soccer Fantasy Manager Simulation
                 <h5>Created By Trevor, Tyran, Mbiet, Shawn & Gage</h5>
             </header>
 
