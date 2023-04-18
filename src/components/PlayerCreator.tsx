@@ -187,16 +187,16 @@ export function PlayerCreator() {
     /* 
     The following are sublists filtered by Player position.
     */
-    const forwards = playerPool.filter(
+    const forwards: Player[] = playerPool.filter(
         (player) => player.position === "Forward"
     );
-    const midfielders = playerPool.filter(
+    const midfielders: Player[] = playerPool.filter(
         (player) => player.position === "Midfielder"
     );
-    const defenders = playerPool.filter(
+    const defenders: Player[] = playerPool.filter(
         (player) => player.position === "Defender"
     );
-    const goalkeepers = playerPool.filter(
+    const goalkeepers: Player[] = playerPool.filter(
         (player) => player.position === "Goalkeeper"
     );
 } //end of func
