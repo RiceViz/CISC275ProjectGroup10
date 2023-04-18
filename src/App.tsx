@@ -8,7 +8,7 @@ function App(): JSX.Element {
         <div className="App">
             <header className="App-header">
                 CISC 275 Group 10 Website
-                <h5>Created By Trevor, Shawn, Tyran, Mbiet & Gage</h5>
+                <h5>Created By Trevor, Tyran, Mbiet, Shawn & Gage</h5>
             </header>
 
             <hr></hr>
