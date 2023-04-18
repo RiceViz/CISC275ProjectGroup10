@@ -183,5 +183,20 @@ export function PlayerCreator() {
             rating: 87,
             imageURL: "/playerimages/muller.png"
         }
-    ];
+    ]; //end of playerPool (consists of all players)
+    /* 
+    The following are sublists filtered by Player position.
+    */
+    const forwards = playerPool.filter(
+        (player) => player.position === "Forward"
+    );
+    const midfielders = playerPool.filter(
+        (player) => player.position === "Midfielder"
+    );
+    const defenders = playerPool.filter(
+        (player) => player.position === "Defender"
+    );
+    const goalkeepers = playerPool.filter(
+        (player) => player.position === "Goalkeeper"
+    );
 } //end of func
