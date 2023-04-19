@@ -1,11 +1,13 @@
 /* eslint-disable no-extra-parens */
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Dropdown, Form } from "react-bootstrap";
 
 export function UserDropDownButton({
-    options
+    options,
+    logo
 }: {
     options: string[];
+    logo?: JSX.Element | null;
 }): JSX.Element {
     const [choice, setChoice] = useState<string>();
 
@@ -13,11 +15,35 @@ export function UserDropDownButton({
         setChoice(event.target.value);
     }
 
+    if (logo) {
+        return (
+            <Dropdown>
+                <Dropdown.Toggle
+                    className="focus:border-transparent dark:text-white"
+                    variant="transparent"
+                    id="dropdown-basic"
+                >
+                    {logo}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    {options.map((choice: string) => (
+                        <Dropdown.Item
+                            key={choice}
+                            eventKey={choice}
+                            onSelect={updateChoices}
+                        >
+                            {choice}
+                        </Dropdown.Item>
+                    ))}
+                </Dropdown.Menu>
+            </Dropdown>
+        );
+    }
+
     return (
         <div>
-            <h3>User</h3>
-            <Form.Group controlId="choices">
-                <Form.Label>Select Your User Profile</Form.Label>
+            {logo}
+            <Form.Group className="max-w-fit p-2" controlId="choices">
                 <Form.Select value={choice} onChange={updateChoices}>
                     {options.map((choice: string) => (
                         <option key={choice} value={choice}>
