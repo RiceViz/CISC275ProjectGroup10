@@ -93,12 +93,14 @@ FAIL src/App.test.tsx
 -------------------------|---------|----------|---------|---------|-------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -------------------------|---------|----------|---------|---------|-------------------
-All files                |   42.85 |      100 |      40 |   42.85 |                   
+All files                |     7.4 |     3.44 |   13.33 |     7.4 |                   
  src                     |       0 |      100 |       0 |       0 |                   
-  App.tsx                |       0 |      100 |       0 |       0 | 7                 
- src/components          |      50 |      100 |      50 |      50 |                   
+  App.tsx                |       0 |      100 |       0 |       0 | 11                
+ src/components          |    7.54 |     3.44 |   14.28 |    7.54 |                   
+  Header.tsx             |       0 |        0 |       0 |       0 | 5-84              
   PlayerCard.tsx         |       0 |      100 |       0 |       0 | 7-15              
-  UserDropDownButton.tsx |      75 |      100 |   66.66 |      75 | 13                
+  ThemeToggle.tsx        |       0 |        0 |       0 |       0 | 4-16              
+  UserDropDownButton.tsx |   57.14 |       50 |      50 |   57.14 | 15,19-30          
  src/interfaces          |       0 |        0 |       0 |       0 |                   
   coach.tsx              |       0 |        0 |       0 |       0 |                   
   field.tsx              |       0 |        0 |       0 |       0 |                   
@@ -110,5 +112,5 @@ All files                |   42.85 |      100 |      40 |   42.85 |
 Test Suites: 2 failed, 1 passed, 3 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        3.008 s
+Time:        3.562 s
 Ran all test suites.
