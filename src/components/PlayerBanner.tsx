@@ -6,15 +6,17 @@ import { toAbbrev } from "../interfaces/field";
 
 export function PlayerBanner({ player }: { player: Player }): JSX.Element {
     return (
-        <div>
+        <div className="PlayerBanner">
             <Container>
-                <Row>
+                <Row className="d-flex align-items-center justify-content-center">
                     <Col>{player.name}</Col>
                     <Col>
-                        <img src={player.imageURL} />
+                        <img src={player.imageURL} style={{ height: "64px" }} />
                     </Col>
                     <Col>
-                        Pos: {toAbbrev[player.position]} Ovr: {player.rating}
+                        Pos: {toAbbrev[player.position]}
+                        <br></br>
+                        Ovr: {player.rating}
                     </Col>
                 </Row>
             </Container>
