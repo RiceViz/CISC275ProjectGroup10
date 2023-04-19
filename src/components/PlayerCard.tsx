@@ -6,21 +6,16 @@ import CardHeader from "react-bootstrap/esm/CardHeader";
 
 const size = "18rem";
 
-export default function PlayerCard({
-    name,
-    position,
-    rating,
-    imageURL
-}: Player) {
+export default function PlayerCard({ player }: { player: Player }) {
     return (
         <Card style={{ width: size }}>
-            <CardHeader>{name}</CardHeader>
+            <CardHeader>{player.name}</CardHeader>
             <CardImg
                 style={{ height: size }}
-                src={imageURL}
-                alt={imageURL}
+                src={player.imageURL}
+                alt={player.imageURL}
             ></CardImg>
-            Position: {position} Rating: {rating}
+            Position: {player.position} Rating: {player.rating}
         </Card>
     );
 }

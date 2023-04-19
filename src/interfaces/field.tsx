@@ -1,5 +1,5 @@
 import { Team } from "./team";
-import { Player } from "./player";
+import { Player, Position } from "./player";
 
 export interface field {
     team: Team;
@@ -15,3 +15,10 @@ export interface field {
     rightCenterBack: Player;
     goalKeeper: Player;
 }
+
+export const toAbbrev: Record<Position, string> = {
+    Defender: "D",
+    Forward: "F",
+    Goalkeeper: "G",
+    Midfielder: "M"
+};

@@ -9,9 +9,10 @@ import { Player } from "./interfaces/player";
 function App(): JSX.Element {
     const player1: Player = {
         name: "Trevor",
-        position: "Striker",
+        position: "Midfielder",
         rating: 99,
-        imageURL: ""
+        imageURL:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP-hcNzaVT_7bwqJ3yQ5OzjejlSnVoX_1LureTRN99&s"
     };
 
     const newteam: Team = {
@@ -35,12 +36,7 @@ function App(): JSX.Element {
                     options={["League Manager", "Team Manager", "Coach"]}
                 ></UserDropDownButton>
             </div>
-            <PlayerCard
-                name={"name"}
-                position={"position"}
-                rating={0}
-                imageURL={"image"}
-            ></PlayerCard>
+            <PlayerCard player={player1}></PlayerCard>
             <StartingLineup lineup={newteam.lineup}></StartingLineup>
         </div>
     );
