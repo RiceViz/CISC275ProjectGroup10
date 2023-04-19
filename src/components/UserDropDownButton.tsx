@@ -19,7 +19,7 @@ export function UserDropDownButton({
         return (
             <Dropdown>
                 <Dropdown.Toggle
-                    className="focus:border-transparent"
+                    className="focus:border-transparent dark:text-white"
                     variant="transparent"
                     id="dropdown-basic"
                 >

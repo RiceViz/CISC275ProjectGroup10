@@ -11,7 +11,7 @@ export default function Header({ children }: any) {
                     : scrollDirection === "up"
                     ? "top-0"
                     : " top-0"
-            } h-28 transition-all duration-300 bg-neutral-50`}
+            } h-28 transition-all duration-300 bg-neutral-50 dark:bg-neutral-900`}
         >
             <div className=" font-bold">{children}</div>
         </div>

@@ -5,6 +5,7 @@ import PlayerCard from "./components/PlayerCard";
 import soccer from "./assets/soccer-landing.jpeg";
 import { BiUserCircle } from "react-icons/bi";
 import Header from "./components/Header";
+import ThemeToggle from "./components/ThemeToggle";
 
 function App(): JSX.Element {
     return (
@@ -16,18 +17,21 @@ function App(): JSX.Element {
             }}
         >
             <Header>
-                <div className="flex flex-col">
-                    <div className="self-end">
-                        <UserDropDownButton
-                            logo={<BiUserCircle size={25} />}
-                            options={[
-                                "League Manager",
-                                "Team Manager",
-                                "Coach"
-                            ]}
-                        ></UserDropDownButton>
+                <div className="flex flex-col dark:text-white">
+                    <div className="flex justify-between p-">
+                        <ThemeToggle></ThemeToggle>
+                        <div className="">
+                            <UserDropDownButton
+                                logo={<BiUserCircle size={25} />}
+                                options={[
+                                    "League Manager",
+                                    "Team Manager",
+                                    "Coach"
+                                ]}
+                            ></UserDropDownButton>
+                        </div>
                     </div>
-                    <h1 className="text-4xl text-center">
+                    <h1 className="text-4xl text-center dark:text-white">
                         Soccer Football Manager
                     </h1>
                 </div>
