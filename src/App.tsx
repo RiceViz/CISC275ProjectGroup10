@@ -62,7 +62,9 @@ function App(): JSX.Element {
                 rating={0}
                 imageURL={"image"}
             />
-            <footer>Created by Trevor, Tyran, Mbiet, Shawn, & Gage</footer>
+            <footer className="bg-neutral-50 dark:bg-neutral-900 dark:text-white">
+                Created by Trevor, Tyran, Mbiet, Shawn, & Gage
+            </footer>
         </div>
     );
 }
