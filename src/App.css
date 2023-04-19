@@ -37,21 +37,3 @@
         transform: rotate(360deg);
     }
 }
-
-.Header {
-    background-color: transparent;
-    max-width: 100%;
-    overflow: visible;
-    position: sticky;
-    height: 6rem;
-    transition: all;
-    transition-duration: 300ms;
-}
-
-.Header-down {
-    top: -6rem;
-}
-
-.Header-up {
-    top: 0px;
-}

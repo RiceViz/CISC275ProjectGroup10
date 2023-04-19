@@ -1,21 +1,19 @@
-/* eslint-disable prefer-rest-params */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable indent */
+/* eslint-disable */
 import { useEffect, useState } from "react";
 
 export default function Header({ children }: any) {
     const scrollDirection = useScrollDirection();
     return (
         <div
-            className={`Header ${
+            className={` max-w-full overflow-visible sticky z-40 ${
                 scrollDirection === "down"
-                    ? "Header-down"
+                    ? "-top-28"
                     : scrollDirection === "up"
-                    ? "Header-up"
-                    : ""
-            }`}
+                    ? "top-0"
+                    : " top-0"
+            } h-28 transition-all duration-300 bg-neutral-50`}
         >
-            <div className="p-5 font-bold">{children}</div>
+            <div className=" font-bold">{children}</div>
         </div>
     );
 }
