@@ -1,5 +1,6 @@
 import React from "react";
 import { Player } from "../interfaces/player";
+import { PlayerBanner } from "./PlayerBanner";
 
 export function StartingLineup({ lineup }: { lineup: Player[] }): JSX.Element {
     return (
@@ -10,13 +11,16 @@ export function StartingLineup({ lineup }: { lineup: Player[] }): JSX.Element {
                 padding: "10px"
             }}
         >
-            <ul className="square border">
+            <div>
                 {lineup.map(
                     (player): JSX.Element => (
-                        <li key={player.name}>{player.name}</li>
+                        <PlayerBanner
+                            player={player}
+                            key={player.name}
+                        ></PlayerBanner>
                     )
                 )}
-            </ul>
+            </div>
         </div>
     );
 }
