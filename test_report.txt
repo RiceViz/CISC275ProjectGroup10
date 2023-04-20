@@ -49,68 +49,194 @@ FAIL src/components/PlayerCard.test.tsx
 
 PASS src/components/UserDropDownButton.test.tsx
 FAIL src/App.test.tsx
-  ● Test suite failed to run
+  ● renders the course name somewhere
 
-    Jest encountered an unexpected token
+    TestingLibraryElementError: Unable to find an element with the text: /CISC275/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
 
-    Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"App"[39m
+          [33mstyle[39m=[32m"background-image: url(soccer-landing.jpeg); background-size: cover;"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m" max-w-full overflow-visible sticky z-40  top-0 h-28 transition-all duration-300 bg-neutral-50 dark:bg-neutral-900"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m" font-bold"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex flex-col dark:text-white"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex justify-between p-"[39m
+                [36m>[39m
+                  [36m<button>[39m
+                    [36m<svg[39m
+                      [33mclass[39m=[32m"block dark:hidden"[39m
+                      [33mfill[39m=[32m"currentColor"[39m
+                      [33mheight[39m=[32m"25"[39m
+                      [33mid[39m=[32m"darkIcon"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-width[39m=[32m"0"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"25"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M0 0h24v24H0z"[39m
+                        [33mfill[39m=[32m"none"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M9.37 5.51A7.35 7.35 0 009.1 7.5c0 4.08 3.32 7.4 7.4 7.4.68 0 1.35-.09 1.99-.27A7.014 7.014 0 0112 19c-3.86 0-7-3.14-7-7 0-2.93 1.81-5.45 4.37-6.49zM12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                    [36m<svg[39m
+                      [33mclass[39m=[32m"hidden dark:block"[39m
+                      [33mfill[39m=[32m"currentColor"[39m
+                      [33mheight[39m=[32m"25"[39m
+                      [33mid[39m=[32m"lightIcon"[39m
+                      [33mstroke[39m=[32m"currentColor"[39m
+                      [33mstroke-width[39m=[32m"0"[39m
+                      [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [33mwidth[39m=[32m"25"[39m
+                      [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M0 0h24v24H0z"[39m
+                        [33mfill[39m=[32m"none"[39m
+                      [36m/>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M12 9c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3m0-2c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</button>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m""[39m
+                  [36m>[39m
+                    [36m<div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"max-w-fit p-2"[39m
+                      [36m>[39m
+                        [36m<select[39m
+                          [33mclass[39m=[32m"form-select"[39m
+                          [33mid[39m=[32m"choices"[39m
+                        [36m>[39m
+                          [36m<option[39m
+                            [33mvalue[39m=[32m"League Manager"[39m
+                          [36m>[39m
+                            [0mLeague Manager[0m
+                          [36m</option>[39m
+                          [36m<option[39m
+                            [33mvalue[39m=[32m"Team Manager"[39m
+                          [36m>[39m
+                            [0mTeam Manager[0m
+                          [36m</option>[39m
+                          [36m<option[39m
+                            [33mvalue[39m=[32m"Coach"[39m
+                          [36m>[39m
+                            [0mCoach[0m
+                          [36m</option>[39m
+                        [36m</select>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<h1[39m
+                  [33mclass[39m=[32m"text-4xl text-center dark:text-white"[39m
+                [36m>[39m
+                  [0mSoccer Football Manager[0m
+                [36m</h1>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<hr />[39m
+          [36m<div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"row"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"col"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"BoxedList"[39m
+                [36m>[39m
+                  [0mAll Players[0m
+                  [36m<div[39m
+                    [33mstyle[39m=[32m"justify-content: center; display: flex; padding: 10px;"[39m
+                  [36m>[39m
+                    [36m<div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"PlayerBanner"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"container"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"align-items-center justify-content-center row"[39m
+                          [36m>[39m
+                            [36m<div[39m
+                              [33mclass[39m=[32m"col-sm-5"[39m
+                            [36m>[39m
+                              [36m<p>[39m
+                                [0mplayerName[0m
+                              [36m</p>[39m
+                            [36m</div>[39m
+                            [36m<div[39m
+                              [33mclass[39m=[32m"col-sm-3"[39m
+                            [36m>[39m
+                              [36m<img[39m
+                                [33mclass[39m=[32m""[39m
+                                [33msrc[39m=[32m"/images/playerimages/messi.jpg"[39m
+                                [33mstyle[39m=[32m"height: 64px;"[39m
+                              [36m/>[39m
+                            [36m</div>[39m
+                            [36m<di...
 
-    Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+       5 | test("renders the course name somewhere", () => {
+       6 |     render(<App />);
+    >  7 |     const linkElement = screen.getByText(/CISC275/i);
+         |                                ^
+       8 |     expect(linkElement).toBeInTheDocument();
+       9 | });
+      10 |
 
-    By default "node_modules" folder is ignored by transformers.
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/App.test.tsx:7:32)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
-    Here's what you can do:
-     • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
-     • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
-     • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
-     • If you need a custom transformation specify a "transform" option in your config.
-     • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
-
-    You'll find more details and examples of these config options in the docs:
-    https://jestjs.io/docs/configuration
-    For information about custom transformations, see:
-    https://jestjs.io/docs/code-transformation
-
-    Details:
-
-    /home/runner/work/CISC275ProjectGroup10/CISC275ProjectGroup10/node_modules/react-bootstrap/esm/CardHeader.js:1
-    ({"Object.<anonymous>":function(module,exports,require,__dirname,__filename,jest){import classNames from 'classnames';
-                                                                                      ^^^^^^
-
-    SyntaxError: Cannot use import statement outside a module
-
-      3 | import { Player } from "../interfaces/player";
-      4 | import { Card, CardImg } from "react-bootstrap";
-    > 5 | import CardHeader from "react-bootstrap/esm/CardHeader";
-        | ^
-      6 |
-      7 | const size = "18rem";
-      8 |
-
-      at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1728:14)
-      at Object.<anonymous> (src/components/PlayerCard.tsx:5:1)
-
--------------------------|---------|----------|---------|---------|-------------------
-File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
--------------------------|---------|----------|---------|---------|-------------------
-All files                |     7.4 |     3.44 |   13.33 |     7.4 |                   
- src                     |       0 |      100 |       0 |       0 |                   
-  App.tsx                |       0 |      100 |       0 |       0 | 11                
- src/components          |    7.54 |     3.44 |   14.28 |    7.54 |                   
-  Header.tsx             |       0 |        0 |       0 |       0 | 5-84              
-  PlayerCard.tsx         |       0 |      100 |       0 |       0 | 7-15              
-  ThemeToggle.tsx        |       0 |        0 |       0 |       0 | 4-16              
-  UserDropDownButton.tsx |   57.14 |       50 |      50 |   57.14 | 15,19-30          
- src/interfaces          |       0 |        0 |       0 |       0 |                   
-  coach.tsx              |       0 |        0 |       0 |       0 |                   
-  field.tsx              |       0 |        0 |       0 |       0 |                   
-  leagueManager.tsx      |       0 |        0 |       0 |       0 |                   
-  player.tsx             |       0 |        0 |       0 |       0 |                   
-  team.tsx               |       0 |        0 |       0 |       0 |                   
-  teamManager.tsx        |       0 |        0 |       0 |       0 |                   
--------------------------|---------|----------|---------|---------|-------------------
+-------------------------|---------|----------|---------|---------|---------------------
+File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s   
+-------------------------|---------|----------|---------|---------|---------------------
+All files                |   42.69 |    14.28 |   58.06 |   43.18 |                     
+ src                     |     100 |      100 |     100 |     100 |                     
+  App.tsx                |     100 |      100 |     100 |     100 |                     
+ src/components          |   39.75 |    14.28 |   57.14 |   40.24 |                     
+  Header.tsx             |   37.14 |     8.69 |   71.42 |   37.14 | 28-42,66-84         
+  Lineup.tsx             |     100 |      100 |     100 |     100 |                     
+  PlayerBanner.tsx       |   52.38 |       50 |      40 |   52.38 | 31-36,47-81,111-117 
+  PlayerCard.tsx         |       0 |      100 |       0 |       0 | 7-10                
+  PlayerCreator.tsx      |     100 |      100 |     100 |     100 |                     
+  ThemeToggle.tsx        |   11.11 |        0 |      50 |   11.11 | 8-16                
+  UserDropDownButton.tsx |   27.27 |        0 |      50 |      30 | 18-25               
+ src/interfaces          |     100 |      100 |     100 |     100 |                     
+  field.tsx              |       0 |        0 |       0 |       0 |                     
+  player.tsx             |     100 |      100 |     100 |     100 |                     
+  team.tsx               |       0 |        0 |       0 |       0 |                     
+  user.tsx               |       0 |        0 |       0 |       0 |                     
+ src/scenes              |   66.66 |      100 |      50 |   66.66 |                     
+  CoachScene.tsx         |       0 |      100 |       0 |       0 | 4                   
+  MainScene.tsx          |     100 |      100 |     100 |     100 |                     
+-------------------------|---------|----------|---------|---------|---------------------
 Test Suites: 2 failed, 1 passed, 3 total
-Tests:       1 passed, 1 total
+Tests:       1 failed, 1 passed, 2 total
 Snapshots:   0 total
-Time:        3.562 s
+Time:        3.592 s
 Ran all test suites.
