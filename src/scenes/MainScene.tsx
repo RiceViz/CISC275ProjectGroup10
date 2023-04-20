@@ -5,8 +5,9 @@ import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
 import { Container, Row, Col } from "react-bootstrap";
+import { User } from "../interfaces/user";
 
-export function MainScene(): JSX.Element {
+export function MainScene({ user }: { user: User }): JSX.Element {
     const allPlayers: Player[] = PlayerCreator();
     return (
         <div>
@@ -18,10 +19,12 @@ export function MainScene(): JSX.Element {
                     <Col>
                         <div className="BoxedList">
                             All Players
-                            <Lineup lineup={allPlayers}></Lineup>
+                            <Lineup lineup={allPlayers} user={user}></Lineup>
                         </div>
                     </Col>
-                    <Col></Col>
+                    <Col>
+                        <div className="BoxedList">Your Team</div>
+                    </Col>
                     <Col></Col>
                 </Row>
             </Container>
