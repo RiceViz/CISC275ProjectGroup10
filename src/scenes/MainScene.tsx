@@ -11,20 +11,18 @@ export function MainScene({ user }: { user: User }): JSX.Element {
     const allPlayers: Player[] = PlayerCreator();
     return (
         <div>
-            <Container>
-                <Row>
-                    <Col>
-                        <div className="BoxedList">
-                            All Players
-                            <Lineup lineup={allPlayers} user={user}></Lineup>
-                        </div>
-                    </Col>
-                    <Col>
-                        <div className="BoxedList">Your Team</div>
-                    </Col>
-                    <Col></Col>
-                </Row>
-            </Container>
+            <Row>
+                <Col>
+                    <div className="BoxedList">
+                        All Players
+                        <Lineup lineup={allPlayers} user={user}></Lineup>
+                    </div>
+                </Col>
+                <Col>
+                    <div className="BoxedList">Your Team</div>
+                </Col>
+                <Col></Col>
+            </Row>
         </div>
     );
 }
