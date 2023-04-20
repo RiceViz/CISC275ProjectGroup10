@@ -6,7 +6,7 @@ import { posToAbbrev } from "../interfaces/player";
 import { User } from "../interfaces/user";
 
 /**
- * Makes a condensed player card
+ * Makes a condensed, editable player card
  *
  * @param Player
  * @param User
@@ -29,6 +29,7 @@ export function PlayerBanner({
         <div className="PlayerBanner">
             <Container>
                 <Row className="align-items-center justify-content-center">
+                    {/* Player Name */}
                     <Col sm={5}>
                         {editing ? (
                             <Form.Control
@@ -42,6 +43,8 @@ export function PlayerBanner({
                             playerName
                         )}
                     </Col>
+
+                    {/* Player Image */}
                     <Col sm={3}>
                         <Image
                             src={player.imageURL}
@@ -49,6 +52,7 @@ export function PlayerBanner({
                         />
                     </Col>
                     <Col sm={4}>
+                        {/* Player Position */}
                         Pos:{" "}
                         {editing ? (
                             <Form.Group controlId="positionsDropdown">
@@ -71,6 +75,7 @@ export function PlayerBanner({
                             playerPos
                         )}
                         <br></br>
+                        {/* Player Rating */}
                         Ovr:{" "}
                         {editing ? (
                             <Form.Control
@@ -97,6 +102,7 @@ export function PlayerBanner({
                             playerRating
                         )}
                     </Col>
+
                     {user === "League Manager" ? (
                         <Col sm={3}>
                             <Form.Check
@@ -111,7 +117,7 @@ export function PlayerBanner({
                             />
                         </Col>
                     ) : (
-                        <></>
+                        <Col></Col>
                     )}
                 </Row>
             </Container>
