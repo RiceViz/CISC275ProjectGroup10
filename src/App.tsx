@@ -7,6 +7,7 @@ import ThemeToggle from "./components/ThemeToggle";
 import { BiUserCircle } from "react-icons/bi";
 import { UserDropDownButton } from "./components/UserDropDownButton";
 import { User } from "./interfaces/user";
+import DragAndDropExample from "./components/DragAndDrop";
 
 function App(): JSX.Element {
     const [user, setUser] = useState<User>("League Manager");
@@ -42,6 +43,9 @@ function App(): JSX.Element {
             <footer className="bg-neutral-50 dark:bg-neutral-900 dark:text-white">
                 Created by Trevor, Tyran, Mbiet, Shawn, & Gage
             </footer>
+            <div>
+                <DragAndDropExample></DragAndDropExample>
+            </div>
         </div>
     );
 }

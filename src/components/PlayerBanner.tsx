@@ -4,6 +4,7 @@ import { Player } from "../interfaces/player";
 import { Container, Row, Col, Image, Form } from "react-bootstrap";
 import { posToAbbrev } from "../interfaces/player";
 import { User } from "../interfaces/user";
+import { Team } from "../interfaces/team";
 
 /**
  * Makes a condensed, editable player card
