@@ -1,7 +1,16 @@
 import "../App.css";
 import { Player } from "../interfaces/player";
 
+/**
+ *
+ * @returns Player[] - a list of promiment soccerplayers
+ */
 export function PlayerCreator(): Player[] {
+    /**
+     * Converts img name to the path to that image
+     * @param imgName for example "messi.jpg"
+     * @returns image path
+     */
     function getPath(imgName: string): string {
         return process.env.PUBLIC_URL + "/images/playerimages/" + imgName;
     }
