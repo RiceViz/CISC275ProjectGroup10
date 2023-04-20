@@ -9,8 +9,8 @@ export function PlayerBanner({ player }: { player: Player }): JSX.Element {
         <div className="PlayerBanner">
             <Container>
                 <Row className="d-flex align-items-center justify-content-center">
-                    <Col>{player.name}</Col>
-                    <Col>
+                    <Col sm={5}>{player.name}</Col>
+                    <Col sm={3}>
                         <Image
                             src={player.imageURL}
                             style={{ height: "64px" }}
