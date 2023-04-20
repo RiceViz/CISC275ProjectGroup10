@@ -1,27 +1,13 @@
 import React from "react";
 import "./App.css";
-import { UserDropDownButton } from "./components/UserDropDownButton";
 import soccer from "./assets/soccer-landing.jpeg";
-import PlayerCard from "./components/PlayerCard";
-import { BiUserCircle } from "react-icons/bi";
+import { MainScene } from "./scenes/MainScene";
 import Header from "./components/Header";
 import ThemeToggle from "./components/ThemeToggle";
-import { StartingLineup } from "./components/StartingLineup";
-import { Team } from "./interfaces/team";
-import { Player } from "./interfaces/player";
-import { PlayerCreator } from "./components/PlayerCreator";
+import { BiUserCircle } from "react-icons/bi";
+import { UserDropDownButton } from "./components/UserDropDownButton";
 
 function App(): JSX.Element {
-    const newteam: Team = {
-        coach: "dan",
-        players: [],
-        lineup: [],
-        wins: 0,
-        losses: 0
-    };
-
-    const allPlayers: Player[] = PlayerCreator();
-
     return (
         <div
             className="App"
@@ -50,18 +36,13 @@ function App(): JSX.Element {
                     </h1>
                 </div>
             </Header>
-
             <hr></hr>
+
+            <MainScene></MainScene>
+
             <footer className="bg-neutral-50 dark:bg-neutral-900 dark:text-white">
                 Created by Trevor, Tyran, Mbiet, Shawn, & Gage
             </footer>
-            <div>
-                <UserDropDownButton
-                    options={["League Manager", "Team Manager", "Coach"]}
-                ></UserDropDownButton>
-            </div>
-            <PlayerCard player={allPlayers[0]}></PlayerCard>
-            <StartingLineup lineup={allPlayers}></StartingLineup>
         </div>
     );
 }
