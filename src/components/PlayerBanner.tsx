@@ -25,23 +25,53 @@ export function PlayerBanner({
         posToAbbrev[player.position]
     );
     const [playerRating, setPlayerRating] = useState<number>(player.rating);
+
+    function RenderPlayerName(): JSX.Element {
+        if (editing) {
+            return (
+                <Form.Control
+                    type="text"
+                    value={playerName}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                        setPlayerName(event.target.value)
+                    }
+                />
+            );
+        } else {
+            return <p>playerName</p>;
+        }
+    }
+
+    function RenderPosNRank(): JSX.Element {
+        if (editing) {
+            return (
+                <Form.Group controlId="positionsDropdown">
+                    <Form.Select
+                        value={playerPos}
+                        onChange={(e) => setPlayerPos(e.target.value)}
+                    >
+                        {["F", "D", "G", "M"].map(
+                            (o: string): JSX.Element => (
+                                <option key={o} value={o}>
+                                    {o}
+                                </option>
+                            )
+                        )}
+                    </Form.Select>
+                </Form.Group>
+            );
+        } else {
+            return <p>Pos: {playerPos}</p>;
+        }
+    }
+
     return (
         <div className="PlayerBanner">
             <Container>
                 <Row className="align-items-center justify-content-center">
                     {/* Player Name */}
                     <Col sm={5}>
-                        {editing ? (
-                            <Form.Control
-                                type="text"
-                                value={playerName}
-                                onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
-                                ) => setPlayerName(event.target.value)}
-                            />
-                        ) : (
-                            playerName
-                        )}
+                        <RenderPlayerName></RenderPlayerName>
                     </Col>
 
                     {/* Player Image */}
@@ -53,27 +83,7 @@ export function PlayerBanner({
                     </Col>
                     <Col sm={4}>
                         {/* Player Position */}
-                        Pos:{" "}
-                        {editing ? (
-                            <Form.Group controlId="positionsDropdown">
-                                <Form.Select
-                                    value={playerPos}
-                                    onChange={(e) =>
-                                        setPlayerPos(e.target.value)
-                                    }
-                                >
-                                    {["F", "D", "G", "M"].map(
-                                        (o: string): JSX.Element => (
-                                            <option key={o} value={o}>
-                                                {o}
-                                            </option>
-                                        )
-                                    )}
-                                </Form.Select>
-                            </Form.Group>
-                        ) : (
-                            playerPos
-                        )}
+                        <RenderPosNRank></RenderPosNRank>
                         <br></br>
                         {/* Player Rating */}
                         Ovr:{" "}

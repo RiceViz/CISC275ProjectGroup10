@@ -1,5 +1,5 @@
 import { Team } from "./team";
-import { Player, Position } from "./player";
+import { Player } from "./player";
 
 export interface field {
     team: Team;
