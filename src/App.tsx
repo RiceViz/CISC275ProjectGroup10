@@ -6,6 +6,7 @@ import soccer from "./assets/soccer-landing.jpeg";
 import { BiUserCircle } from "react-icons/bi";
 import Header from "./components/Header";
 import ThemeToggle from "./components/ThemeToggle";
+import { PlayerPosition } from "./components/PB";
 
 function App(): JSX.Element {
     return (
@@ -36,35 +37,15 @@ function App(): JSX.Element {
                     </h1>
                 </div>
             </Header>
-
+            <hr></hr>
+            <PlayerPosition></PlayerPosition>
             <hr></hr>
             <PlayerCard
                 name={"name"}
                 position={"position"}
                 rating={0}
                 imageURL={"image"}
-            />
-            <PlayerCard
-                name={"name"}
-                position={"position"}
-                rating={0}
-                imageURL={"image"}
-            />
-            <PlayerCard
-                name={"name"}
-                position={"position"}
-                rating={0}
-                imageURL={"image"}
-            />
-            <PlayerCard
-                name={"name"}
-                position={"position"}
-                rating={0}
-                imageURL={"image"}
-            />
-            <footer className="bg-neutral-50 dark:bg-neutral-900 dark:text-white">
-                Created by Trevor, Tyran, Mbiet, Shawn, & Gage
-            </footer>
+            ></PlayerCard>
         </div>
     );
 }
