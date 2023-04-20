@@ -22,7 +22,7 @@ export function PlayerBanner({ player }: { player: Player }): JSX.Element {
                             style={{ height: "64px" }}
                         />
                     </Col>
-                    <Col>
+                    <Col sm={4}>
                         Pos: {posToAbbrev[player.position]}
                         <br></br>
                         Ovr: {player.rating}
