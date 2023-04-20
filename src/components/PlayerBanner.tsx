@@ -42,26 +42,79 @@ export function PlayerBanner({
         }
     }
 
-    function RenderPosNRank(): JSX.Element {
+    function RenderPosNRating(): JSX.Element {
         if (editing) {
             return (
-                <Form.Group controlId="positionsDropdown">
-                    <Form.Select
-                        value={playerPos}
-                        onChange={(e) => setPlayerPos(e.target.value)}
-                    >
-                        {["F", "D", "G", "M"].map(
-                            (o: string): JSX.Element => (
-                                <option key={o} value={o}>
-                                    {o}
-                                </option>
-                            )
-                        )}
-                    </Form.Select>
-                </Form.Group>
+                <div>
+                    {/* Rendering Position */}
+                    Pos:
+                    <Form.Group controlId="positionsDropdown">
+                        <Form.Select
+                            value={playerPos}
+                            onChange={(e) => setPlayerPos(e.target.value)}
+                        >
+                            {["F", "D", "G", "M"].map(
+                                (o: string): JSX.Element => {
+                                    return (
+                                        <option key={o} value={o}>
+                                            {o}
+                                        </option>
+                                    );
+                                }
+                            )}
+                        </Form.Select>
+                    </Form.Group>
+                    <br></br>
+                    {/* Rendering Rank */}
+                    Ovr:{" "}
+                    <Form.Control
+                        type="number"
+                        value={playerRating}
+                        onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>
+                        ) => {
+                            const clamp = (
+                                num: number,
+                                min: number,
+                                max: number
+                            ) => Math.min(Math.max(num, min), max);
+                            return setPlayerRating(
+                                clamp(parseInt(event.target.value), 0, 99)
+                            );
+                        }}
+                    />
+                </div>
             );
         } else {
-            return <p>Pos: {playerPos}</p>;
+            return (
+                <div>
+                    <p>Pos: {playerPos}</p>
+                    <p>Ovr: {playerRating}</p>
+                </div>
+            );
+        }
+    }
+
+    function RenderEditSwitch(): JSX.Element {
+        if (user === "League Manager") {
+            return (
+                <div>
+                    <Col sm={3}>
+                        <Form.Check
+                            className=""
+                            type="switch"
+                            id="is-editing"
+                            label="Edit"
+                            checked={editing}
+                            onChange={(
+                                event: React.ChangeEvent<HTMLInputElement>
+                            ) => setEditing(event.target.checked)}
+                        />
+                    </Col>
+                </div>
+            );
+        } else {
+            return <div></div>;
         }
     }
 
@@ -82,53 +135,10 @@ export function PlayerBanner({
                         />
                     </Col>
                     <Col sm={4}>
-                        {/* Player Position */}
-                        <RenderPosNRank></RenderPosNRank>
-                        <br></br>
-                        {/* Player Rating */}
-                        Ovr:{" "}
-                        {editing ? (
-                            <Form.Control
-                                type="number"
-                                value={playerRating}
-                                onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
-                                ) => {
-                                    const clamp = (
-                                        num: number,
-                                        min: number,
-                                        max: number
-                                    ) => Math.min(Math.max(num, min), max);
-                                    return setPlayerRating(
-                                        clamp(
-                                            parseInt(event.target.value),
-                                            0,
-                                            99
-                                        )
-                                    );
-                                }}
-                            />
-                        ) : (
-                            playerRating
-                        )}
+                        {/* Player Position and Rating*/}
+                        <RenderPosNRating></RenderPosNRating>
                     </Col>
-
-                    {user === "League Manager" ? (
-                        <Col sm={3}>
-                            <Form.Check
-                                className=""
-                                type="switch"
-                                id="is-editing"
-                                label="Edit"
-                                checked={editing}
-                                onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
-                                ) => setEditing(event.target.checked)}
-                            />
-                        </Col>
-                    ) : (
-                        <Col></Col>
-                    )}
+                    <RenderEditSwitch></RenderEditSwitch>
                 </Row>
             </Container>
         </div>
