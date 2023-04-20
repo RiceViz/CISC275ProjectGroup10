@@ -2,6 +2,11 @@ import React from "react";
 import { Player } from "../interfaces/player";
 import { PlayerBanner } from "./PlayerBanner";
 
+/**
+ * Iterates a list of Players and creates a PlayerBanner for each
+ * @param lineup Player[]
+ * @returns JSX.Element
+ */
 export function StartingLineup({ lineup }: { lineup: Player[] }): JSX.Element {
     return (
         <div
