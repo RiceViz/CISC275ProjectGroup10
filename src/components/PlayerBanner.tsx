@@ -7,7 +7,7 @@ import { posToAbbrev } from "../interfaces/player";
 /**
  * Makes a condensed player card
  *
- * @param player
+ * @param Player
  * @returns JSX.Element
  */
 export function PlayerBanner({ player }: { player: Player }): JSX.Element {
