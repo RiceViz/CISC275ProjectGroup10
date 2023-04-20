@@ -24,11 +24,10 @@ function App(): JSX.Element {
                         <ThemeToggle></ThemeToggle>
                         <div className="">
                             <UserDropDownButton
-                                logo={<BiUserCircle size={25} />}
+                                //logo={<BiUserCircle size={25} />}
                                 user={user}
                                 setUser={setUser}
                             ></UserDropDownButton>
-                            User is: {user}
                         </div>
                     </div>
                     <h1 className="text-4xl text-center dark:text-white">
