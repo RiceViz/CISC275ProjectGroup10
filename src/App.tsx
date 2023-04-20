@@ -1,37 +1,32 @@
 import React from "react";
 import "./App.css";
 import { UserDropDownButton } from "./components/UserDropDownButton";
-import PlayerCard from "./components/PlayerCard";
 import soccer from "./assets/soccer-landing.jpeg";
+import PlayerCard from "./components/PlayerCard";
 import { BiUserCircle } from "react-icons/bi";
 import Header from "./components/Header";
 import ThemeToggle from "./components/ThemeToggle";
 import { StartingLineup } from "./components/StartingLineup";
 import { Team } from "./interfaces/team";
 import { Player } from "./interfaces/player";
+import { PlayerCreator } from "./components/PlayerCreator";
 
 function App(): JSX.Element {
-    const player1: Player = {
-        name: "Trevor",
-        position: "Midfielder",
-        rating: 99,
-        imageURL:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP-hcNzaVT_7bwqJ3yQ5OzjejlSnVoX_1LureTRN99&s"
-    };
-
     const newteam: Team = {
         coach: "dan",
         players: [],
-        lineup: [player1],
+        lineup: [],
         wins: 0,
         losses: 0
     };
+
+    const allPlayers: Player[] = PlayerCreator();
 
     return (
         <div
             className="App"
             style={{
-                backgroundImage: `url(${soccer})`,
+                backgroundImage: `url ${{ soccer }}`,
                 backgroundSize: "cover"
             }}
         >
@@ -57,30 +52,6 @@ function App(): JSX.Element {
             </Header>
 
             <hr></hr>
-            <PlayerCard
-                name={"name"}
-                position={"position"}
-                rating={0}
-                imageURL={"image"}
-            />
-            <PlayerCard
-                name={"name"}
-                position={"position"}
-                rating={0}
-                imageURL={"image"}
-            />
-            <PlayerCard
-                name={"name"}
-                position={"position"}
-                rating={0}
-                imageURL={"image"}
-            />
-            <PlayerCard
-                name={"name"}
-                position={"position"}
-                rating={0}
-                imageURL={"image"}
-            />
             <footer className="bg-neutral-50 dark:bg-neutral-900 dark:text-white">
                 Created by Trevor, Tyran, Mbiet, Shawn, & Gage
             </footer>
@@ -89,8 +60,8 @@ function App(): JSX.Element {
                     options={["League Manager", "Team Manager", "Coach"]}
                 ></UserDropDownButton>
             </div>
-            <PlayerCard player={player1}></PlayerCard>
-            <StartingLineup lineup={newteam.lineup}></StartingLineup>
+            <PlayerCard player={allPlayers[0]}></PlayerCard>
+            <StartingLineup lineup={allPlayers}></StartingLineup>
         </div>
     );
 }

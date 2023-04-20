@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import { Player } from "../interfaces/player";
-import { Form, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import { toAbbrev } from "../interfaces/field";
 
 export function PlayerBanner({ player }: { player: Player }): JSX.Element {
@@ -11,7 +11,10 @@ export function PlayerBanner({ player }: { player: Player }): JSX.Element {
                 <Row className="d-flex align-items-center justify-content-center">
                     <Col>{player.name}</Col>
                     <Col>
-                        <img src={player.imageURL} style={{ height: "64px" }} />
+                        <Image
+                            src={player.imageURL}
+                            style={{ height: "64px" }}
+                        />
                     </Col>
                     <Col>
                         Pos: {toAbbrev[player.position]}

@@ -1,202 +1,193 @@
 import "../App.css";
 import { Player } from "../interfaces/player";
 
-export function PlayerCreator() {
+export function PlayerCreator(): Player[] {
+    function getPath(imgName: string): string {
+        return process.env.PUBLIC_URL + "/images/playerimages/" + imgName;
+    }
+
     const playerPool: Player[] = [
         {
             name: "Lionel Messi",
             position: "Forward",
             rating: 91,
-            imageURL: "/playerimages/messi.jpg"
+            imageURL: getPath("messi.jpg")
         },
         {
             name: "Karim Benzema",
             position: "Forward",
             rating: 91,
-            imageURL: "/playerimages/benzema.png"
+            imageURL: getPath("benzema.png")
         },
         {
             name: "Erling Haaland",
             position: "Forward",
             rating: 88,
-            imageURL: "/playerimages/haaland.jpg"
+            imageURL: getPath("haaland.jpg")
         },
         {
             name: "Eden Hazard",
             position: "Forward",
             rating: 84,
-            imageURL: "/playerimages/hazard.png"
+            imageURL: getPath("hazard.png")
         },
         {
             name: "Robert Lewandowski",
             position: "Forward",
             rating: 91,
-            imageURL: "/playerimages/lewandowski.png"
+            imageURL: getPath("lewandowski.png")
         },
         {
             name: "Kylian Mbappe",
             position: "Forward",
             rating: 91,
-            imageURL: "/playerimages/mbappe.png"
+            imageURL: getPath("mbappe.jpg")
         },
         {
             name: "Neymar Jr.",
             position: "Forward",
             rating: 89,
-            imageURL: "/playerimages/neymar.png"
+            imageURL: getPath("neymar.png")
         },
         {
             name: "Cristiano Ronaldo",
             position: "Forward",
             rating: 89,
-            imageURL: "/playerimages/ronaldo.png"
+            imageURL: getPath("ronaldo.png")
         },
         {
             name: "Mohamed Salah",
             position: "Forward",
             rating: 90,
-            imageURL: "/playerimages/salah.png"
+            imageURL: getPath("salah.png")
         },
         {
             name: "Son Heung-min",
             position: "Forward",
             rating: 89,
-            imageURL: "/playerimages/son.png"
+            imageURL: getPath("son.png")
         },
         {
             name: "Alisson Becker",
             position: "Goalkeeper",
             rating: 89,
-            imageURL: "/playerimages/alisson.png"
+            imageURL: getPath("alisson.png")
         },
         {
             name: "Thibaut Courtois",
             position: "Goalkeeper",
             rating: 90,
-            imageURL: "/playerimages/courtois.png"
+            imageURL: getPath("courtois.png")
         },
         {
             name: "Ederson",
             position: "Goalkeeper",
             rating: 89,
-            imageURL: "/playerimages/ederson.png"
+            imageURL: getPath("ederson.png")
         },
         {
             name: "Manuel Neuer",
             position: "Goalkeeper",
             rating: 90,
-            imageURL: "/playerimages/neuer.png"
+            imageURL: getPath("neuer.png")
         },
         {
             name: "Jan Oblak",
             position: "Goalkeeper",
             rating: 89,
-            imageURL: "/playerimages/oblak.png"
+            imageURL: getPath("oblak.png")
         },
         {
             name: "Trent Alexander-Arnold",
             position: "Defender",
             rating: 87,
-            imageURL: "/playerimages/alexanderarnold.jpg"
+            imageURL: getPath("alexanderarnold.jpg")
         },
         {
             name: "Lucas Hernandez",
             position: "Defender",
             rating: 85,
-            imageURL: "/playerimages/hernandez.jpg"
+            imageURL: getPath("hernandez.jpg")
         },
         {
             name: "Reece James",
             position: "Defender",
             rating: 84,
-            imageURL: "/playerimages/james.jpg"
+            imageURL: getPath("james.jpg")
         },
         {
             name: "Joao Cancelo",
             position: "Defender",
             rating: 88,
-            imageURL: "/playerimages/joaocancelo.jpg"
+            imageURL: getPath("joaocancelo.jpg")
         },
         {
             name: "Marquinhos",
             position: "Defender",
             rating: 88,
-            imageURL: "/playerimages/marquinhos.png"
+            imageURL: getPath("marquinhos.png")
         },
         {
             name: "Andrew Robertson",
             position: "Defender",
             rating: 87,
-            imageURL: "/playerimages/robertson.jpg"
+            imageURL: getPath("robertson.jpg")
         },
         {
             name: "Ruben Dias",
             position: "Defender",
             rating: 88,
-            imageURL: "/playerimages/rubendias.jpg"
+            imageURL: getPath("rubendias.jpg")
         },
         {
             name: "Antonio Rudiger",
             position: "Defender",
             rating: 87,
-            imageURL: "/playerimages/rudiger.jpg"
+            imageURL: getPath("rudiger.jpg")
         },
         {
             name: "Virgil van Dijk",
             position: "Defender",
             rating: 90,
-            imageURL: "/playerimages/vandijk.jpg"
+            imageURL: getPath("vandijk.jpg")
         },
         {
             name: "Walker Zimmerman",
             position: "Defender",
             rating: 85,
-            imageURL: "/playerimages/walker.jpg"
+            imageURL: getPath("walker.jpg")
         },
         {
             name: "Bernardo Silva",
             position: "Midfielder",
             rating: 86,
-            imageURL: "/playerimages/bernardosilva.png"
+            imageURL: getPath("bernardosilva.png")
         },
         {
             name: "Bruno Fernandes",
             position: "Midfielder",
             rating: 88,
-            imageURL: "/playerimages/brunofernandes.png"
+            imageURL: getPath("brunofernandes.png")
         },
         {
             name: "Kevin De Bruyne",
             position: "Midfielder",
             rating: 91,
-            imageURL: "/playerimages/debruyne.png"
+            imageURL: getPath("debruyne.png")
         },
         {
             name: "Kai Havertz",
             position: "Midfielder",
             rating: 85,
-            imageURL: "/playerimages/havertz.png"
+            imageURL: getPath("havertz.png")
         },
         {
             name: "Thomas Muller",
             position: "Midfielder",
             rating: 87,
-            imageURL: "/playerimages/muller.png"
+            imageURL: getPath("muller.png")
         }
     ]; //end of playerPool (consists of all players)
-    /* 
-    The following are sublists filtered by Player position.
-    */
-    const forwards: Player[] = playerPool.filter(
-        (player) => player.position === "Forward"
-    );
-    const midfielders: Player[] = playerPool.filter(
-        (player) => player.position === "Midfielder"
-    );
-    const defenders: Player[] = playerPool.filter(
-        (player) => player.position === "Defender"
-    );
-    const goalkeepers: Player[] = playerPool.filter(
-        (player) => player.position === "Goalkeeper"
-    );
+
+    return playerPool;
 } //end of func
