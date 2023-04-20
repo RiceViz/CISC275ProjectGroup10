@@ -13,9 +13,6 @@ export function MainScene({ user }: { user: User }): JSX.Element {
         <div>
             <Container>
                 <Row>
-                    <UserDropDownButton
-                        options={["League Manager", "Team Manager", "Coach"]}
-                    ></UserDropDownButton>
                     <Col>
                         <div className="BoxedList">
                             All Players

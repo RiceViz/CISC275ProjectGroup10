@@ -25,11 +25,8 @@ function App(): JSX.Element {
                         <div className="">
                             <UserDropDownButton
                                 logo={<BiUserCircle size={25} />}
-                                options={[
-                                    "League Manager",
-                                    "Team Manager",
-                                    "Coach"
-                                ]}
+                                user={user}
+                                setUser={setUser}
                             ></UserDropDownButton>
                             User is: {user}
                         </div>
