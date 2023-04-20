@@ -26,7 +26,7 @@ function App(): JSX.Element {
         <div
             className="App"
             style={{
-                backgroundImage: `url ${{ soccer }}`,
+                backgroundImage: `url(${soccer})`,
                 backgroundSize: "cover"
             }}
         >
