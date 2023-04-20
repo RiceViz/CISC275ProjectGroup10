@@ -6,3 +6,13 @@ export interface Player {
     rating: number;
     imageURL: string;
 }
+
+/**
+ * Converts a player's position to an abbreviation
+ */
+export const posToAbbrev: Record<Position, string> = {
+    Defender: "D",
+    Forward: "F",
+    Goalkeeper: "G",
+    Midfielder: "M"
+};
