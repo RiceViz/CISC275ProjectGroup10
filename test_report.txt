@@ -180,7 +180,7 @@ FAIL src/App.test.tsx
                               [33mclass[39m=[32m"col-sm-5"[39m
                             [36m>[39m
                               [36m<p>[39m
-                                [0mplayerName[0m
+                                [0mLionel Messi[0m
                               [36m</p>[39m
                             [36m</div>[39m
                             [36m<div[39m
@@ -192,7 +192,7 @@ FAIL src/App.test.tsx
                                 [33mstyle[39m=[32m"height: 64px;"[39m
                               [36m/>[39m
                             [36m</div>[39m
-                            [36m<di...
+                            [36m<...
 
        5 | test("renders the course name somewhere", () => {
        6 |     render(<App />);
@@ -238,5 +238,5 @@ All files                |   42.69 |    14.28 |   58.06 |   43.18 |
 Test Suites: 2 failed, 1 passed, 3 total
 Tests:       1 failed, 1 passed, 2 total
 Snapshots:   0 total
-Time:        3.592 s
+Time:        3.811 s
 Ran all test suites.
