@@ -21,7 +21,9 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                 <Col>
                     <div className="BoxedList">Your Team</div>
                 </Col>
-                <Col></Col>
+                <Col>
+                    <div className="BoxedList">Starting Lineup</div>
+                </Col>
             </Row>
         </div>
     );
