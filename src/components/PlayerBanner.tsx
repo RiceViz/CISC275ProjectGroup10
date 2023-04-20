@@ -2,8 +2,14 @@ import React from "react";
 import "../App.css";
 import { Player } from "../interfaces/player";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import { toAbbrev } from "../interfaces/field";
+import { posToAbbrev } from "../interfaces/player";
 
+/**
+ * Makes a condensed player card
+ *
+ * @param player
+ * @returns JSX.Element
+ */
 export function PlayerBanner({ player }: { player: Player }): JSX.Element {
     return (
         <div className="PlayerBanner">
@@ -17,7 +23,7 @@ export function PlayerBanner({ player }: { player: Player }): JSX.Element {
                         />
                     </Col>
                     <Col>
-                        Pos: {toAbbrev[player.position]}
+                        Pos: {posToAbbrev[player.position]}
                         <br></br>
                         Ovr: {player.rating}
                     </Col>
