@@ -38,7 +38,7 @@ export function PlayerBanner({
                 />
             );
         } else {
-            return <p>playerName</p>;
+            return <p>{playerName}</p>;
         }
     }
 
