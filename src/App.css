@@ -37,3 +37,15 @@
         transform: rotate(360deg);
     }
 }
+
+.PlayerBanner {
+    background-color: rgb(226, 226, 226);
+    width: 300px;
+    border: 3px;
+    border-color: #ff0000;
+    border-radius: 10px;
+}
+
+.PlayerBanner:hover {
+    background-color: rgb(215, 215, 215);
+}
