@@ -15,10 +15,3 @@ export interface field {
     rightCenterBack: Player;
     goalKeeper: Player;
 }
-
-export const toAbbrev: Record<Position, string> = {
-    Defender: "D",
-    Forward: "F",
-    Goalkeeper: "G",
-    Midfielder: "M"
-};
