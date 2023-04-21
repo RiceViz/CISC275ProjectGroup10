@@ -108,24 +108,37 @@ export function PlayerBanner({
                         )}
                     </Col>
 
-                    {user === "League Manager" ? (
-                        <Col sm={3}>
-                            <Form.Check
-                                className=""
-                                type="switch"
-                                id="is-editing"
-                                label="Edit"
-                                checked={editing}
-                                onChange={(
-                                    event: React.ChangeEvent<HTMLInputElement>
-                                ) => setEditing(event.target.checked)}
-                            />
-                        </Col>
-                    ) : (
-                        <Col></Col>
+                    {user === "League Manager" && (
+                        <RenderEditSwitch
+                            editing={editing}
+                            setEditing={setEditing}
+                        ></RenderEditSwitch>
                     )}
                 </Row>
             </Container>
         </div>
+    );
+}
+
+function RenderEditSwitch({
+    editing,
+    setEditing
+}: {
+    editing: boolean;
+    setEditing: (isEditing: boolean) => void;
+}): JSX.Element {
+    return (
+        <Col sm={3}>
+            <Form.Check
+                className=""
+                type="switch"
+                id="is-editing"
+                label="Edit"
+                checked={editing}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    setEditing(event.target.checked)
+                }
+            />
+        </Col>
     );
 }
