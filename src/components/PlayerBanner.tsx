@@ -19,57 +19,61 @@ export function PlayerBanner({
     player: Player;
     user: User;
 }): JSX.Element {
-    const [editing, setEditing] = useState<boolean>(false);
+    const [editMode, seteditMode] = useState<boolean>(false);
     const [playerName, setPlayerName] = useState<string>(player.name);
     const [playerPos, setPlayerPos] = useState<string>(
         posToAbbrev[player.position]
     );
 
-    function getEditable(): boolean {
-        return editing && user === "League Manager";
-    }
+    const editable: boolean = editMode && user === "League Manager";
 
     const [playerRating, setPlayerRating] = useState<number>(player.rating);
     return (
         <div className="PlayerBanner">
             <Container>
                 <Row className="align-items-center justify-content-center">
-                    {/* Player Name */}
+                    {/* Column 1 */}
                     <Col sm={5}>
+                        {/* Player Name */}
                         <RenderPlayerName
-                            editing={getEditable()}
+                            editMode={editable}
                             playerName={playerName}
                             setPlayerName={setPlayerName}
                         ></RenderPlayerName>
                     </Col>
 
-                    {/* Player Image */}
+                    {/* Column 2 */}
                     <Col sm={3}>
+                        {/* Player Image */}
                         <Image
                             src={player.imageURL}
                             style={{ height: "64px" }}
                         />
                     </Col>
+
+                    {/* Column 3 */}
                     <Col sm={4}>
                         {/* Player Position */}
                         <RenderPlayerPosition
-                            editing={getEditable()}
+                            editMode={editable}
                             playerPos={playerPos}
                             setPlayerPos={setPlayerPos}
                         ></RenderPlayerPosition>
-                        <br></br>
+                        {editable || <br></br>}
+
                         {/* Player Rating */}
                         <RenderPlayerRating
-                            editing={getEditable()}
+                            editMode={editable}
                             playerRating={playerRating}
                             setPlayerRating={setPlayerRating}
                         ></RenderPlayerRating>
                     </Col>
 
+                    {/* Edit Switch */}
                     {user === "League Manager" && (
                         <RenderEditSwitch
-                            editing={editing}
-                            setEditing={setEditing}
+                            editMode={editMode}
+                            seteditMode={seteditMode}
                         ></RenderEditSwitch>
                     )}
                 </Row>
@@ -80,21 +84,21 @@ export function PlayerBanner({
 
 /**
  *
- * @param editing boolean: is edit mode
+ * @param editMode boolean: is edit mode
  * @param playerName string: playerName Hook
  * @param setPlayerName (boolean) => void: setter for playerName Hook
  * @returns
  */
 function RenderPlayerName({
-    editing,
+    editMode,
     playerName,
     setPlayerName
 }: {
-    editing: boolean;
+    editMode: boolean;
     playerName: string;
     setPlayerName: (newName: string) => void;
 }): JSX.Element {
-    if (editing) {
+    if (editMode) {
         return (
             <Form.Control
                 type="text"
@@ -110,15 +114,15 @@ function RenderPlayerName({
 }
 
 function RenderPlayerPosition({
-    editing,
+    editMode,
     playerPos,
     setPlayerPos
 }: {
-    editing: boolean;
+    editMode: boolean;
     playerPos: string;
     setPlayerPos: (newPos: string) => void;
 }): JSX.Element {
-    if (editing) {
+    if (editMode) {
         return (
             <Form.Group controlId="positionsDropdown">
                 Pos:{" "}
@@ -142,15 +146,15 @@ function RenderPlayerPosition({
 }
 
 function RenderPlayerRating({
-    editing,
+    editMode,
     playerRating,
     setPlayerRating
 }: {
-    editing: boolean;
+    editMode: boolean;
     playerRating: number;
     setPlayerRating: (newRating: number) => void;
 }): JSX.Element {
-    if (editing) {
+    if (editMode) {
         return (
             <div>
                 Ovr:{" "}
@@ -173,22 +177,22 @@ function RenderPlayerRating({
 }
 
 function RenderEditSwitch({
-    editing,
-    setEditing
+    editMode,
+    seteditMode
 }: {
-    editing: boolean;
-    setEditing: (isEditing: boolean) => void;
+    editMode: boolean;
+    seteditMode: (iseditMode: boolean) => void;
 }): JSX.Element {
     return (
         <Col sm={3}>
             <Form.Check
                 className=""
                 type="switch"
-                id="is-editing"
+                id="is-editMode"
                 label="Edit"
-                checked={editing}
+                checked={editMode}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    setEditing(event.target.checked)
+                    seteditMode(event.target.checked)
                 }
             />
         </Col>
