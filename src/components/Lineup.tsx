@@ -24,15 +24,15 @@ export function Lineup({
             }}
         >
             <div>
-                {lineup.map(
-                    (player): JSX.Element => (
+                {lineup.map((player): JSX.Element => {
+                    return (
                         <PlayerBanner
                             player={player}
                             key={player.name}
                             user={user}
                         ></PlayerBanner>
-                    )
-                )}
+                    );
+                })}
             </div>
         </div>
     );

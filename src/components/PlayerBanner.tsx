@@ -24,6 +24,11 @@ export function PlayerBanner({
     const [playerPos, setPlayerPos] = useState<string>(
         posToAbbrev[player.position]
     );
+
+    function getEditable(): boolean {
+        return editing && user === "League Manager";
+    }
+
     const [playerRating, setPlayerRating] = useState<number>(player.rating);
     return (
         <div className="PlayerBanner">
@@ -31,7 +36,7 @@ export function PlayerBanner({
                 <Row className="align-items-center justify-content-center">
                     {/* Player Name */}
                     <Col sm={5}>
-                        {editing ? (
+                        {getEditable() ? (
                             <Form.Control
                                 type="text"
                                 value={playerName}
@@ -54,7 +59,7 @@ export function PlayerBanner({
                     <Col sm={4}>
                         {/* Player Position */}
                         Pos:{" "}
-                        {editing ? (
+                        {getEditable() ? (
                             <Form.Group controlId="positionsDropdown">
                                 <Form.Select
                                     value={playerPos}
@@ -77,7 +82,7 @@ export function PlayerBanner({
                         <br></br>
                         {/* Player Rating */}
                         Ovr:{" "}
-                        {editing ? (
+                        {getEditable() ? (
                             <Form.Control
                                 type="number"
                                 value={playerRating}
