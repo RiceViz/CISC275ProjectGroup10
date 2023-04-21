@@ -36,6 +36,7 @@ export function Lineup({
                         ></PlayerBanner>
                     );
                 })}
+<<<<<<< HEAD
             </div>
             <div>
                 {playerP.map((player): JSX.Element => {
@@ -47,6 +48,8 @@ export function Lineup({
                         ></PlayerBanner>
                     );
                 })}
+=======
+>>>>>>> 6837199c8a491e1ba7ee2104546a75de0db8ed87
             </div>
         </div>
     );
