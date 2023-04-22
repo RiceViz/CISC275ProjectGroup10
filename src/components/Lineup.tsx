@@ -5,12 +5,6 @@ import { PlayerBanner } from "./PlayerBanner";
 import { User } from "../interfaces/user";
 import { Team } from "../interfaces/team";
 
-const [id, setID] = useState<number>(0);
-
-function IDIncrease(): void {
-    setID(id + 1);
-}
-
 /**
  * Iterates a list of Players and creates a PlayerBanner for each
  * @param lineup Player[]
@@ -60,22 +54,22 @@ export function Lineup({
             }}
         >
             <div>
-                {lineup.map(
-                    (player): JSX.Element => (
+                {lineup.map((player, index): JSX.Element => {
+                    return (
                         <PlayerBanner
-                            key={id}
+                            key={index}
                             onDragStart={(
                                 event: React.DragEvent<HTMLDivElement>
-                            ) => handleDragStart(event, id)}
+                            ) => handleDragStart(event, index)}
                             onDragOver={handleDragOver}
                             onDrop={(event: React.DragEvent<HTMLDivElement>) =>
-                                handleDrop(event, id)
+                                handleDrop(event, index)
                             }
                             player={player}
                             user={user}
                         ></PlayerBanner>
-                    )
-                )}
+                    );
+                })}
             </div>
         </div>
     );
