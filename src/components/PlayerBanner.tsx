@@ -15,10 +15,16 @@ import { Team } from "../interfaces/team";
  */
 export function PlayerBanner({
     player,
-    user
+    user,
+    onDragStart,
+    onDragOver,
+    onDrop
 }: {
     player: Player;
     user: User;
+    onDragStart: (event: React.DragEvent<HTMLDivElement>) => void;
+    onDragOver: (event: React.DragEvent<HTMLDivElement>) => void;
+    onDrop: (event: React.DragEvent<HTMLDivElement>) => void;
 }): JSX.Element {
     const [editing, setEditing] = useState<boolean>(false);
     const [playerName, setPlayerName] = useState<string>(player.name);
@@ -27,7 +33,13 @@ export function PlayerBanner({
     );
     const [playerRating, setPlayerRating] = useState<number>(player.rating);
     return (
-        <div className="PlayerBanner">
+        <div
+            className="PlayerBanner"
+            draggable={true}
+            onDragStart={onDragStart}
+            onDragOver={onDragOver}
+            onDrop={onDrop}
+        >
             <Container>
                 <Row className="align-items-center justify-content-center">
                     {/* Player Name */}

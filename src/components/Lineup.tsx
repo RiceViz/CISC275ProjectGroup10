@@ -63,11 +63,14 @@ export function Lineup({
                 {lineup.map(
                     (player): JSX.Element => (
                         <PlayerBanner
-                            key={player}
-                            draggable
-                            onDragStart={(event) => handleDragStart(event, id)}
+                            key={id}
+                            onDragStart={(
+                                event: React.DragEvent<HTMLDivElement>
+                            ) => handleDragStart(event, id)}
                             onDragOver={handleDragOver}
-                            onDrop={(event) => handleDrop(event, id)}
+                            onDrop={(event: React.DragEvent<HTMLDivElement>) =>
+                                handleDrop(event, id)
+                            }
                             player={player}
                             user={user}
                         ></PlayerBanner>
