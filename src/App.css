@@ -54,4 +54,17 @@
     flex-grow: 1;
     border: 1px solid black;
     border-radius: 16px;
+    height: 100%;
+}
+
+.BoxedList.all {
+    background-color: bisque;
+}
+
+.BoxedList.team {
+    background-color: #61dafb;
+}
+
+.BoxedList.lineup {
+    background-color: darkgreen;
 }

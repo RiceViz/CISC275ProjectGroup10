@@ -1,6 +1,6 @@
 /* eslint-disable no-extra-parens */
-import React, { useState } from "react";
-import { Dropdown, Form } from "react-bootstrap";
+import React from "react";
+import { Form } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
 export function UserDropDownButton({
@@ -13,17 +13,7 @@ export function UserDropDownButton({
     setUser: (newUser: User) => void;
 }): JSX.Element {
     const options: User[] = ["League Manager", "Team Manager", "Coach"];
-
-    function updateUser(event: React.ChangeEvent<HTMLSelectElement>) {
-        console.log("updateUser called");
-        const newUser: string = event.target.value;
-        const isUser = (x: any): x is User => options.includes(x);
-        if (isUser(newUser)) {
-            setUser(newUser);
-            return;
-        }
-        console.log("nothin");
-    }
+    const goBetween: string[] = ["League Manager", "Team Manager", "Coach"];
 
     // if (logo) {
     //     return (
@@ -54,7 +44,13 @@ export function UserDropDownButton({
         <div>
             {logo}
             <Form.Group className="max-w-fit p-2" controlId="choices">
-                <Form.Select value={user} onChange={updateUser}>
+                <Form.Select
+                    value={user}
+                    onChange={(e) => {
+                        const ind = goBetween.indexOf(e.target.value);
+                        setUser(options[ind]);
+                    }}
+                >
                     {options.map((userOption: User) => (
                         <option key={userOption} value={userOption}>
                             {userOption}

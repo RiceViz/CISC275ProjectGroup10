@@ -1,10 +1,9 @@
 import React from "react";
 import "../App.css";
-import { UserDropDownButton } from "../components/UserDropDownButton";
 import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
 export function MainScene({ user }: { user: User }): JSX.Element {
@@ -21,7 +20,9 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                 <Col>
                     <div className="BoxedList">Your Team</div>
                 </Col>
-                <Col></Col>
+                <Col>
+                    <div className="BoxedList">Starting Lineup</div>
+                </Col>
             </Row>
         </div>
     );
