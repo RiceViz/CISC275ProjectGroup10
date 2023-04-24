@@ -1,6 +1,6 @@
 import React, { FC, useRef, useState } from "react";
 import "../App.css";
-import { Player } from "../interfaces/player";
+import { Player, Position, abbrevToPos } from "../interfaces/player";
 import { Container, Row, Col, Image, Form } from "react-bootstrap";
 import { posToAbbrev } from "../interfaces/player";
 import { User } from "../interfaces/user";
@@ -8,113 +8,113 @@ import { Identifier } from "typescript";
 import { ItemTypes } from "../interfaces/itemTypes";
 import { XYCoord, useDrag, useDrop } from "react-dnd";
 
-const style = {
-    border: "1px dashed gray",
-    padding: "0.5rem 1rem",
-    marginBottom: ".5rem",
-    backgroundColor: "white",
-    cursor: "move"
-};
+// const style = {
+//     border: "1px dashed gray",
+//     padding: "0.5rem 1rem",
+//     marginBottom: ".5rem",
+//     backgroundColor: "white",
+//     cursor: "move"
+// };
 
-export interface CardProps {
-    id: any;
-    text: string;
-    index: number;
-    moveCard: (dragIndex: number, hoverIndex: number) => void;
-}
+// export interface CardProps {
+//     id: any;
+//     text: string;
+//     index: number;
+//     moveCard: (dragIndex: number, hoverIndex: number) => void;
+// }
 
-interface DragItem {
-    index: number;
-    id: string;
-    type: string;
-}
+// interface DragItem {
+//     index: number;
+//     id: string;
+//     type: string;
+// }
 
-export const Card: FC<CardProps> = ({ id, text, index, moveCard }) => {
-    const ref = useRef<HTMLDivElement>(null);
-    const [{ handlerId }, drop] = useDrop<
-        DragItem,
-        void,
-        { handlerId: Identifier | null }
-    >({
-        accept: ItemTypes.PLAYERBANNER,
-        collect(monitor) {
-            return {
-                handlerId: monitor.getHandlerId()
-            };
-        },
-        hover(item: DragItem, monitor) {
-            if (!ref.current) {
-                return;
-            }
-            const dragIndex = item.index;
-            const hoverIndex = index;
+// export const Card: FC<CardProps> = ({ id, text, index, moveCard }) => {
+//     const ref = useRef<HTMLDivElement>(null);
+//     const [{ handlerId }, drop] = useDrop<
+//         DragItem,
+//         void,
+//         { handlerId: Identifier | null }
+//     >({
+//         accept: ItemTypes.PLAYERBANNER,
+//         collect(monitor) {
+//             return {
+//                 handlerId: monitor.getHandlerId()
+//             };
+//         },
+//         hover(item: DragItem, monitor) {
+//             if (!ref.current) {
+//                 return;
+//             }
+//             const dragIndex = item.index;
+//             const hoverIndex = index;
 
-            // Don't replace items with themselves
-            if (dragIndex === hoverIndex) {
-                return;
-            }
+//             // Don't replace items with themselves
+//             if (dragIndex === hoverIndex) {
+//                 return;
+//             }
 
-            // Determine rectangle on screen
-            const hoverBoundingRect = ref.current?.getBoundingClientRect();
+//             // Determine rectangle on screen
+//             const hoverBoundingRect = ref.current?.getBoundingClientRect();
 
-            // Get vertical middle
-            const hoverMiddleY =
-                (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+//             // Get vertical middle
+//             const hoverMiddleY =
+//                 (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
 
-            // Determine mouse position
-            const clientOffset = monitor.getClientOffset();
+//             // Determine mouse position
+//             const clientOffset = monitor.getClientOffset();
 
-            // Get pixels to the top
-            const hoverClientY =
-                (clientOffset as XYCoord).y - hoverBoundingRect.top;
+//             // Get pixels to the top
+//             const hoverClientY =
+//                 (clientOffset as XYCoord).y - hoverBoundingRect.top;
 
-            // Only perform the move when the mouse has crossed half of the items height
-            // When dragging downwards, only move when the cursor is below 50%
-            // When dragging upwards, only move when the cursor is above 50%
+//             // Only perform the move when the mouse has crossed half of the items height
+//             // When dragging downwards, only move when the cursor is below 50%
+//             // When dragging upwards, only move when the cursor is above 50%
 
-            // Dragging downwards
-            if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-                return;
-            }
+//             // Dragging downwards
+//             if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+//                 return;
+//             }
 
-            // Dragging upwards
-            if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-                return;
-            }
+//             // Dragging upwards
+//             if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+//                 return;
+//             }
 
-            // Time to actually perform the action
-            moveCard(dragIndex, hoverIndex);
+//             // Time to actually perform the action
+//             moveCard(dragIndex, hoverIndex);
 
-            // Note: we're mutating the monitor item here!
-            // Generally it's better to avoid mutations,
-            // but it's good here for the sake of performance
-            // to avoid expensive index searches.
-            item.index = hoverIndex;
-        }
-    });
+//             // Note: we're mutating the monitor item here!
+//             // Generally it's better to avoid mutations,
+//             // but it's good here for the sake of performance
+//             // to avoid expensive index searches.
+//             item.index = hoverIndex;
+//         }
+//     });
 
-    const [{ isDragging }, drag] = useDrag({
-        type: ItemTypes.CARD,
-        item: () => {
-            return { id, index };
-        },
-        collect: (monitor: any) => ({
-            isDragging: monitor.isDragging()
-        })
-    });
+//     const [{ isDragging }, drag] = useDrag({
+//         type: ItemTypes.CARD,
+//         item: () => {
+//             return { id, index };
+//         },
+//         collect: (monitor: any) => ({
+//             isDragging: monitor.isDragging()
+//         })
+//     });
 
-    const opacity = isDragging ? 0 : 1;
-    drag(drop(ref));
-    return (
-        <div
-            ref={ref}
-            style={{ ...style, opacity }}
-            data-handler-id={handlerId}
-        >
-            {text}
-        </div>
-    );
-};
+//     const opacity = isDragging ? 0 : 1;
+//     drag(drop(ref));
+//     return (
+//         <div
+//             ref={ref}
+//             style={{ ...style, opacity }}
+//             data-handler-id={handlerId}
+//         >
+//             {text}
+//         </div>
+//     );
+// };
 
 /**
  * Makes a condensed, editable player card
@@ -130,15 +130,11 @@ export function PlayerBanner({
     player: Player;
     user: User;
 }): JSX.Element {
+    const [p, setPlayer] = useState<Player>(player);
+
     const [editMode, seteditMode] = useState<boolean>(false);
-    const [playerName, setPlayerName] = useState<string>(player.name);
-    const [playerPos, setPlayerPos] = useState<string>(
-        posToAbbrev[player.position]
-    );
 
     const editable: boolean = editMode && user === "League Manager";
-
-    const [playerRating, setPlayerRating] = useState<number>(player.rating);
     return (
         <div className="PlayerBanner">
             <Container>
@@ -148,8 +144,10 @@ export function PlayerBanner({
                         {/* Player Name */}
                         <RenderPlayerName
                             editMode={editable}
-                            playerName={playerName}
-                            setPlayerName={setPlayerName}
+                            playerName={p.name}
+                            setPlayerName={(newName: string) =>
+                                setPlayer({ ...p, name: newName })
+                            }
                         ></RenderPlayerName>
                     </Col>
 
@@ -167,16 +165,20 @@ export function PlayerBanner({
                         {/* Player Position */}
                         <RenderPlayerPosition
                             editMode={editable}
-                            playerPos={playerPos}
-                            setPlayerPos={setPlayerPos}
+                            playerPos={posToAbbrev[p.position]}
+                            setPlayerPos={(newPos: Position) =>
+                                setPlayer({ ...p, position: newPos })
+                            }
                         ></RenderPlayerPosition>
                         {editable || <br></br>}
 
                         {/* Player Rating */}
                         <RenderPlayerRating
                             editMode={editable}
-                            playerRating={playerRating}
-                            setPlayerRating={setPlayerRating}
+                            playerRating={p.rating}
+                            setPlayerRating={(newRating: number) =>
+                                setPlayer({ ...p, rating: newRating })
+                            }
                         ></RenderPlayerRating>
                     </Col>
 
@@ -231,7 +233,7 @@ function RenderPlayerPosition({
 }: {
     editMode: boolean;
     playerPos: string;
-    setPlayerPos: (newPos: string) => void;
+    setPlayerPos: (newPos: Position) => void;
 }): JSX.Element {
     if (editMode) {
         return (
@@ -239,7 +241,7 @@ function RenderPlayerPosition({
                 Pos:{" "}
                 <Form.Select
                     value={playerPos}
-                    onChange={(e) => setPlayerPos(e.target.value)}
+                    onChange={(e) => setPlayerPos(abbrevToPos[e.target.value])}
                 >
                     {["F", "D", "G", "M"].map((o: string): JSX.Element => {
                         return (
