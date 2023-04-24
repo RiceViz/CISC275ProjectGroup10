@@ -1,4 +1,3 @@
-import { Player } from "../interfaces/player";
 import { Team } from "../interfaces/team";
 /*
  * Formula used to see which team wins the simulated game after the draft
