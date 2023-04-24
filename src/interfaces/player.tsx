@@ -16,3 +16,10 @@ export const posToAbbrev: Record<Position, string> = {
     Goalkeeper: "G",
     Midfielder: "M"
 };
+
+export const abbrevToPos: Record<string, Position> = {
+    D: "Defender",
+    F: "Forward",
+    G: "Goalkeeper",
+    M: "Midfielder"
+};
