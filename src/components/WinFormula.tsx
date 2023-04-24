@@ -19,7 +19,12 @@ export function WinFormula(t1: Team, t2: Team): string {
     //these variables give each team their odds, to be put into random func.
     const t1Odds: number = t1Rating / totRating;
     const t2Odds: number = t2Rating / totRating;
-    //adds randomness:
+    //adds randomness and weighs it based on odds above:
     const rand: number = Math.random();
-    return "";
+    const weightedRand = rand * (t1Odds + t2Odds) - t2Odds;
+    if (weightedRand < t2Odds) {
+        return "Congratulations, ${t2.coach}, your Team wins!";
+    } else {
+        return "Congratulations, ${t1.coach}, your Team wins!";
+    }
 } //end of winformula function
