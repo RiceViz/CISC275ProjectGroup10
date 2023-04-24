@@ -8,20 +8,19 @@ import { Identifier } from "typescript";
 import { ItemTypes } from "../interfaces/itemTypes";
 import { XYCoord, useDrag, useDrop } from "react-dnd";
 
-// const style = {
-//     border: "1px dashed gray",
-//     padding: "0.5rem 1rem",
-//     marginBottom: ".5rem",
-//     backgroundColor: "white",
-//     cursor: "move"
-// };
+const style = {
+    border: "1px dashed gray",
+    padding: "0.5rem 1rem",
+    marginBottom: ".5rem",
+    backgroundColor: "white",
+    cursor: "move"
+};
 
-// export interface CardProps {
-//     id: any;
-//     text: string;
-//     index: number;
-//     moveCard: (dragIndex: number, hoverIndex: number) => void;
-// }
+export interface PlayerBannerProps {
+    player: Player;
+    user: User;
+    // moveCard: (dragIndex: number, hoverIndex: number) => void;
+}
 
 // interface DragItem {
 //     index: number;
@@ -125,15 +124,17 @@ import { XYCoord, useDrag, useDrop } from "react-dnd";
  */
 export function PlayerBanner({
     player,
-    user
+    setPlayer,
+    user,
+    editMode,
+    setEditMode
 }: {
     player: Player;
+    setPlayer: (player: Player) => void;
     user: User;
+    editMode: boolean;
+    setEditMode: (bool: boolean) => void;
 }): JSX.Element {
-    const [p, setPlayer] = useState<Player>(player);
-
-    const [editMode, seteditMode] = useState<boolean>(false);
-
     const editable: boolean = editMode && user === "League Manager";
     return (
         <div className="PlayerBanner">
@@ -144,9 +145,9 @@ export function PlayerBanner({
                         {/* Player Name */}
                         <RenderPlayerName
                             editMode={editable}
-                            playerName={p.name}
+                            playerName={player.name}
                             setPlayerName={(newName: string) =>
-                                setPlayer({ ...p, name: newName })
+                                setPlayer({ ...player, name: newName })
                             }
                         ></RenderPlayerName>
                     </Col>
@@ -165,9 +166,9 @@ export function PlayerBanner({
                         {/* Player Position */}
                         <RenderPlayerPosition
                             editMode={editable}
-                            playerPos={posToAbbrev[p.position]}
+                            playerPos={posToAbbrev[player.position]}
                             setPlayerPos={(newPos: Position) =>
-                                setPlayer({ ...p, position: newPos })
+                                setPlayer({ ...player, position: newPos })
                             }
                         ></RenderPlayerPosition>
                         {editable || <br></br>}
@@ -175,9 +176,9 @@ export function PlayerBanner({
                         {/* Player Rating */}
                         <RenderPlayerRating
                             editMode={editable}
-                            playerRating={p.rating}
+                            playerRating={player.rating}
                             setPlayerRating={(newRating: number) =>
-                                setPlayer({ ...p, rating: newRating })
+                                setPlayer({ ...player, rating: newRating })
                             }
                         ></RenderPlayerRating>
                     </Col>
@@ -186,7 +187,7 @@ export function PlayerBanner({
                     {user === "League Manager" && (
                         <RenderEditSwitch
                             editMode={editMode}
-                            seteditMode={seteditMode}
+                            setEditMode={setEditMode}
                         ></RenderEditSwitch>
                     )}
                 </Row>
@@ -211,14 +212,16 @@ function RenderPlayerName({
     playerName: string;
     setPlayerName: (newName: string) => void;
 }): JSX.Element {
+    const [tempName, setTempName] = useState<string>(playerName);
     if (editMode) {
         return (
             <Form.Control
                 type="text"
-                value={playerName}
+                value={tempName}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    setPlayerName(event.target.value)
+                    setTempName(event.target.value)
                 }
+                onBlur={(e) => setPlayerName(tempName)}
             />
         );
     } else {
@@ -291,10 +294,10 @@ function RenderPlayerRating({
 
 function RenderEditSwitch({
     editMode,
-    seteditMode
+    setEditMode
 }: {
     editMode: boolean;
-    seteditMode: (iseditMode: boolean) => void;
+    setEditMode: (iseditMode: boolean) => void;
 }): JSX.Element {
     return (
         <Col sm={3}>
@@ -305,7 +308,7 @@ function RenderEditSwitch({
                 label="Edit"
                 checked={editMode}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    seteditMode(event.target.checked)
+                    setEditMode(event.target.checked)
                 }
             />
         </Col>

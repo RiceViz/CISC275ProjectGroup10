@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
@@ -7,14 +7,18 @@ import { Row, Col } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
 export function MainScene({ user }: { user: User }): JSX.Element {
-    const allPlayers: Player[] = PlayerCreator();
+    const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
     return (
         <div>
             <Row>
                 <Col>
                     <div className="BoxedList">
                         All Players
-                        <Lineup lineup={allPlayers} user={user}></Lineup>
+                        <Lineup
+                            players={allPlayers}
+                            setPlayers={setAllPlayers}
+                            user={user}
+                        ></Lineup>
                     </div>
                 </Col>
                 <Col>

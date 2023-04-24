@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Player } from "../interfaces/player";
 import { PlayerBanner } from "./PlayerBanner";
 import { User } from "../interfaces/user";
@@ -9,10 +9,12 @@ import { User } from "../interfaces/user";
  * @returns JSX.Element
  */
 export function Lineup({
-    lineup,
+    players,
+    setPlayers,
     user
 }: {
-    lineup: Player[];
+    players: Player[];
+    setPlayers: (players: Player[]) => void;
     user: User;
 }): JSX.Element {
     return (
@@ -24,10 +26,18 @@ export function Lineup({
             }}
         >
             <div>
-                {lineup.map((player): JSX.Element => {
+                {players.map((player, index): JSX.Element => {
+                    const [editMode, setEditMode] = useState<boolean>(false);
                     return (
                         <PlayerBanner
                             player={player}
+                            setPlayer={(newp: Player) => {
+                                const newlist = [...players];
+                                newlist.splice(index, 1, newp);
+                                setPlayers(newlist);
+                            }}
+                            editMode={editMode}
+                            setEditMode={setEditMode}
                             key={player.name}
                             user={user}
                         ></PlayerBanner>
