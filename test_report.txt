@@ -214,10 +214,10 @@ FAIL src/App.test.tsx
 -------------------------|---------|----------|---------|---------|-----------------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s           
 -------------------------|---------|----------|---------|---------|-----------------------------
-All files                |   48.23 |    25.64 |   63.33 |   48.23 |                             
+All files                |   42.26 |    24.39 |   57.57 |   42.26 |                             
  src                     |     100 |      100 |     100 |     100 |                             
   App.tsx                |     100 |      100 |     100 |     100 |                             
- src/components          |      45 |    25.64 |   60.71 |      45 |                             
+ src/components          |   39.13 |    24.39 |   54.83 |   39.13 |                             
   Header.tsx             |   37.14 |     8.69 |   71.42 |   37.14 | 28-42,66-84                 
   Lineup.tsx             |     100 |      100 |     100 |     100 |                             
   PlayerBanner.tsx       |   56.52 |    66.66 |   45.45 |   56.52 | 102-107,126-134,158-167,195 
@@ -225,6 +225,7 @@ All files                |   48.23 |    25.64 |   63.33 |   48.23 |
   PlayerCreator.tsx      |     100 |      100 |     100 |     100 |                             
   ThemeToggle.tsx        |   11.11 |        0 |      50 |   11.11 | 8-16                        
   UserDropDownButton.tsx |   66.66 |      100 |   66.66 |   66.66 | 50-51                       
+  WinFormula.tsx         |       0 |        0 |       0 |       0 | 8-27                        
  src/interfaces          |     100 |      100 |     100 |     100 |                             
   field.tsx              |       0 |        0 |       0 |       0 |                             
   player.tsx             |     100 |      100 |     100 |     100 |                             
@@ -236,5 +237,5 @@ All files                |   48.23 |    25.64 |   63.33 |   48.23 |
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.132 s
+Time:        3.265 s
 Ran all test suites.
