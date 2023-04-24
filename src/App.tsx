@@ -4,7 +4,6 @@ import soccer from "./assets/soccer-landing.jpeg";
 import { MainScene } from "./scenes/MainScene";
 import Header from "./components/Header";
 import ThemeToggle from "./components/ThemeToggle";
-// import { BiUserCircle } from "react-icons/bi";
 import { UserDropDownButton } from "./components/UserDropDownButton";
 import { User } from "./interfaces/user";
 

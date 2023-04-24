@@ -12,18 +12,8 @@ export function UserDropDownButton({
     user: User;
     setUser: (newUser: User) => void;
 }): JSX.Element {
-    const options: string[] = ["League Manager", "Team Manager", "Coach"];
-
-    function updateUser(event: React.ChangeEvent<HTMLSelectElement>) {
-        console.log("updateUser called");
-        const newUser: string = event.target.value;
-        const isUser = (x: string): x is User => options.includes(x);
-        if (isUser(newUser)) {
-            setUser(newUser);
-            return;
-        }
-        console.log("nothin");
-    }
+    const options: User[] = ["League Manager", "Team Manager", "Coach"];
+    const goBetween: string[] = ["League Manager", "Team Manager", "Coach"];
 
     // if (logo) {
     //     return (
@@ -54,8 +44,14 @@ export function UserDropDownButton({
         <div>
             {logo}
             <Form.Group className="max-w-fit p-2" controlId="choices">
-                <Form.Select value={user} onChange={updateUser}>
-                    {options.map((userOption: string) => (
+                <Form.Select
+                    value={user}
+                    onChange={(e) => {
+                        const ind = goBetween.indexOf(e.target.value);
+                        setUser(options[ind]);
+                    }}
+                >
+                    {options.map((userOption: User) => (
                         <option key={userOption} value={userOption}>
                             {userOption}
                         </option>
