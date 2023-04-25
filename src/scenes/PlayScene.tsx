@@ -8,7 +8,7 @@ import { User } from "../interfaces/user";
 import { YourTeamLineUp } from "../components/YourTeamLineUp";
 import { StartingLineUp } from "../components/StartingLineUp";
 
-export function MainScene({ user }: { user: User }): JSX.Element {
+export function PlayScene({ user }: { user: User }): JSX.Element {
     const allPlayers: Player[] = PlayerCreator();
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
     const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
@@ -58,9 +58,9 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                     <Row>
                         <Col>
                             <div className="BoxedList">
-                                All Players
+                                Team 1 Players
                                 <Lineup
-                                    lineup={allPlayers}
+                                    lineup={yourTeamPlayers}
                                     user={user}
                                 ></Lineup>
                             </div>
@@ -71,9 +71,9 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                                 onDrop={handleOnDropTeam}
                                 onDragOver={handleDragOver}
                             >
-                                Your Players
+                                Team 1 Lineup
                                 <YourTeamLineUp
-                                    lineup={yourTeamPlayers}
+                                    lineup={yourStartingLineUp}
                                     user={user}
                                 ></YourTeamLineUp>
                             </div>
@@ -84,9 +84,22 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                                 onDrop={handleOnDropStartingLineup}
                                 onDragOver={handleDragOver}
                             >
-                                Starting Lineup
+                                Team 2 Lineup
                                 <StartingLineUp
                                     lineup={yourStartingLineUp}
+                                    user={user}
+                                ></StartingLineUp>
+                            </div>
+                        </Col>
+                        <Col>
+                            <div
+                                className="BoxedList"
+                                onDrop={handleOnDropStartingLineup}
+                                onDragOver={handleDragOver}
+                            >
+                                Team 2 Players
+                                <StartingLineUp
+                                    lineup={yourTeamPlayers}
                                     user={user}
                                 ></StartingLineUp>
                             </div>

@@ -6,9 +6,25 @@ import Header from "./components/Header";
 import ThemeToggle from "./components/ThemeToggle";
 import { UserDropDownButton } from "./components/UserDropDownButton";
 import { User } from "./interfaces/user";
+import { PlayScene } from "./scenes/PlayScene";
+import { Button } from "react-bootstrap";
 
 function App(): JSX.Element {
     const [user, setUser] = useState<User>("League Manager");
+    const [scene, setScene] = useState<string>("Main");
+
+    function changeSceneMain(): void {
+        setScene("Main");
+    }
+
+    function changeScenePlay(): void {
+        setScene("Play");
+    }
+
+    function simulateGame(): void {
+        null;
+    }
+
     return (
         <div
             className="App"
@@ -35,9 +51,38 @@ function App(): JSX.Element {
                 </div>
             </Header>
             <hr></hr>
-
-            <MainScene user={user}></MainScene>
-
+            {scene === "Main" ? (
+                <div>
+                    <MainScene user={user}></MainScene>
+                    <br></br>
+                    <Button
+                        className="text-2xl text-center dark:text-white"
+                        onClick={changeScenePlay}
+                    >
+                        Simulation Mode
+                    </Button>
+                    <br></br>
+                </div>
+            ) : (
+                <div>
+                    <PlayScene user={user}></PlayScene>
+                    <br></br>
+                    <Button
+                        className="text-2xl text-center dark:text-white"
+                        onClick={simulateGame}
+                    >
+                        Simulate Game
+                    </Button>
+                    <br className="height:60px"></br>
+                    <Button
+                        className="text-2xl text-center dark:text-white"
+                        onClick={changeSceneMain}
+                    >
+                        Team Management Mode
+                    </Button>
+                    <br></br>
+                </div>
+            )}
             <footer className="bg-neutral-50 dark:bg-neutral-900 dark:text-white">
                 Created by Trevor, Tyran, Mbiet, Shawn, & Gage
             </footer>
