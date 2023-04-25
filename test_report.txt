@@ -159,14 +159,14 @@ FAIL src/App.test.tsx
                 [33mclass[39m=[32m"row"[39m
               [36m>[39m
                 [36m<div[39m
-                  [33mclass[39m=[32m"col"[39m
+                  [33mclass[39m=[32m"p-2 col"[39m
                 [36m>[39m
+                  [0mAll Players[0m
                   [36m<div[39m
                     [33mclass[39m=[32m"BoxedList"[39m
                   [36m>[39m
-                    [0mAll Players[0m
                     [36m<div[39m
-                      [33mstyle[39m=[32m"justify-content: center; display: flex; padding: 10px;"[39m
+                      [33mclass[39m=[32m"flex p-2 justify-center max-h-screen overflow-scroll"[39m
                     [36m>[39m
                       [36m<div>[39m
                         [36m<div[39m
@@ -226,7 +226,7 @@ All files                |   38.13 |    22.22 |   47.72 |   38.13 |
   ThemeToggle.tsx        |   11.11 |        0 |      50 |   11.11 | 8-16                              
   UserDropDownButton.tsx |   66.66 |      100 |   66.66 |   66.66 | 50-51                             
   WinFormula.tsx         |       0 |        0 |       0 |       0 | 8-27                              
-  YourTeamLineUp.tsx     |      50 |      100 |      50 |      50 | 28                                
+  YourTeamLineUp.tsx     |      50 |      100 |      50 |      50 | 22                                
  src/interfaces          |     100 |      100 |     100 |     100 |                                   
   field.tsx              |       0 |        0 |       0 |       0 |                                   
   player.tsx             |     100 |      100 |     100 |     100 |                                   
@@ -238,5 +238,5 @@ All files                |   38.13 |    22.22 |   47.72 |   38.13 |
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        4.822 s
+Time:        4.528 s
 Ran all test suites.
