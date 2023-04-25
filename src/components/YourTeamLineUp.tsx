@@ -2,13 +2,13 @@ import React from "react";
 import { Player } from "../interfaces/player";
 import { PlayerBanner } from "./PlayerBanner";
 import { User } from "../interfaces/user";
-
 /**
- * Iterates a list of Players and creates a PlayerBanner for each
+ * Holds The Players Team LineUp
  * @param lineup Player[]
+ * @param user User
  * @returns JSX.Element
  */
-export function Lineup({
+export function YourTeamLineUp({
     lineup,
     user
 }: {

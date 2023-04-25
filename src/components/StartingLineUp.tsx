@@ -4,11 +4,12 @@ import { PlayerBanner } from "./PlayerBanner";
 import { User } from "../interfaces/user";
 
 /**
- * Iterates a list of Players and creates a PlayerBanner for each
+ * Holds the Players Starting LineUp
  * @param lineup Player[]
+ * @param user User
  * @returns JSX.Element
  */
-export function Lineup({
+export function StartingLineUp({
     lineup,
     user
 }: {
