@@ -56,18 +56,19 @@ export function MainScene({ user }: { user: User }): JSX.Element {
             <div>
                 <Container>
                     <Row>
-                        <Col>
+                        <Col className="p-2">
+                            All Players
                             <div className="BoxedList">
-                                All Players
                                 <Lineup
                                     lineup={allPlayers}
                                     user={user}
                                 ></Lineup>
                             </div>
                         </Col>
-                        <Col>
+                        <Col className="p-2">
+                            Your Team
                             <div
-                                className="BoxedList"
+                                className="BoxedList max-h-[200px]"
                                 onDrop={handleOnDropTeam}
                                 onDragOver={handleDragOver}
                             >
@@ -78,7 +79,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                                 ></YourTeamLineUp>
                             </div>
                         </Col>
-                        <Col>
+                        <Col className="p-2">
                             <div
                                 className="BoxedList"
                                 onDrop={handleOnDropStartingLineup}

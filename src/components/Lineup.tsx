@@ -16,13 +16,7 @@ export function Lineup({
     user: User;
 }): JSX.Element {
     return (
-        <div
-            style={{
-                justifyContent: "center",
-                display: "flex",
-                padding: "10px"
-            }}
-        >
+        <div className="flex p-2 justify-center max-h-screen overflow-scroll">
             <div>
                 {lineup.map((player): JSX.Element => {
                     return (
