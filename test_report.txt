@@ -152,45 +152,45 @@ FAIL src/App.test.tsx
           [36m</div>[39m
           [36m<hr />[39m
           [36m<div>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"container"[39m
-            [36m>[39m
+            [36m<div>[39m
               [36m<div[39m
-                [33mclass[39m=[32m"row"[39m
+                [33mclass[39m=[32m"container"[39m
               [36m>[39m
                 [36m<div[39m
-                  [33mclass[39m=[32m"p-2 col"[39m
+                  [33mclass[39m=[32m"row"[39m
                 [36m>[39m
-                  [0mAll Players[0m
                   [36m<div[39m
-                    [33mclass[39m=[32m"BoxedList"[39m
+                    [33mclass[39m=[32m"p-2 col"[39m
                   [36m>[39m
+                    [0mAll Players[0m
                     [36m<div[39m
-                      [33mclass[39m=[32m"flex p-2 justify-center max-h-screen overflow-scroll"[39m
+                      [33mclass[39m=[32m"BoxedList"[39m
                     [36m>[39m
-                      [36m<div>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"PlayerBanner"[39m
-                          [33mdraggable[39m=[32m"true"[39m
-                        [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"flex p-2 justify-center max-h-screen overflow-scroll"[39m
+                      [36m>[39m
+                        [36m<div>[39m
                           [36m<div[39m
-                            [33mclass[39m=[32m"container"[39m
+                            [33mclass[39m=[32m"PlayerBanner"[39m
+                            [33mdraggable[39m=[32m"true"[39m
                           [36m>[39m
                             [36m<div[39m
-                              [33mclass[39m=[32m"align-items-center justify-content-center row"[39m
+                              [33mclass[39m=[32m"container"[39m
                             [36m>[39m
                               [36m<div[39m
-                                [33mclass[39m=[32m"col-sm-5"[39m
+                                [33mclass[39m=[32m"align-items-center justify-content-center row"[39m
                               [36m>[39m
-                                [0mLionel Messi[0m
-                              [36m</div>[39m
-                              [36m<div[39m
-                                [33mclass[39m=[32m"col-sm-3"[39m
-                              [36m>[39m
-                                [36m<img[39m
-                                  [33mclass[39m=[32m""[39m
-                                  [33msrc[39m=[32m"/images/playerimages/messi.jpg"[39m
-                                  [33mstyle[39m...
+                                [36m<div[39m
+                                  [33mclass[39m=[32m"col-sm-5"[39m
+                                [36m>[39m
+                                  [0mLionel Messi[0m
+                                [36m</div>[39m
+                                [36m<div[39m
+                                  [33mclass[39m=[32m"col-sm-3"[39m
+                                [36m>[39m
+                                  [36m<img[39m
+                                    [33mclass[39m=[32m""[39m
+                                    [...
 
        5 | test("renders the course name somewhere", () => {
        6 |     render(<App />);
@@ -213,9 +213,9 @@ FAIL src/App.test.tsx
 -------------------------|---------|----------|---------|---------|-----------------------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                 
 -------------------------|---------|----------|---------|---------|-----------------------------------
-All files                |   38.13 |    22.22 |   47.72 |   38.13 |                                   
- src                     |     100 |      100 |     100 |     100 |                                   
-  App.tsx                |     100 |      100 |     100 |     100 |                                   
+All files                |   33.09 |    21.56 |   39.62 |   33.09 |                                   
+ src                     |      50 |       50 |      25 |      50 |                                   
+  App.tsx                |      50 |       50 |      25 |      50 | 17-25                             
  src/components          |   38.77 |    24.39 |   51.35 |   38.77 |                                   
   Header.tsx             |   37.14 |     8.69 |   71.42 |   37.14 | 28-42,66-84                       
   Lineup.tsx             |     100 |      100 |     100 |     100 |                                   
@@ -232,11 +232,12 @@ All files                |   38.13 |    22.22 |   47.72 |   38.13 |
   player.tsx             |     100 |      100 |     100 |     100 |                                   
   team.tsx               |       0 |        0 |       0 |       0 |                                   
   user.tsx               |       0 |        0 |       0 |       0 |                                   
- src/scenes              |   23.52 |        0 |   16.66 |   23.52 |                                   
+ src/scenes              |   11.76 |        0 |    8.33 |   11.76 |                                   
   MainScene.tsx          |   23.52 |        0 |   16.66 |   23.52 | 17-51                             
+  PlayScene.tsx          |       0 |        0 |       0 |       0 | 12-54                             
 -------------------------|---------|----------|---------|---------|-----------------------------------
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        4.528 s
+Time:        4.497 s
 Ran all test suites.
