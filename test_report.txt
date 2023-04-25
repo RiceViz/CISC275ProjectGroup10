@@ -153,45 +153,44 @@ FAIL src/App.test.tsx
           [36m<hr />[39m
           [36m<div>[39m
             [36m<div[39m
-              [33mclass[39m=[32m"row"[39m
+              [33mclass[39m=[32m"container"[39m
             [36m>[39m
               [36m<div[39m
-                [33mclass[39m=[32m"col"[39m
+                [33mclass[39m=[32m"row"[39m
               [36m>[39m
                 [36m<div[39m
-                  [33mclass[39m=[32m"BoxedList"[39m
+                  [33mclass[39m=[32m"col"[39m
                 [36m>[39m
-                  [0mAll Players[0m
                   [36m<div[39m
-                    [33mstyle[39m=[32m"justify-content: center; display: flex; padding: 10px;"[39m
+                    [33mclass[39m=[32m"BoxedList"[39m
                   [36m>[39m
-                    [36m<div>[39m
-                      [36m<div[39m
-                        [33mclass[39m=[32m"PlayerBanner"[39m
-                      [36m>[39m
+                    [0mAll Players[0m
+                    [36m<div[39m
+                      [33mstyle[39m=[32m"justify-content: center; display: flex; padding: 10px;"[39m
+                    [36m>[39m
+                      [36m<div>[39m
                         [36m<div[39m
-                          [33mclass[39m=[32m"container"[39m
+                          [33mclass[39m=[32m"PlayerBanner"[39m
+                          [33mdraggable[39m=[32m"true"[39m
                         [36m>[39m
                           [36m<div[39m
-                            [33mclass[39m=[32m"align-items-center justify-content-center row"[39m
+                            [33mclass[39m=[32m"container"[39m
                           [36m>[39m
                             [36m<div[39m
-                              [33mclass[39m=[32m"col-sm-5"[39m
+                              [33mclass[39m=[32m"align-items-center justify-content-center row"[39m
                             [36m>[39m
-                              [0mLionel Messi[0m
-                            [36m</div>[39m
-                            [36m<div[39m
-                              [33mclass[39m=[32m"col-sm-3"[39m
-                            [36m>[39m
-                              [36m<img[39m
-                                [33mclass[39m=[32m""[39m
-                                [33msrc[39m=[32m"/images/playerimages/messi.jpg"[39m
-                                [33mstyle[39m=[32m"height: 64px;"[39m
-                              [36m/>[39m
-                            [36m</div>[39m
-                            [36m<div[39m
-                              [33mclass[39m=[32m"col-sm-4"[39m
-               ...
+                              [36m<div[39m
+                                [33mclass[39m=[32m"col-sm-5"[39m
+                              [36m>[39m
+                                [0mLionel Messi[0m
+                              [36m</div>[39m
+                              [36m<div[39m
+                                [33mclass[39m=[32m"col-sm-3"[39m
+                              [36m>[39m
+                                [36m<img[39m
+                                  [33mclass[39m=[32m""[39m
+                                  [33msrc[39m=[32m"/images/playerimages/messi.jpg"[39m
+                                  [33mstyle[39m...
 
        5 | test("renders the course name somewhere", () => {
        6 |     render(<App />);
@@ -211,31 +210,33 @@ FAIL src/App.test.tsx
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
--------------------------|---------|----------|---------|---------|-----------------------------
-File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s           
--------------------------|---------|----------|---------|---------|-----------------------------
-All files                |   42.26 |    24.39 |   57.57 |   42.26 |                             
- src                     |     100 |      100 |     100 |     100 |                             
-  App.tsx                |     100 |      100 |     100 |     100 |                             
- src/components          |   39.13 |    24.39 |   54.83 |   39.13 |                             
-  Header.tsx             |   37.14 |     8.69 |   71.42 |   37.14 | 28-42,66-84                 
-  Lineup.tsx             |     100 |      100 |     100 |     100 |                             
-  PlayerBanner.tsx       |   56.52 |    66.66 |   45.45 |   56.52 | 102-107,126-134,158-167,195 
-  PlayerCard.tsx         |       0 |      100 |       0 |       0 | 7-10                        
-  PlayerCreator.tsx      |     100 |      100 |     100 |     100 |                             
-  ThemeToggle.tsx        |   11.11 |        0 |      50 |   11.11 | 8-16                        
-  UserDropDownButton.tsx |   66.66 |      100 |   66.66 |   66.66 | 50-51                       
-  WinFormula.tsx         |       0 |        0 |       0 |       0 | 8-27                        
- src/interfaces          |     100 |      100 |     100 |     100 |                             
-  field.tsx              |       0 |        0 |       0 |       0 |                             
-  player.tsx             |     100 |      100 |     100 |     100 |                             
-  team.tsx               |       0 |        0 |       0 |       0 |                             
-  user.tsx               |       0 |        0 |       0 |       0 |                             
- src/scenes              |     100 |      100 |     100 |     100 |                             
-  MainScene.tsx          |     100 |      100 |     100 |     100 |                             
--------------------------|---------|----------|---------|---------|-----------------------------
+-------------------------|---------|----------|---------|---------|-----------------------------------
+File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                 
+-------------------------|---------|----------|---------|---------|-----------------------------------
+All files                |   38.13 |    22.22 |   47.72 |   38.13 |                                   
+ src                     |     100 |      100 |     100 |     100 |                                   
+  App.tsx                |     100 |      100 |     100 |     100 |                                   
+ src/components          |   38.77 |    24.39 |   51.35 |   38.77 |                                   
+  Header.tsx             |   37.14 |     8.69 |   71.42 |   37.14 | 28-42,66-84                       
+  Lineup.tsx             |     100 |      100 |     100 |     100 |                                   
+  PlayerBanner.tsx       |      52 |    66.66 |   38.46 |      52 | 33,40,111-116,135-143,167-176,204 
+  PlayerCard.tsx         |       0 |      100 |       0 |       0 | 7-10                              
+  PlayerCreator.tsx      |     100 |      100 |     100 |     100 |                                   
+  StartingLineUp.tsx     |      50 |      100 |      50 |      50 | 29                                
+  ThemeToggle.tsx        |   11.11 |        0 |      50 |   11.11 | 8-16                              
+  UserDropDownButton.tsx |   66.66 |      100 |   66.66 |   66.66 | 50-51                             
+  WinFormula.tsx         |       0 |        0 |       0 |       0 | 8-27                              
+  YourTeamLineUp.tsx     |      50 |      100 |      50 |      50 | 28                                
+ src/interfaces          |     100 |      100 |     100 |     100 |                                   
+  field.tsx              |       0 |        0 |       0 |       0 |                                   
+  player.tsx             |     100 |      100 |     100 |     100 |                                   
+  team.tsx               |       0 |        0 |       0 |       0 |                                   
+  user.tsx               |       0 |        0 |       0 |       0 |                                   
+ src/scenes              |   23.52 |        0 |   16.66 |   23.52 |                                   
+  MainScene.tsx          |   23.52 |        0 |   16.66 |   23.52 | 17-51                             
+-------------------------|---------|----------|---------|---------|-----------------------------------
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.265 s
+Time:        4.822 s
 Ran all test suites.
