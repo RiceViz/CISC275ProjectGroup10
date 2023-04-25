@@ -28,8 +28,17 @@ export function PlayerBanner({
     const editable: boolean = editMode && user === "League Manager";
 
     const [playerRating, setPlayerRating] = useState<number>(player.rating);
+
+    function handleOnDrag(e: React.DragEvent, widgetType: string) {
+        e.dataTransfer.setData("widgetType", widgetType);
+    }
+
     return (
-        <div className="PlayerBanner">
+        <div
+            className="PlayerBanner"
+            draggable
+            onDragStart={(e) => handleOnDrag(e, player.name)}
+        >
             <Container>
                 <Row className="align-items-center justify-content-center">
                     {/* Column 1 */}
