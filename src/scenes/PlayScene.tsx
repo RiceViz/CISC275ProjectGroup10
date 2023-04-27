@@ -3,7 +3,7 @@ import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
 export function PlayScene({ user }: { user: User }): JSX.Element {
@@ -55,8 +55,8 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                 <Container>
                     <Row>
                         <Col>
+                            Team 1 Players
                             <div className="BoxedList">
-                                Team 1 Players
                                 <Lineup
                                     title="Team 1 Players"
                                     players={allPlayers}
@@ -67,6 +67,7 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             </div>
                         </Col>
                         <Col>
+                            Team 1 Lineup
                             <div
                                 className="BoxedList"
                                 onDrop={handleOnDropTeam}
@@ -82,6 +83,7 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             </div>
                         </Col>
                         <Col>
+                            Team 2 Lineup
                             <div
                                 className="BoxedList"
                                 onDrop={handleOnDropStartingLineup}
@@ -97,6 +99,7 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             </div>
                         </Col>
                         <Col>
+                            Team 2 Players
                             <div
                                 className="BoxedList"
                                 onDrop={handleOnDropStartingLineup}
@@ -114,6 +117,12 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                     </Row>
                 </Container>
                 <br></br>
+                <Button
+                    className="text-2xl text-center dark:text-white"
+                    // onClick={simulateGame}
+                >
+                    Simulate Game
+                </Button>
             </div>
         </>
     );

@@ -59,18 +59,12 @@ function App(): JSX.Element {
             <RenderCurrentScene scene={scene} user={user}></RenderCurrentScene>
             <br></br>
             {/* Set Scene Button */}
-            <Button
-                className="text-2xl text-center dark:text-white"
-                // onClick={simulateGame}
-            >
-                Simulate Game
-            </Button>
             <br className="height:60px"></br>
             <Button
                 className="text-2xl text-center dark:text-white"
                 onClick={() => setScene(scene === "MAIN" ? "PLAY" : "MAIN")}
             >
-                {scene === "MAIN" ? "SIMULATION MODE" : "Team Management Mode"}
+                {scene === "MAIN" ? "Simulation Mode" : "Team Management Mode"}
             </Button>
 
             <footer className="bg-neutral-50 dark:bg-neutral-900 dark:text-white">
