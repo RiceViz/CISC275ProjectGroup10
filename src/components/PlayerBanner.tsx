@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from "react";
+import React, { useState } from "react";
 import "../App.css";
 import { Player, Position, abbrevToPos } from "../interfaces/player";
 import { Container, Row, Col, Image, Form } from "react-bootstrap";
@@ -21,11 +21,9 @@ export function PlayerBanner({
 }): JSX.Element {
     const [p, setPlayer] = useState<Player>(player);
 
-    const [editMode, seteditMode] = useState<boolean>(false);
+    const [editMode, setEditMode] = useState<boolean>(false);
 
     const editable: boolean = editMode && user === "League Manager";
-
-    const [playerRating, setPlayerRating] = useState<number>(player.rating);
 
     function handleOnDrag(e: React.DragEvent, widgetType: string) {
         e.dataTransfer.setData("widgetType", widgetType);
@@ -86,7 +84,7 @@ export function PlayerBanner({
                     {user === "League Manager" && (
                         <RenderEditSwitch
                             editMode={editMode}
-                            seteditMode={seteditMode}
+                            setEditMode={setEditMode}
                         ></RenderEditSwitch>
                     )}
                 </Row>
@@ -191,10 +189,10 @@ function RenderPlayerRating({
 
 function RenderEditSwitch({
     editMode,
-    seteditMode
+    setEditMode
 }: {
     editMode: boolean;
-    seteditMode: (iseditMode: boolean) => void;
+    setEditMode: (iseditMode: boolean) => void;
 }): JSX.Element {
     return (
         <Col sm={3}>
@@ -205,7 +203,7 @@ function RenderEditSwitch({
                 label="Edit"
                 checked={editMode}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    seteditMode(event.target.checked)
+                    setEditMode(event.target.checked)
                 }
             />
         </Col>

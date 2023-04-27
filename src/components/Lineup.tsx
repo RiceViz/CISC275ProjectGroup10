@@ -16,7 +16,7 @@ export function Lineup({
     user: User;
 }): JSX.Element {
     return (
-        <div className="flex p-2 justify-center max-h-screen overflow-scroll">
+        <div className="flex p-2 justify-center max-h-[512px] overflow-scroll">
             <div>
                 {lineup.map((player): JSX.Element => {
                     return (

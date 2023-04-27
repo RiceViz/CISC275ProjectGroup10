@@ -5,8 +5,8 @@ import { Player } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
-import { YourTeamLineUp } from "../components/YourTeamLineUp";
-import { StartingLineUp } from "../components/StartingLineUp";
+// import { YourTeamLineUp } from "../components/YourTeamLineUp";
+// import { StartingLineUp } from "../components/StartingLineUp";
 
 export function PlayScene({ user }: { user: User }): JSX.Element {
     const allPlayers: Player[] = PlayerCreator();
@@ -72,10 +72,10 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 onDragOver={handleDragOver}
                             >
                                 Team 1 Lineup
-                                <YourTeamLineUp
+                                <Lineup
                                     lineup={yourStartingLineUp}
                                     user={user}
-                                ></YourTeamLineUp>
+                                ></Lineup>
                             </div>
                         </Col>
                         <Col>
@@ -85,10 +85,10 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 onDragOver={handleDragOver}
                             >
                                 Team 2 Lineup
-                                <StartingLineUp
+                                <Lineup
                                     lineup={yourStartingLineUp}
                                     user={user}
-                                ></StartingLineUp>
+                                ></Lineup>
                             </div>
                         </Col>
                         <Col>
@@ -98,10 +98,10 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 onDragOver={handleDragOver}
                             >
                                 Team 2 Players
-                                <StartingLineUp
+                                <Lineup
                                     lineup={yourTeamPlayers}
                                     user={user}
-                                ></StartingLineUp>
+                                ></Lineup>
                             </div>
                         </Col>
                     </Row>

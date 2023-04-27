@@ -5,8 +5,6 @@ import { Player } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
-import { YourTeamLineUp } from "../components/YourTeamLineUp";
-import { StartingLineUp } from "../components/StartingLineUp";
 
 interface Item {
     id: number;
@@ -147,28 +145,27 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                         <Col className="p-2">
                             Your Team
                             <div
-                                className="BoxedList max-h-[200px]"
+                                className="BoxedList"
                                 onDrop={handleOnDropTeam}
                                 onDragOver={handleDragOver}
                             >
-                                Your Players
-                                <YourTeamLineUp
+                                <Lineup
                                     lineup={yourTeamPlayers}
                                     user={user}
-                                ></YourTeamLineUp>
+                                ></Lineup>
                             </div>
                         </Col>
                         <Col className="p-2">
+                            Starting Lineup
                             <div
                                 className="BoxedList"
                                 onDrop={handleOnDropStartingLineup}
                                 onDragOver={handleDragOver}
                             >
-                                Starting Lineup
-                                <StartingLineUp
+                                <Lineup
                                     lineup={yourStartingLineUp}
                                     user={user}
-                                ></StartingLineUp>
+                                ></Lineup>
                             </div>
                         </Col>
                     </Row>
