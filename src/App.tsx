@@ -9,21 +9,26 @@ import { User } from "./interfaces/user";
 import { PlayScene } from "./scenes/PlayScene";
 import { Button } from "react-bootstrap";
 
+function RenderCurrentScene({
+    scene,
+    user
+}: {
+    scene: string;
+    user: User;
+}): JSX.Element {
+    switch (scene) {
+        case "MAIN":
+            return <MainScene user={user}></MainScene>;
+        case "PLAY":
+            return <PlayScene user={user}></PlayScene>;
+        default:
+            return <MainScene user={user}></MainScene>;
+    }
+}
+
 function App(): JSX.Element {
     const [user, setUser] = useState<User>("League Manager");
-    const [scene, setScene] = useState<string>("Main");
-
-    function changeSceneMain(): void {
-        setScene("Main");
-    }
-
-    function changeScenePlay(): void {
-        setScene("Play");
-    }
-
-    function simulateGame(): void {
-        null;
-    }
+    const [scene, setScene] = useState<string>("MAIN");
 
     return (
         <div
@@ -51,38 +56,23 @@ function App(): JSX.Element {
                 </div>
             </Header>
             <hr></hr>
-            {scene === "Main" ? (
-                <div>
-                    <MainScene user={user}></MainScene>
-                    <br></br>
-                    <Button
-                        className="text-2xl text-center dark:text-white"
-                        onClick={changeScenePlay}
-                    >
-                        Simulation Mode
-                    </Button>
-                    <br></br>
-                </div>
-            ) : (
-                <div>
-                    <PlayScene user={user}></PlayScene>
-                    <br></br>
-                    <Button
-                        className="text-2xl text-center dark:text-white"
-                        onClick={simulateGame}
-                    >
-                        Simulate Game
-                    </Button>
-                    <br className="height:60px"></br>
-                    <Button
-                        className="text-2xl text-center dark:text-white"
-                        onClick={changeSceneMain}
-                    >
-                        Team Management Mode
-                    </Button>
-                    <br></br>
-                </div>
-            )}
+            <RenderCurrentScene scene={scene} user={user}></RenderCurrentScene>
+            <br></br>
+            {/* Set Scene Button */}
+            <Button
+                className="text-2xl text-center dark:text-white"
+                // onClick={simulateGame}
+            >
+                Simulate Game
+            </Button>
+            <br className="height:60px"></br>
+            <Button
+                className="text-2xl text-center dark:text-white"
+                onClick={() => setScene(scene === "MAIN" ? "PLAY" : "MAIN")}
+            >
+                {scene === "MAIN" ? "SIMULATION MODE" : "Team Management Mode"}
+            </Button>
+
             <footer className="bg-neutral-50 dark:bg-neutral-900 dark:text-white">
                 Created by Trevor, Tyran, Mbiet, Shawn, & Gage
             </footer>

@@ -3,7 +3,7 @@ import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player, checkIdenticalURLs } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
 interface Item {
@@ -184,6 +184,8 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                         </Col>
                     </Row>
                 </Container>
+                <br></br>
+                <br></br>
             </div>
         </>
     );
