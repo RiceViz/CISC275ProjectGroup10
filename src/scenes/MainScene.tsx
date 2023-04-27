@@ -152,7 +152,8 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                                 onDragOver={handleDragOver}
                             >
                                 <Lineup
-                                    lineup={yourTeamPlayers}
+                                    players={yourTeamPlayers}
+                                    setPlayers={setYourTeamPlayers}
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
@@ -166,7 +167,8 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                                 onDragOver={handleDragOver}
                             >
                                 <Lineup
-                                    lineup={yourStartingLineUp}
+                                    players={yourStartingLineUp}
+                                    setPlayers={setYourStartingLineUp}
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>

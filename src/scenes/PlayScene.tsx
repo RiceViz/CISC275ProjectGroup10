@@ -7,7 +7,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
 export function PlayScene({ user }: { user: User }): JSX.Element {
-    const allPlayers: Player[] = PlayerCreator();
+    const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
     const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
 
@@ -58,7 +58,8 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             <div className="BoxedList">
                                 Team 1 Players
                                 <Lineup
-                                    lineup={yourTeamPlayers}
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
@@ -72,7 +73,8 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             >
                                 Team 1 Lineup
                                 <Lineup
-                                    lineup={yourStartingLineUp}
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
@@ -86,7 +88,8 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             >
                                 Team 2 Lineup
                                 <Lineup
-                                    lineup={yourStartingLineUp}
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
@@ -100,7 +103,8 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             >
                                 Team 2 Players
                                 <Lineup
-                                    lineup={yourTeamPlayers}
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>

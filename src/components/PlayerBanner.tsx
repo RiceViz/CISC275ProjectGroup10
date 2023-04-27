@@ -87,7 +87,7 @@ export function PlayerBanner({
                     </Col>
 
                     {/* Edit Switch */}
-                    {user === "League Manager" && (
+                    {user === "League Manager" && isPlayerEditable && (
                         <RenderEditSwitch
                             editMode={editMode}
                             setEditMode={setEditMode}
