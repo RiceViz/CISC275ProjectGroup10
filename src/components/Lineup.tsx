@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Player } from "../interfaces/player";
 import { PlayerBanner } from "./PlayerBanner";
 import { User } from "../interfaces/user";
@@ -23,7 +23,6 @@ export function Lineup({
         <div className="flex p-2 justify-center max-h-[512px] overflow-scroll">
             <div>
                 {players.map((player, index): JSX.Element => {
-                    const [editMode, setEditMode] = useState<boolean>(false);
                     return (
                         <PlayerBanner
                             player={player}
@@ -32,8 +31,6 @@ export function Lineup({
                                 newlist.splice(index, 1, newp);
                                 setPlayers(newlist);
                             }}
-                            editMode={editMode}
-                            setEditMode={setEditMode}
                             key={player.name}
                             user={user}
                             index={index}

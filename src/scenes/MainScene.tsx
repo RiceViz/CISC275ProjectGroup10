@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
-import { Player } from "../interfaces/player";
+import { Player, checkIdenticalURLs } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
@@ -29,11 +29,19 @@ export function MainScene({ user }: { user: User }): JSX.Element {
         ) as Player;
 
         // make a new copy of the player (might not be neccessary?)
-        // const newPlayer = { ...oldPlayer };
+        const newPlayer = { ...oldPlayer };
+
+        const indexOfPlayer = yourTeamPlayers.findIndex((player: Player) =>
+            checkIdenticalURLs(player, newPlayer)
+        );
 
         // add the player to the list
-        if (oldPlayer !== undefined) {
-            setYourTeamPlayers([...yourTeamPlayers, oldPlayer]);
+        if (indexOfPlayer === -1) {
+            setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+        } else {
+            const newteam = [...yourTeamPlayers];
+            newteam.splice(indexOfPlayer, 1, newPlayer);
+            setYourTeamPlayers(newteam);
         }
     }
 
@@ -48,10 +56,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
 
-        // add the player to the list
-        if (newPlayer !== undefined) {
-            setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
-        }
+        setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
     }
 
     function handleDragOver(e: React.DragEvent) {

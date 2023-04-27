@@ -16,20 +16,16 @@ export function PlayerBanner({
     player,
     setPlayer,
     user,
-    editMode,
-    setEditMode,
     isPlayerEditable
 }: {
     player: Player;
     setPlayer: (player: Player) => void;
     user: User;
-    editMode: boolean;
-    setEditMode: (bool: boolean) => void;
     index: number;
     isPlayerEditable: boolean;
 }): JSX.Element {
     const editable: boolean =
-        editMode && isPlayerEditable && user === "League Manager";
+        player.editMode && isPlayerEditable && user === "League Manager";
 
     function handleOnDrag(e: React.DragEvent, widgetType: string) {
         e.dataTransfer.setData("widgetType", widgetType);
@@ -89,8 +85,10 @@ export function PlayerBanner({
                     {/* Edit Switch */}
                     {user === "League Manager" && isPlayerEditable && (
                         <RenderEditSwitch
-                            editMode={editMode}
-                            setEditMode={setEditMode}
+                            editMode={player.editMode}
+                            setEditMode={(isEditMode: boolean) =>
+                                setPlayer({ ...player, editMode: isEditMode })
+                            }
                         ></RenderEditSwitch>
                     )}
                 </Row>
