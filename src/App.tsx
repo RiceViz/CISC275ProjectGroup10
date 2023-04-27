@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import React, { useState } from "react";
 import "./App.css";
 import soccer from "./assets/soccer-landing.jpeg";
@@ -7,7 +8,7 @@ import ThemeToggle from "./components/ThemeToggle";
 import { UserDropDownButton } from "./components/UserDropDownButton";
 import { User } from "./interfaces/user";
 import { PlayScene } from "./scenes/PlayScene";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 function App(): JSX.Element {
     const [user, setUser] = useState<User>("League Manager");
@@ -35,19 +36,28 @@ function App(): JSX.Element {
         >
             <Header>
                 <div className="flex flex-col dark:text-white">
-                    <div className="flex justify-between p-">
+                    <div className="flex justify-between">
                         <ThemeToggle></ThemeToggle>
+                        <h1 className="text-5xl text-center dark:text-white">
+                            Soccer Football Manager
+                        </h1>
                         <div className="">
                             <UserDropDownButton
                                 //logo={<BiUserCircle size={25} />}
                                 user={user}
                                 setUser={setUser}
                             ></UserDropDownButton>
+                            <div>
+                                {user === "Coach" || "Team Manager" ? (
+                                    <Form>
+                                        <input type="text" size="50" />
+                                        <br></br>
+                                        <input type="submit"></input>
+                                    </Form>
+                                ) : null}
+                            </div>
                         </div>
                     </div>
-                    <h1 className="text-4xl text-center dark:text-white">
-                        Soccer Football Manager
-                    </h1>
                 </div>
             </Header>
             <hr></hr>
