@@ -156,6 +156,16 @@ FAIL src/App.test.tsx
               [36m<div[39m
                 [33mclass[39m=[32m"container"[39m
               [36m>[39m
+                [36m<div>[39m
+                  [36m<input[39m
+                    [33mtype[39m=[32m"text"[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m/>[39m
+                  [36m<ul />[39m
+                  [36m<button>[39m
+                    [0mAdd a Player[0m
+                  [36m</button>[39m
+                [36m</div>[39m
                 [36m<div[39m
                   [33mclass[39m=[32m"row"[39m
                 [36m>[39m
@@ -183,14 +193,7 @@ FAIL src/App.test.tsx
                                 [36m<div[39m
                                   [33mclass[39m=[32m"col-sm-5"[39m
                                 [36m>[39m
-                                  [0mLionel Messi[0m
-                                [36m</div>[39m
-                                [36m<div[39m
-                                  [33mclass[39m=[32m"col-sm-3"[39m
-                                [36m>[39m
-                                  [36m<img[39m
-                                    [33mclass[39m=[32m""[39m
-                                    [...
+                                  [0mLionel Me...
 
        5 | test("renders the course name somewhere", () => {
        6 |     render(<App />);
@@ -213,7 +216,7 @@ FAIL src/App.test.tsx
 -------------------------|---------|----------|---------|---------|-----------------------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                 
 -------------------------|---------|----------|---------|---------|-----------------------------------
-All files                |   33.09 |    21.56 |   39.62 |   33.09 |                                   
+All files                |   31.25 |    20.75 |   33.33 |   31.44 |                                   
  src                     |      50 |       50 |      25 |      50 |                                   
   App.tsx                |      50 |       50 |      25 |      50 | 17-25                             
  src/components          |   38.77 |    24.39 |   51.35 |   38.77 |                                   
@@ -232,12 +235,12 @@ All files                |   33.09 |    21.56 |   39.62 |   33.09 |
   player.tsx             |     100 |      100 |     100 |     100 |                                   
   team.tsx               |       0 |        0 |       0 |       0 |                                   
   user.tsx               |       0 |        0 |       0 |       0 |                                   
- src/scenes              |   11.76 |        0 |    8.33 |   11.76 |                                   
-  MainScene.tsx          |   23.52 |        0 |   16.66 |   23.52 | 17-51                             
+ src/scenes              |   14.54 |        0 |    4.54 |   14.81 |                                   
+  MainScene.tsx          |   21.05 |        0 |    6.25 |   21.62 | 26-91,95-96,113-125               
   PlayScene.tsx          |       0 |        0 |       0 |       0 | 12-54                             
 -------------------------|---------|----------|---------|---------|-----------------------------------
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        4.497 s
+Time:        3.628 s
 Ran all test suites.
