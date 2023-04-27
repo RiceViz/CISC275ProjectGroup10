@@ -170,30 +170,30 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"row"[39m
                 [36m>[39m
                   [36m<div[39m
-                    [33mclass[39m=[32m"p-2 col"[39m
+                    [33mclass[39m=[32m"m-2 p-2 rounded-lg dark:text-white shadow-md w-min bg-neutral-100 dark:bg-neutral-800"[39m
                   [36m>[39m
                     [0mAll Players[0m
                     [36m<div[39m
-                      [33mclass[39m=[32m"BoxedList"[39m
+                      [33mclass[39m=[32m"flex justify-center"[39m
                     [36m>[39m
-                      [36m<div[39m
-                        [33mclass[39m=[32m"flex p-2 justify-center max-h-[512px] overflow-scroll"[39m
-                      [36m>[39m
-                        [36m<div>[39m
-                          [36m<div[39m
-                            [33mclass[39m=[32m"PlayerBanner"[39m
-                            [33mdraggable[39m=[32m"true"[39m
-                          [36m>[39m
-                            [36m<div[39m
-                              [33mclass[39m=[32m"container"[39m
-                            [36m>[39m
-                              [36m<div[39m
-                                [33mclass[39m=[32m"align-items-center justify-content-center row"[39m
-                              [36m>[39m
-                                [36m<div[39m
-                                  [33mclass[39m=[32m"col-sm-5"[39m
-                                [36m>[39m
-                                  [0mLionel M...
+                      [36m<div>[39m
+                        [0mSearch[0m
+                      [36m</div>[39m
+                      [36m<div>[39m
+                        [0mPosition[0m
+                      [36m</div>[39m
+                      [36m<div>[39m
+                        [0mSort[0m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"flex p-2 justify-center max-h-screen overflow-scroll"[39m
+                    [36m>[39m
+                      [36m<div>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"cursor-pointer p-2 m-2 w-[300px] rounded-lg shadow-md bg-neutral-200 dark:bg-neutral-700 hover:brightness-75 transition-all duration-300"[39m
+                          [33mdraggable[39m=[32m"true"[39m
+        ...
 
        5 | test("renders the course name somewhere", () => {
        6 |     render(<App />);
@@ -216,7 +216,7 @@ FAIL src/App.test.tsx
 -------------------------|---------|----------|---------|---------|--------------------------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                    
 -------------------------|---------|----------|---------|---------|--------------------------------------
-All files                |   29.55 |    20.75 |   30.64 |   29.74 |                                      
+All files                |   29.55 |    25.42 |   30.64 |   29.74 |                                      
  src                     |      50 |       50 |      25 |      50 |                                      
   App.tsx                |      50 |       50 |      25 |      50 | 17-25                                
  src/components          |   35.78 |    24.39 |   47.22 |   35.78 |                                      
@@ -234,12 +234,12 @@ All files                |   29.55 |    20.75 |   30.64 |   29.74 |
   player.tsx             |     100 |      100 |     100 |     100 |                                      
   team.tsx               |       0 |        0 |       0 |       0 |                                      
   user.tsx               |       0 |        0 |       0 |       0 |                                      
- src/scenes              |   14.54 |        0 |    4.54 |   14.81 |                                      
-  MainScene.tsx          |   21.05 |        0 |    6.25 |   21.62 | 24-89,93-94,111-123                  
+ src/scenes              |   14.54 |       25 |    4.54 |   14.81 |                                      
+  MainScene.tsx          |   21.05 |    33.33 |    6.25 |   21.62 | 24-89,93-94,111-123                  
   PlayScene.tsx          |       0 |        0 |       0 |       0 | 12-54                                
 -------------------------|---------|----------|---------|---------|--------------------------------------
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        4.331 s
+Time:        3.726 s
 Ran all test suites.
