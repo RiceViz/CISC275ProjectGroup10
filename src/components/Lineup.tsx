@@ -10,10 +10,12 @@ import { User } from "../interfaces/user";
  */
 export function Lineup({
     lineup,
-    user
+    user,
+    playersEditable
 }: {
     lineup: Player[];
     user: User;
+    playersEditable: boolean;
 }): JSX.Element {
     return (
         <div className="flex p-2 justify-center max-h-[512px] overflow-scroll">
@@ -24,6 +26,7 @@ export function Lineup({
                             player={player}
                             key={player.name}
                             user={user}
+                            isPlayerEditable={playersEditable}
                         ></PlayerBanner>
                     );
                 })}

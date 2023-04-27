@@ -29,11 +29,11 @@ export function MainScene({ user }: { user: User }): JSX.Element {
         ) as Player;
 
         // make a new copy of the player (might not be neccessary?)
-        const newPlayer = { ...oldPlayer };
+        // const newPlayer = { ...oldPlayer };
 
         // add the player to the list
-        if (newPlayer !== undefined) {
-            setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+        if (oldPlayer !== undefined) {
+            setYourTeamPlayers([...yourTeamPlayers, oldPlayer]);
         }
     }
 
@@ -139,6 +139,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                                 <Lineup
                                     lineup={allPlayers}
                                     user={user}
+                                    playersEditable={true}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -152,6 +153,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                                 <Lineup
                                     lineup={yourTeamPlayers}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -165,6 +167,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                                 <Lineup
                                     lineup={yourStartingLineUp}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>

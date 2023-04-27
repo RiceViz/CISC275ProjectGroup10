@@ -5,8 +5,6 @@ import { Player } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
-// import { YourTeamLineUp } from "../components/YourTeamLineUp";
-// import { StartingLineUp } from "../components/StartingLineUp";
 
 export function PlayScene({ user }: { user: User }): JSX.Element {
     const allPlayers: Player[] = PlayerCreator();
@@ -62,6 +60,7 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 <Lineup
                                     lineup={yourTeamPlayers}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -75,6 +74,7 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 <Lineup
                                     lineup={yourStartingLineUp}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -88,6 +88,7 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 <Lineup
                                     lineup={yourStartingLineUp}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -101,6 +102,7 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 <Lineup
                                     lineup={yourTeamPlayers}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>

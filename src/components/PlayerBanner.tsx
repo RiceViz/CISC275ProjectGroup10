@@ -14,16 +14,19 @@ import { User } from "../interfaces/user";
  */
 export function PlayerBanner({
     player,
-    user
+    user,
+    isPlayerEditable
 }: {
     player: Player;
     user: User;
+    isPlayerEditable: boolean;
 }): JSX.Element {
     const [p, setPlayer] = useState<Player>(player);
 
     const [editMode, setEditMode] = useState<boolean>(false);
 
-    const editable: boolean = editMode && user === "League Manager";
+    const editable: boolean =
+        editMode && isPlayerEditable && user === "League Manager";
 
     function handleOnDrag(e: React.DragEvent, widgetType: string) {
         e.dataTransfer.setData("widgetType", widgetType);
