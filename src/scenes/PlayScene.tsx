@@ -5,11 +5,9 @@ import { Player } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
-// import { YourTeamLineUp } from "../components/YourTeamLineUp";
-// import { StartingLineUp } from "../components/StartingLineUp";
 
 export function PlayScene({ user }: { user: User }): JSX.Element {
-    const allPlayers: Player[] = PlayerCreator();
+    const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
     const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
 
@@ -61,8 +59,10 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 Team 1 Players
                                 <Lineup
                                     title="Team 1 Players"
-                                    lineup={yourTeamPlayers}
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -74,8 +74,10 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             >
                                 <Lineup
                                     title="Team 1 Lineup"
-                                    lineup={yourStartingLineUp}
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -87,8 +89,10 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             >
                                 <Lineup
                                     title="Team 2 Lineup"
-                                    lineup={yourStartingLineUp}
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -100,13 +104,16 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             >
                                 <Lineup
                                     title="Team 2 Players"
-                                    lineup={yourTeamPlayers}
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
                     </Row>
                 </Container>
+                <br></br>
             </div>
         </>
     );

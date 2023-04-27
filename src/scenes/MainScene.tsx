@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
-import { Player } from "../interfaces/player";
+import { Player, checkIdenticalURLs } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
@@ -12,7 +12,7 @@ interface Item {
 }
 
 export function MainScene({ user }: { user: User }): JSX.Element {
-    const allPlayers: Player[] = PlayerCreator();
+    const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
     const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
 
@@ -31,9 +31,17 @@ export function MainScene({ user }: { user: User }): JSX.Element {
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
 
+        const indexOfPlayer = yourTeamPlayers.findIndex((player: Player) =>
+            checkIdenticalURLs(player, newPlayer)
+        );
+
         // add the player to the list
-        if (newPlayer !== undefined) {
+        if (indexOfPlayer === -1) {
             setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+        } else {
+            const newteam = [...yourTeamPlayers];
+            newteam.splice(indexOfPlayer, 1, newPlayer);
+            setYourTeamPlayers(newteam);
         }
     }
 
@@ -48,10 +56,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
 
-        // add the player to the list
-        if (newPlayer !== undefined) {
-            setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
-        }
+        setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
     }
 
     function handleDragOver(e: React.DragEvent) {
@@ -133,46 +138,53 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                     </div>
 
                     <Row>
-                        {user === "League Manager" && (
-                            <Lineup
-                                title="All Players"
-                                lineup={allPlayers}
-                                user={user}
-                            ></Lineup>
-                        )}
-                        {user === "Coach" && (
-                            <Col className="p-2">
-                                Your Team
-                                <div
-                                    className="BoxedList max-h-[200px]"
-                                    onDrop={handleOnDropTeam}
-                                    onDragOver={handleDragOver}
-                                >
-                                    <Lineup
-                                        title="Your Players"
-                                        lineup={yourTeamPlayers}
-                                        user={user}
-                                    ></Lineup>
-                                </div>
-                            </Col>
-                        )}
-                        {user === "Coach" && (
-                            <Col className="p-2">
-                                <div
-                                    className="BoxedList"
-                                    onDrop={handleOnDropStartingLineup}
-                                    onDragOver={handleDragOver}
-                                >
-                                    <Lineup
-                                        title="Starting Lineup"
-                                        lineup={yourStartingLineUp}
-                                        user={user}
-                                    ></Lineup>
-                                </div>
-                            </Col>
-                        )}
+                        <Col className="p-2">
+                            All Players
+                            <div className="BoxedList">
+                                <Lineup
+                                    title=""
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
+                                    user={user}
+                                    playersEditable={true}
+                                ></Lineup>
+                            </div>
+                        </Col>
+                        <Col className="p-2">
+                            Your Team
+                            <div
+                                className="BoxedList"
+                                onDrop={handleOnDropTeam}
+                                onDragOver={handleDragOver}
+                            >
+                                <Lineup
+                                    title=""
+                                    players={yourTeamPlayers}
+                                    setPlayers={setYourTeamPlayers}
+                                    user={user}
+                                    playersEditable={false}
+                                ></Lineup>
+                            </div>
+                        </Col>
+                        <Col className="p-2">
+                            Starting Lineup
+                            <div
+                                className="BoxedList"
+                                onDrop={handleOnDropStartingLineup}
+                                onDragOver={handleDragOver}
+                            >
+                                <Lineup
+                                    title=""
+                                    players={yourStartingLineUp}
+                                    setPlayers={setYourStartingLineUp}
+                                    user={user}
+                                    playersEditable={false}
+                                ></Lineup>
+                            </div>
+                        </Col>
                     </Row>
                 </Container>
+                <br></br>
             </div>
         </>
     );

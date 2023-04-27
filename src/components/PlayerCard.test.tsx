@@ -8,7 +8,8 @@ const player1: Player = {
     position: "Midfielder",
     rating: 99,
     imageURL:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP-hcNzaVT_7bwqJ3yQ5OzjejlSnVoX_1LureTRN99&s"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP-hcNzaVT_7bwqJ3yQ5OzjejlSnVoX_1LureTRN99&s",
+    editMode: false
 };
 
 describe("PlayerCard Component tests", () => {
