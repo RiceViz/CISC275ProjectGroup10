@@ -3,7 +3,7 @@ import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
-import { Row, Col, Container, Button } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
 export function PlayScene({ user }: { user: User }): JSX.Element {
