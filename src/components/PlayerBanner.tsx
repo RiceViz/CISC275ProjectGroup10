@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { FC, useRef, useState } from "react";
 import "../App.css";
-import { Player } from "../interfaces/player";
+import { Player, Position, abbrevToPos } from "../interfaces/player";
 import { Container, Row, Col, Image, Form } from "react-bootstrap";
 import { posToAbbrev } from "../interfaces/player";
 import { User } from "../interfaces/user";
@@ -19,11 +19,9 @@ export function PlayerBanner({
     player: Player;
     user: User;
 }): JSX.Element {
+    const [p, setPlayer] = useState<Player>(player);
+
     const [editMode, seteditMode] = useState<boolean>(false);
-    const [playerName, setPlayerName] = useState<string>(player.name);
-    const [playerPos, setPlayerPos] = useState<string>(
-        posToAbbrev[player.position]
-    );
 
     const editable: boolean = editMode && user === "League Manager";
 
@@ -46,8 +44,10 @@ export function PlayerBanner({
                         {/* Player Name */}
                         <RenderPlayerName
                             editMode={editable}
-                            playerName={playerName}
-                            setPlayerName={setPlayerName}
+                            playerName={p.name}
+                            setPlayerName={(newName: string) =>
+                                setPlayer({ ...p, name: newName })
+                            }
                         ></RenderPlayerName>
                     </Col>
 
@@ -65,16 +65,20 @@ export function PlayerBanner({
                         {/* Player Position */}
                         <RenderPlayerPosition
                             editMode={editable}
-                            playerPos={playerPos}
-                            setPlayerPos={setPlayerPos}
+                            playerPos={posToAbbrev[p.position]}
+                            setPlayerPos={(newPos: Position) =>
+                                setPlayer({ ...p, position: newPos })
+                            }
                         ></RenderPlayerPosition>
                         {editable || <br></br>}
 
                         {/* Player Rating */}
                         <RenderPlayerRating
                             editMode={editable}
-                            playerRating={playerRating}
-                            setPlayerRating={setPlayerRating}
+                            playerRating={p.rating}
+                            setPlayerRating={(newRating: number) =>
+                                setPlayer({ ...p, rating: newRating })
+                            }
                         ></RenderPlayerRating>
                     </Col>
 
@@ -129,7 +133,7 @@ function RenderPlayerPosition({
 }: {
     editMode: boolean;
     playerPos: string;
-    setPlayerPos: (newPos: string) => void;
+    setPlayerPos: (newPos: Position) => void;
 }): JSX.Element {
     if (editMode) {
         return (
@@ -137,7 +141,7 @@ function RenderPlayerPosition({
                 Pos:{" "}
                 <Form.Select
                     value={playerPos}
-                    onChange={(e) => setPlayerPos(e.target.value)}
+                    onChange={(e) => setPlayerPos(abbrevToPos[e.target.value])}
                 >
                     {["F", "D", "G", "M"].map((o: string): JSX.Element => {
                         return (
