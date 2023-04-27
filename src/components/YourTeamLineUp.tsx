@@ -16,13 +16,7 @@ export function YourTeamLineUp({
     user: User;
 }): JSX.Element {
     return (
-        <div
-            style={{
-                justifyContent: "center",
-                display: "flex",
-                padding: "10px"
-            }}
-        >
+        <div className="justify-center flex p-2">
             <div>
                 {lineup.map((player): JSX.Element => {
                     return (

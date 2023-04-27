@@ -8,7 +8,7 @@ import { User } from "../interfaces/user";
 import { YourTeamLineUp } from "../components/YourTeamLineUp";
 import { StartingLineUp } from "../components/StartingLineUp";
 
-export function MainScene({ user }: { user: User }): JSX.Element {
+export function PlayScene({ user }: { user: User }): JSX.Element {
     const allPlayers: Player[] = PlayerCreator();
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
     const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
@@ -56,38 +56,50 @@ export function MainScene({ user }: { user: User }): JSX.Element {
             <div>
                 <Container>
                     <Row>
-                        <Col className="p-2">
-                            All Players
+                        <Col>
                             <div className="BoxedList">
+                                Team 1 Players
                                 <Lineup
-                                    lineup={allPlayers}
+                                    lineup={yourTeamPlayers}
                                     user={user}
                                 ></Lineup>
                             </div>
                         </Col>
-                        <Col className="p-2">
-                            Your Team
+                        <Col>
                             <div
-                                className="BoxedList max-h-[200px]"
+                                className="BoxedList"
                                 onDrop={handleOnDropTeam}
                                 onDragOver={handleDragOver}
                             >
-                                Your Players
+                                Team 1 Lineup
                                 <YourTeamLineUp
-                                    lineup={yourTeamPlayers}
+                                    lineup={yourStartingLineUp}
                                     user={user}
                                 ></YourTeamLineUp>
                             </div>
                         </Col>
-                        <Col className="p-2">
+                        <Col>
                             <div
                                 className="BoxedList"
                                 onDrop={handleOnDropStartingLineup}
                                 onDragOver={handleDragOver}
                             >
-                                Starting Lineup
+                                Team 2 Lineup
                                 <StartingLineUp
                                     lineup={yourStartingLineUp}
+                                    user={user}
+                                ></StartingLineUp>
+                            </div>
+                        </Col>
+                        <Col>
+                            <div
+                                className="BoxedList"
+                                onDrop={handleOnDropStartingLineup}
+                                onDragOver={handleDragOver}
+                            >
+                                Team 2 Players
+                                <StartingLineUp
+                                    lineup={yourTeamPlayers}
                                     user={user}
                                 ></StartingLineUp>
                             </div>
