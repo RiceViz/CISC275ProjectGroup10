@@ -184,6 +184,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                         </Col>
                     </Row>
                 </Container>
+                <br></br>
             </div>
         </>
     );

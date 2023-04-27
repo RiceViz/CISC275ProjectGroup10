@@ -113,6 +113,7 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                         </Col>
                     </Row>
                 </Container>
+                <br></br>
             </div>
         </>
     );
