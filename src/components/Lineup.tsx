@@ -9,21 +9,37 @@ import { User } from "../interfaces/user";
  * @returns JSX.Element
  */
 export function Lineup({
-    lineup,
-    user
+    title,
+    players,
+    setPlayers,
+    user,
+    playersEditable
 }: {
-    lineup: Player[];
+    title: string;
+    players: Player[];
+    setPlayers: (players: Player[]) => void;
     user: User;
+    playersEditable: boolean;
 }): JSX.Element {
     return (
-        <div className="flex p-2 justify-center max-h-[512px] overflow-scroll">
+        <div
+            className="flex p-2 justify-center max-h-[512px] overflow-scroll"
+            id={title}
+        >
             <div>
-                {lineup.map((player): JSX.Element => {
+                {players.map((player, index): JSX.Element => {
                     return (
                         <PlayerBanner
                             player={player}
+                            setPlayer={(newp: Player) => {
+                                const newlist = [...players];
+                                newlist.splice(index, 1, newp);
+                                setPlayers(newlist);
+                            }}
                             key={player.name}
                             user={user}
+                            index={index}
+                            isPlayerEditable={playersEditable}
                         ></PlayerBanner>
                     );
                 })}

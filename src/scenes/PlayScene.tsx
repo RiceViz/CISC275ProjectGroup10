@@ -5,11 +5,9 @@ import { Player } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
-// import { YourTeamLineUp } from "../components/YourTeamLineUp";
-// import { StartingLineUp } from "../components/StartingLineUp";
 
 export function PlayScene({ user }: { user: User }): JSX.Element {
-    const allPlayers: Player[] = PlayerCreator();
+    const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
     const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
 
@@ -60,8 +58,11 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             <div className="BoxedList">
                                 Team 1 Players
                                 <Lineup
-                                    lineup={yourTeamPlayers}
+                                    title="Team 1 Players"
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -71,10 +72,12 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 onDrop={handleOnDropTeam}
                                 onDragOver={handleDragOver}
                             >
-                                Team 1 Lineup
                                 <Lineup
-                                    lineup={yourStartingLineUp}
+                                    title="Team 1 Lineup"
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -84,10 +87,12 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 onDrop={handleOnDropStartingLineup}
                                 onDragOver={handleDragOver}
                             >
-                                Team 2 Lineup
                                 <Lineup
-                                    lineup={yourStartingLineUp}
+                                    title="Team 2 Lineup"
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -97,10 +102,12 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 onDrop={handleOnDropStartingLineup}
                                 onDragOver={handleDragOver}
                             >
-                                Team 2 Players
                                 <Lineup
-                                    lineup={yourTeamPlayers}
+                                    title="Team 2 Players"
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>

@@ -5,6 +5,7 @@ export interface Player {
     position: Position;
     rating: number;
     imageURL: string;
+    editMode: boolean;
 }
 /**
  * Converts a player's position to an abbreviation
@@ -22,3 +23,7 @@ export const abbrevToPos: Record<string, Position> = {
     G: "Goalkeeper",
     M: "Midfielder"
 };
+
+export function checkIdenticalURLs(p1: Player, p2: Player) {
+    return p1.imageURL === p2.imageURL;
+}

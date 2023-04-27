@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
-import { Player } from "../interfaces/player";
+import { Player, checkIdenticalURLs } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
@@ -12,7 +12,7 @@ interface Item {
 }
 
 export function MainScene({ user }: { user: User }): JSX.Element {
-    const allPlayers: Player[] = PlayerCreator();
+    const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
     const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
 
@@ -31,9 +31,17 @@ export function MainScene({ user }: { user: User }): JSX.Element {
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
 
+        const indexOfPlayer = yourTeamPlayers.findIndex((player: Player) =>
+            checkIdenticalURLs(player, newPlayer)
+        );
+
         // add the player to the list
-        if (newPlayer !== undefined) {
+        if (indexOfPlayer === -1) {
             setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+        } else {
+            const newteam = [...yourTeamPlayers];
+            newteam.splice(indexOfPlayer, 1, newPlayer);
+            setYourTeamPlayers(newteam);
         }
     }
 
@@ -48,10 +56,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
 
-        // add the player to the list
-        if (newPlayer !== undefined) {
-            setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
-        }
+        setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
     }
 
     function handleDragOver(e: React.DragEvent) {
@@ -137,8 +142,11 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                             All Players
                             <div className="BoxedList">
                                 <Lineup
-                                    lineup={allPlayers}
+                                    title=""
+                                    players={allPlayers}
+                                    setPlayers={setAllPlayers}
                                     user={user}
+                                    playersEditable={true}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -150,8 +158,11 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                                 onDragOver={handleDragOver}
                             >
                                 <Lineup
-                                    lineup={yourTeamPlayers}
+                                    title=""
+                                    players={yourTeamPlayers}
+                                    setPlayers={setYourTeamPlayers}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
@@ -163,8 +174,11 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                                 onDragOver={handleDragOver}
                             >
                                 <Lineup
-                                    lineup={yourStartingLineUp}
+                                    title=""
+                                    players={yourStartingLineUp}
+                                    setPlayers={setYourStartingLineUp}
                                     user={user}
+                                    playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
