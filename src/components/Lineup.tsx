@@ -11,20 +11,16 @@ import { User } from "../interfaces/user";
 export function Lineup({
     players,
     setPlayers,
-    user
+    user,
+    playersEditable
 }: {
     players: Player[];
     setPlayers: (players: Player[]) => void;
     user: User;
+    playersEditable: boolean;
 }): JSX.Element {
     return (
-        <div
-            style={{
-                justifyContent: "center",
-                display: "flex",
-                padding: "10px"
-            }}
-        >
+        <div className="flex p-2 justify-center max-h-[512px] overflow-scroll">
             <div>
                 {players.map((player, index): JSX.Element => {
                     const [editMode, setEditMode] = useState<boolean>(false);
@@ -41,6 +37,7 @@ export function Lineup({
                             key={player.name}
                             user={user}
                             index={index}
+                            isPlayerEditable={playersEditable}
                         ></PlayerBanner>
                     );
                 })}

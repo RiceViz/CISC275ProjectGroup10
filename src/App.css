@@ -21,6 +21,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 500px;
     font-size: calc(10px + 2vmin);
     color: white;
 }
@@ -67,4 +68,25 @@
 
 .BoxedList.lineup {
     background-color: darkgreen;
+}
+
+.button {
+    display: inline-block;
+  background-color: #078a8a;
+  padding: 20px;
+  width: 150px;
+  color: #ffffff;
+  text-align: center;
+  border: 4px double #cccccc;
+  border-radius: 10px;
+  font-size: 19px;
+  cursor: pointer;
+  margin: 5px;
+  -webkit-transition: all 0.5s; /* add this line, chrome, safari, etc */
+  -moz-transition: all 0.5s; /* add this line, firefox */
+  -o-transition: all 0.5s; /* add this line, opera */
+  transition: all 0.5s; /* add this line */
+}
+button:hover {
+  background-color: rgb(165, 7, 185);
 }

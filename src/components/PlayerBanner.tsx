@@ -17,7 +17,8 @@ export function PlayerBanner({
     setPlayer,
     user,
     editMode,
-    setEditMode
+    setEditMode,
+    isPlayerEditable
 }: {
     player: Player;
     setPlayer: (player: Player) => void;
@@ -25,10 +26,21 @@ export function PlayerBanner({
     editMode: boolean;
     setEditMode: (bool: boolean) => void;
     index: number;
+    isPlayerEditable: boolean;
 }): JSX.Element {
-    const editable: boolean = editMode && user === "League Manager";
+    const editable: boolean =
+        editMode && isPlayerEditable && user === "League Manager";
+
+    function handleOnDrag(e: React.DragEvent, widgetType: string) {
+        e.dataTransfer.setData("widgetType", widgetType);
+    }
+
     return (
-        <div className="PlayerBanner">
+        <div
+            className="PlayerBanner"
+            draggable
+            onDragStart={(e) => handleOnDrag(e, player.name)}
+        >
             <Container>
                 <Row className="align-items-center justify-content-center">
                     {/* Column 1 */}

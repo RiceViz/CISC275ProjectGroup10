@@ -6,7 +6,6 @@ export interface Player {
     rating: number;
     imageURL: string;
 }
-
 /**
  * Converts a player's position to an abbreviation
  */
