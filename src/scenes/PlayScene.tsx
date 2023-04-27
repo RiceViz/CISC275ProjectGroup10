@@ -60,6 +60,7 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             <div className="BoxedList">
                                 Team 1 Players
                                 <Lineup
+                                    title="Team 1 Players"
                                     lineup={yourTeamPlayers}
                                     user={user}
                                 ></Lineup>
@@ -71,8 +72,8 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 onDrop={handleOnDropTeam}
                                 onDragOver={handleDragOver}
                             >
-                                Team 1 Lineup
                                 <Lineup
+                                    title="Team 1 Lineup"
                                     lineup={yourStartingLineUp}
                                     user={user}
                                 ></Lineup>
@@ -84,8 +85,8 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 onDrop={handleOnDropStartingLineup}
                                 onDragOver={handleDragOver}
                             >
-                                Team 2 Lineup
                                 <Lineup
+                                    title="Team 2 Lineup"
                                     lineup={yourStartingLineUp}
                                     user={user}
                                 ></Lineup>
@@ -97,8 +98,8 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                                 onDrop={handleOnDropStartingLineup}
                                 onDragOver={handleDragOver}
                             >
-                                Team 2 Players
                                 <Lineup
+                                    title="Team 2 Players"
                                     lineup={yourTeamPlayers}
                                     user={user}
                                 ></Lineup>

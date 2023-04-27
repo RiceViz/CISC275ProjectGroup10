@@ -31,7 +31,7 @@ export function PlayerBanner({
 
     return (
         <div
-            className="PlayerBanner"
+            className="cursor-pointer p-2 m-2 w-[300px] rounded-lg shadow-md bg-neutral-200 dark:bg-neutral-700 hover:brightness-75 transition-all duration-300"
             draggable
             onDragStart={(e) => handleOnDrag(e, player.name)}
         >
@@ -54,7 +54,7 @@ export function PlayerBanner({
                         {/* Player Image */}
                         <Image
                             src={player.imageURL}
-                            style={{ height: "64px" }}
+                            style={{ width: "64px", height: "64px" }}
                         />
                     </Col>
 
