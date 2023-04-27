@@ -40,6 +40,7 @@ export function Lineup({
                             setEditMode={setEditMode}
                             key={player.name}
                             user={user}
+                            index={index}
                         ></PlayerBanner>
                     );
                 })}
