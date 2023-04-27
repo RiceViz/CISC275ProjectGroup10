@@ -137,51 +137,40 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                         <button onClick={handleAddItem}>Add a Player</button>
                     </div>
 
-                    <Row>
-                        <Col className="p-2">
-                            All Players
-                            <div className="BoxedList">
-                                <Lineup
-                                    title=""
-                                    players={allPlayers}
-                                    setPlayers={setAllPlayers}
-                                    user={user}
-                                    playersEditable={true}
-                                ></Lineup>
-                            </div>
-                        </Col>
-                        <Col className="p-2">
-                            Your Team
-                            <div
-                                className="BoxedList"
-                                onDrop={handleOnDropTeam}
-                                onDragOver={handleDragOver}
-                            >
-                                <Lineup
-                                    title=""
-                                    players={yourTeamPlayers}
-                                    setPlayers={setYourTeamPlayers}
-                                    user={user}
-                                    playersEditable={false}
-                                ></Lineup>
-                            </div>
-                        </Col>
-                        <Col className="p-2">
-                            Starting Lineup
-                            <div
-                                className="BoxedList"
-                                onDrop={handleOnDropStartingLineup}
-                                onDragOver={handleDragOver}
-                            >
-                                <Lineup
-                                    title=""
-                                    players={yourStartingLineUp}
-                                    setPlayers={setYourStartingLineUp}
-                                    user={user}
-                                    playersEditable={false}
-                                ></Lineup>
-                            </div>
-                        </Col>
+                    <Row className="justify-center">
+                        <Lineup
+                            title="All Players"
+                            players={allPlayers}
+                            setPlayers={setAllPlayers}
+                            user={user}
+                            playersEditable={true}
+                        ></Lineup>
+
+                        <div
+                            onDrop={handleOnDropTeam}
+                            onDragOver={handleDragOver}
+                        >
+                            <Lineup
+                                title="Your Team"
+                                players={yourTeamPlayers}
+                                setPlayers={setYourTeamPlayers}
+                                user={user}
+                                playersEditable={false}
+                            ></Lineup>
+                        </div>
+
+                        <div
+                            onDrop={handleOnDropStartingLineup}
+                            onDragOver={handleDragOver}
+                        >
+                            <Lineup
+                                title="Starting Lineup"
+                                players={yourStartingLineUp}
+                                setPlayers={setYourStartingLineUp}
+                                user={user}
+                                playersEditable={false}
+                            ></Lineup>
+                        </div>
                     </Row>
                 </Container>
                 <br></br>
