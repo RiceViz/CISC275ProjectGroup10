@@ -60,6 +60,7 @@ export function PlayScene({ user }: { user: User }): JSX.Element {
                             <div className="BoxedList">
                                 Team 1 Players
                                 <Lineup
+                                    title="Team 1 Players"
                                     lineup={yourTeamPlayers}
                                     user={user}
                                 ></Lineup>

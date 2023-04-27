@@ -56,42 +56,44 @@ export function MainScene({ user }: { user: User }): JSX.Element {
             <div>
                 <Container>
                     <Row>
-                        <Col className="p-2">
-                            All Players
-                            <div className="BoxedList">
-                                <Lineup
-                                    lineup={allPlayers}
-                                    user={user}
-                                ></Lineup>
-                            </div>
-                        </Col>
-                        <Col className="p-2">
-                            Your Team
-                            <div
-                                className="BoxedList max-h-[200px]"
-                                onDrop={handleOnDropTeam}
-                                onDragOver={handleDragOver}
-                            >
-                                Your Players
-                                <YourTeamLineUp
-                                    lineup={yourTeamPlayers}
-                                    user={user}
-                                ></YourTeamLineUp>
-                            </div>
-                        </Col>
-                        <Col className="p-2">
-                            <div
-                                className="BoxedList"
-                                onDrop={handleOnDropStartingLineup}
-                                onDragOver={handleDragOver}
-                            >
-                                Starting Lineup
-                                <StartingLineUp
-                                    lineup={yourStartingLineUp}
-                                    user={user}
-                                ></StartingLineUp>
-                            </div>
-                        </Col>
+                        {user === "League Manager" && (
+                            <Lineup
+                                title="All Players"
+                                lineup={allPlayers}
+                                user={user}
+                            ></Lineup>
+                        )}
+                        {user === "Coach" && (
+                            <Col className="p-2">
+                                Your Team
+                                <div
+                                    className="BoxedList max-h-[200px]"
+                                    onDrop={handleOnDropTeam}
+                                    onDragOver={handleDragOver}
+                                >
+                                    Your Players
+                                    <YourTeamLineUp
+                                        lineup={yourTeamPlayers}
+                                        user={user}
+                                    ></YourTeamLineUp>
+                                </div>
+                            </Col>
+                        )}
+                        {user === "Coach" && (
+                            <Col className="p-2">
+                                <div
+                                    className="BoxedList"
+                                    onDrop={handleOnDropStartingLineup}
+                                    onDragOver={handleDragOver}
+                                >
+                                    Starting Lineup
+                                    <StartingLineUp
+                                        lineup={yourStartingLineUp}
+                                        user={user}
+                                    ></StartingLineUp>
+                                </div>
+                            </Col>
+                        )}
                     </Row>
                 </Container>
             </div>
