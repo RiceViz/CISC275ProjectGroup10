@@ -137,7 +137,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                         <button onClick={handleAddItem}>Add a Player</button>
                     </div>
 
-                    <Row className="justify-center">
+                    <div className="flex justify-center">
                         <Lineup
                             title="All Players"
                             players={allPlayers}
@@ -147,6 +147,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                         ></Lineup>
 
                         <div
+                            className="justify-center"
                             onDrop={handleOnDropTeam}
                             onDragOver={handleDragOver}
                         >
@@ -171,7 +172,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                                 playersEditable={false}
                             ></Lineup>
                         </div>
-                    </Row>
+                    </div>
                 </Container>
                 <br></br>
             </div>
