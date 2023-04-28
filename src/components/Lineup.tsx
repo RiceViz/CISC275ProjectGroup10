@@ -25,7 +25,7 @@ export function Lineup({
         <div className="m-2 p-2 justify-self-center bg-neutral-100 dark:text-white dark:bg-neutral-800 w-fit rounded-lg">
             {title}
             <div
-                className="flex m-2 p-2 justify-center max-h-[512px] overflow-scroll"
+                className=" flex m-2 p-2 justify-center max-h-[512px] overflow-scroll"
                 id={title}
             >
                 <div>
