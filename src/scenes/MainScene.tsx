@@ -140,7 +140,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                     <Row>
                         <Col className="p-2">
                             All Players
-                            <div className="BoxedList">
+                            <div className="BoxedList all">
                                 <Lineup
                                     title=""
                                     players={allPlayers}
@@ -153,7 +153,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                         <Col className="p-2">
                             Your Team
                             <div
-                                className="BoxedList"
+                                className="BoxedList team"
                                 onDrop={handleOnDropTeam}
                                 onDragOver={handleDragOver}
                             >
@@ -169,7 +169,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                         <Col className="p-2">
                             Starting Lineup
                             <div
-                                className="BoxedList"
+                                className="BoxedList lineup"
                                 onDrop={handleOnDropStartingLineup}
                                 onDragOver={handleDragOver}
                             >
