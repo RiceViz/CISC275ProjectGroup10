@@ -3,8 +3,9 @@ import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player, checkIdenticalURLs } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
-import { Container } from "react-bootstrap";
+import { Container, Modal } from "react-bootstrap";
 import { User } from "../interfaces/user";
+import { AddPlayerButton } from "../components/AddPlayerButton";
 
 interface Item {
     id: number;
@@ -84,6 +85,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
     return (
         <>
             <div>
+                <AddPlayerButton></AddPlayerButton>
                 <Container>
                     <div className="flex justify-center">
                         <Lineup
