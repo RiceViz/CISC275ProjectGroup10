@@ -16,4 +16,6 @@ code {
         monospace;
 }
 
-.dropdown-toggle:after { content: none }
+.dropdown-toggle:after {
+    content: none;
+}

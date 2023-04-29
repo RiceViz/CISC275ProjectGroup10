@@ -5,7 +5,6 @@ import { Player, checkIdenticalURLs } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
 import { Container, Modal } from "react-bootstrap";
 import { User } from "../interfaces/user";
-import { AddPlayerButton } from "../components/AddPlayerButton";
 
 interface Item {
     id: number;
@@ -19,7 +18,6 @@ export function MainScene({ user }: { user: User }): JSX.Element {
 
     const [items, setItems] = useState<Item[]>([]);
     const [draggingItem, setDraggingItem] = useState<Item | null>(null);
-    const [inputValue, setInputValue] = useState<string>("");
 
     function handleOnDropTeam(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
@@ -85,7 +83,6 @@ export function MainScene({ user }: { user: User }): JSX.Element {
     return (
         <>
             <div>
-                <AddPlayerButton></AddPlayerButton>
                 <Container>
                     <div className="flex justify-center">
                         <Lineup

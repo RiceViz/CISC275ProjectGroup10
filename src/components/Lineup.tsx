@@ -2,6 +2,7 @@ import React from "react";
 import { Player } from "../interfaces/player";
 import { PlayerBanner } from "./PlayerBanner";
 import { User } from "../interfaces/user";
+import { AddPlayerButton } from "./AddPlayerButton";
 
 /**
  * Iterates a list of Players and creates a PlayerBanner for each
@@ -44,6 +45,15 @@ export function Lineup({
     return (
         <div className={className}>
             <span className="text-lg font-semibold">{title}</span>
+
+            {user === "League Manager" && playersEditable && (
+                <AddPlayerButton
+                    addPlayer={(player: Player) =>
+                        setPlayers([player, ...players])
+                    }
+                ></AddPlayerButton>
+            )}
+
             <div
                 className=" flex m-2 p-2 justify-center max-h-[512px] overflow-scroll"
                 id={title}

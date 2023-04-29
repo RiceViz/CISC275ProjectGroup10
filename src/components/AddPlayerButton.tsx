@@ -1,22 +1,27 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { Player } from "../interfaces/player";
 
-export function AddPlayerButton(): JSX.Element {
+export function AddPlayerButton({
+    addPlayer
+}: {
+    addPlayer: (player: Player) => void;
+}): JSX.Element {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
-        <>
+        <div>
             <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
+                Modal
             </Button>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} backdrop="static">
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Add Player</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {"Woohoo, you're reading this text in a modal!"}
@@ -30,6 +35,6 @@ export function AddPlayerButton(): JSX.Element {
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </>
+        </div>
     );
 }
