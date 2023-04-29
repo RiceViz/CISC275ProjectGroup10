@@ -103,7 +103,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
         <>
             <div>
                 <Container>
-                    <div>
+                    {/* <div>
                         <input
                             type="text"
                             value={inputValue}
@@ -135,14 +135,13 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                             ))}
                         </ul>
                         <button onClick={handleAddItem}>Add a Player</button>
-                    </div>
+                    </div> */}
 
                     <Row>
                         <Col className="p-2">
-                            All Players
                             <div className="BoxedList all">
                                 <Lineup
-                                    title=""
+                                    title="All Players"
                                     players={allPlayers}
                                     setPlayers={setAllPlayers}
                                     user={user}
@@ -151,14 +150,13 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                             </div>
                         </Col>
                         <Col className="p-2">
-                            Your Team
                             <div
                                 className="BoxedList team"
                                 onDrop={handleOnDropTeam}
                                 onDragOver={handleDragOver}
                             >
                                 <Lineup
-                                    title=""
+                                    title="Your Team"
                                     players={yourTeamPlayers}
                                     setPlayers={setYourTeamPlayers}
                                     user={user}
@@ -167,14 +165,13 @@ export function MainScene({ user }: { user: User }): JSX.Element {
                             </div>
                         </Col>
                         <Col className="p-2">
-                            Starting Lineup
                             <div
                                 className="BoxedList lineup"
                                 onDrop={handleOnDropStartingLineup}
                                 onDragOver={handleDragOver}
                             >
                                 <Lineup
-                                    title=""
+                                    title="Starting Lineup"
                                     players={yourStartingLineUp}
                                     setPlayers={setYourStartingLineUp}
                                     user={user}

@@ -27,6 +27,7 @@ export function Lineup({
             id={title}
         >
             <div>
+                {title}
                 {players.map((player, index): JSX.Element => {
                     return (
                         <PlayerBanner
