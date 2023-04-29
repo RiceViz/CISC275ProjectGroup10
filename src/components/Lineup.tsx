@@ -21,8 +21,15 @@ export function Lineup({
     user: User;
     playersEditable: boolean;
 }): JSX.Element {
+    const titleToBgColor: Record<string, string> = {
+        "All Players": "red",
+        "Your Team": "sky",
+        "Starting Lineup": "lime"
+    };
     return (
-        <div className="m-2 p-2 justify-self-center bg-neutral-100 dark:text-white dark:bg-neutral-800 w-fit rounded-lg">
+        <div
+            className={`m-2 p-2 justify-self-center bg-${titleToBgColor[title]}-400/70 dark:text-white dark:bg-neutral-950/80 min-w-[364px] w-fit rounded-lg`}
+        >
             {title}
             <div
                 className=" flex m-2 p-2 justify-center max-h-[512px] overflow-scroll"
