@@ -81,62 +81,10 @@ export function MainScene({ user }: { user: User }): JSX.Element {
         }
     }
 
-    function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setInputValue(event.target.value);
-    }
-
-    function handleAddItem() {
-        const newItem: Item = {
-            id: Math.random(),
-            text: inputValue
-        };
-        setItems([...items, newItem]);
-        setInputValue("");
-    }
-
-    const handleRemoveItem = (id: number) => {
-        const newItems = items.filter((item) => item.id !== id);
-        setItems(newItems);
-    };
-
     return (
         <>
             <div>
                 <Container>
-                    <div>
-                        <input
-                            type="text"
-                            value={inputValue}
-                            onChange={handleInputChange}
-                            onDragOver={handleDragOver}
-                            onDrop={handleDrop}
-                        />
-                        <ul>
-                            {items.map((item) => (
-                                <li
-                                    key={item.id}
-                                    draggable={true}
-                                    onDragStart={(event) =>
-                                        handleDragStart(event, item)
-                                    }
-                                >
-                                    {item.text}
-                                    <div>
-                                        <button
-                                            type="button"
-                                            onClick={() =>
-                                                handleRemoveItem(item.id)
-                                            }
-                                        >
-                                            Remove Player
-                                        </button>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                        <button onClick={handleAddItem}>Add a Player</button>
-                    </div>
-
                     <div className="flex justify-center">
                         <Lineup
                             title="All Players"
