@@ -3,7 +3,7 @@ import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player, checkIdenticalURLs } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
-import { Row, Col, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
 interface Item {
