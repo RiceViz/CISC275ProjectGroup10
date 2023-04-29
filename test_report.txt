@@ -166,33 +166,30 @@ FAIL src/App.test.tsx
                 [36m</button>[39m
               [36m</div>[39m
               [36m<div[39m
-                [33mclass[39m=[32m"row"[39m
+                [33mclass[39m=[32m"flex justify-center"[39m
               [36m>[39m
                 [36m<div[39m
-                  [33mclass[39m=[32m"p-2 col"[39m
+                  [33mclass[39m=[32m"m-2 p-2 justify-self-center bg-red-400/70 dark:text-white dark:bg-neutral-950/80 min-w-[364px] w-fit rounded-lg"[39m
                 [36m>[39m
                   [0mAll Players[0m
                   [36m<div[39m
-                    [33mclass[39m=[32m"BoxedList"[39m
+                    [33mclass[39m=[32m" flex m-2 p-2 justify-center max-h-[512px] overflow-scroll"[39m
+                    [33mid[39m=[32m"All Players"[39m
                   [36m>[39m
-                    [36m<div[39m
-                      [33mclass[39m=[32m"flex p-2 justify-center max-h-[512px] overflow-scroll"[39m
-                      [33mid[39m=[32m""[39m
-                    [36m>[39m
-                      [36m<div>[39m
+                    [36m<div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"cursor-pointer p-2 m-2 w-[300px] rounded-lg shadow-md bg-neutral-200 dark:bg-neutral-700 hover:brightness-75 transition-all duration-300"[39m
+                        [33mdraggable[39m=[32m"true"[39m
+                      [36m>[39m
                         [36m<div[39m
-                          [33mclass[39m=[32m"cursor-pointer p-2 m-2 w-[300px] rounded-lg shadow-md bg-neutral-200 dark:bg-neutral-700 hover:brightness-75 transition-all duration-300"[39m
-                          [33mdraggable[39m=[32m"true"[39m
+                          [33mclass[39m=[32m"container"[39m
                         [36m>[39m
                           [36m<div[39m
-                            [33mclass[39m=[32m"container"[39m
+                            [33mclass[39m=[32m"align-items-center justify-content-center row"[39m
                           [36m>[39m
                             [36m<div[39m
-                              [33mclass[39m=[32m"align-items-center justify-content-center row"[39m
-                            [36m>[39m
-                              [36m<div[39m
-                                [33mclass[39m=[32m"col-sm-5"[39m
-                    ...
+                              [33mclass[39m=[32m"col-sm-5"[39m
+                           ...
 
        5 | test("renders the course name somewhere", () => {
        6 |     render(<App />);
@@ -215,12 +212,12 @@ FAIL src/App.test.tsx
 -------------------------|---------|----------|---------|---------|--------------------------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                    
 -------------------------|---------|----------|---------|---------|--------------------------------------
-All files                |   28.23 |    22.41 |    30.3 |    28.4 |                                      
+All files                |   28.65 |    22.41 |    30.3 |   28.82 |                                      
  src                     |    62.5 |    28.57 |   66.66 |    62.5 |                                      
   App.tsx                |    62.5 |    28.57 |   66.66 |    62.5 | 23-25,71                             
- src/components          |   33.33 |    25.58 |   43.58 |   33.33 |                                      
+ src/components          |      34 |    25.58 |   43.58 |      34 |                                      
   Header.tsx             |   37.14 |     8.69 |   71.42 |   37.14 | 28-42,66-84                          
-  Lineup.tsx             |      40 |      100 |   66.66 |      40 | 35-37                                
+  Lineup.tsx             |      50 |      100 |   66.66 |      50 | 44-46                                
   PlayerBanner.tsx       |   37.03 |    64.28 |   27.77 |   37.03 | 31,38-90,118-125,143-151,175-184,212 
   PlayerCard.tsx         |       0 |      100 |       0 |       0 | 7-10                                 
   PlayerCreator.tsx      |     100 |      100 |     100 |     100 |                                      
@@ -240,5 +237,5 @@ All files                |   28.23 |    22.41 |    30.3 |    28.4 |
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.327 s
+Time:        3.559 s
 Ran all test suites.
