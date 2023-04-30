@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
-import { Player, checkIdenticalURLs } from "../interfaces/player";
-import { PlayerCreator } from "../components/PlayerCreator";
+import {
+    Player,
+    checkIdenticalURLs,
+    checkIdenticalPlayers
+} from "../interfaces/player";
+import { PlayerCreator, getPath } from "../components/PlayerCreator";
 import { Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
@@ -21,6 +25,22 @@ export function MainScene({ user }: { user: User }): JSX.Element {
 
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
+
+        if (
+            newPlayer.imageURL ===
+            process.env.PUBLIC_URL + "/blankprofilepicture.png"
+        ) {
+            if (
+                !yourTeamPlayers.some((player: Player) =>
+                    checkIdenticalPlayers(player, newPlayer)
+                )
+            ) {
+                setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+                return;
+            } else {
+                return;
+            }
+        }
 
         const indexOfPlayer = yourTeamPlayers.findIndex((player: Player) =>
             checkIdenticalURLs(player, newPlayer)

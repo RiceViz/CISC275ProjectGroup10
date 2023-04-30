@@ -27,3 +27,12 @@ export const abbrevToPos: Record<string, Position> = {
 export function checkIdenticalURLs(p1: Player, p2: Player) {
     return p1.imageURL === p2.imageURL;
 }
+
+export function checkIdenticalPlayers(p1: Player, p2: Player) {
+    return (
+        p1.imageURL === p2.imageURL &&
+        p1.name === p2.name &&
+        p1.position === p2.position &&
+        p1.rating === p2.rating
+    );
+}
