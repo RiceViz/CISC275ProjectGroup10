@@ -170,7 +170,7 @@ FAIL src/App.test.tsx
                   [36m</span>[39m
                   [36m<div>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"bg-blue-500/80 btn btn-primary"[39m
+                      [33mclass[39m=[32m"bg-blue-600/80 hover:bg-blue-600/100 btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
                       [0mAdd Player[0m
@@ -188,8 +188,7 @@ FAIL src/App.test.tsx
                         [36m<div[39m
                           [33mclass[39m=[32m"container"[39m
                         [36m>[39m
-                          [36m<div[39m
-                         ...
+                          [36m<div[39m...
 
        5 | test("renders the course name somewhere", () => {
        6 |     render(<App />);
@@ -212,7 +211,7 @@ FAIL src/App.test.tsx
 -------------------------|---------|----------|---------|---------|--------------------------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                    
 -------------------------|---------|----------|---------|---------|--------------------------------------
-All files                |   33.33 |    31.34 |   33.82 |   33.51 |                                      
+All files                |    32.1 |       28 |   32.85 |   32.27 |                                      
  src                     |    62.5 |    28.57 |   66.66 |    62.5 |                                      
   App.tsx                |    62.5 |    28.57 |   66.66 |    62.5 | 23-25,71                             
  src/components          |   37.59 |    35.18 |   39.21 |   37.87 |                                      
@@ -225,18 +224,18 @@ All files                |   33.33 |    31.34 |   33.82 |   33.51 |
   ThemeToggle.tsx        |   11.11 |        0 |      50 |   11.11 | 9-17                                 
   UserDropDownButton.tsx |   66.66 |      100 |   66.66 |   66.66 | 50-51                                
   WinFormula.tsx         |       0 |        0 |       0 |       0 | 8-27                                 
- src/interfaces          |      50 |      100 |       0 |      50 |                                      
+ src/interfaces          |      40 |        0 |       0 |      40 |                                      
   field.tsx              |       0 |        0 |       0 |       0 |                                      
   itemTypes.tsx          |       0 |      100 |     100 |       0 | 1                                    
-  player.tsx             |   66.66 |      100 |       0 |   66.66 | 28                                   
+  player.tsx             |      50 |        0 |       0 |      50 | 28-32                                
   team.tsx               |       0 |        0 |       0 |       0 |                                      
   user.tsx               |       0 |        0 |       0 |       0 |                                      
- src/scenes              |   10.52 |        0 |    7.69 |   10.52 |                                      
-  MainScene.tsx          |   19.04 |        0 |   14.28 |   19.04 | 15-54                                
+ src/scenes              |    9.09 |        0 |    7.14 |    9.09 |                                      
+  MainScene.tsx          |   14.81 |        0 |    12.5 |   14.81 | 19-74                                
   PlayScene.tsx          |       0 |        0 |       0 |       0 | 10-52                                
 -------------------------|---------|----------|---------|---------|--------------------------------------
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.681 s
+Time:        5.078 s
 Ran all test suites.
