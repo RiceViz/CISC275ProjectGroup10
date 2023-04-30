@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import { Player, abbrevToPos } from "../interfaces/player";
 import { Col, Form, Row } from "react-bootstrap";
 import { posToAbbrev } from "../interfaces/player";
+import { getPath } from "./PlayerCreator";
 
 function makeBlankPlayer(): Player {
     return {
@@ -23,7 +24,10 @@ export function AddPlayerButton({
     const [show, setShow] = useState(false);
     const [player, setPlayer] = useState<Player>(makeBlankPlayer());
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        setPlayer(makeBlankPlayer());
+        setShow(true);
+    };
 
     const modal = (
         <Modal show={show} onHide={handleClose} backdrop="static">
@@ -148,7 +152,11 @@ export function AddPlayerButton({
                     variant="primary"
                     className="bg-blue-500 hover:bg-blue-600"
                     onClick={() => {
-                        addPlayer(player);
+                        const newPlayer: Player = {
+                            ...player,
+                            imageURL: getPath(player.imageURL)
+                        };
+                        addPlayer(newPlayer);
                         handleClose();
                     }}
                 >

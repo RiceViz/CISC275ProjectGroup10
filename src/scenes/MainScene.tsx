@@ -3,21 +3,13 @@ import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player, checkIdenticalURLs } from "../interfaces/player";
 import { PlayerCreator } from "../components/PlayerCreator";
-import { Container, Modal } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
-
-interface Item {
-    id: number;
-    text: string;
-}
 
 export function MainScene({ user }: { user: User }): JSX.Element {
     const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
     const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
-
-    const [items, setItems] = useState<Item[]>([]);
-    const [draggingItem, setDraggingItem] = useState<Item | null>(null);
 
     function handleOnDropTeam(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
@@ -60,24 +52,6 @@ export function MainScene({ user }: { user: User }): JSX.Element {
 
     function handleDragOver(e: React.DragEvent) {
         e.preventDefault();
-    }
-
-    function handleDragStart(
-        event: React.DragEvent<HTMLLIElement>,
-        item: Item
-    ) {
-        setDraggingItem(item);
-    }
-
-    function handleDrop(event: React.DragEvent<HTMLInputElement>) {
-        event.preventDefault();
-        if (draggingItem) {
-            const newItems = items.filter(
-                (item) => item.id !== draggingItem.id
-            );
-            setItems([...newItems, draggingItem]);
-            setDraggingItem(null);
-        }
     }
 
     return (
