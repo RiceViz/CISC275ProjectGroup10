@@ -6,7 +6,7 @@ import {
     checkIdenticalURLs,
     checkIdenticalPlayers
 } from "../interfaces/player";
-import { PlayerCreator, getPath } from "../components/PlayerCreator";
+import { PlayerCreator } from "../components/PlayerCreator";
 import { Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
