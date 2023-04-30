@@ -170,7 +170,7 @@ export function AddPlayerButton({
         <div>
             <Button
                 variant="primary"
-                className="bg-blue-500/80"
+                className="bg-blue-600/80 hover:bg-blue-600/100"
                 onClick={handleShow}
             >
                 Add Player
