@@ -2,6 +2,7 @@ import React from "react";
 import { Player } from "../interfaces/player";
 import { PlayerBanner } from "./PlayerBanner";
 import { User } from "../interfaces/user";
+import { AddPlayerButton } from "./AddPlayerButton";
 
 /**
  * Iterates a list of Players and creates a PlayerBanner for each
@@ -21,16 +22,38 @@ export function Lineup({
     user: User;
     playersEditable: boolean;
 }): JSX.Element {
-    const titleToBgColor: Record<string, string> = {
-        "All Players": "red",
-        "Your Team": "sky",
-        "Starting Lineup": "lime"
-    };
+    let className: string;
+    switch (title) {
+        case "All Players":
+            className =
+                "m-2 p-2 justify-self-center bg-red-400/70 dark:text-white dark:bg-red-950/80 min-w-[364px] w-fit rounded-lg";
+            break;
+        case "Your Team":
+            className =
+                "m-2 p-2 justify-self-center bg-sky-400/70 dark:text-white dark:bg-sky-950/80 min-w-[364px] w-fit rounded-lg";
+            break;
+        case "Starting Lineup":
+            className =
+                "m-2 p-2 justify-self-center bg-lime-400/70 dark:text-white dark:bg-lime-950/80 min-w-[364px] w-fit rounded-lg";
+            break;
+        default:
+            className =
+                "m-2 p-2 justify-self-center bg-neutral-400/70 dark:text-white dark:bg-neutral-950/80 min-w-[364px] w-fit rounded-lg";
+            break;
+    }
+
     return (
-        <div
-            className={`m-2 p-2 justify-self-center bg-${titleToBgColor[title]}-400/70 dark:text-white dark:bg-neutral-950/80 min-w-[364px] w-fit rounded-lg`}
-        >
-            {title}
+        <div className={className}>
+            <span className="text-lg font-semibold">{title}</span>
+
+            {user === "League Manager" && playersEditable && (
+                <AddPlayerButton
+                    addPlayer={(player: Player) =>
+                        setPlayers([player, ...players])
+                    }
+                ></AddPlayerButton>
+            )}
+
             <div
                 className=" flex m-2 p-2 justify-center max-h-[512px] overflow-scroll"
                 id={title}

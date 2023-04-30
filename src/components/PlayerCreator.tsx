@@ -1,6 +1,16 @@
 import "../App.css";
 import { Player } from "../interfaces/player";
 
+export function getPath(imgName: string): string {
+    if (imgName === "") {
+        return process.env.PUBLIC_URL + "/blankprofilepicture.png";
+    } else if (imgName.slice(0, 4) === "http") {
+        return imgName;
+    } else {
+        return process.env.PUBLIC_URL + "/images/playerimages/" + imgName;
+    }
+}
+
 /**
  *
  * @returns Player[] - a list of promiment soccerplayers
@@ -11,9 +21,6 @@ export function PlayerCreator(): Player[] {
      * @param imgName for example "messi.jpg"
      * @returns image path
      */
-    function getPath(imgName: string): string {
-        return process.env.PUBLIC_URL + "/images/playerimages/" + imgName;
-    }
 
     const playerPool: Player[] = [
         {
