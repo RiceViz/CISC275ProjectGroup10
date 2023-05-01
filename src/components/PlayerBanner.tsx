@@ -27,15 +27,16 @@ export function PlayerBanner({
     const editable: boolean =
         player.editMode && isPlayerEditable && user === "League Manager";
 
-    function handleOnDrag(e: React.DragEvent, widgetType: string) {
-        e.dataTransfer.setData("widgetType", widgetType);
+    function handleOnDrag(e: React.DragEvent, name: string, lineup: string) {
+        e.dataTransfer.setData("name", name);
+        e.dataTransfer.setData("lineup", lineup);
     }
 
     return (
         <div
             className="cursor-pointer p-2 m-2 w-[300px] rounded-lg shadow-md bg-neutral-200 dark:bg-neutral-700 hover:brightness-75 transition-all duration-300"
             draggable
-            onDragStart={(e) => handleOnDrag(e, player.name)}
+            onDragStart={(e) => handleOnDrag(e, player.name, player.lineup)}
         >
             <Container>
                 <Row className="align-items-center justify-content-center">

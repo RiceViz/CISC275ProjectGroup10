@@ -42,6 +42,11 @@ export function Lineup({
             break;
     }
 
+    function handleDelete(e: React.DragEvent) {
+        const name = e.dataTransfer.getData("name");
+        const lineup = e.dataTransfer.getData("lineup");
+    }
+
     return (
         <div className={className}>
             <span className="text-lg font-semibold">{title}</span>
@@ -53,6 +58,10 @@ export function Lineup({
                     }
                 ></AddPlayerButton>
             )}
+            <div className="flex justify-around">
+                <div>Add</div>
+                <div onDrop={handleDelete}>Delete</div>
+            </div>
 
             <div
                 className=" flex m-2 p-2 justify-center max-h-[512px] overflow-scroll"

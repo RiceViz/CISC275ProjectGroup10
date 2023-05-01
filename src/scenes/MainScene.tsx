@@ -16,15 +16,16 @@ export function MainScene({ user }: { user: User }): JSX.Element {
     const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
 
     function handleOnDropTeam(e: React.DragEvent) {
-        const widgetType = e.dataTransfer.getData("widgetType") as string;
+        const name = e.dataTransfer.getData("name") as string;
 
         // find dropped player object based on name
         const oldPlayer = allPlayers.find(
-            (player) => player.name === widgetType
+            (player) => player.name === name
         ) as Player;
 
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
+        newPlayer.lineup = "Team Manager";
 
         if (
             newPlayer.imageURL ===
@@ -57,16 +58,20 @@ export function MainScene({ user }: { user: User }): JSX.Element {
     }
 
     function handleOnDropStartingLineup(e: React.DragEvent) {
-        const widgetType = e.dataTransfer.getData("widgetType") as string;
-
+        const name = e.dataTransfer.getData("name") as string;
+        const lineup = e.dataTransfer.getData("lineup");
+        if (lineup === "Starting") {
+            return;
+        }
         // find dropped player object based on name
         const oldPlayer = allPlayers.find(
-            (player) => player.name === widgetType
+            (player) => player.name === name
         ) as Player;
 
+        console.log(oldPlayer.lineup);
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
-
+        newPlayer.lineup = "Starting";
         setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
     }
 

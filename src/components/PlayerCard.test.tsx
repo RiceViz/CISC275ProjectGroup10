@@ -9,7 +9,8 @@ const player1: Player = {
     rating: 99,
     imageURL:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP-hcNzaVT_7bwqJ3yQ5OzjejlSnVoX_1LureTRN99&s",
-    editMode: false
+    editMode: false,
+    lineup: "All Players"
 };
 
 describe("PlayerCard Component tests", () => {

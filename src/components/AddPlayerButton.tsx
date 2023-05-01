@@ -12,7 +12,8 @@ function makeBlankPlayer(): Player {
         position: "Defender",
         rating: 0,
         imageURL: "",
-        editMode: false
+        editMode: false,
+        lineup: "All Players"
     };
 }
 
@@ -168,11 +169,7 @@ export function AddPlayerButton({
 
     return (
         <div>
-            <Button
-                variant="primary"
-                className="bg-blue-600/80 hover:bg-blue-600/100"
-                onClick={handleShow}
-            >
+            <Button className="text-black bg-neutral-100" onClick={handleShow}>
                 Add Player
             </Button>
             {modal}
