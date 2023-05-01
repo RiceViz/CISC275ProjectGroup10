@@ -18,8 +18,12 @@ function RenderCurrentScene({
     setAllPlayers,
     yourTeamPlayers,
     setYourTeamPlayers,
+    yourTeamPlayers2,
+    setYourTeamPlayers2,
     yourStartingLineUp,
-    setYourStartingLineUp
+    setYourStartingLineUp,
+    yourStartingLineUp2,
+    setYourStartingLineUp2
 }: {
     scene: string;
     user: User;
@@ -27,8 +31,12 @@ function RenderCurrentScene({
     setAllPlayers: (players: Player[]) => void;
     yourTeamPlayers: Player[];
     setYourTeamPlayers: (players: Player[]) => void;
+    yourTeamPlayers2: Player[];
+    setYourTeamPlayers2: (players: Player[]) => void;
     yourStartingLineUp: Player[];
     setYourStartingLineUp: (players: Player[]) => void;
+    yourStartingLineUp2: Player[];
+    setYourStartingLineUp2: (players: Player[]) => void;
 }): JSX.Element {
     switch (scene) {
         case "MAIN":
@@ -39,8 +47,12 @@ function RenderCurrentScene({
                     setAllPlayers={setAllPlayers}
                     yourTeamPlayers={yourTeamPlayers}
                     setYourTeamPlayers={setYourTeamPlayers}
+                    yourTeamPlayers2={yourTeamPlayers2}
+                    setYourTeamPlayers2={setYourTeamPlayers2}
                     yourStartingLineUp={yourStartingLineUp}
                     setYourStartingLineUp={setYourStartingLineUp}
+                    yourStartingLineUp2={yourStartingLineUp2}
+                    setYourStartingLineUp2={setYourStartingLineUp2}
                 ></MainScene>
             );
         case "PLAY":
@@ -51,8 +63,12 @@ function RenderCurrentScene({
                     setAllPlayers={setAllPlayers}
                     yourTeamPlayers={yourTeamPlayers}
                     setYourTeamPlayers={setYourTeamPlayers}
+                    yourTeamPlayers2={yourTeamPlayers2}
+                    setYourTeamPlayers2={setYourTeamPlayers2}
                     yourStartingLineUp={yourStartingLineUp}
                     setYourStartingLineUp={setYourStartingLineUp}
+                    yourStartingLineUp2={yourStartingLineUp2}
+                    setYourStartingLineUp2={setYourStartingLineUp2}
                 ></PlayScene>
             );
         default:
@@ -63,8 +79,12 @@ function RenderCurrentScene({
                     setAllPlayers={setAllPlayers}
                     yourTeamPlayers={yourTeamPlayers}
                     setYourTeamPlayers={setYourTeamPlayers}
+                    yourTeamPlayers2={yourTeamPlayers2}
+                    setYourTeamPlayers2={setYourTeamPlayers2}
                     yourStartingLineUp={yourStartingLineUp}
                     setYourStartingLineUp={setYourStartingLineUp}
+                    yourStartingLineUp2={yourStartingLineUp2}
+                    setYourStartingLineUp2={setYourStartingLineUp2}
                 ></MainScene>
             );
     }
@@ -76,6 +96,10 @@ function App(): JSX.Element {
     const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
     const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
+    const [yourTeamPlayers2, setYourTeamPlayers2] = useState<Player[]>([]);
+    const [yourStartingLineUp2, setYourStartingLineUp2] = useState<Player[]>(
+        []
+    );
 
     return (
         <div
@@ -110,8 +134,12 @@ function App(): JSX.Element {
                 setAllPlayers={setAllPlayers}
                 yourTeamPlayers={yourTeamPlayers}
                 setYourTeamPlayers={setYourTeamPlayers}
+                yourTeamPlayers2={yourTeamPlayers2}
+                setYourTeamPlayers2={setYourTeamPlayers2}
                 yourStartingLineUp={yourStartingLineUp}
                 setYourStartingLineUp={setYourStartingLineUp}
+                yourStartingLineUp2={yourStartingLineUp2}
+                setYourStartingLineUp2={setYourStartingLineUp2}
             ></RenderCurrentScene>
             <br></br>
             {/* Set Scene Button */}

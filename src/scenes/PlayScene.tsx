@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
-import { PlayerCreator } from "../components/PlayerCreator";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
@@ -12,16 +11,24 @@ export function PlayScene({
     setAllPlayers,
     yourTeamPlayers,
     setYourTeamPlayers,
+    yourTeamPlayers2,
+    setYourTeamPlayers2,
     yourStartingLineUp,
-    setYourStartingLineUp
+    setYourStartingLineUp,
+    yourStartingLineUp2,
+    setYourStartingLineUp2
 }: {
     user: User;
     allPlayers: Player[];
     setAllPlayers: (players: Player[]) => void;
     yourTeamPlayers: Player[];
     setYourTeamPlayers: (players: Player[]) => void;
+    yourTeamPlayers2: Player[];
+    setYourTeamPlayers2: (players: Player[]) => void;
     yourStartingLineUp: Player[];
     setYourStartingLineUp: (players: Player[]) => void;
+    yourStartingLineUp2: Player[];
+    setYourStartingLineUp2: (players: Player[]) => void;
 }): JSX.Element {
     function handleOnDropTeam(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
@@ -40,6 +47,23 @@ export function PlayScene({
         }
     }
 
+    function handleOnDropTeam2(e: React.DragEvent) {
+        const widgetType = e.dataTransfer.getData("widgetType") as string;
+
+        // find dropped player object based on name
+        const oldPlayer = allPlayers.find(
+            (player) => player.name === widgetType
+        ) as Player;
+
+        // make a new copy of the player (might not be neccessary?)
+        const newPlayer = { ...oldPlayer };
+
+        // add the player to the list
+        if (newPlayer !== undefined) {
+            setYourTeamPlayers2([...yourTeamPlayers2, newPlayer]);
+        }
+    }
+
     function handleOnDropStartingLineup(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
@@ -54,6 +78,23 @@ export function PlayScene({
         // add the player to the list
         if (newPlayer !== undefined) {
             setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
+        }
+    }
+
+    function handleOnDropStartingLineup2(e: React.DragEvent) {
+        const widgetType = e.dataTransfer.getData("widgetType") as string;
+
+        // find dropped player object based on name
+        const oldPlayer = allPlayers.find(
+            (player) => player.name === widgetType
+        ) as Player;
+
+        // make a new copy of the player (might not be neccessary?)
+        const newPlayer = { ...oldPlayer };
+
+        // add the player to the list
+        if (newPlayer !== undefined) {
+            setYourStartingLineUp2([...yourStartingLineUp2, newPlayer]);
         }
     }
 
@@ -81,7 +122,7 @@ export function PlayScene({
                         <Col>
                             <div
                                 className="BoxedList"
-                                onDrop={handleOnDropTeam}
+                                onDrop={handleOnDropStartingLineup}
                                 onDragOver={handleDragOver}
                             >
                                 <Lineup
@@ -96,28 +137,24 @@ export function PlayScene({
                         <Col>
                             <div
                                 className="BoxedList"
-                                onDrop={handleOnDropStartingLineup}
+                                onDrop={handleOnDropStartingLineup2}
                                 onDragOver={handleDragOver}
                             >
                                 <Lineup
                                     title="Team 2 Lineup"
-                                    players={yourStartingLineUp}
-                                    setPlayers={setYourStartingLineUp}
+                                    players={yourStartingLineUp2}
+                                    setPlayers={setYourStartingLineUp2}
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
                             </div>
                         </Col>
                         <Col>
-                            <div
-                                className="BoxedList"
-                                onDrop={handleOnDropStartingLineup}
-                                onDragOver={handleDragOver}
-                            >
+                            <div className="BoxedList">
                                 <Lineup
                                     title="Team 2 Players"
-                                    players={yourTeamPlayers}
-                                    setPlayers={setYourTeamPlayers}
+                                    players={yourTeamPlayers2}
+                                    setPlayers={setYourStartingLineUp2}
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>

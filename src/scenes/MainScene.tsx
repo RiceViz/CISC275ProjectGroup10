@@ -6,10 +6,8 @@ import {
     checkIdenticalURLs,
     checkIdenticalPlayers
 } from "../interfaces/player";
-import { PlayerCreator } from "../components/PlayerCreator";
 import { Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
-import { Team } from "../interfaces/team";
 
 export function MainScene({
     user,
@@ -17,16 +15,24 @@ export function MainScene({
     setAllPlayers,
     yourTeamPlayers,
     setYourTeamPlayers,
+    yourTeamPlayers2,
+    setYourTeamPlayers2,
     yourStartingLineUp,
-    setYourStartingLineUp
+    setYourStartingLineUp,
+    yourStartingLineUp2,
+    setYourStartingLineUp2
 }: {
     user: User;
     allPlayers: Player[];
     setAllPlayers: (players: Player[]) => void;
     yourTeamPlayers: Player[];
     setYourTeamPlayers: (players: Player[]) => void;
+    yourTeamPlayers2: Player[];
+    setYourTeamPlayers2: (players: Player[]) => void;
     yourStartingLineUp: Player[];
     setYourStartingLineUp: (players: Player[]) => void;
+    yourStartingLineUp2: Player[];
+    setYourStartingLineUp2: (players: Player[]) => void;
 }): JSX.Element {
     function handleOnDropTeam(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
@@ -69,7 +75,7 @@ export function MainScene({
         }
     }
 
-    function handleOnDropStartingLineup(e: React.DragEvent) {
+    function handleOnDropTeam2(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
         // find dropped player object based on name
@@ -80,7 +86,34 @@ export function MainScene({
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
 
-        setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
+        if (
+            newPlayer.imageURL ===
+            process.env.PUBLIC_URL + "/blankprofilepicture.png"
+        ) {
+            if (
+                !yourTeamPlayers2.some((player: Player) =>
+                    checkIdenticalPlayers(player, newPlayer)
+                )
+            ) {
+                setYourTeamPlayers2([...yourTeamPlayers2, newPlayer]);
+                return;
+            } else {
+                return;
+            }
+        }
+
+        const indexOfPlayer = yourTeamPlayers2.findIndex((player: Player) =>
+            checkIdenticalURLs(player, newPlayer)
+        );
+
+        // add the player to the list
+        if (indexOfPlayer === -1) {
+            setYourTeamPlayers2([...yourTeamPlayers2, newPlayer]);
+        } else {
+            const newteam = [...yourTeamPlayers2];
+            newteam.splice(indexOfPlayer, 1, newPlayer);
+            setYourTeamPlayers2(newteam);
+        }
     }
 
     function handleDragOver(e: React.DragEvent) {
@@ -106,7 +139,7 @@ export function MainScene({
                             onDragOver={handleDragOver}
                         >
                             <Lineup
-                                title="Your Team"
+                                title="Team 1 Players"
                                 players={yourTeamPlayers}
                                 setPlayers={setYourTeamPlayers}
                                 user={user}
@@ -115,13 +148,13 @@ export function MainScene({
                         </div>
 
                         <div
-                            onDrop={handleOnDropStartingLineup}
+                            onDrop={handleOnDropTeam2}
                             onDragOver={handleDragOver}
                         >
                             <Lineup
-                                title="Starting Lineup"
-                                players={yourStartingLineUp}
-                                setPlayers={setYourStartingLineUp}
+                                title="Team 2 Players"
+                                players={yourTeamPlayers2}
+                                setPlayers={setYourTeamPlayers2}
                                 user={user}
                                 playersEditable={false}
                             ></Lineup>
