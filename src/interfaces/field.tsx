@@ -1,8 +1,6 @@
-import { Team } from "./team";
 import { Player } from "./player";
 
 export interface field {
-    team: Team;
     centralForward: Player;
     leftWinger: Player;
     rightWinger: Player;

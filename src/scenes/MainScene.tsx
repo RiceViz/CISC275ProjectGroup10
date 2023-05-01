@@ -9,12 +9,25 @@ import {
 import { PlayerCreator } from "../components/PlayerCreator";
 import { Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
+import { Team } from "../interfaces/team";
 
-export function MainScene({ user }: { user: User }): JSX.Element {
-    const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
-    const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
-    const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
-
+export function MainScene({
+    user,
+    allPlayers,
+    setAllPlayers,
+    yourTeamPlayers,
+    setYourTeamPlayers,
+    yourStartingLineUp,
+    setYourStartingLineUp
+}: {
+    user: User;
+    allPlayers: Player[];
+    setAllPlayers: (players: Player[]) => void;
+    yourTeamPlayers: Player[];
+    setYourTeamPlayers: (players: Player[]) => void;
+    yourStartingLineUp: Player[];
+    setYourStartingLineUp: (players: Player[]) => void;
+}): JSX.Element {
     function handleOnDropTeam(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
