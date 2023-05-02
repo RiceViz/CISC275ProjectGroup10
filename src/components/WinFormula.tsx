@@ -1,26 +1,23 @@
-import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+//import React, { useState } from "react";
+//import { Button, Modal } from "react-bootstrap";
 import { Player } from "../interfaces/player";
 
 /*
  * Formula used to see which team wins the simulated game after the draft
  * @returns string: a message to the Team's coach that they won the game
  */
-export function WinFormula({
-    yourStartingLineUp,
-    yourStartingLineUp2
-}: {
-    yourStartingLineUp: Player[];
-    yourStartingLineUp2: Player[];
-}): JSX.Element {
-    const [show, setShow] = useState(true);
-    const handleClose = () => setShow(false);
+export function WinFormula(
+    yourTeamPlayers: Player[],
+    yourTeamPlayers2: Player[]
+): string {
+    //const [show, setShow] = useState(true);
+    //const handleClose = () => setShow(false);
     //the following 2 variables calculate total team rating
-    const t1Rating: number = yourStartingLineUp.reduce(
+    const t1Rating: number = yourTeamPlayers.reduce(
         (total, player) => total + player.rating,
         0
     );
-    const t2Rating: number = yourStartingLineUp2.reduce(
+    const t2Rating: number = yourTeamPlayers2.reduce(
         (total, player) => total + player.rating,
         0
     );
@@ -32,8 +29,13 @@ export function WinFormula({
     //adds randomness and weighs it based on odds above:
     const rand: number = Math.random();
     const weightedRand = rand * (t1Odds + t2Odds) - t2Odds;
+    if (weightedRand < t2Odds) {
+        return "Congratulations, Team 2 wins!";
+    } else {
+        return "Congratulations, Team 1 wins!";
+    }
 
-    const modal = (
+    /*const modal = (
         <Modal show={show} onHide={handleClose} backdrop="static">
             <Modal.Header closeButton>
                 <Modal.Title>Winner</Modal.Title>
@@ -55,5 +57,5 @@ export function WinFormula({
         </Modal>
     );
 
-    return <div>{modal}</div>;
+    return <div>{modal}</div>;*/
 } //end of winformula function
