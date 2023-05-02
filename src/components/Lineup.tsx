@@ -45,6 +45,14 @@ export function Lineup({
     function handleDelete(e: React.DragEvent) {
         const name = e.dataTransfer.getData("name");
         const lineup = e.dataTransfer.getData("lineup");
+        if (lineup === title) {
+            const p_index = players.findIndex((player) => player.name === name);
+            const filtered = players.filter(
+                (player, index) => index != p_index
+            );
+            console.log(filtered);
+            setPlayers(filtered);
+        }
     }
 
     return (

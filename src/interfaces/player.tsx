@@ -6,7 +6,7 @@ export interface Player {
     rating: number;
     imageURL: string;
     editMode: boolean;
-    lineup: "All Players" | "Team Manager" | "Starting";
+    lineup: "All Players" | "Your Team" | "Starting";
 }
 /**
  * Converts a player's position to an abbreviation

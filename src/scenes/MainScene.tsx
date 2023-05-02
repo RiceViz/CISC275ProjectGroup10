@@ -25,7 +25,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
 
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
-        newPlayer.lineup = "Team Manager";
+        newPlayer.lineup = "Your Team";
 
         if (
             newPlayer.imageURL ===
