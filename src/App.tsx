@@ -102,13 +102,15 @@ function App(): JSX.Element {
         []
     );
 
-    function simulateGame(): JSX.Element {
-        return (
-            <WinFormula
-                yourStartingLineUp={[]}
-                yourStartingLineUp2={[]}
-            ></WinFormula>
-        );
+    function simulateGame() {
+        /*return (
+            <WinFormula yourTeamPlayers={[]} yourTeamPlayers2={[]}></WinFormula>
+        );*/
+        const result = WinFormula(yourStartingLineUp, yourStartingLineUp2);
+        /*const result = (
+            <WinFormula yourTeamPlayers={[]} yourTeamPlayers2={[]}></WinFormula>
+        );*/
+        alert(result);
     }
 
     return (
