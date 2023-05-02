@@ -1,3 +1,4 @@
+/* eslint-disable brace-style */
 //import React, { useState } from "react";
 //import { Button, Modal } from "react-bootstrap";
 import { Player } from "../interfaces/player";
@@ -7,17 +8,17 @@ import { Player } from "../interfaces/player";
  * @returns string: a message to the Team's coach that they won the game
  */
 export function WinFormula(
-    yourTeamPlayers: Player[],
-    yourTeamPlayers2: Player[]
+    yourStartingLineUp: Player[],
+    yourStartingLineUp2: Player[]
 ): string {
     //const [show, setShow] = useState(true);
     //const handleClose = () => setShow(false);
     //the following 2 variables calculate total team rating
-    const t1Rating: number = yourTeamPlayers.reduce(
+    const t1Rating: number = yourStartingLineUp.reduce(
         (total, player) => total + player.rating,
         0
     );
-    const t2Rating: number = yourTeamPlayers2.reduce(
+    const t2Rating: number = yourStartingLineUp2.reduce(
         (total, player) => total + player.rating,
         0
     );
@@ -25,14 +26,18 @@ export function WinFormula(
     const totRating: number = t1Rating + t2Rating;
     //these variables give each team their odds, to be put into random func.
     const t1Odds: number = t1Rating / totRating; //.70
-    //const t2Odds: number = t2Rating / totRating; //.30
+    //const t2Odds = 1 - t1Odds, not needed
     //adds randomness and weighs it based on odds above:
     const rand: number = Math.random(); //.89
-    //const weightedRand = rand - t2Odds; // =.59
-    if (rand <= t1Odds) {
-        return "Congratulations, Team 1 wins!";
-    } else {
-        return "Congratulations, Team 2 wins!";
+    if (yourStartingLineUp.length === 11 && yourStartingLineUp2.length === 11) {
+        if (rand <= t1Odds) {
+            return "Congratulations, Team 1 wins!";
+        } else {
+            return "Congratulations, Team 2 wins!";
+        }
+    } //outer if to make sure starting lineups are proper size
+    else {
+        return "Please make sure both Teams have 11 players in their Lineup and try again.";
     }
 
     /*const modal = (
