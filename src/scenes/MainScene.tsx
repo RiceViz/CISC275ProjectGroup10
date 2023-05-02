@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { useState } from "react";
+import React from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
 import {
@@ -17,11 +17,7 @@ export function MainScene({
     yourTeamPlayers,
     setYourTeamPlayers,
     yourTeamPlayers2,
-    setYourTeamPlayers2,
-    yourStartingLineUp,
-    setYourStartingLineUp,
-    yourStartingLineUp2,
-    setYourStartingLineUp2
+    setYourTeamPlayers2
 }: {
     user: User;
     allPlayers: Player[];
@@ -35,7 +31,6 @@ export function MainScene({
     yourStartingLineUp2: Player[];
     setYourStartingLineUp2: (players: Player[]) => void;
 }): JSX.Element {
-    const [noTeam, setNoTeam] = useState<Player[]>([]);
     function handleOnDropTeam(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 

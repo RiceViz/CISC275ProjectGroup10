@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
@@ -8,11 +8,9 @@ import { User } from "../interfaces/user";
 export function PlayScene({
     user,
     allPlayers,
-    setAllPlayers,
     yourTeamPlayers,
     setYourTeamPlayers,
     yourTeamPlayers2,
-    setYourTeamPlayers2,
     yourStartingLineUp,
     setYourStartingLineUp,
     yourStartingLineUp2,
@@ -30,40 +28,6 @@ export function PlayScene({
     yourStartingLineUp2: Player[];
     setYourStartingLineUp2: (players: Player[]) => void;
 }): JSX.Element {
-    function handleOnDropTeam(e: React.DragEvent) {
-        const widgetType = e.dataTransfer.getData("widgetType") as string;
-
-        // find dropped player object based on name
-        const oldPlayer = allPlayers.find(
-            (player) => player.name === widgetType
-        ) as Player;
-
-        // make a new copy of the player (might not be neccessary?)
-        const newPlayer = { ...oldPlayer };
-
-        // add the player to the list
-        if (newPlayer !== undefined) {
-            setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
-        }
-    }
-
-    function handleOnDropTeam2(e: React.DragEvent) {
-        const widgetType = e.dataTransfer.getData("widgetType") as string;
-
-        // find dropped player object based on name
-        const oldPlayer = allPlayers.find(
-            (player) => player.name === widgetType
-        ) as Player;
-
-        // make a new copy of the player (might not be neccessary?)
-        const newPlayer = { ...oldPlayer };
-
-        // add the player to the list
-        if (newPlayer !== undefined) {
-            setYourTeamPlayers2([...yourTeamPlayers2, newPlayer]);
-        }
-    }
-
     function handleOnDropStartingLineup(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
