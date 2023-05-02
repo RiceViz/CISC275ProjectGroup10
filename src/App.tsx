@@ -134,7 +134,7 @@ function App(): JSX.Element {
                         </div>
                     </div>
                     <h1 className="text-4xl text-center dark:text-white">
-                        Soccer Football Manager
+                        Soccer Fantasy Manager
                     </h1>
                 </div>
             </Header>
