@@ -77,7 +77,9 @@ export function PlayScene({
 
         // add the player to the list
         if (newPlayer !== undefined) {
-            setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
+            if (yourStartingLineUp.length < 11) {
+                setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
+            }
         }
     }
 
@@ -94,7 +96,9 @@ export function PlayScene({
 
         // add the player to the list
         if (newPlayer !== undefined) {
-            setYourStartingLineUp2([...yourStartingLineUp2, newPlayer]);
+            if (yourStartingLineUp2.length < 11) {
+                setYourStartingLineUp2([...yourStartingLineUp2, newPlayer]);
+            }
         }
     }
 
@@ -108,8 +112,7 @@ export function PlayScene({
                 <Container>
                     <Row>
                         <Col>
-                            <div className="BoxedList">
-                                Team 1 Players
+                            <div>
                                 <Lineup
                                     title="Team 1 Players"
                                     players={yourTeamPlayers}
@@ -121,7 +124,6 @@ export function PlayScene({
                         </Col>
                         <Col>
                             <div
-                                className="BoxedList"
                                 onDrop={handleOnDropStartingLineup}
                                 onDragOver={handleDragOver}
                             >
@@ -135,14 +137,10 @@ export function PlayScene({
                             </div>
                         </Col>
                         <Col>
-                            <div
-                                className="BoxedList"
-                                onDrop={handleOnDropStartingLineup2}
-                                onDragOver={handleDragOver}
-                            >
+                            <div>
                                 <Lineup
-                                    title="Team 2 Lineup"
-                                    players={yourStartingLineUp2}
+                                    title="Team 2 Players"
+                                    players={yourTeamPlayers2}
                                     setPlayers={setYourStartingLineUp2}
                                     user={user}
                                     playersEditable={false}
@@ -150,10 +148,13 @@ export function PlayScene({
                             </div>
                         </Col>
                         <Col>
-                            <div className="BoxedList">
+                            <div
+                                onDrop={handleOnDropStartingLineup2}
+                                onDragOver={handleDragOver}
+                            >
                                 <Lineup
-                                    title="Team 2 Players"
-                                    players={yourTeamPlayers2}
+                                    title="Team 2 Lineup"
+                                    players={yourStartingLineUp2}
                                     setPlayers={setYourStartingLineUp2}
                                     user={user}
                                     playersEditable={false}
