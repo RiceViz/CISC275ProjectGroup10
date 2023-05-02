@@ -26,15 +26,15 @@ export function Lineup({
     switch (title) {
         case "All Players":
             className =
-                "m-2 p-2 justify-self-center bg-red-400/70 dark:text-white dark:bg-red-950/80 min-w-[364px] w-fit rounded-lg";
+                "m-2 p-2 justify-self-center bg-lime-400/70 dark:text-white dark:bg-lime-950/80 min-w-[364px] w-fit rounded-lg";
             break;
-        case "Your Team":
+        case "Team 1 Players" || "Team 1 Lineup":
             className =
                 "m-2 p-2 justify-self-center bg-sky-400/70 dark:text-white dark:bg-sky-950/80 min-w-[364px] w-fit rounded-lg";
             break;
-        case "Starting Lineup":
+        case "Team 2 Players" || "Team 2 Lineup":
             className =
-                "m-2 p-2 justify-self-center bg-lime-400/70 dark:text-white dark:bg-lime-950/80 min-w-[364px] w-fit rounded-lg";
+                "m-2 p-2 justify-self-center bg-red-400/70 dark:text-white dark:bg-red-950/80 min-w-[364px] w-fit rounded-lg";
             break;
         default:
             className =
