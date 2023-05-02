@@ -24,15 +24,15 @@ export function WinFormula(
     //this variable calculates total rating in order to add randomness
     const totRating: number = t1Rating + t2Rating;
     //these variables give each team their odds, to be put into random func.
-    const t1Odds: number = t1Rating / totRating;
-    const t2Odds: number = t2Rating / totRating;
+    const t1Odds: number = t1Rating / totRating; //.70
+    //const t2Odds: number = t2Rating / totRating; //.30
     //adds randomness and weighs it based on odds above:
-    const rand: number = Math.random();
-    const weightedRand = rand * (t1Odds + t2Odds) - t2Odds;
-    if (weightedRand < t2Odds) {
-        return "Congratulations, Team 2 wins!";
-    } else {
+    const rand: number = Math.random(); //.89
+    //const weightedRand = rand - t2Odds; // =.59
+    if (rand <= t1Odds) {
         return "Congratulations, Team 1 wins!";
+    } else {
+        return "Congratulations, Team 2 wins!";
     }
 
     /*const modal = (
