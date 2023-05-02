@@ -112,7 +112,7 @@ export function PlayScene({
                 <Container>
                     <Row>
                         <Col>
-                            <div>
+                            <div className="flex justify-center">
                                 <Lineup
                                     title="Team 1 Players"
                                     players={yourTeamPlayers}
@@ -124,6 +124,7 @@ export function PlayScene({
                         </Col>
                         <Col>
                             <div
+                                className="flex justify-center"
                                 onDrop={handleOnDropStartingLineup}
                                 onDragOver={handleDragOver}
                             >
@@ -137,7 +138,7 @@ export function PlayScene({
                             </div>
                         </Col>
                         <Col>
-                            <div>
+                            <div className="flex justify-center">
                                 <Lineup
                                     title="Team 2 Players"
                                     players={yourTeamPlayers2}
@@ -149,6 +150,7 @@ export function PlayScene({
                         </Col>
                         <Col>
                             <div
+                                className="flex justify-center"
                                 onDrop={handleOnDropStartingLineup2}
                                 onDragOver={handleDragOver}
                             >

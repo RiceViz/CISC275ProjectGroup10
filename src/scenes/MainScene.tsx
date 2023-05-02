@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useState } from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
@@ -34,6 +35,7 @@ export function MainScene({
     yourStartingLineUp2: Player[];
     setYourStartingLineUp2: (players: Player[]) => void;
 }): JSX.Element {
+    const [noTeam, setNoTeam] = useState<Player[]>([]);
     function handleOnDropTeam(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
@@ -138,6 +140,8 @@ export function MainScene({
                             onDrop={handleOnDropTeam}
                             onDragOver={handleDragOver}
                         >
+                            {user === "League Manager" ||
+                                user === "Team Manager"}
                             <Lineup
                                 title="Team 1 Players"
                                 players={yourTeamPlayers}

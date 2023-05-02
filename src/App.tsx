@@ -10,6 +10,7 @@ import { PlayScene } from "./scenes/PlayScene";
 import { Button } from "react-bootstrap";
 import { Player } from "./interfaces/player";
 import { PlayerCreator } from "./components/PlayerCreator";
+import { WinFormula } from "./components/WinFormula";
 
 function RenderCurrentScene({
     scene,
@@ -101,6 +102,15 @@ function App(): JSX.Element {
         []
     );
 
+    function simulateGame(): JSX.Element {
+        return (
+            <WinFormula
+                yourStartingLineUp={[]}
+                yourStartingLineUp2={[]}
+            ></WinFormula>
+        );
+    }
+
     return (
         <div
             className="App"
@@ -147,7 +157,7 @@ function App(): JSX.Element {
                 {scene === "MAIN" ? null : (
                     <Button
                         className="text-2xl text-center dark:text-white"
-                        // onClick={simulateGame}
+                        onClick={simulateGame}
                     >
                         Simulate Game
                     </Button>
