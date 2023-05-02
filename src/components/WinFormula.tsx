@@ -29,15 +29,19 @@ export function WinFormula(
     //const t2Odds = 1 - t1Odds, not needed
     //adds randomness and weighs it based on odds above:
     const rand: number = Math.random(); //.89
-    if (yourStartingLineUp.length === 11 && yourStartingLineUp2.length === 11) {
-        if (rand <= t1Odds) {
-            return "Congratulations, Team 1 wins!";
+    if (yourStartingLineUp.length === 11) {
+        if (yourStartingLineUp2.length === 11) {
+            if (rand <= t1Odds) {
+                return "Congratulations, Team 1 wins!";
+            } else {
+                return "Congratulations, Team 2 wins!";
+            }
         } else {
-            return "Congratulations, Team 2 wins!";
-        }
-    } //outer if to make sure starting lineups are proper size
+            return "Please make sure Team2 has 11 players in their Lineup and try again.";
+        } //checks if startinglineup2 is proper size
+    } //outer if to make sure starting lineup1 is proper size
     else {
-        return "Please make sure both Teams have 11 players in their Lineup and try again.";
+        return "Please make sure Team1 has 11 players in their Lineup and try again.";
     }
 
     /*const modal = (

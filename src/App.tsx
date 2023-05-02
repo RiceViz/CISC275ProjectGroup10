@@ -106,7 +106,7 @@ function App(): JSX.Element {
         /*return (
             <WinFormula yourTeamPlayers={[]} yourTeamPlayers2={[]}></WinFormula>
         );*/
-        const result = WinFormula(yourStartingLineUp, yourStartingLineUp);
+        const result = WinFormula(yourStartingLineUp, yourStartingLineUp2);
         /*const result = (
             <WinFormula yourTeamPlayers={[]} yourTeamPlayers2={[]}></WinFormula>
         );*/
