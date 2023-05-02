@@ -3,6 +3,7 @@ import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 export default function ThemeToggle(props: any) {
     return (
         <button
+            className="headerbutton"
             onClick={() => {
                 var theme =
                     localStorage.getItem("theme") === "dark" ? "dark" : "light";

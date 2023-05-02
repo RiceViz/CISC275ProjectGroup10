@@ -14,7 +14,7 @@ const player1: Player = {
 
 describe("PlayerCard Component tests", () => {
     test("There is a card", () => {
-        render(<PlayerCard player={player1}></PlayerCard>);
+        render(<PlayerCard player={player1} size={"18rem"}></PlayerCard>);
         expect(screen.getByRole("card")).toBeInTheDocument();
     });
 });

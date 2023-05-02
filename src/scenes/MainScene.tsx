@@ -1,25 +1,36 @@
-import React, { useState } from "react";
+/* eslint-disable indent */
+import React from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
-import { Player, checkIdenticalURLs } from "../interfaces/player";
-import { PlayerCreator } from "../components/PlayerCreator";
-import { Row, Col, Container } from "react-bootstrap";
+import {
+    Player,
+    checkIdenticalURLs,
+    checkIdenticalPlayers
+} from "../interfaces/player";
+import { Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
-interface Item {
-    id: number;
-    text: string;
-}
-
-export function MainScene({ user }: { user: User }): JSX.Element {
-    const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
-    const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
-    const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
-
-    const [items, setItems] = useState<Item[]>([]);
-    const [draggingItem, setDraggingItem] = useState<Item | null>(null);
-    const [inputValue, setInputValue] = useState<string>("");
-
+export function MainScene({
+    user,
+    allPlayers,
+    setAllPlayers,
+    yourTeamPlayers,
+    setYourTeamPlayers,
+    yourTeamPlayers2,
+    setYourTeamPlayers2
+}: {
+    user: User;
+    allPlayers: Player[];
+    setAllPlayers: (players: Player[]) => void;
+    yourTeamPlayers: Player[];
+    setYourTeamPlayers: (players: Player[]) => void;
+    yourTeamPlayers2: Player[];
+    setYourTeamPlayers2: (players: Player[]) => void;
+    yourStartingLineUp: Player[];
+    setYourStartingLineUp: (players: Player[]) => void;
+    yourStartingLineUp2: Player[];
+    setYourStartingLineUp2: (players: Player[]) => void;
+}): JSX.Element {
     function handleOnDropTeam(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
@@ -30,6 +41,22 @@ export function MainScene({ user }: { user: User }): JSX.Element {
 
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
+
+        if (
+            newPlayer.imageURL ===
+            process.env.PUBLIC_URL + "/blankprofilepicture.png"
+        ) {
+            if (
+                !yourTeamPlayers.some((player: Player) =>
+                    checkIdenticalPlayers(player, newPlayer)
+                )
+            ) {
+                setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+                return;
+            } else {
+                return;
+            }
+        }
 
         const indexOfPlayer = yourTeamPlayers.findIndex((player: Player) =>
             checkIdenticalURLs(player, newPlayer)
@@ -45,7 +72,7 @@ export function MainScene({ user }: { user: User }): JSX.Element {
         }
     }
 
-    function handleOnDropStartingLineup(e: React.DragEvent) {
+    function handleOnDropTeam2(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
         // find dropped player object based on name
@@ -56,133 +83,82 @@ export function MainScene({ user }: { user: User }): JSX.Element {
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
 
-        setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
+        if (
+            newPlayer.imageURL ===
+            process.env.PUBLIC_URL + "/blankprofilepicture.png"
+        ) {
+            if (
+                !yourTeamPlayers2.some((player: Player) =>
+                    checkIdenticalPlayers(player, newPlayer)
+                )
+            ) {
+                setYourTeamPlayers2([...yourTeamPlayers2, newPlayer]);
+                return;
+            } else {
+                return;
+            }
+        }
+
+        const indexOfPlayer = yourTeamPlayers2.findIndex((player: Player) =>
+            checkIdenticalURLs(player, newPlayer)
+        );
+
+        // add the player to the list
+        if (indexOfPlayer === -1) {
+            setYourTeamPlayers2([...yourTeamPlayers2, newPlayer]);
+        } else {
+            const newteam = [...yourTeamPlayers2];
+            newteam.splice(indexOfPlayer, 1, newPlayer);
+            setYourTeamPlayers2(newteam);
+        }
     }
 
     function handleDragOver(e: React.DragEvent) {
         e.preventDefault();
     }
 
-    function handleDragStart(
-        event: React.DragEvent<HTMLLIElement>,
-        item: Item
-    ) {
-        setDraggingItem(item);
-    }
-
-    function handleDrop(event: React.DragEvent<HTMLInputElement>) {
-        event.preventDefault();
-        if (draggingItem) {
-            const newItems = items.filter(
-                (item) => item.id !== draggingItem.id
-            );
-            setItems([...newItems, draggingItem]);
-            setDraggingItem(null);
-        }
-    }
-
-    function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setInputValue(event.target.value);
-    }
-
-    function handleAddItem() {
-        const newItem: Item = {
-            id: Math.random(),
-            text: inputValue
-        };
-        setItems([...items, newItem]);
-        setInputValue("");
-    }
-
-    const handleRemoveItem = (id: number) => {
-        const newItems = items.filter((item) => item.id !== id);
-        setItems(newItems);
-    };
-
     return (
         <>
             <div>
                 <Container>
-                    <div>
-                        <input
-                            type="text"
-                            value={inputValue}
-                            onChange={handleInputChange}
-                            onDragOver={handleDragOver}
-                            onDrop={handleDrop}
-                        />
-                        <ul>
-                            {items.map((item) => (
-                                <li
-                                    key={item.id}
-                                    draggable={true}
-                                    onDragStart={(event) =>
-                                        handleDragStart(event, item)
-                                    }
-                                >
-                                    {item.text}
-                                    <div>
-                                        <button
-                                            type="button"
-                                            onClick={() =>
-                                                handleRemoveItem(item.id)
-                                            }
-                                        >
-                                            Remove Player
-                                        </button>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                        <button onClick={handleAddItem}>Add a Player</button>
-                    </div>
+                    <div className="flex justify-center">
+                        <Lineup
+                            title="All Players"
+                            players={allPlayers}
+                            setPlayers={setAllPlayers}
+                            user={user}
+                            playersEditable={true}
+                        ></Lineup>
 
-                    <Row>
-                        <Col className="p-2">
-                            All Players
-                            <div className="BoxedList">
-                                <Lineup
-                                    title=""
-                                    players={allPlayers}
-                                    setPlayers={setAllPlayers}
-                                    user={user}
-                                    playersEditable={true}
-                                ></Lineup>
-                            </div>
-                        </Col>
-                        <Col className="p-2">
-                            Your Team
-                            <div
-                                className="BoxedList"
-                                onDrop={handleOnDropTeam}
-                                onDragOver={handleDragOver}
-                            >
-                                <Lineup
-                                    title=""
-                                    players={yourTeamPlayers}
-                                    setPlayers={setYourTeamPlayers}
-                                    user={user}
-                                    playersEditable={false}
-                                ></Lineup>
-                            </div>
-                        </Col>
-                        <Col className="p-2">
-                            Starting Lineup
-                            <div
-                                className="BoxedList"
-                                onDrop={handleOnDropStartingLineup}
-                                onDragOver={handleDragOver}
-                            >
-                                <Lineup
-                                    title=""
-                                    players={yourStartingLineUp}
-                                    setPlayers={setYourStartingLineUp}
-                                    user={user}
-                                    playersEditable={false}
-                                ></Lineup>
-                            </div>
-                        </Col>
-                    </Row>
+                        <div
+                            className="justify-center"
+                            onDrop={handleOnDropTeam}
+                            onDragOver={handleDragOver}
+                        >
+                            {user === "League Manager" ||
+                                user === "Team Manager"}
+                            <Lineup
+                                title="Team 1 Players"
+                                players={yourTeamPlayers}
+                                setPlayers={setYourTeamPlayers}
+                                user={user}
+                                playersEditable={false}
+                            ></Lineup>
+                        </div>
+
+                        <div
+                            onDrop={handleOnDropTeam2}
+                            onDragOver={handleDragOver}
+                        >
+                            <Lineup
+                                title="Team 2 Players"
+                                players={yourTeamPlayers2}
+                                setPlayers={setYourTeamPlayers2}
+                                user={user}
+                                playersEditable={false}
+                            ></Lineup>
+                        </div>
+                    </div>
                 </Container>
                 <br></br>
             </div>
