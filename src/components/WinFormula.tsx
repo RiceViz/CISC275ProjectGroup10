@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import { Team } from "../interfaces/team";
 import { Player } from "../interfaces/player";
 
 /*
