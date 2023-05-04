@@ -72,17 +72,17 @@ FAIL src/App.test.tsx
                   [33mclass[39m=[32m"flex justify-between p-"[39m
                 [36m>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"headerbutton"[39m
+                    [33mclass[39m=[32m"pl-2 hover:scale-125 duration-300"[39m
                   [36m>[39m
                     [36m<svg[39m
                       [33mclass[39m=[32m"block dark:hidden"[39m
                       [33mfill[39m=[32m"currentColor"[39m
-                      [33mheight[39m=[32m"25"[39m
+                      [33mheight[39m=[32m"30"[39m
                       [33mid[39m=[32m"darkIcon"[39m
                       [33mstroke[39m=[32m"currentColor"[39m
                       [33mstroke-width[39m=[32m"0"[39m
                       [33mviewBox[39m=[32m"0 0 24 24"[39m
-                      [33mwidth[39m=[32m"25"[39m
+                      [33mwidth[39m=[32m"30"[39m
                       [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
                     [36m>[39m
                       [36m<path[39m
@@ -96,12 +96,12 @@ FAIL src/App.test.tsx
                     [36m<svg[39m
                       [33mclass[39m=[32m"hidden dark:block"[39m
                       [33mfill[39m=[32m"currentColor"[39m
-                      [33mheight[39m=[32m"25"[39m
+                      [33mheight[39m=[32m"30"[39m
                       [33mid[39m=[32m"lightIcon"[39m
                       [33mstroke[39m=[32m"currentColor"[39m
                       [33mstroke-width[39m=[32m"0"[39m
                       [33mviewBox[39m=[32m"0 0 24 24"[39m
-                      [33mwidth[39m=[32m"25"[39m
+                      [33mwidth[39m=[32m"30"[39m
                       [33mxmlns[39m=[32m"http://www.w3.org/2000/svg"[39m
                     [36m>[39m
                       [36m<path[39m
@@ -188,7 +188,7 @@ FAIL src/App.test.tsx
                         [36m<div[39m
                           [33mclass[39m=[32m"container"[39m
                         [36m>[39m
-                          [36m<div[39...
+                  ...
 
        5 | test("renders the course name somewhere", () => {
        6 |     render(<App />);
@@ -237,5 +237,5 @@ All files                |   29.71 |    25.77 |   31.08 |   29.85 |
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.68 s
+Time:        4.797 s
 Ran all test suites.
