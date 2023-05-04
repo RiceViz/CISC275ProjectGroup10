@@ -3,7 +3,7 @@ import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 export default function ThemeToggle(props: any) {
     return (
         <button
-            className="headerbutton"
+            className="pl-2 hover:scale-125 duration-300"
             onClick={() => {
                 var theme =
                     localStorage.getItem("theme") === "dark" ? "dark" : "light";
@@ -19,12 +19,12 @@ export default function ThemeToggle(props: any) {
             }}
         >
             <MdOutlineDarkMode
-                size={25}
+                size={30}
                 className="block dark:hidden"
                 id="darkIcon"
             ></MdOutlineDarkMode>
             <MdOutlineLightMode
-                size={25}
+                size={30}
                 className="hidden dark:block"
                 id="lightIcon"
             ></MdOutlineLightMode>
