@@ -101,17 +101,41 @@ function App(): JSX.Element {
     const [yourStartingLineUp2, setYourStartingLineUp2] = useState<Player[]>(
         []
     );
+    const [team1Wins, setTeam1Wins] = useState(0);
+    const [team2Wins, setTeam2Wins] = useState(0);
 
     function simulateGame() {
-        /*return (
-            <WinFormula yourTeamPlayers={[]} yourTeamPlayers2={[]}></WinFormula>
-        );*/
-        const result = WinFormula(yourStartingLineUp, yourStartingLineUp2);
-        /*const result = (
-            <WinFormula yourTeamPlayers={[]} yourTeamPlayers2={[]}></WinFormula>
-        );*/
-        alert(result);
-    }
+        const result: number = WinFormula(
+            yourStartingLineUp,
+            yourStartingLineUp2
+        );
+        if (result === 1) {
+            //if team1 wins
+            setTeam1Wins((prev: number) => prev + 1);
+            alert(
+                // eslint-disable-next-line prettier/prettier
+                `Congratulations Team 1, you win! Your current win-loss record is ${
+                    team1Wins + 1
+                }-${team2Wins}`
+            );
+        } else {
+            if (result === 2) {
+                //if team 2 wins
+                setTeam2Wins((prev) => prev + 1);
+                alert(
+                    // eslint-disable-next-line prettier/prettier
+                    `Congratulations Team 2, you win! Your current win-loss record is ${
+                        team2Wins + 1
+                    }-${team1Wins}`
+                );
+            } else {
+                //if either team does not have exactly 11 players
+                alert(
+                    "Please ensure both teams have 11 Players in their lineups."
+                );
+            }
+        }
+    } //end of simulateGame (counts Ws and Ls)
 
     return (
         <div

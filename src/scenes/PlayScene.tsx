@@ -4,7 +4,6 @@ import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
-
 export function PlayScene({
     user,
     allPlayers,

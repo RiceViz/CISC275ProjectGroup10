@@ -10,7 +10,7 @@ import { Player } from "../interfaces/player";
 export function WinFormula(
     yourStartingLineUp: Player[],
     yourStartingLineUp2: Player[]
-): string {
+): number {
     //const [show, setShow] = useState(true);
     //const handleClose = () => setShow(false);
     //the following 2 variables calculate total team rating
@@ -32,17 +32,18 @@ export function WinFormula(
     if (yourStartingLineUp.length === 11) {
         if (yourStartingLineUp2.length === 11) {
             if (rand <= t1Odds) {
-                return "Congratulations, Team 1 wins!";
+                return 1;
             } else {
-                return "Congratulations, Team 2 wins!";
+                return 2;
             }
         } else {
-            return "Please make sure Team2 has 11 players in their Lineup and try again.";
+            return 0;
         } //checks if startinglineup2 is proper size
     } //outer if to make sure starting lineup1 is proper size
     else {
-        return "Please make sure Team1 has 11 players in their Lineup and try again.";
+        0;
     }
+    return 0;
 
     /*const modal = (
         <Modal show={show} onHide={handleClose} backdrop="static">
