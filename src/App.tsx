@@ -111,7 +111,7 @@ function App(): JSX.Element {
         );
         if (result === 1) {
             //if team1 wins
-            setTeam1Wins((prev) => prev + 1);
+            setTeam1Wins((prev: number) => prev + 1);
             alert(
                 // eslint-disable-next-line prettier/prettier
                 `Congratulations Team 1, you win! Your current win-loss record is ${

@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
-import WinLossContext from "../components/WinLossContext";
-import WinLossRecord from "../components/WinLossRecord";
-
 export function PlayScene({
     user,
     allPlayers,
@@ -71,17 +68,11 @@ export function PlayScene({
     function handleDragOver(e: React.DragEvent) {
         e.preventDefault();
     }
-    const { team1Wins, team2Wins } = useContext(WinLossContext);
 
     return (
         <>
             <div>
                 <Container>
-                    <div>
-                        <h1>Play Scene</h1>
-                        <p>Team 1 Wins: {team1Wins}</p>
-                        <p>Team 2 Wins: {team2Wins}</p>
-                    </div>
                     <Row>
                         <Col>
                             <div className="flex justify-center">
