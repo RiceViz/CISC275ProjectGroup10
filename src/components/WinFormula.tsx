@@ -1,5 +1,5 @@
 /* eslint-disable brace-style */
-import React, { useState } from "react";
+//import React, { useState } from "react";
 //import { Button, Modal } from "react-bootstrap";
 import { Player } from "../interfaces/player";
 
@@ -41,8 +41,9 @@ export function WinFormula(
         } //checks if startinglineup2 is proper size
     } //outer if to make sure starting lineup1 is proper size
     else {
-        -1;
+        0;
     }
+    return 0;
 
     /*const modal = (
         <Modal show={show} onHide={handleClose} backdrop="static">

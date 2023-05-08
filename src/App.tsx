@@ -111,16 +111,22 @@ function App(): JSX.Element {
         );
         if (result === 1) {
             //if team1 wins
-            setTeam1Wins(team1Wins + 1);
+            setTeam1Wins((prev) => prev + 1);
             alert(
-                "Congratulations Team 1, you win! Your current win-loss record is ${team1Wins}-${team2Wins}"
+                // eslint-disable-next-line prettier/prettier
+                `Congratulations Team 1, you win! Your current win-loss record is ${
+                    team1Wins + 1
+                }-${team2Wins}`
             );
         } else {
             if (result === 2) {
                 //if team 2 wins
-                setTeam2Wins(team2Wins + 1);
+                setTeam2Wins((prev) => prev + 1);
                 alert(
-                    "Congratulations Team 2, you win! Your current win-loss record is ${team2Wins}-${team1Wins}"
+                    // eslint-disable-next-line prettier/prettier
+                    `Congratulations Team 2, you win! Your current win-loss record is ${
+                        team2Wins + 1
+                    }-${team1Wins}`
                 );
             } else {
                 //if either team does not have exactly 11 players
