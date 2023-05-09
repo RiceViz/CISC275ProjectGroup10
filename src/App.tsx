@@ -11,6 +11,7 @@ import { Button } from "react-bootstrap";
 import { Player } from "./interfaces/player";
 import { PlayerCreator } from "./components/PlayerCreator";
 import { WinFormula } from "./components/WinFormula";
+import { Team } from "./interfaces/team";
 
 function RenderCurrentScene({
     scene,
@@ -93,6 +94,9 @@ function RenderCurrentScene({
 
 function App(): JSX.Element {
     const [user, setUser] = useState<User>("League Manager");
+    const [team, setTeam] = useState<Team>(
+        new Team("League Manager", "League Manager", [], [], 0, 0)
+    );
     const [scene, setScene] = useState<string>("MAIN");
     const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
@@ -152,8 +156,8 @@ function App(): JSX.Element {
                         <div className="">
                             <UserDropDownButton
                                 //logo={<BiUserCircle size={25} />}
-                                user={user}
-                                setUser={setUser}
+                                team={team}
+                                setTeam={setTeam}
                             ></UserDropDownButton>
                         </div>
                     </div>

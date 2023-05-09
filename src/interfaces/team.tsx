@@ -1,23 +1,24 @@
 import { Player } from "./player";
+import { User } from "./user";
 
 export class Team {
-    teamManager: string;
-    coach: string;
+    name: string;
+    user: User = "League Manager" || "Team Manager" || "Coach";
     players: Player[];
     lineup: Player[];
     wins: number;
     losses: number;
 
     constructor(
-        teamManager: string,
-        coach: string,
+        name: string,
+        user: User,
         players: Player[],
         lineup: Player[],
         wins: number,
         losses: number
     ) {
-        this.teamManager = teamManager;
-        this.coach = coach;
+        this.name = name;
+        this.user = user;
         this.players = players;
         this.lineup = lineup;
         this.wins = wins;

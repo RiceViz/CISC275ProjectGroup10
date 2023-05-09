@@ -2,18 +2,36 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 import { User } from "../interfaces/user";
+import { Team } from "../interfaces/team";
 
 export function UserDropDownButton({
     logo,
-    user,
-    setUser
+    team,
+    setTeam
 }: {
     logo?: JSX.Element | null;
-    user: User;
-    setUser: (newUser: User) => void;
+    team: Team;
+    setTeam: (newTeam: Team) => void;
 }): JSX.Element {
-    const options: User[] = ["League Manager", "Team Manager", "Coach"];
-    const goBetween: string[] = ["League Manager", "Team Manager", "Coach"];
+    const leagueManger = new Team(
+        "League Manager",
+        "League Manager",
+        [],
+        [],
+        0,
+        0
+    );
+    const teamManager = new Team("Team Manager", "Team Manager", [], [], 0, 0);
+    const coach = new Team("Coach", "Coach", [], [], 0, 0);
+
+    const options: Team[] = [leagueManger, teamManager, coach];
+    const goBetween: string[] = [
+        leagueManger.name,
+        teamManager.name,
+        coach.name
+    ];
+    // const options: User[] = ["League Manager", "Team Manager", "Coach"];
+    // const goBetween: string[] = ["League Manager", "Team Manager", "Coach"];
 
     // if (logo) {
     //     return (
@@ -45,15 +63,15 @@ export function UserDropDownButton({
             {logo}
             <Form.Group className="max-w-fit p-2" controlId="choices">
                 <Form.Select
-                    value={user}
+                    value={team.name}
                     onChange={(e) => {
                         const ind = goBetween.indexOf(e.target.value);
-                        setUser(options[ind]);
+                        setTeam(options[ind]);
                     }}
                 >
-                    {options.map((userOption: User) => (
-                        <option key={userOption} value={userOption}>
-                            {userOption}
+                    {options.map((teamOption: Team) => (
+                        <option key={teamOption.name} value={teamOption.name}>
+                            {teamOption.name}
                         </option>
                     ))}
                 </Form.Select>
