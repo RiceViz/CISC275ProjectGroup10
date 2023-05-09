@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Player, abbrevToPos } from "../interfaces/player";
@@ -29,116 +29,152 @@ export function AddPlayerButton({
         setShow(true);
     };
 
+    let properUrl: string = player.imageURL;
+    const imageOnErrorHandler = (
+        event: React.SyntheticEvent<HTMLImageElement, Event>
+    ) => {
+        properUrl = getPath("");
+        event.currentTarget.src = properUrl;
+    };
+
+    const previewImg: ReactElement<HTMLImageElement> = (
+        <img
+            id="img-preview"
+            src={getPath(properUrl)}
+            onError={imageOnErrorHandler}
+            alt="Image Preview"
+        />
+    );
+
     const modal = (
         <Modal show={show} onHide={handleClose} backdrop="static">
             <Modal.Header closeButton>
                 <Modal.Title>Add Player</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {/* Input Name */}
-                <Form.Group controlId="set-name" as={Row}>
-                    <Form.Label column sm="auto">
-                        Name:
-                    </Form.Label>
-                    <Col>
-                        <Form.Control
-                            type="text"
-                            value={player.name}
-                            onChange={(e) =>
-                                setPlayer({
-                                    ...player,
-                                    name: e.target.value
-                                })
-                            }
-                        />
-                    </Col>
-                </Form.Group>
-
-                <br></br>
-
                 <Row>
-                    {/* Select Position */}
                     <Col>
-                        <Form.Group controlId="set-rating" as={Row}>
+                        {/* Input Name */}
+                        <Form.Group controlId="set-name" as={Row}>
                             <Form.Label column sm="auto">
-                                Rating:
+                                Name:
                             </Form.Label>
                             <Col>
                                 <Form.Control
-                                    type="number"
-                                    value={player.rating}
-                                    onChange={(
-                                        event: React.ChangeEvent<HTMLInputElement>
-                                    ) => {
-                                        const clamp = (
-                                            num: number,
-                                            min: number,
-                                            max: number
-                                        ) => Math.min(Math.max(num, min), max);
-                                        return setPlayer({
+                                    type="text"
+                                    value={player.name}
+                                    onChange={(e) =>
+                                        setPlayer({
                                             ...player,
-                                            rating: clamp(
-                                                parseInt(event.target.value),
-                                                0,
-                                                99
-                                            )
-                                        });
-                                    }}
+                                            name: e.target.value
+                                        })
+                                    }
+                                />
+                            </Col>
+                        </Form.Group>
+
+                        <br></br>
+
+                        <Row>
+                            {/* Select Position */}
+                            <Col>
+                                <Form.Group controlId="set-rating" as={Row}>
+                                    <Form.Label column sm="auto">
+                                        Rating:
+                                    </Form.Label>
+                                    <Col>
+                                        <Form.Control
+                                            type="number"
+                                            value={player.rating}
+                                            onChange={(
+                                                event: React.ChangeEvent<HTMLInputElement>
+                                            ) => {
+                                                const clamp = (
+                                                    num: number,
+                                                    min: number,
+                                                    max: number
+                                                ) =>
+                                                    Math.min(
+                                                        Math.max(num, min),
+                                                        max
+                                                    );
+                                                return setPlayer({
+                                                    ...player,
+                                                    rating: clamp(
+                                                        parseInt(
+                                                            event.target.value
+                                                        ),
+                                                        0,
+                                                        99
+                                                    )
+                                                });
+                                            }}
+                                        />
+                                    </Col>
+                                </Form.Group>
+                            </Col>
+
+                            <Col>
+                                <Form.Group
+                                    controlId="positionsDropdown"
+                                    as={Row}
+                                >
+                                    <Form.Label column sm="auto">
+                                        Pos:
+                                    </Form.Label>
+                                    <Col>
+                                        <Form.Select
+                                            value={posToAbbrev[player.position]}
+                                            onChange={(e) =>
+                                                setPlayer({
+                                                    ...player,
+                                                    position:
+                                                        abbrevToPos[
+                                                            e.target.value
+                                                        ]
+                                                })
+                                            }
+                                        >
+                                            {["F", "D", "G", "M"].map(
+                                                (o: string): JSX.Element => {
+                                                    return (
+                                                        <option
+                                                            key={o}
+                                                            value={o}
+                                                        >
+                                                            {o}
+                                                        </option>
+                                                    );
+                                                }
+                                            )}
+                                        </Form.Select>
+                                    </Col>
+                                </Form.Group>
+                            </Col>
+                        </Row>
+
+                        <br></br>
+
+                        <Form.Group controlId="set-name" as={Row}>
+                            <Form.Label column sm="auto">
+                                Image Url:
+                            </Form.Label>
+                            <Col>
+                                <Form.Control
+                                    type="text"
+                                    value={player.imageURL}
+                                    onChange={(e) =>
+                                        setPlayer({
+                                            ...player,
+                                            imageURL: e.target.value
+                                        })
+                                    }
                                 />
                             </Col>
                         </Form.Group>
                     </Col>
-
-                    <Col>
-                        <Form.Group controlId="positionsDropdown" as={Row}>
-                            <Form.Label column sm="auto">
-                                Pos:
-                            </Form.Label>
-                            <Col>
-                                <Form.Select
-                                    value={posToAbbrev[player.position]}
-                                    onChange={(e) =>
-                                        setPlayer({
-                                            ...player,
-                                            position:
-                                                abbrevToPos[e.target.value]
-                                        })
-                                    }
-                                >
-                                    {["F", "D", "G", "M"].map(
-                                        (o: string): JSX.Element => {
-                                            return (
-                                                <option key={o} value={o}>
-                                                    {o}
-                                                </option>
-                                            );
-                                        }
-                                    )}
-                                </Form.Select>
-                            </Col>
-                        </Form.Group>
-                    </Col>
+                    <Col sm={4}>{previewImg}</Col>
                 </Row>
-
-                <br></br>
-
-                <Form.Group controlId="set-name" as={Row}>
-                    <Form.Label column sm="auto">
-                        Image Url:
-                    </Form.Label>
-                    <Col>
-                        <Form.Control
-                            type="text"
-                            value={player.imageURL}
-                            onChange={(e) =>
-                                setPlayer({
-                                    ...player,
-                                    imageURL: e.target.value
-                                })
-                            }
-                        />
-                    </Col>
-                </Form.Group>
             </Modal.Body>
             <Modal.Footer>
                 <Button
@@ -154,7 +190,7 @@ export function AddPlayerButton({
                     onClick={() => {
                         const newPlayer: Player = {
                             ...player,
-                            imageURL: getPath(player.imageURL)
+                            imageURL: properUrl
                         };
                         addPlayer(newPlayer);
                         handleClose();
