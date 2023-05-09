@@ -211,16 +211,16 @@ FAIL src/App.test.tsx
 -------------------------|---------|----------|---------|---------|--------------------------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                    
 -------------------------|---------|----------|---------|---------|--------------------------------------
-All files                |   29.14 |    24.75 |   30.26 |   29.54 |                                      
+All files                |   30.26 |    25.74 |   29.87 |   30.66 |                                      
  src                     |      48 |    23.07 |   33.33 |   52.17 |                                      
   App.tsx                |      48 |    23.07 |   33.33 |   52.17 | 60-76,108-133,195                    
- src/components          |   37.03 |    33.87 |   39.21 |   37.31 |                                      
-  AddPlayerButton.tsx    |      40 |      100 |   27.27 |    42.1 | 28-29,48-101,134-160                 
+ src/components          |   38.57 |    35.48 |   38.46 |   38.84 |                                      
+  AddPlayerButton.tsx    |      44 |      100 |      25 |   45.83 | 28-29,36-37,67-129,167-196           
   Header.tsx             |   37.14 |     8.69 |   71.42 |   37.14 | 28-42,66-84                          
   Lineup.tsx             |      60 |    72.72 |      50 |      60 | 40-42,52,67-69                       
   PlayerBanner.tsx       |   37.03 |    64.28 |   27.77 |   37.03 | 31,38-90,118-125,143-151,175-184,212 
   PlayerCard.tsx         |       0 |      100 |       0 |       0 | 14                                   
-  PlayerCreator.tsx      |   71.42 |       50 |     100 |   71.42 | 6,8                                  
+  PlayerCreator.tsx      |   85.71 |       75 |     100 |   85.71 | 8                                    
   ThemeToggle.tsx        |   11.11 |        0 |      50 |   11.11 | 9-17                                 
   UserDropDownButton.tsx |   66.66 |      100 |   66.66 |   66.66 | 50-51                                
   WinFormula.tsx         |       0 |        0 |       0 |       0 | 17-46                                
@@ -237,5 +237,5 @@ All files                |   29.14 |    24.75 |   30.26 |   29.54 |
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        4.279 s
+Time:        4.538 s
 Ran all test suites.
