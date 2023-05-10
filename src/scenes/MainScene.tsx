@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
 import {
@@ -31,6 +31,8 @@ export function MainScene({
     yourStartingLineUp2: Player[];
     setYourStartingLineUp2: (players: Player[]) => void;
 }): JSX.Element {
+    const [isRemoveButtonHovered, setIsRemoveButtonHovered] = useState(false);
+
     function handleOnDropTeam(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
@@ -117,9 +119,54 @@ export function MainScene({
         e.preventDefault();
     }
 
+    // A removePlayer function to handle the removal of a player
+    function handleRemovePlayer(e: React.DragEvent) {
+        e.preventDefault();
+
+        // Set the hover state to true when the player is dragged over the remove button
+        setIsRemoveButtonHovered(true);
+
+        const widgetType = e.dataTransfer.getData("widgetType") as string;
+
+        // Find the dropped player object based on name
+        const playerToRemove = yourTeamPlayers.find(
+            (player) => player.name === widgetType
+        );
+
+        if (playerToRemove) {
+            // Remove the player from the team players' list
+            const updatedTeamPlayers = yourTeamPlayers.filter(
+                (player) => player !== playerToRemove
+            );
+            setYourTeamPlayers(updatedTeamPlayers);
+        }
+    }
+
+    function handleRemoveButtonMouseEnter() {
+        setIsRemoveButtonHovered(true);
+    }
+
+    function handleRemoveButtonMouseLeave() {
+        setIsRemoveButtonHovered(false);
+    }
+
     return (
         <>
             <div>
+                <div
+                    className={`removeButton ${
+                        isRemoveButtonHovered ? "removeButtonHover" : ""
+                    }`}
+                    onDrop={handleRemovePlayer}
+                    onDragOver={handleDragOver}
+                    onMouseEnter={handleRemoveButtonMouseEnter}
+                    onMouseLeave={handleRemoveButtonMouseLeave}
+                >
+                    <button className="removeButtonHover">
+                        Drag Player here to remove
+                    </button>
+                </div>
+
                 <Container>
                     <div className="flex justify-center">
                         <Lineup
@@ -137,6 +184,7 @@ export function MainScene({
                         >
                             {user === "League Manager" ||
                                 user === "Team Manager"}
+
                             <Lineup
                                 title="Team 1 Players"
                                 players={yourTeamPlayers}

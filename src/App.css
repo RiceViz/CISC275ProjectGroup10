@@ -38,3 +38,18 @@
         transform: rotate(360deg);
     }
 }
+
+
+
+.removeButton {
+    align-self: center;
+    background-color: red;
+    font-size: 18px;
+    height: 5%;
+    padding: 20px;
+    transition: all 0.5s;
+    cursor: pointer;
+    width: 1300px;
+    border-radius: 8px;
+    text-align: center;
+}
