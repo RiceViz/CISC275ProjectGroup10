@@ -7,24 +7,14 @@ import { User } from "../interfaces/user";
 
 export function FieldScene({
     user,
-    allPlayers,
-    setAllPlayers,
-    yourTeamPlayers,
-    setYourTeamPlayers,
-    yourTeamPlayers2,
-    setYourTeamPlayers2
+    teamPlayers,
+    startingLineup,
+    setStartingLineup
 }: {
     user: User;
-    allPlayers: Player[];
-    setAllPlayers: (players: Player[]) => void;
-    yourTeamPlayers: Player[];
-    setYourTeamPlayers: (players: Player[]) => void;
-    yourTeamPlayers2: Player[];
-    setYourTeamPlayers2: (players: Player[]) => void;
-    yourStartingLineUp: Player[];
-    setYourStartingLineUp: (players: Player[]) => void;
-    yourStartingLineUp2: Player[];
-    setYourStartingLineUp2: (players: Player[]) => void;
+    teamPlayers: Player[];
+    startingLineup: Player[];
+    setStartingLineup: (players: Player[]) => void;
 }): JSX.Element {
     return <div></div>;
 }
