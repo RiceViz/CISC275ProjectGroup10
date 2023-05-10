@@ -3,7 +3,7 @@ import { Player } from "../interfaces/player";
 
 export function getPath(imgName: string): string {
     if (imgName === "") {
-        return process.env.PUBLIC_URL + "/blankprofilepicture.png";
+        return process.env.PUBLIC_URL + "/images/blankprofilepicture.png";
     } else if (imgName.slice(0, 4) === "http") {
         return imgName;
     } else {
