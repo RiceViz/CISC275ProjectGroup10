@@ -8,7 +8,7 @@ import { Team, abbrevToUser, userToAbbrev } from "../interfaces/team";
 function makeNewTeam(): Team {
     return {
         name: "",
-        user: "TeamManager",
+        user: "LeagueManager",
         players: [],
         lineup: [],
         wins: 0,
@@ -119,7 +119,7 @@ export function AddUserButton({
                 className="flex justify-between p-"
                 onClick={handleShow}
             >
-                Add User & Team
+                Add User/Team
             </Button>
             {modal}
         </div>

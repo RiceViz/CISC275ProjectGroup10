@@ -1,8 +1,9 @@
 /* eslint-disable no-extra-parens */
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Team } from "../interfaces/team";
 import { AddUserButton } from "./AddUser";
+import { Player } from "../interfaces/player";
 
 export function UserDropDownButton({
     logo,
@@ -21,28 +22,8 @@ export function UserDropDownButton({
         wins: 0,
         losses: 0
     };
-    const teamManager: Team = {
-        name: "Team Manager",
-        user: "TeamManager",
-        players: [],
-        lineup: [],
-        wins: 0,
-        losses: 0
-    };
-    const coach: Team = {
-        name: "Coach",
-        user: "Coach",
-        players: [],
-        lineup: [],
-        wins: 0,
-        losses: 0
-    };
-    const options: Team[] = [leagueManger, teamManager, coach];
-    const goBetween: string[] = [
-        leagueManger.name,
-        teamManager.name,
-        coach.name
-    ];
+    const options: Team[] = [leagueManger];
+    const goBetween: string[] = [leagueManger.name];
 
     // const options: User[] = ["League Manager", "Team Manager", "Coach"];
     // const goBetween: string[] = ["League Manager", "Team Manager", "Coach"];
@@ -91,7 +72,7 @@ export function UserDropDownButton({
                 </Form.Select>
             </Form.Group>
             <AddUserButton
-                addTeam={(team: Team) => setTeam(team)}
+                addTeam={(team: Team) => options.push(team)}
             ></AddUserButton>
         </div>
     );
