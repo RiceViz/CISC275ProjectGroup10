@@ -116,7 +116,7 @@ export function AddPlayerButton({
         <div>
             <Button
                 variant="primary"
-                className="bg-blue-600/80 hover:bg-blue-600/100"
+                className="flex justify-between p-"
                 onClick={handleShow}
             >
                 Add User & Team

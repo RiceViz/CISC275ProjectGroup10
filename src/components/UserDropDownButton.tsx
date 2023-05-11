@@ -92,12 +92,7 @@ export function UserDropDownButton({
                     ))}
                 </Form.Select>
             </Form.Group>
-            <Button
-                className="text-2xl text-center dark:text-white"
-                onClick={() => newUser()}
-            >
-                Create User
-            </Button>
+            <Button onClick={() => newUser()}>Create User</Button>
         </div>
     );
 }
