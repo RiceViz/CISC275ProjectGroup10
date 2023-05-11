@@ -40,8 +40,7 @@
 }
 
 
-
-.removeButton {
+.removeButtonHover{
     align-self: center;
     background-color: red;
     font-size: 18px;
@@ -49,7 +48,21 @@
     padding: 20px;
     transition: all 0.5s;
     cursor: pointer;
-    width: 1300px;
+    width: 500px;
     border-radius: 8px;
     text-align: center;
+}
+.removeButton {
+    
+    align-content: center;
+    background-color: red;
+    font-size: 15;
+    height: 3%;
+    padding: 15px;
+    transition: all 0.5s;
+    cursor: pointer;
+    width: 1293px;
+    border-radius: 8px;
+    text-align: center;
+    
 }
