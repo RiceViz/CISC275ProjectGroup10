@@ -8,11 +8,11 @@ import { Player } from "../interfaces/player";
 export function UserDropDownButton({
     logo,
     team,
-    setTeam
+    setTeams
 }: {
     logo?: JSX.Element | null;
     team: Team;
-    setTeam: (newTeam: Team) => void;
+    setTeams: (newTeam: Team[]) => void;
 }): JSX.Element {
     const leagueManger: Team = {
         name: "League Manager",
@@ -22,6 +22,7 @@ export function UserDropDownButton({
         wins: 0,
         losses: 0
     };
+
     const options: Team[] = [leagueManger];
     const goBetween: string[] = [leagueManger.name];
 
@@ -61,7 +62,7 @@ export function UserDropDownButton({
                     value={team.name}
                     onChange={(e) => {
                         const ind = goBetween.indexOf(e.target.value);
-                        setTeam(options[ind]);
+                        setTeams([...options, options[ind]]);
                     }}
                 >
                     {options.map((teamOption: Team) => (
@@ -72,7 +73,7 @@ export function UserDropDownButton({
                 </Form.Select>
             </Form.Group>
             <AddUserButton
-                addTeam={(team: Team) => options.push(team)}
+                addTeam={(team: Team) => setTeams([...options, team])}
             ></AddUserButton>
         </div>
     );
