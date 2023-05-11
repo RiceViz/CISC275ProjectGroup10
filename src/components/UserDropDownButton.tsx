@@ -2,6 +2,7 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { Team } from "../interfaces/team";
+import { AddUserButton } from "./AddUser";
 
 export function UserDropDownButton({
     logo,
@@ -12,9 +13,6 @@ export function UserDropDownButton({
     team: Team;
     setTeam: (newTeam: Team) => void;
 }): JSX.Element {
-    function newUser() {
-        return null;
-    }
     const leagueManger: Team = {
         name: "League Manager",
         user: "LeagueManager",
@@ -92,7 +90,9 @@ export function UserDropDownButton({
                     ))}
                 </Form.Select>
             </Form.Group>
-            <Button onClick={() => newUser()}>Create User</Button>
+            <AddUserButton
+                addTeam={(team: Team) => setTeam(team)}
+            ></AddUserButton>
         </div>
     );
 }

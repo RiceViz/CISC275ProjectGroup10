@@ -16,7 +16,7 @@ function makeNewTeam(): Team {
     };
 }
 
-export function AddPlayerButton({
+export function AddUserButton({
     addTeam
 }: {
     addTeam: (team: Team) => void;
