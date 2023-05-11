@@ -128,7 +128,7 @@ export function MainScene({
 
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
-        // Find the dropped player object based on name
+        // Find the dropped player object based on name in first team
         const playerToRemove = yourTeamPlayers.find(
             (player) => player.name === widgetType
         );
@@ -139,6 +139,19 @@ export function MainScene({
                 (player) => player !== playerToRemove
             );
             setYourTeamPlayers(updatedTeamPlayers);
+        }
+
+        // Find the dropped player object based on name in the second team
+        const playerToRemove2 = yourTeamPlayers2.find(
+            (player) => player.name === widgetType
+        );
+
+        if (playerToRemove2) {
+            // Remove the player from the second team players' list
+            const updatedTeamPlayers2 = yourTeamPlayers2.filter(
+                (player) => player !== playerToRemove2
+            );
+            setYourTeamPlayers2(updatedTeamPlayers2);
         }
     }
 
