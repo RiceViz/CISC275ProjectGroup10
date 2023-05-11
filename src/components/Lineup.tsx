@@ -46,7 +46,7 @@ export function Lineup({
         <div className={className}>
             <span className="text-lg font-semibold">{title}</span>
 
-            {user === "League Manager" && playersEditable && (
+            {user === "LeagueManager" && playersEditable && (
                 <AddPlayerButton
                     addPlayer={(player: Player) =>
                         setPlayers([player, ...players])

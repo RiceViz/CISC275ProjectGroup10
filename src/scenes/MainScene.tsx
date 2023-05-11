@@ -135,8 +135,7 @@ export function MainScene({
                             onDrop={handleOnDropTeam}
                             onDragOver={handleDragOver}
                         >
-                            {user === "League Manager" ||
-                                user === "Team Manager"}
+                            {user === "LeagueManager" || user === "TeamManager"}
                             <Lineup
                                 title="Team 1 Players"
                                 players={yourTeamPlayers}

@@ -1,1 +1,1 @@
-export type User = "League Manager" | "Team Manager" | "Coach";
+export type User = "LeagueManager" | "TeamManager" | "Coach";

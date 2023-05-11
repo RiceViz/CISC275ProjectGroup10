@@ -93,10 +93,15 @@ function RenderCurrentScene({
 }
 
 function App(): JSX.Element {
-    const [user, setUser] = useState<User>("League Manager");
-    const [team, setTeam] = useState<Team>(
-        new Team("League Manager", "League Manager", [], [], 0, 0)
-    );
+    const [user, setUser] = useState<User>("LeagueManager");
+    const [team, setTeam] = useState<Team>({
+        name: "League Manager",
+        user: "LeagueManager",
+        players: [],
+        lineup: [],
+        wins: 0,
+        losses: 0
+    });
     const [scene, setScene] = useState<string>("MAIN");
     const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);

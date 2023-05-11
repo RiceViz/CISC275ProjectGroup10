@@ -1,27 +1,23 @@
 import { Player } from "./player";
 import { User } from "./user";
 
-export class Team {
+export interface Team {
     name: string;
-    user: User = "League Manager" || "Team Manager" || "Coach";
+    user: User;
     players: Player[];
     lineup: Player[];
     wins: number;
     losses: number;
-
-    constructor(
-        name: string,
-        user: User,
-        players: Player[],
-        lineup: Player[],
-        wins: number,
-        losses: number
-    ) {
-        this.name = name;
-        this.user = user;
-        this.players = players;
-        this.lineup = lineup;
-        this.wins = wins;
-        this.losses = losses;
-    }
 }
+
+export const userToAbbrev: Record<User, string> = {
+    LeagueManager: "LM",
+    TeamManager: "TM",
+    Coach: "C"
+};
+
+export const abbrevToUser: Record<string, User> = {
+    LM: "LeagueManager",
+    TM: "TeamManager",
+    C: "Coach"
+};

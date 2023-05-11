@@ -25,7 +25,7 @@ export function PlayerBanner({
     isPlayerEditable: boolean;
 }): JSX.Element {
     const editable: boolean =
-        player.editMode && isPlayerEditable && user === "League Manager";
+        player.editMode && isPlayerEditable && user === "LeagueManager";
 
     function handleOnDrag(e: React.DragEvent, widgetType: string) {
         e.dataTransfer.setData("widgetType", widgetType);
@@ -83,7 +83,7 @@ export function PlayerBanner({
                     </Col>
 
                     {/* Edit Switch */}
-                    {user === "League Manager" && isPlayerEditable && (
+                    {user === "LeagueManager" && isPlayerEditable && (
                         <RenderEditSwitch
                             editMode={player.editMode}
                             setEditMode={(isEditMode: boolean) =>
