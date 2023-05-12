@@ -182,12 +182,12 @@ export function MainScene({
                 </div>
                 <div>
                     <select
+                        className="filter-dropdown"
                         value={selectedPositionFilter}
                         onChange={(e) =>
                             setSelectedPositionFilter(e.target.value)
                         }
                     >
-                        Filter by:
                         <option value="">All Positions</option>
                         <option value="Forward">Forwards</option>
                         <option value="Midfielder">Midfielders</option>

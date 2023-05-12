@@ -40,29 +40,31 @@
 }
 
 
-.removeButtonHover{
-    align-self: center;
-    background-color: red;
-    font-size: 18px;
-    height: 5%;
-    padding: 20px;
-    transition: all 0.5s;
-    cursor: pointer;
-    width: 500px;
-    border-radius: 8px;
-    text-align: center;
-}
+
 .removeButton {
     
-    align-content: center;
+    position: relative;
+    margin-left: 1140px;
     background-color: red;
-    font-size: 15;
-    height: 3%;
+    font-size: 20px;
+    height: 4%;
     padding: 15px;
     transition: all 0.5s;
     cursor: pointer;
-    width: 1293px;
+    width: 200px;
     border-radius: 8px;
     text-align: center;
     
 }
+
+.filter-dropdown {
+    border-radius: 8px;
+    position: relative;
+    left: -500px;
+    margin-top: 10px;
+    size: 25%;
+    width: 120px;
+    height: 40px;
+    font-weight: bold;
+}
+
