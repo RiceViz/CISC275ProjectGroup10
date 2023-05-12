@@ -32,6 +32,7 @@ export function MainScene({
     setYourStartingLineUp2: (players: Player[]) => void;
 }): JSX.Element {
     const [isRemoveButtonHovered, setIsRemoveButtonHovered] = useState(false);
+    const [selectedPositionFilter, setSelectedPositionFilter] = useState("");
 
     function handleOnDropTeam(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
@@ -179,17 +180,35 @@ export function MainScene({
                         Drag Player here to remove
                     </button>
                 </div>
+                <div>
+                    <select
+                        className="filter-dropdown"
+                        value={selectedPositionFilter}
+                        onChange={(e) =>
+                            setSelectedPositionFilter(e.target.value)
+                        }
+                    >
+                        <option value="">All Positions</option>
+                        <option value="Forward">Forwards</option>
+                        <option value="Midfielder">Midfielders</option>
+                        <option value="Defender">Defenders</option>
+                        <option value="Goalkeeper">Goalkeepers</option>
+                    </select>
+                </div>
 
                 <Container>
                     <div className="flex justify-center">
                         <Lineup
                             title="All Players"
-                            players={allPlayers}
+                            players={allPlayers.filter((player) =>
+                                selectedPositionFilter
+                                    ? player.position === selectedPositionFilter
+                                    : true
+                            )}
                             setPlayers={setAllPlayers}
                             user={user}
                             playersEditable={true}
                         ></Lineup>
-
                         <div
                             className="justify-center"
                             onDrop={handleOnDropTeam}
@@ -206,7 +225,6 @@ export function MainScene({
                                 playersEditable={false}
                             ></Lineup>
                         </div>
-
                         <div
                             onDrop={handleOnDropTeam2}
                             onDragOver={handleDragOver}
