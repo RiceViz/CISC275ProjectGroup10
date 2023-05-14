@@ -64,12 +64,23 @@ export function AddTeamButton({
                                 <Form.Control
                                     type="number"
                                     value={team.wins}
-                                    onChange={(e) =>
-                                        setTeam({
+                                    onChange={(
+                                        event: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
+                                        const clamp = (
+                                            num: number,
+                                            min: number,
+                                            max: number
+                                        ) => Math.min(Math.max(num, min), max);
+                                        return setTeam({
                                             ...team,
-                                            wins: parseInt(e.target.value)
-                                        })
-                                    }
+                                            wins: clamp(
+                                                parseInt(event.target.value),
+                                                0,
+                                                Infinity
+                                            )
+                                        });
+                                    }}
                                 />
                             </Col>
                         </Form.Group>
@@ -85,12 +96,23 @@ export function AddTeamButton({
                                 <Form.Control
                                     type="number"
                                     value={team.losses}
-                                    onChange={(e) =>
-                                        setTeam({
+                                    onChange={(
+                                        event: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
+                                        const clamp = (
+                                            num: number,
+                                            min: number,
+                                            max: number
+                                        ) => Math.min(Math.max(num, min), max);
+                                        return setTeam({
                                             ...team,
-                                            losses: parseInt(e.target.value)
-                                        })
-                                    }
+                                            losses: clamp(
+                                                parseInt(event.target.value),
+                                                0,
+                                                Infinity
+                                            )
+                                        });
+                                    }}
                                 />
                             </Col>
                         </Form.Group>
