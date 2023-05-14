@@ -8,24 +8,16 @@ import { Player } from "../interfaces/player";
 export function UserDropDownButton({
     logo,
     team,
+    teams,
+    goBetween,
     setTeams
 }: {
     logo?: JSX.Element | null;
     team: Team;
+    teams: Team[];
+    goBetween: string[];
     setTeams: (newTeam: Team[]) => void;
 }): JSX.Element {
-    const leagueManger: Team = {
-        name: "League Manager",
-        user: "LeagueManager",
-        players: [],
-        lineup: [],
-        wins: 0,
-        losses: 0
-    };
-
-    const options: Team[] = [leagueManger];
-    const goBetween: string[] = [leagueManger.name];
-
     // const options: User[] = ["League Manager", "Team Manager", "Coach"];
     // const goBetween: string[] = ["League Manager", "Team Manager", "Coach"];
 
@@ -62,10 +54,10 @@ export function UserDropDownButton({
                     value={team.name}
                     onChange={(e) => {
                         const ind = goBetween.indexOf(e.target.value);
-                        setTeams([...options, options[ind]]);
+                        setTeams([...teams, teams[ind]]);
                     }}
                 >
-                    {options.map((teamOption: Team) => (
+                    {teams.map((teamOption: Team) => (
                         <option key={teamOption.name} value={teamOption.name}>
                             {teamOption.name}
                         </option>
@@ -73,7 +65,7 @@ export function UserDropDownButton({
                 </Form.Select>
             </Form.Group>
             <AddUserButton
-                addTeam={(team: Team) => setTeams([...options, team])}
+                addTeam={(team: Team) => setTeams([...teams, team])}
             ></AddUserButton>
         </div>
     );

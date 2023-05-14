@@ -93,17 +93,18 @@ function RenderCurrentScene({
 }
 
 function App(): JSX.Element {
+    const leagueManger: Team = {
+        name: "League Manager",
+        user: "LeagueManager",
+        players: [],
+        lineup: [],
+        wins: 0,
+        losses: 0
+    };
+    const options: Team[] = [leagueManger];
+    const goBetween: string[] = [leagueManger.name];
     const [user, setUser] = useState<User>("LeagueManager");
-    const [teams, setTeams] = useState<Team[]>([
-        {
-            name: "League Manager",
-            user: "LeagueManager",
-            players: [],
-            lineup: [],
-            wins: 0,
-            losses: 0
-        }
-    ]);
+    const [teams, setTeams] = useState<Team[]>(options);
     const [scene, setScene] = useState<string>("MAIN");
     const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
@@ -164,7 +165,9 @@ function App(): JSX.Element {
                             <UserDropDownButton
                                 //logo={<BiUserCircle size={25} />}
                                 team={teams[0]}
-                                setTeams={teams}
+                                teams={teams}
+                                goBetween={goBetween}
+                                setTeams={setTeams}
                             ></UserDropDownButton>
                         </div>
                     </div>
