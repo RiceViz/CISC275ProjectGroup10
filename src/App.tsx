@@ -5,12 +5,14 @@ import { MainScene } from "./scenes/MainScene";
 import Header from "./components/Header";
 import ThemeToggle from "./components/ThemeToggle";
 import { UserDropDownButton } from "./components/UserDropDownButton";
+import { TeamDropDownButton } from "./components/TeamDropDownButton";
 import { User } from "./interfaces/user";
 import { PlayScene } from "./scenes/PlayScene";
-import { Button } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { Player } from "./interfaces/player";
 import { PlayerCreator } from "./components/PlayerCreator";
 import { WinFormula } from "./components/WinFormula";
+import { Team } from "./interfaces/team";
 
 function RenderCurrentScene({
     scene,
@@ -93,6 +95,16 @@ function RenderCurrentScene({
 
 function App(): JSX.Element {
     const [user, setUser] = useState<User>("League Manager");
+    const [teams, setTeams] = useState<Team[]>([
+        {
+            name: "Default Team",
+            players: [],
+            lineup: [],
+            wins: 0,
+            losses: 0
+        }
+    ]);
+    const [team, setTeam] = useState<Team>(teams[0]);
     const [scene, setScene] = useState<string>("MAIN");
     const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
     const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
@@ -149,13 +161,30 @@ function App(): JSX.Element {
                 <div className="flex flex-col dark:text-white">
                     <div className="flex justify-between p-">
                         <ThemeToggle></ThemeToggle>
-                        <div className="">
-                            <UserDropDownButton
-                                //logo={<BiUserCircle size={25} />}
-                                user={user}
-                                setUser={setUser}
-                            ></UserDropDownButton>
-                        </div>
+                        <Container className="flex justify-end">
+                            <Row>
+                                <Col>
+                                    <div className="flex justify-end">
+                                        <UserDropDownButton
+                                            //logo={<BiUserCircle size={25} />}
+                                            user={user}
+                                            setUser={setUser}
+                                        ></UserDropDownButton>
+                                    </div>
+                                </Col>
+                                <Col>
+                                    <div className="flex justify-end">
+                                        <TeamDropDownButton
+                                            team={team}
+                                            setTeam={setTeam}
+                                            teams={teams}
+                                            setTeams={setTeams}
+                                        ></TeamDropDownButton>
+                                    </div>
+                                </Col>
+                            </Row>
+                            <Row></Row>
+                        </Container>
                     </div>
                     <h1 className="text-4xl text-center dark:text-white">
                         Soccer Fantasy Manager
