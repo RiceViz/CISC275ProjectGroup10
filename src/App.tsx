@@ -13,6 +13,7 @@ import { Player } from "./interfaces/player";
 import { PlayerCreator } from "./components/PlayerCreator";
 import { WinFormula } from "./components/WinFormula";
 import { Team } from "./interfaces/team";
+import { AddTeamButton } from "./components/AddTeam";
 
 function RenderCurrentScene({
     scene,
@@ -183,7 +184,13 @@ function App(): JSX.Element {
                                     </div>
                                 </Col>
                             </Row>
-                            <Row></Row>
+                            <Row>
+                                <div className="flex justify-end">
+                                    <AddTeamButton
+                                        addTeam={setTeam}
+                                    ></AddTeamButton>
+                                </div>
+                            </Row>
                         </Container>
                     </div>
                     <h1 className="text-4xl text-center dark:text-white">
