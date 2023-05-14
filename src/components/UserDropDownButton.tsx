@@ -9,13 +9,13 @@ export function UserDropDownButton({
     logo,
     team,
     teams,
-    goBetween,
+    setTeam,
     setTeams
 }: {
     logo?: JSX.Element | null;
     team: Team;
     teams: Team[];
-    goBetween: string[];
+    setTeam: (newTeam: Team) => void;
     setTeams: (newTeam: Team[]) => void;
 }): JSX.Element {
     // const options: User[] = ["League Manager", "Team Manager", "Coach"];
@@ -53,7 +53,7 @@ export function UserDropDownButton({
                 <Form.Select
                     value={team.name}
                     onChange={(e) => {
-                        const ind = goBetween.indexOf(e.target.value);
+                        const ind = team.name.indexOf(e.target.value);
                         setTeams([...teams, teams[ind]]);
                     }}
                 >
