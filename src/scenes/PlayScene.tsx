@@ -4,9 +4,11 @@ import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
+import { Team } from "../interfaces/team";
 export function PlayScene({
     user,
     allPlayers,
+    team,
     yourTeamPlayers,
     setYourTeamPlayers,
     yourTeamPlayers2,
@@ -17,6 +19,7 @@ export function PlayScene({
 }: {
     user: User;
     allPlayers: Player[];
+    team: Team;
     setAllPlayers: (players: Player[]) => void;
     yourTeamPlayers: Player[];
     setYourTeamPlayers: (players: Player[]) => void;

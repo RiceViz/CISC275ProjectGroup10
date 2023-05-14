@@ -6,13 +6,11 @@ import { Team } from "../interfaces/team";
 export function TeamDropDownButton({
     team,
     setTeam,
-    teams,
-    setTeams
+    teams
 }: {
     team: Team;
     setTeam: (newTeam: Team) => void;
     teams: Team[];
-    setTeams: (newTeam: Team[]) => void;
 }): JSX.Element {
     // if (logo) {
     //     return (

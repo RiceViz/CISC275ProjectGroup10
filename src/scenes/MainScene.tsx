@@ -9,10 +9,12 @@ import {
 } from "../interfaces/player";
 import { Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
+import { Team } from "../interfaces/team";
 
 export function MainScene({
     user,
     allPlayers,
+    team,
     setAllPlayers,
     yourTeamPlayers,
     setYourTeamPlayers,
@@ -21,6 +23,7 @@ export function MainScene({
 }: {
     user: User;
     allPlayers: Player[];
+    team: Team;
     setAllPlayers: (players: Player[]) => void;
     yourTeamPlayers: Player[];
     setYourTeamPlayers: (players: Player[]) => void;
@@ -218,21 +221,9 @@ export function MainScene({
                                 user === "Team Manager"}
 
                             <Lineup
-                                title="Team 1 Players"
+                                title={team.name}
                                 players={yourTeamPlayers}
                                 setPlayers={setYourTeamPlayers}
-                                user={user}
-                                playersEditable={false}
-                            ></Lineup>
-                        </div>
-                        <div
-                            onDrop={handleOnDropTeam2}
-                            onDragOver={handleDragOver}
-                        >
-                            <Lineup
-                                title="Team 2 Players"
-                                players={yourTeamPlayers2}
-                                setPlayers={setYourTeamPlayers2}
                                 user={user}
                                 playersEditable={false}
                             ></Lineup>

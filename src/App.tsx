@@ -18,6 +18,7 @@ import { AddTeamButton } from "./components/AddTeam";
 function RenderCurrentScene({
     scene,
     user,
+    team,
     allPlayers,
     setAllPlayers,
     yourTeamPlayers,
@@ -31,6 +32,7 @@ function RenderCurrentScene({
 }: {
     scene: string;
     user: User;
+    team: Team;
     allPlayers: Player[];
     setAllPlayers: (players: Player[]) => void;
     yourTeamPlayers: Player[];
@@ -48,6 +50,7 @@ function RenderCurrentScene({
                 <MainScene
                     user={user}
                     allPlayers={allPlayers}
+                    team={team}
                     setAllPlayers={setAllPlayers}
                     yourTeamPlayers={yourTeamPlayers}
                     setYourTeamPlayers={setYourTeamPlayers}
@@ -64,6 +67,7 @@ function RenderCurrentScene({
                 <PlayScene
                     user={user}
                     allPlayers={allPlayers}
+                    team={team}
                     setAllPlayers={setAllPlayers}
                     yourTeamPlayers={yourTeamPlayers}
                     setYourTeamPlayers={setYourTeamPlayers}
@@ -80,6 +84,7 @@ function RenderCurrentScene({
                 <MainScene
                     user={user}
                     allPlayers={allPlayers}
+                    team={team}
                     setAllPlayers={setAllPlayers}
                     yourTeamPlayers={yourTeamPlayers}
                     setYourTeamPlayers={setYourTeamPlayers}
@@ -108,14 +113,20 @@ function App(): JSX.Element {
     const [team, setTeam] = useState<Team>(teams[0]);
     const [scene, setScene] = useState<string>("MAIN");
     const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
-    const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
-    const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
-    const [yourTeamPlayers2, setYourTeamPlayers2] = useState<Player[]>([]);
-    const [yourStartingLineUp2, setYourStartingLineUp2] = useState<Player[]>(
-        []
+    const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>(
+        team.players
     );
-    const [team1Wins, setTeam1Wins] = useState(0);
-    const [team2Wins, setTeam2Wins] = useState(0);
+    const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>(
+        team.lineup
+    );
+    const [yourTeamPlayers2, setYourTeamPlayers2] = useState<Player[]>(
+        team.players
+    );
+    const [yourStartingLineUp2, setYourStartingLineUp2] = useState<Player[]>(
+        team.lineup
+    );
+    const [team1Wins, setTeam1Wins] = useState(team.wins);
+    const [team2Wins, setTeam2Wins] = useState(team.wins);
 
     function simulateGame() {
         const result: number = WinFormula(
@@ -179,7 +190,6 @@ function App(): JSX.Element {
                                             team={team}
                                             setTeam={setTeam}
                                             teams={teams}
-                                            setTeams={setTeams}
                                         ></TeamDropDownButton>
                                     </div>
                                 </Col>
@@ -206,6 +216,7 @@ function App(): JSX.Element {
             <RenderCurrentScene
                 scene={scene}
                 user={user}
+                team={team}
                 allPlayers={allPlayers}
                 setAllPlayers={setAllPlayers}
                 yourTeamPlayers={yourTeamPlayers}
