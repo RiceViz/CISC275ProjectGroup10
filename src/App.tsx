@@ -186,9 +186,13 @@ function App(): JSX.Element {
                             </Row>
                             <Row>
                                 <div className="flex justify-end">
-                                    <AddTeamButton
-                                        addTeam={setTeam}
-                                    ></AddTeamButton>
+                                    {user === "League Manager" && (
+                                        <AddTeamButton
+                                            addTeam={(team: Team) =>
+                                                setTeams([team, ...teams])
+                                            }
+                                        ></AddTeamButton>
+                                    )}
                                 </div>
                             </Row>
                         </Container>
