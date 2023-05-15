@@ -160,7 +160,11 @@ function App(): JSX.Element {
             }
         }
     } //end of simulateGame (counts Ws and Ls)
-
+    function changeTeam(a_team: Team) {
+        setTeam(a_team);
+        setYourTeamPlayers(a_team.players);
+        setYourStartingLineUp(a_team.lineup);
+    }
     return (
         <div
             className="App"
@@ -188,7 +192,9 @@ function App(): JSX.Element {
                                     <div className="flex justify-end">
                                         <TeamDropDownButton
                                             team={team}
-                                            setTeam={setTeam}
+                                            setTeam={(team: Team) =>
+                                                changeTeam(team)
+                                            }
                                             teams={teams}
                                         ></TeamDropDownButton>
                                     </div>
@@ -199,7 +205,11 @@ function App(): JSX.Element {
                                     {user === "League Manager" && (
                                         <AddTeamButton
                                             addTeam={(team: Team) =>
-                                                setTeams([team, ...teams])
+                                                setTeams({...teams,{...team,
+                                                     players: [team.players.map((a_player: Player)): Player => ({...a_player}
+                                                        )],
+                                                     lineup:[team.lineup.map((a_player: Player)): Player => ({...a_player})]
+}})})
                                             }
                                         ></AddTeamButton>
                                     )}
