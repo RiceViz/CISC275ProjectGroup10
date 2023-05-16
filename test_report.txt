@@ -228,7 +228,7 @@ All files                |   28.91 |    25.68 |    27.9 |   29.26 |
  src                     |      48 |    23.07 |   33.33 |   52.17 |                                      
   App.tsx                |      48 |    23.07 |   33.33 |   52.17 | 60-76,108-133,195                    
  src/components          |   38.57 |    35.48 |   38.46 |   38.84 |                                      
-  AddPlayerButton.tsx    |      44 |      100 |      25 |   45.83 | 28-29,36-37,67-129,167-196           
+  AddPlayerButton.tsx    |      44 |      100 |      25 |   45.83 | 31-32,39-40,70-132,170-199           
   Header.tsx             |   37.14 |     8.69 |   71.42 |   37.14 | 28-42,66-84                          
   Lineup.tsx             |      60 |    72.72 |      50 |      60 | 40-42,52,67-69                       
   PlayerBanner.tsx       |   37.03 |    64.28 |   27.77 |   37.03 | 31,38-90,118-125,143-151,175-184,212 
@@ -240,7 +240,7 @@ All files                |   28.91 |    25.68 |    27.9 |   29.26 |
  src/interfaces          |   18.18 |        0 |       0 |   18.18 |                                      
   field.tsx              |       0 |        0 |       0 |       0 |                                      
   itemTypes.tsx          |       0 |      100 |     100 |       0 | 1                                    
-  player.tsx             |      50 |        0 |       0 |      50 | 28-32                                
+  player.tsx             |      50 |        0 |       0 |      50 | 31-35                                
   team.tsx               |       0 |      100 |       0 |       0 | 19-24                                
   user.tsx               |       0 |        0 |       0 |       0 |                                      
  src/scenes              |    5.47 |       10 |       8 |    5.47 |                                      
@@ -250,5 +250,5 @@ All files                |   28.91 |    25.68 |    27.9 |   29.26 |
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.822 s
+Time:        4.452 s
 Ran all test suites.
