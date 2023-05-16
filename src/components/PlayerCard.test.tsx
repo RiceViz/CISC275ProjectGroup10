@@ -9,7 +9,10 @@ const player1: Player = {
     rating: 99,
     imageURL:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP-hcNzaVT_7bwqJ3yQ5OzjejlSnVoX_1LureTRN99&s",
-    editMode: false
+    editMode: false,
+    age: 20,
+    height: "6'0",
+    teamHistory: ["Barcelona"]
 };
 
 describe("PlayerCard Component tests", () => {
