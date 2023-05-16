@@ -152,133 +152,190 @@ export function PlayerCreator(): Player[] {
             position: "Goalkeeper",
             rating: 90,
             imageURL: getPath("courtois.png"),
-            editMode: false
+            editMode: false,
+            age: 31,
+            height: "6'7",
+            teamHistory: ["Real Madrid", "Chelsea", "Genk"]
         },
         {
             name: "Ederson",
             position: "Goalkeeper",
             rating: 89,
             imageURL: getPath("ederson.png"),
-            editMode: false
+            editMode: false,
+            age: 29,
+            height: "6'2",
+            teamHistory: ["Manchester City", "Benfica", "Rio Ave"]
         },
         {
             name: "Manuel Neuer",
             position: "Goalkeeper",
             rating: 90,
             imageURL: getPath("neuer.png"),
-            editMode: false
+            editMode: false,
+            age: 37,
+            height: "6'4",
+            teamHistory: ["Bayern Munich", "Schalke 04"]
         },
         {
             name: "Jan Oblak",
             position: "Goalkeeper",
             rating: 89,
             imageURL: getPath("oblak.png"),
-            editMode: false
+            editMode: false,
+            age: 30,
+            height: "6'2",
+            teamHistory: ["Atletico Madrid", "Benfica", "Olimpija Ljubljana"]
         },
         {
             name: "Trent Alexander-Arnold",
             position: "Defender",
             rating: 87,
             imageURL: getPath("alexanderarnold.jpg"),
-            editMode: false
+            editMode: false,
+            age: 24,
+            height: "5'9",
+            teamHistory: ["Liverpool"]
         },
         {
             name: "Lucas Hernandez",
             position: "Defender",
             rating: 85,
             imageURL: getPath("hernandez.jpg"),
-            editMode: false
+            editMode: false,
+            age: 27,
+            height: "6'0",
+            teamHistory: ["Bayern Munich", "Atletico Madrid"]
         },
         {
             name: "Reece James",
             position: "Defender",
             rating: 84,
             imageURL: getPath("james.jpg"),
-            editMode: false
+            editMode: false,
+            age: 23,
+            height: "5'10",
+            teamHistory: ["Chelsea"]
         },
         {
             name: "Joao Cancelo",
             position: "Defender",
             rating: 88,
             imageURL: getPath("joaocancelo.jpg"),
-            editMode: false
+            editMode: false,
+            age: 28,
+            height: "6'0",
+            teamHistory: ["Manchester City", "Juventus", "Valencia"]
         },
         {
             name: "Marquinhos",
             position: "Defender",
             rating: 88,
             imageURL: getPath("marquinhos.png"),
-            editMode: false
+            editMode: false,
+            age: 29,
+            height: "6'0",
+            teamHistory: ["PSG", "Roma", "Corinthians"]
         },
         {
             name: "Andrew Robertson",
             position: "Defender",
             rating: 87,
             imageURL: getPath("robertson.jpg"),
-            editMode: false
+            editMode: false,
+            age: 29,
+            height: "5'10",
+            teamHistory: ["Liverpool", "Hull City", "Dundee United"]
         },
         {
             name: "Ruben Dias",
             position: "Defender",
             rating: 88,
             imageURL: getPath("rubendias.jpg"),
-            editMode: false
+            editMode: false,
+            age: 26,
+            height: "6'1",
+            teamHistory: ["Manchester City", "Benefica"]
         },
         {
             name: "Antonio Rudiger",
             position: "Defender",
             rating: 87,
             imageURL: getPath("rudiger.jpg"),
-            editMode: false
+            editMode: false,
+            age: 30,
+            height: "6'3",
+            teamHistory: ["Real Madrid", "Chelsea", "Roma"]
         },
         {
             name: "Virgil van Dijk",
             position: "Defender",
             rating: 90,
             imageURL: getPath("vandijk.jpg"),
-            editMode: false
+            editMode: false,
+            age: 31,
+            height: "6'5",
+            teamHistory: ["Liverpool", "Southampton", "Celtic"]
         },
         {
             name: "Walker Zimmerman",
             position: "Defender",
             rating: 85,
             imageURL: getPath("walker.jpg"),
-            editMode: false
+            editMode: false,
+            age: 29,
+            height: "6'3",
+            teamHistory: ["Nashville SC", "Los Angeles FC", "FC Dallas"]
         },
         {
             name: "Bernardo Silva",
             position: "Midfielder",
             rating: 86,
             imageURL: getPath("bernardosilva.png"),
-            editMode: false
+            editMode: false,
+            age: 28,
+            height: "5'8",
+            teamHistory: ["Manchester City", "Monaco", "Benefica"]
         },
         {
             name: "Bruno Fernandes",
             position: "Midfielder",
             rating: 88,
             imageURL: getPath("brunofernandes.png"),
-            editMode: false
+            editMode: false,
+            age: 28,
+            height: "5'10",
+            teamHistory: ["Manchester United", "Sporting CP", "Sampdoria"]
         },
         {
             name: "Kevin De Bruyne",
             position: "Midfielder",
             rating: 91,
             imageURL: getPath("debruyne.png"),
-            editMode: false
+            editMode: false,
+            age: 31,
+            height: "5'11",
+            teamHistory: ["Manchester City", "VfL Wolfsburg", "Chelsea"]
         },
         {
             name: "Kai Havertz",
             position: "Midfielder",
             rating: 85,
             imageURL: getPath("havertz.png"),
-            editMode: false
+            editMode: false,
+            age: 23,
+            height: "6'4",
+            teamHistory: ["Chelsea", "Bayer Leverkusen"]
         },
         {
             name: "Thomas Muller",
             position: "Midfielder",
             rating: 87,
             imageURL: getPath("muller.png"),
-            editMode: false
+            editMode: false,
+            age: 33,
+            height: "6'1",
+            teamHistory: ["Bayern Munich"]
         }
     ]; //end of playerPool (consists of all players)
 

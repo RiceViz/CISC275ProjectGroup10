@@ -6,6 +6,8 @@ export interface Player {
     rating: number;
     imageURL: string;
     editMode: boolean;
+    age: number;
+    height: string;
     teamHistory: string[];
 }
 /**
