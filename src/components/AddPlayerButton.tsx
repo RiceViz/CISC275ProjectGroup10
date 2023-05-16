@@ -12,7 +12,10 @@ function makeBlankPlayer(): Player {
         position: "Defender",
         rating: 0,
         imageURL: "",
-        editMode: false
+        editMode: false,
+        age: 0,
+        height: "0'0",
+        teamHistory: []
     };
 }
 
