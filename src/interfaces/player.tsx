@@ -6,6 +6,7 @@ export interface Player {
     rating: number;
     imageURL: string;
     editMode: boolean;
+    teamHistory: string[];
 }
 /**
  * Converts a player's position to an abbreviation
