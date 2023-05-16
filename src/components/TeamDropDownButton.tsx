@@ -46,6 +46,11 @@ export function TeamDropDownButton({
                         const ind = teams
                             .map((a_team: Team): string => a_team.name)
                             .indexOf(e.target.value);
+                        const ind2 = teams.findIndex(
+                            (a_team: Team): boolean => a_team.name === team.name
+                        );
+                        teams[ind2] = team;
+                        console.log(team.players);
                         setTeam(teams[ind]);
                     }}
                 >

@@ -205,11 +205,27 @@ function App(): JSX.Element {
                                     {user === "League Manager" && (
                                         <AddTeamButton
                                             addTeam={(team: Team) =>
-                                                setTeams({...teams,{...team,
-                                                     players: [team.players.map((a_player: Player)): Player => ({...a_player}
-                                                        )],
-                                                     lineup:[team.lineup.map((a_player: Player)): Player => ({...a_player})]
-}})})
+                                                setTeams([
+                                                    ...teams,
+                                                    {
+                                                        ...team,
+                                                        players:
+                                                            team.players.map(
+                                                                (
+                                                                    a_player: Player
+                                                                ): Player => ({
+                                                                    ...a_player
+                                                                })
+                                                            ),
+                                                        lineup: team.lineup.map(
+                                                            (
+                                                                a_player: Player
+                                                            ): Player => ({
+                                                                ...a_player
+                                                            })
+                                                        )
+                                                    }
+                                                ])
                                             }
                                         ></AddTeamButton>
                                     )}

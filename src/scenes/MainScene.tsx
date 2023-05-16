@@ -10,6 +10,7 @@ import {
 import { Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
 import { Team } from "../interfaces/team";
+import { isTemplateSpan } from "typescript";
 
 export function MainScene({
     user,
@@ -58,6 +59,7 @@ export function MainScene({
                 )
             ) {
                 setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+                team.players.push(newPlayer);
                 return;
             } else {
                 return;
@@ -71,6 +73,7 @@ export function MainScene({
         // add the player to the list
         if (indexOfPlayer === -1) {
             setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+            team.players.push(newPlayer);
         } else {
             const newteam = [...yourTeamPlayers];
             newteam.splice(indexOfPlayer, 1, newPlayer);
@@ -143,6 +146,7 @@ export function MainScene({
                 (player) => player !== playerToRemove
             );
             setYourTeamPlayers(updatedTeamPlayers);
+            team.players = updatedTeamPlayers;
         }
 
         // Find the dropped player object based on name in the second team
