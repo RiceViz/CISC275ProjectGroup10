@@ -19,6 +19,7 @@ function RenderCurrentScene({
     scene,
     user,
     team,
+    teams,
     allPlayers,
     setAllPlayers,
     yourTeamPlayers,
@@ -33,6 +34,7 @@ function RenderCurrentScene({
     scene: string;
     user: User;
     team: Team;
+    teams: Team[];
     allPlayers: Player[];
     setAllPlayers: (players: Player[]) => void;
     yourTeamPlayers: Player[];
@@ -68,6 +70,7 @@ function RenderCurrentScene({
                     user={user}
                     allPlayers={allPlayers}
                     team={team}
+                    teams={teams}
                     setAllPlayers={setAllPlayers}
                     yourTeamPlayers={yourTeamPlayers}
                     setYourTeamPlayers={setYourTeamPlayers}
@@ -103,7 +106,7 @@ function App(): JSX.Element {
     const [user, setUser] = useState<User>("League Manager");
     const [teams, setTeams] = useState<Team[]>([
         {
-            name: "Default Team",
+            name: "Default",
             players: [],
             lineup: [],
             wins: 0,
@@ -189,47 +192,51 @@ function App(): JSX.Element {
                                     </div>
                                 </Col>
                                 <Col>
-                                    <div className="flex justify-end">
-                                        <TeamDropDownButton
-                                            team={team}
-                                            setTeam={(team: Team) =>
-                                                changeTeam(team)
-                                            }
-                                            teams={teams}
-                                        ></TeamDropDownButton>
-                                    </div>
+                                    {scene === "MAIN" ? (
+                                        <div className="flex justify-end">
+                                            <TeamDropDownButton
+                                                team={team}
+                                                setTeam={(team: Team) =>
+                                                    changeTeam(team)
+                                                }
+                                                teams={teams}
+                                            ></TeamDropDownButton>
+                                        </div>
+                                    ) : null}
                                 </Col>
                             </Row>
                             <Row>
-                                <div className="flex justify-end">
-                                    {user === "League Manager" && (
-                                        <AddTeamButton
-                                            addTeam={(team: Team) =>
-                                                setTeams([
-                                                    ...teams,
-                                                    {
-                                                        ...team,
-                                                        players:
-                                                            team.players.map(
+                                {scene === "MAIN" ? (
+                                    <div className="flex justify-end">
+                                        {user === "League Manager" && (
+                                            <AddTeamButton
+                                                addTeam={(team: Team) =>
+                                                    setTeams([
+                                                        ...teams,
+                                                        {
+                                                            ...team,
+                                                            players:
+                                                                team.players.map(
+                                                                    (
+                                                                        a_player: Player
+                                                                    ): Player => ({
+                                                                        ...a_player
+                                                                    })
+                                                                ),
+                                                            lineup: team.lineup.map(
                                                                 (
                                                                     a_player: Player
                                                                 ): Player => ({
                                                                     ...a_player
                                                                 })
-                                                            ),
-                                                        lineup: team.lineup.map(
-                                                            (
-                                                                a_player: Player
-                                                            ): Player => ({
-                                                                ...a_player
-                                                            })
-                                                        )
-                                                    }
-                                                ])
-                                            }
-                                        ></AddTeamButton>
-                                    )}
-                                </div>
+                                                            )
+                                                        }
+                                                    ])
+                                                }
+                                            ></AddTeamButton>
+                                        )}
+                                    </div>
+                                ) : null}
                             </Row>
                         </Container>
                     </div>
@@ -243,6 +250,7 @@ function App(): JSX.Element {
                 scene={scene}
                 user={user}
                 team={team}
+                teams={teams}
                 allPlayers={allPlayers}
                 setAllPlayers={setAllPlayers}
                 yourTeamPlayers={yourTeamPlayers}

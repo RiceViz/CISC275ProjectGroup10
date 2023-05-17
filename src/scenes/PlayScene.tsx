@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
 import { Row, Col, Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
 import { Team } from "../interfaces/team";
+import { TeamDropDownButton } from "../components/TeamDropDownButton";
 export function PlayScene({
     user,
     allPlayers,
     team,
+    teams,
     yourTeamPlayers,
     setYourTeamPlayers,
     yourTeamPlayers2,
+    setYourTeamPlayers2,
     yourStartingLineUp,
     setYourStartingLineUp,
     yourStartingLineUp2,
@@ -20,6 +23,7 @@ export function PlayScene({
     user: User;
     allPlayers: Player[];
     team: Team;
+    teams: Team[];
     setAllPlayers: (players: Player[]) => void;
     yourTeamPlayers: Player[];
     setYourTeamPlayers: (players: Player[]) => void;
@@ -30,6 +34,8 @@ export function PlayScene({
     yourStartingLineUp2: Player[];
     setYourStartingLineUp2: (players: Player[]) => void;
 }): JSX.Element {
+    const [teamA, setTeamA] = useState<Team>(team);
+    const [teamB, setTeamB] = useState<Team>(team);
     function handleOnDropStartingLineup(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
@@ -78,10 +84,15 @@ export function PlayScene({
                 <Container>
                     <Row>
                         <Col>
+                            <TeamDropDownButton
+                                team={teamA}
+                                setTeam={setTeamA}
+                                teams={teams}
+                            ></TeamDropDownButton>
                             <div className="flex justify-center">
                                 <Lineup
-                                    title="Team 1 Players"
-                                    players={yourTeamPlayers}
+                                    title={teamA.name + " Players"}
+                                    players={teamA.players}
                                     setPlayers={setYourTeamPlayers}
                                     user={user}
                                     playersEditable={false}
@@ -95,8 +106,8 @@ export function PlayScene({
                                 onDragOver={handleDragOver}
                             >
                                 <Lineup
-                                    title="Team 1 Lineup"
-                                    players={yourStartingLineUp}
+                                    title={teamA.name + " Lineup"}
+                                    players={teamA.lineup}
                                     setPlayers={setYourStartingLineUp}
                                     user={user}
                                     playersEditable={false}
@@ -104,11 +115,16 @@ export function PlayScene({
                             </div>
                         </Col>
                         <Col>
+                            <TeamDropDownButton
+                                team={teamB}
+                                setTeam={setTeamB}
+                                teams={teams}
+                            ></TeamDropDownButton>
                             <div className="flex justify-center">
                                 <Lineup
-                                    title="Team 2 Players"
-                                    players={yourTeamPlayers2}
-                                    setPlayers={setYourStartingLineUp2}
+                                    title={teamB.name + " Players"}
+                                    players={teamB.players}
+                                    setPlayers={setYourTeamPlayers2}
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
@@ -121,8 +137,8 @@ export function PlayScene({
                                 onDragOver={handleDragOver}
                             >
                                 <Lineup
-                                    title="Team 2 Lineup"
-                                    players={yourStartingLineUp2}
+                                    title={teamB.name + " Lineup"}
+                                    players={teamB.lineup}
                                     setPlayers={setYourStartingLineUp2}
                                     user={user}
                                     playersEditable={false}
