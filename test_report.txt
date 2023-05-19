@@ -114,94 +114,78 @@ FAIL src/App.test.tsx
                     [36m</svg>[39m
                   [36m</button>[39m
                   [36m<div[39m
-                    [33mclass[39m=[32m""[39m
+                    [33mclass[39m=[32m"flex justify-end container"[39m
                   [36m>[39m
-                    [36m<div>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"row"[39m
+                    [36m>[39m
                       [36m<div[39m
-                        [33mclass[39m=[32m"max-w-fit p-2"[39m
+                        [33mclass[39m=[32m"col"[39m
                       [36m>[39m
-                        [36m<select[39m
-                          [33mclass[39m=[32m"form-select"[39m
-                          [33mid[39m=[32m"choices"[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"flex justify-end"[39m
                         [36m>[39m
-                          [36m<option[39m
-                            [33mvalue[39m=[32m"League Manager"[39m
-                          [36m>[39m
-                            [0mLeague Manager[0m
-                          [36m</option>[39m
-                          [36m<option[39m
-                            [33mvalue[39m=[32m"Team Manager"[39m
-                          [36m>[39m
-                            [0mTeam Manager[0m
-                          [36m</option>[39m
-                          [36m<option[39m
-                            [33mvalue[39m=[32m"Coach"[39m
-                          [36m>[39m
-                            [0mCoach[0m
-                          [36m</option>[39m
-                        [36m</select>[39m
+                          [36m<div>[39m
+                            [36m<div[39m
+                              [33mclass[39m=[32m"max-w-fit p-2"[39m
+                            [36m>[39m
+                              [36m<select[39m
+                                [33mclass[39m=[32m"form-select"[39m
+                                [33mid[39m=[32m"choices"[39m
+                              [36m>[39m
+                                [36m<option[39m
+                                  [33mvalue[39m=[32m"League Manager"[39m
+                                [36m>[39m
+                                  [0mLeague Manager[0m
+                                [36m</option>[39m
+                                [36m<option[39m
+                                  [33mvalue[39m=[32m"Team Manager"[39m
+                                [36m>[39m
+                                  [0mTeam Manager[0m
+                                [36m</option>[39m
+                                [36m<option[39m
+                                  [33mvalue[39m=[32m"Coach"[39m
+                                [36m>[39m
+                                  [0mCoach[0m
+                                [36m</option>[39m
+                              [36m</select>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"col"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"flex justify-end"[39m
+                        [36m>[39m
+                          [36m<div>[39m
+                            [36m<div[39m
+                              [33mclass[39m=[32m"max-w-fit p-2"[39m
+                            [36m>[39m
+                              [36m<select[39m
+                                [33mclass[39m=[32m"form-select"[39m
+                                [33mid[39m=[32m"choices"[39m
+                              [36m>[39m
+                                [36m<option[39m
+                                  [33mvalue[39m=[32m"Default"[39m
+                                [36m>[39m
+                                  [0mDefault[0m
+                                [36m</option>[39m
+                              [36m</select>[39m
+                            [36m</div>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
                       [36m</div>[39m
                     [36m</div>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-                [36m<h1[39m
-                  [33mclass[39m=[32m"text-4xl text-center dark:text-white"[39m
-                [36m>[39m
-                  [0mSoccer Fantasy Manager[0m
-                [36m</h1>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-          [36m<hr />[39m
-          [36m<div>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"removeButton "[39m
-            [36m>[39m
-              [36m<button[39m
-                [33mclass[39m=[32m"removeButtonHover"[39m
-              [36m>[39m
-                [0mDrag Player here to remove[0m
-              [36m</button>[39m
-            [36m</div>[39m
-            [36m<div>[39m
-              [36m<select[39m
-                [33mclass[39m=[32m"filter-dropdown"[39m
-              [36m>[39m
-                [36m<option[39m
-                  [33mvalue[39m=[32m""[39m
-                [36m>[39m
-                  [0mAll Positions[0m
-                [36m</option>[39m
-                [36m<option[39m
-                  [33mvalue[39m=[32m"Forward"[39m
-                [36m>[39m
-                  [0mForwards[0m
-                [36m</option>[39m
-                [36m<option[39m
-                  [33mvalue[39m=[32m"Midfielder"[39m
-                [36m>[39m
-                  [0mMidfielders[0m
-                [36m</option>[39m
-                [36m<option[39m
-                  [33mvalue[39m=[32m"Defender"[39m
-                [36m>[39m
-                  [0mDefenders[0m
-                [36m</option>[39m
-                [36m<option[39m
-                  [33mvalue[39m=[32m"Goalkeeper"[39m
-                [36m>[39m
-                  [0mGoalkeepers[0m
-                [36m</option>[39m
-              [36m</select>[39m
-            [36m</div>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"container"[39m
-            [36m>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"flex justify-center"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"m-2 p-2 justify-self-center b...
+                    [36m<div[39m
+                      [33mclass[39m=[32m"row"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"flex justify-end"[39m
+                      [36m>[39m
+                        [36m<div>[39m
+          ...
 
        5 | test("renders the course name somewhere", () => {
        6 |     render(<App />);
@@ -224,31 +208,33 @@ FAIL src/App.test.tsx
 -------------------------|---------|----------|---------|---------|--------------------------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                    
 -------------------------|---------|----------|---------|---------|--------------------------------------
-All files                |   28.91 |    25.68 |    27.9 |   29.26 |                                      
- src                     |      48 |    23.07 |   33.33 |   52.17 |                                      
-  App.tsx                |      48 |    23.07 |   33.33 |   52.17 | 60-76,108-133,195                    
- src/components          |   38.57 |    35.48 |   38.46 |   38.84 |                                      
+All files                |   29.56 |    27.82 |   27.45 |      30 |                                      
+ src                     |   41.17 |    36.84 |   18.18 |   43.75 |                                      
+  App.tsx                |   41.17 |    36.84 |   18.18 |   43.75 | 68-86,135-169,200-280                
+ src/components          |   36.09 |    33.87 |   35.82 |   36.52 |                                      
   AddPlayerButton.tsx    |      44 |      100 |      25 |   45.83 | 31-32,39-40,70-132,170-199           
+  AddTeam.tsx            |      35 |      100 |      20 |   36.84 | 26-27,46-139                         
   Header.tsx             |   37.14 |     8.69 |   71.42 |   37.14 | 28-42,66-84                          
-  Lineup.tsx             |      60 |    72.72 |      50 |      60 | 40-42,52,67-69                       
+  Lineup.tsx             |   46.66 |    63.63 |      50 |   46.66 | 32-38,52,67-69                       
   PlayerBanner.tsx       |   37.03 |    64.28 |   27.77 |   37.03 | 31,38-90,118-125,143-151,175-184,212 
   PlayerCard.tsx         |       0 |      100 |       0 |       0 | 14                                   
   PlayerCreator.tsx      |   85.71 |       75 |     100 |   85.71 | 8                                    
+  TeamDropDownButton.tsx |   22.22 |      100 |      40 |   22.22 | 46-54                                
   ThemeToggle.tsx        |   11.11 |        0 |      50 |   11.11 | 9-17                                 
   UserDropDownButton.tsx |   66.66 |      100 |   66.66 |   66.66 | 50-51                                
   WinFormula.tsx         |       0 |        0 |       0 |       0 | 17-46                                
- src/interfaces          |   18.18 |        0 |       0 |   18.18 |                                      
+ src/interfaces          |      40 |        0 |       0 |      40 |                                      
   field.tsx              |       0 |        0 |       0 |       0 |                                      
   itemTypes.tsx          |       0 |      100 |     100 |       0 | 1                                    
   player.tsx             |      50 |        0 |       0 |      50 | 31-35                                
-  team.tsx               |       0 |      100 |       0 |       0 | 19-24                                
+  team.tsx               |       0 |        0 |       0 |       0 |                                      
   user.tsx               |       0 |        0 |       0 |       0 |                                      
- src/scenes              |    5.47 |       10 |       8 |    5.47 |                                      
-  MainScene.tsx          |    7.01 |    13.63 |   10.52 |    7.01 | 38-164,188                           
-  PlayScene.tsx          |       0 |        0 |       0 |       0 | 31-72                                
+ src/scenes              |    6.06 |    13.33 |    9.09 |    6.06 |                                      
+  MainScene.tsx          |    8.33 |    18.18 |    12.5 |    8.33 | 41-144,168                           
+  PlayScene.tsx          |       0 |        0 |       0 |       0 | 35-79                                
 -------------------------|---------|----------|---------|---------|--------------------------------------
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        4.452 s
+Time:        4.993 s
 Ran all test suites.
