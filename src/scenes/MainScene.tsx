@@ -10,7 +10,6 @@ import {
 import { Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
 import { Team } from "../interfaces/team";
-import { isTemplateSpan } from "typescript";
 
 export function MainScene({
     user,
