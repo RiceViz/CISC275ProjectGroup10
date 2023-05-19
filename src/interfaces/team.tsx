@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Player } from "./player";
 
 export interface Team {
