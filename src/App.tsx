@@ -5,16 +5,21 @@ import { MainScene } from "./scenes/MainScene";
 import Header from "./components/Header";
 import ThemeToggle from "./components/ThemeToggle";
 import { UserDropDownButton } from "./components/UserDropDownButton";
+import { TeamDropDownButton } from "./components/TeamDropDownButton";
 import { User } from "./interfaces/user";
 import { PlayScene } from "./scenes/PlayScene";
-import { Button } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { Player } from "./interfaces/player";
 import { PlayerCreator } from "./components/PlayerCreator";
 import { WinFormula } from "./components/WinFormula";
+import { Team } from "./interfaces/team";
+import { AddTeamButton } from "./components/AddTeam";
 
 function RenderCurrentScene({
     scene,
     user,
+    team,
+    teams,
     allPlayers,
     setAllPlayers,
     yourTeamPlayers,
@@ -28,6 +33,8 @@ function RenderCurrentScene({
 }: {
     scene: string;
     user: User;
+    team: Team;
+    teams: Team[];
     allPlayers: Player[];
     setAllPlayers: (players: Player[]) => void;
     yourTeamPlayers: Player[];
@@ -45,6 +52,7 @@ function RenderCurrentScene({
                 <MainScene
                     user={user}
                     allPlayers={allPlayers}
+                    team={team}
                     setAllPlayers={setAllPlayers}
                     yourTeamPlayers={yourTeamPlayers}
                     setYourTeamPlayers={setYourTeamPlayers}
@@ -61,6 +69,8 @@ function RenderCurrentScene({
                 <PlayScene
                     user={user}
                     allPlayers={allPlayers}
+                    team={team}
+                    teams={teams}
                     setAllPlayers={setAllPlayers}
                     yourTeamPlayers={yourTeamPlayers}
                     setYourTeamPlayers={setYourTeamPlayers}
@@ -77,6 +87,7 @@ function RenderCurrentScene({
                 <MainScene
                     user={user}
                     allPlayers={allPlayers}
+                    team={team}
                     setAllPlayers={setAllPlayers}
                     yourTeamPlayers={yourTeamPlayers}
                     setYourTeamPlayers={setYourTeamPlayers}
@@ -93,16 +104,32 @@ function RenderCurrentScene({
 
 function App(): JSX.Element {
     const [user, setUser] = useState<User>("League Manager");
+    const [teams, setTeams] = useState<Team[]>([
+        {
+            name: "Default",
+            players: [],
+            lineup: [],
+            wins: 0,
+            losses: 0
+        }
+    ]);
+    const [team, setTeam] = useState<Team>(teams[0]);
     const [scene, setScene] = useState<string>("MAIN");
     const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
-    const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>([]);
-    const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>([]);
-    const [yourTeamPlayers2, setYourTeamPlayers2] = useState<Player[]>([]);
-    const [yourStartingLineUp2, setYourStartingLineUp2] = useState<Player[]>(
-        []
+    const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>(
+        team.players
     );
-    const [team1Wins, setTeam1Wins] = useState(0);
-    const [team2Wins, setTeam2Wins] = useState(0);
+    const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>(
+        team.lineup
+    );
+    const [yourTeamPlayers2, setYourTeamPlayers2] = useState<Player[]>(
+        team.players
+    );
+    const [yourStartingLineUp2, setYourStartingLineUp2] = useState<Player[]>(
+        team.lineup
+    );
+    const [team1Wins, setTeam1Wins] = useState(team.wins);
+    const [team2Wins, setTeam2Wins] = useState(team.wins);
 
     function simulateGame() {
         const result: number = WinFormula(
@@ -136,7 +163,11 @@ function App(): JSX.Element {
             }
         }
     } //end of simulateGame (counts Ws and Ls)
-
+    function changeTeam(a_team: Team) {
+        setTeam(a_team);
+        setYourTeamPlayers(a_team.players);
+        setYourStartingLineUp(a_team.lineup);
+    }
     return (
         <div
             className="App"
@@ -149,13 +180,65 @@ function App(): JSX.Element {
                 <div className="flex flex-col dark:text-white">
                     <div className="flex justify-between p-">
                         <ThemeToggle></ThemeToggle>
-                        <div className="">
-                            <UserDropDownButton
-                                //logo={<BiUserCircle size={25} />}
-                                user={user}
-                                setUser={setUser}
-                            ></UserDropDownButton>
-                        </div>
+                        <Container className="flex justify-end">
+                            <Row>
+                                <Col>
+                                    <div className="flex justify-end">
+                                        <UserDropDownButton
+                                            //logo={<BiUserCircle size={25} />}
+                                            user={user}
+                                            setUser={setUser}
+                                        ></UserDropDownButton>
+                                    </div>
+                                </Col>
+                                <Col>
+                                    {scene === "MAIN" ? (
+                                        <div className="flex justify-end">
+                                            <TeamDropDownButton
+                                                team={team}
+                                                setTeam={(team: Team) =>
+                                                    changeTeam(team)
+                                                }
+                                                teams={teams}
+                                            ></TeamDropDownButton>
+                                        </div>
+                                    ) : null}
+                                </Col>
+                            </Row>
+                            <Row>
+                                {scene === "MAIN" ? (
+                                    <div className="flex justify-end">
+                                        {user === "League Manager" && (
+                                            <AddTeamButton
+                                                addTeam={(team: Team) =>
+                                                    setTeams([
+                                                        ...teams,
+                                                        {
+                                                            ...team,
+                                                            players:
+                                                                team.players.map(
+                                                                    (
+                                                                        a_player: Player
+                                                                    ): Player => ({
+                                                                        ...a_player
+                                                                    })
+                                                                ),
+                                                            lineup: team.lineup.map(
+                                                                (
+                                                                    a_player: Player
+                                                                ): Player => ({
+                                                                    ...a_player
+                                                                })
+                                                            )
+                                                        }
+                                                    ])
+                                                }
+                                            ></AddTeamButton>
+                                        )}
+                                    </div>
+                                ) : null}
+                            </Row>
+                        </Container>
                     </div>
                     <h1 className="text-4xl text-center dark:text-white">
                         Soccer Fantasy Manager
@@ -166,6 +249,8 @@ function App(): JSX.Element {
             <RenderCurrentScene
                 scene={scene}
                 user={user}
+                team={team}
+                teams={teams}
                 allPlayers={allPlayers}
                 setAllPlayers={setAllPlayers}
                 yourTeamPlayers={yourTeamPlayers}

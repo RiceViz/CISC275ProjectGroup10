@@ -9,18 +9,22 @@ import {
 } from "../interfaces/player";
 import { Container } from "react-bootstrap";
 import { User } from "../interfaces/user";
+import { Team } from "../interfaces/team";
+import { isTemplateSpan } from "typescript";
 
 export function MainScene({
     user,
     allPlayers,
+    team,
     setAllPlayers,
     yourTeamPlayers,
     setYourTeamPlayers,
-    yourTeamPlayers2,
-    setYourTeamPlayers2
+    yourStartingLineUp,
+    setYourStartingLineUp
 }: {
     user: User;
     allPlayers: Player[];
+    team: Team;
     setAllPlayers: (players: Player[]) => void;
     yourTeamPlayers: Player[];
     setYourTeamPlayers: (players: Player[]) => void;
@@ -55,6 +59,7 @@ export function MainScene({
                 )
             ) {
                 setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+                team.players.push(newPlayer);
                 return;
             } else {
                 return;
@@ -68,51 +73,11 @@ export function MainScene({
         // add the player to the list
         if (indexOfPlayer === -1) {
             setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+            team.players.push(newPlayer);
         } else {
             const newteam = [...yourTeamPlayers];
             newteam.splice(indexOfPlayer, 1, newPlayer);
             setYourTeamPlayers(newteam);
-        }
-    }
-
-    function handleOnDropTeam2(e: React.DragEvent) {
-        const widgetType = e.dataTransfer.getData("widgetType") as string;
-
-        // find dropped player object based on name
-        const oldPlayer = allPlayers.find(
-            (player) => player.name === widgetType
-        ) as Player;
-
-        // make a new copy of the player (might not be neccessary?)
-        const newPlayer = { ...oldPlayer };
-
-        if (
-            newPlayer.imageURL ===
-            process.env.PUBLIC_URL + "/blankprofilepicture.png"
-        ) {
-            if (
-                !yourTeamPlayers2.some((player: Player) =>
-                    checkIdenticalPlayers(player, newPlayer)
-                )
-            ) {
-                setYourTeamPlayers2([...yourTeamPlayers2, newPlayer]);
-                return;
-            } else {
-                return;
-            }
-        }
-
-        const indexOfPlayer = yourTeamPlayers2.findIndex((player: Player) =>
-            checkIdenticalURLs(player, newPlayer)
-        );
-
-        // add the player to the list
-        if (indexOfPlayer === -1) {
-            setYourTeamPlayers2([...yourTeamPlayers2, newPlayer]);
-        } else {
-            const newteam = [...yourTeamPlayers2];
-            newteam.splice(indexOfPlayer, 1, newPlayer);
-            setYourTeamPlayers2(newteam);
         }
     }
 
@@ -141,18 +106,34 @@ export function MainScene({
             );
             setYourTeamPlayers(updatedTeamPlayers);
         }
+    }
 
-        // Find the dropped player object based on name in the second team
-        const playerToRemove2 = yourTeamPlayers2.find(
+    function handleOnDropStartingLineup(e: React.DragEvent) {
+        const widgetType = e.dataTransfer.getData("widgetType") as string;
+
+        // find dropped player object based on name
+        const oldPlayer = allPlayers.find(
             (player) => player.name === widgetType
-        );
+        ) as Player;
 
-        if (playerToRemove2) {
-            // Remove the player from the second team players' list
-            const updatedTeamPlayers2 = yourTeamPlayers2.filter(
-                (player) => player !== playerToRemove2
-            );
-            setYourTeamPlayers2(updatedTeamPlayers2);
+        // make a new copy of the player (might not be neccessary?)
+        const newPlayer = { ...oldPlayer };
+
+        // add the player to the list
+        if (newPlayer !== undefined) {
+            if (yourStartingLineUp.length < 11) {
+                setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
+                team.lineup.push(newPlayer);
+            }
+        }
+        if (
+            newPlayer.name !==
+            team.players.find(
+                (a_player: Player): boolean => a_player === newPlayer
+            )?.name
+        ) {
+            setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+            team.players.push(newPlayer);
         }
     }
 
@@ -195,30 +176,32 @@ export function MainScene({
                         <option value="Goalkeeper">Goalkeepers</option>
                     </select>
                 </div>
-
                 <Container>
                     <div className="flex justify-center">
-                        <Lineup
-                            title="All Players"
-                            players={allPlayers.filter((player) =>
-                                selectedPositionFilter
-                                    ? player.position === selectedPositionFilter
-                                    : true
-                            )}
-                            setPlayers={setAllPlayers}
-                            user={user}
-                            playersEditable={true}
-                        ></Lineup>
+                        {user === "League Manager" ||
+                        user === "Team Manager" ? (
+                            <div className="flex justify-center">
+                                <Lineup
+                                    title="All Players"
+                                    players={allPlayers.filter((player) =>
+                                        selectedPositionFilter
+                                            ? player.position ===
+                                              selectedPositionFilter
+                                            : true
+                                    )}
+                                    setPlayers={setAllPlayers}
+                                    user={user}
+                                    playersEditable={true}
+                                ></Lineup>
+                            </div>
+                        ) : null}
                         <div
                             className="justify-center"
                             onDrop={handleOnDropTeam}
                             onDragOver={handleDragOver}
                         >
-                            {user === "League Manager" ||
-                                user === "Team Manager"}
-
                             <Lineup
-                                title="Team 1 Players"
+                                title={team.name + " Players"}
                                 players={yourTeamPlayers}
                                 setPlayers={setYourTeamPlayers}
                                 user={user}
@@ -226,13 +209,14 @@ export function MainScene({
                             ></Lineup>
                         </div>
                         <div
-                            onDrop={handleOnDropTeam2}
+                            className="justify-center"
+                            onDrop={handleOnDropStartingLineup}
                             onDragOver={handleDragOver}
                         >
                             <Lineup
-                                title="Team 2 Players"
-                                players={yourTeamPlayers2}
-                                setPlayers={setYourTeamPlayers2}
+                                title={team.name + " Lineup"}
+                                players={yourStartingLineUp}
+                                setPlayers={setYourStartingLineUp}
                                 user={user}
                                 playersEditable={false}
                             ></Lineup>
