@@ -97,13 +97,43 @@ export function MainScene({
         const playerToRemove = yourTeamPlayers.find(
             (player) => player.name === widgetType
         );
-
-        if (playerToRemove) {
-            // Remove the player from the team players' list
-            const updatedTeamPlayers = yourTeamPlayers.filter(
-                (player) => player !== playerToRemove
-            );
-            setYourTeamPlayers(updatedTeamPlayers);
+        if (
+            playerToRemove ===
+            team.players.find(
+                (a_player: Player): boolean => a_player === playerToRemove
+            )
+        ) {
+            if (playerToRemove) {
+                // Remove the player from the team players' list
+                const updatedTeamPlayers = yourTeamPlayers.filter(
+                    (player) => player !== playerToRemove
+                );
+                setYourTeamPlayers(updatedTeamPlayers);
+                team.players = team.players.filter(
+                    (a_player: Player): boolean =>
+                        a_player.name !== playerToRemove.name
+                );
+                console.log("test1");
+            }
+        }
+        if (
+            playerToRemove ===
+            team.lineup.find(
+                (a_player: Player): boolean => a_player === playerToRemove
+            )
+        ) {
+            if (playerToRemove) {
+                // Remove the player from the team players' list
+                const updatedTeamPlayers = yourStartingLineUp.filter(
+                    (player) => player !== playerToRemove
+                );
+                setYourStartingLineUp(updatedTeamPlayers);
+                team.lineup = team.lineup.filter(
+                    (a_player: Player): boolean =>
+                        a_player.name !== playerToRemove.name
+                );
+                console.log("test2");
+            }
         }
     }
 
@@ -128,7 +158,7 @@ export function MainScene({
         if (
             newPlayer.name !==
             team.players.find(
-                (a_player: Player): boolean => a_player === newPlayer
+                (a_player: Player): boolean => a_player.name === newPlayer.name
             )?.name
         ) {
             setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
@@ -157,7 +187,7 @@ export function MainScene({
                     onMouseLeave={handleRemoveButtonMouseLeave}
                 >
                     <button className="removeButtonHover">
-                        Drag Player here to remove
+                        Drag Player Here To Remove
                     </button>
                 </div>
                 <div>
