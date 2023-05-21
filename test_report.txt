@@ -208,10 +208,10 @@ FAIL src/App.test.tsx
 -------------------------|---------|----------|---------|---------|--------------------------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                    
 -------------------------|---------|----------|---------|---------|--------------------------------------
-All files                |   28.22 |    26.44 |   26.16 |   28.62 |                                      
+All files                |   28.52 |    26.01 |   26.16 |   28.92 |                                      
  src                     |   41.17 |    36.84 |   18.18 |   43.75 |                                      
   App.tsx                |   41.17 |    36.84 |   18.18 |   43.75 | 68-86,135-169,200-280                
- src/components          |    36.3 |    33.87 |   35.82 |   36.74 |                                      
+ src/components          |   36.96 |    32.81 |   35.82 |   37.42 |                                      
   AddPlayerButton.tsx    |      44 |      100 |      25 |   45.83 | 31-32,39-40,70-132,170-199           
   AddTeam.tsx            |      35 |      100 |      20 |   36.84 | 26-27,46-139                         
   Header.tsx             |   37.14 |     8.69 |   71.42 |   37.14 | 28-42,66-84                          
@@ -222,7 +222,7 @@ All files                |   28.22 |    26.44 |   26.16 |   28.62 |
   TeamDropDownButton.tsx |      25 |      100 |      40 |      25 | 46-53                                
   ThemeToggle.tsx        |   11.11 |        0 |      50 |   11.11 | 9-17                                 
   UserDropDownButton.tsx |   66.66 |      100 |   66.66 |   66.66 | 50-51                                
-  WinFormula.tsx         |       0 |        0 |       0 |       0 | 17-46                                
+  WinFormula.tsx         |       0 |        0 |       0 |       0 | 17-43                                
  src/interfaces          |      40 |        0 |       0 |      40 |                                      
   field.tsx              |       0 |        0 |       0 |       0 |                                      
   itemTypes.tsx          |       0 |      100 |     100 |       0 | 1                                    
@@ -236,5 +236,5 @@ All files                |   28.22 |    26.44 |   26.16 |   28.62 |
 Test Suites: 2 failed, 2 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.816 s
+Time:        3.698 s
 Ran all test suites.
