@@ -29,8 +29,11 @@ export function WinFormula(
     //const t2Odds = 1 - t1Odds, not needed
     //adds randomness and weighs it based on odds above:
     const rand: number = Math.random(); //.89
-    if (yourStartingLineUp.length === 11) {
-        if (yourStartingLineUp2.length === 11) {
+    if (yourStartingLineUp.length === 11 || yourStartingLineUp.length === 5) {
+        if (
+            yourStartingLineUp2.length === 11 ||
+            yourStartingLineUp.length === 5
+        ) {
             if (rand <= t1Odds) {
                 return 1;
             } else {
