@@ -158,7 +158,7 @@ function App(): JSX.Element {
             } else {
                 //if either team does not have exactly 11 players
                 alert(
-                    "Please ensure both teams have 11 Players in their lineups."
+                    "Please ensure both teams have 11 (or 5) Players in their lineups."
                 );
             }
         }
