@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable indent */
 import React, { useState } from "react";
 import "../App.css";
@@ -60,6 +61,17 @@ export function MainScene({
                 setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
                 team.players.push(newPlayer);
                 return;
+                // } else if (
+                //     !yourTeamPlayers.some(
+                //         (player: Player) =>
+                //             player.name === newPlayer.name &&
+                //             player.rating === newPlayer.rating &&
+                //             player.position === newPlayer.position
+                //     )
+                // ) {
+                //     setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+                //     team.players.push(newPlayer);
+                //     return;
             } else {
                 return;
             }
@@ -77,6 +89,7 @@ export function MainScene({
             const newteam = [...yourTeamPlayers];
             newteam.splice(indexOfPlayer, 1, newPlayer);
             setYourTeamPlayers(newteam);
+            team.players = newteam;
         }
     }
 
@@ -94,43 +107,56 @@ export function MainScene({
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
         // Find the dropped player object based on name in first team
-        const playerToRemove = yourTeamPlayers.find(
+        const playerToRemoveFromTeam = team.players.find(
+            (player) => player.name === widgetType
+        );
+        const playerToRemoveFromLineup = team.lineup.find(
             (player) => player.name === widgetType
         );
         if (
-            playerToRemove ===
+            playerToRemoveFromTeam ===
             team.players.find(
-                (a_player: Player): boolean => a_player === playerToRemove
+                (a_player: Player): boolean =>
+                    a_player === playerToRemoveFromTeam
             )
         ) {
-            if (playerToRemove) {
+            if (playerToRemoveFromTeam) {
                 // Remove the player from the team players' list
                 const updatedTeamPlayers = yourTeamPlayers.filter(
-                    (player) => player !== playerToRemove
+                    (player) => player !== playerToRemoveFromTeam
                 );
                 setYourTeamPlayers(updatedTeamPlayers);
                 team.players = team.players.filter(
                     (a_player: Player): boolean =>
-                        a_player.name !== playerToRemove.name
+                        a_player.imageURL !== playerToRemoveFromTeam.imageURL
+                );
+                const updatedLineupPlayers = yourStartingLineUp.filter(
+                    (player) => player !== playerToRemoveFromTeam
+                );
+                setYourStartingLineUp(updatedLineupPlayers);
+                team.lineup = team.lineup.filter(
+                    (a_player: Player): boolean =>
+                        a_player.imageURL !== playerToRemoveFromTeam.imageURL
                 );
                 console.log("test1");
             }
         }
         if (
-            playerToRemove ===
+            playerToRemoveFromLineup ===
             team.lineup.find(
-                (a_player: Player): boolean => a_player === playerToRemove
+                (a_player: Player): boolean =>
+                    a_player === playerToRemoveFromLineup
             )
         ) {
-            if (playerToRemove) {
+            if (playerToRemoveFromLineup) {
                 // Remove the player from the team players' list
                 const updatedTeamPlayers = yourStartingLineUp.filter(
-                    (player) => player !== playerToRemove
+                    (player) => player !== playerToRemoveFromLineup
                 );
                 setYourStartingLineUp(updatedTeamPlayers);
                 team.lineup = team.lineup.filter(
                     (a_player: Player): boolean =>
-                        a_player.name !== playerToRemove.name
+                        a_player.name !== playerToRemoveFromLineup.name
                 );
                 console.log("test2");
             }
@@ -147,7 +173,32 @@ export function MainScene({
 
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
-
+        if (
+            oldPlayer.name ===
+            team.players.find(
+                (a_player: Player): boolean => a_player.name === newPlayer.name
+            )?.name
+        ) {
+            let sum = team.lineup.reduce(
+                (total: number, a_player: Player) =>
+                    a_player.imageURL === newPlayer.imageURL
+                        ? total + 1
+                        : total,
+                1
+            );
+            while (
+                oldPlayer.name + " (" + sum + ")" ===
+                team.lineup.find(
+                    (a_player: Player): boolean =>
+                        a_player.name === newPlayer.name + " (" + sum + ")"
+                )?.name
+            ) {
+                sum++;
+            }
+            if (sum !== 0) {
+                newPlayer.name = newPlayer.name + " (" + sum + ")";
+            }
+        }
         // add the player to the list
         if (newPlayer !== undefined) {
             if (yourStartingLineUp.length < 12) {
@@ -156,10 +207,11 @@ export function MainScene({
             }
         }
         if (
-            newPlayer.name !==
+            newPlayer.imageURL !==
             team.players.find(
-                (a_player: Player): boolean => a_player.name === newPlayer.name
-            )?.name
+                (a_player: Player): boolean =>
+                    a_player.imageURL === newPlayer.imageURL
+            )?.imageURL
         ) {
             setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
             team.players.push(newPlayer);
@@ -179,7 +231,7 @@ export function MainScene({
     return (
         <>
             <div>
-                {user === "League Manager" && (
+                {user === "League Manager" || user === "Team Manager") && (
                     <div
                         className={`removeButton ${
                             isRemoveButtonHovered ? "removeButtonHover" : ""
@@ -238,7 +290,7 @@ export function MainScene({
                         >
                             <Lineup
                                 title={team.name + " Players"}
-                                players={yourTeamPlayers}
+                                players={team.players}
                                 setPlayers={setYourTeamPlayers}
                                 user={user}
                                 playersEditable={false}
@@ -257,7 +309,7 @@ export function MainScene({
                             <h4>You need 11 or 5 Players</h4>
                             <Lineup
                                 title={team.name + " Lineup"}
-                                players={yourStartingLineUp}
+                                players={team.lineup}
                                 setPlayers={setYourStartingLineUp}
                                 user={user}
                                 playersEditable={false}

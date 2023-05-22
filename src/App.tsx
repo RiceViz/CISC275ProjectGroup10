@@ -8,10 +8,9 @@ import UserDropDownButton from "./components/UserDropDownButton";
 import { TeamDropDownButton } from "./components/TeamDropDownButton";
 import { User } from "./interfaces/user";
 import { PlayScene } from "./scenes/PlayScene";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Player } from "./interfaces/player";
 import { PlayerCreator } from "./components/PlayerCreator";
-import { WinFormula } from "./components/WinFormula";
 import { Team } from "./interfaces/team";
 import { AddTeamButton } from "./components/AddTeam";
 
@@ -121,42 +120,7 @@ function App(): JSX.Element {
     const [yourStartingLineUp2, setYourStartingLineUp2] = useState<Player[]>(
         team.lineup
     );
-    const [team1Wins, setTeam1Wins] = useState(team.wins);
-    const [team2Wins, setTeam2Wins] = useState(team.wins);
-
-    function simulateGame() {
-        const result: number = WinFormula(
-            yourStartingLineUp,
-            yourStartingLineUp2
-        );
-        if (result === 1) {
-            //if team1 wins
-            setTeam1Wins((prev: number) => prev + 1);
-            alert(
-                // eslint-disable-next-line prettier/prettier
-                `Congratulations Team 1, you win! Your current win-loss record is ${
-                    team1Wins + 1
-                }-${team2Wins}`
-            );
-        } else {
-            if (result === 2) {
-                //if team 2 wins
-                setTeam2Wins((prev) => prev + 1);
-                alert(
-                    // eslint-disable-next-line prettier/prettier
-                    `Congratulations Team 2, you win! Your current win-loss record is ${
-                        team2Wins + 1
-                    }-${team1Wins}`
-                );
-            } else {
-                //if either team does not have exactly 11 players
-                alert(
-                    "Please ensure both teams have 11 (or 5) Players in their lineups."
-                );
-            }
-        }
-    } //end of simulateGame (counts Ws and Ls)
-
+  
     function changeTeam(a_team: Team) {
         setTeam(a_team);
         setYourTeamPlayers(a_team.players);
@@ -172,11 +136,90 @@ function App(): JSX.Element {
             }}
         >
             <Header>
-                <div className="flex flex-col dark:text-white">
-                    <div className="flex justify-between p-">
+                <div className="flex content-center flex wrap dark:text-white justify-between">
+                    <ThemeToggle></ThemeToggle>
+                    <span className="text-4xl text-center pl-64 pt-8">
+                        Soccer Fantasy Manager
+                    </span>
+                    <div className="flex flex-col end">
+                        <div className="flex flex-row">
+                            <UserDropDownButton
+                                //logo={<BiUserCircle size={25} />}
+                                user={user}
+                                setUser={setUser}
+                            ></UserDropDownButton>
+                            {scene === "MAIN" ? (
+                                <TeamDropDownButton
+                                    team={team}
+                                    setTeam={(team: Team) => changeTeam(team)}
+                                    teams={teams}
+                                ></TeamDropDownButton>
+                            ) : null}
+                        </div>
+                        <div className="pl-48">
+                            {user === "League Manager" && scene === "MAIN" && (
+                                <AddTeamButton
+                                    addTeam={(team: Team) =>
+                                        setTeams([
+                                            ...teams,
+                                            {
+                                                ...team,
+                                                players: team.players.map(
+                                                    (
+                                                        a_player: Player
+                                                    ): Player => ({
+                                                        ...a_player
+                                                    })
+                                                ),
+                                                lineup: team.lineup.map(
+                                                    (
+                                                        a_player: Player
+                                                    ): Player => ({
+                                                        ...a_player
+                                                    })
+                                                )
+                                            }
+                                        ])
+                                    }
+                                ></AddTeamButton>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </Header>
+            {/* <Header className="App-header">
+                <div className="flex flex-col dark:text-white h-500">
+                    <div className="flex justify-between p- flex-wrap h-500">
                         <ThemeToggle></ThemeToggle>
-                        <Container className="flex justify-end">
+                        <Container className="flex justify-end flow-root">
                             <Row>
+                                <div className="flex justify-end flex-col">
+                                    <Col>
+                                        <span className="flex justify-end">
+                                            <UserDropDownButton
+                                                //logo={<BiUserCircle size={25} />}
+                                                user={user}
+                                                setUser={setUser}
+                                            ></UserDropDownButton>
+                                        </span>
+                                    </Col>
+                                    <Col>
+                                        <span className="text-4xl text-center dark:text-white h-500">
+                                            Soccer Fantasy Manager
+                                        </span>
+                                        {scene === "MAIN" ? (
+                                            <span className="flex justify-end">
+                                                <TeamDropDownButton
+                                                    team={team}
+                                                    setTeam={(team: Team) =>
+                                                        changeTeam(team)
+                                                    }
+                                                    teams={teams}
+                                                ></TeamDropDownButton>
+                                            </span>
+                                        ) : null}
+                                    </Col>
+                                </div>
                                 <Col>
                                     <div className="flex justify-end">
                                         <UserDropDownButton
@@ -202,7 +245,7 @@ function App(): JSX.Element {
                             </Row>
                             <Row>
                                 {scene === "MAIN" ? (
-                                    <div className="flex justify-end">
+                                    <span className="flex justify-end">
                                         {user === "League Manager" && (
                                             <AddTeamButton
                                                 addTeam={(team: Team) =>
@@ -230,16 +273,13 @@ function App(): JSX.Element {
                                                 }
                                             ></AddTeamButton>
                                         )}
-                                    </div>
+                                    </span>
                                 ) : null}
                             </Row>
                         </Container>
                     </div>
-                    <h1 className="text-4xl text-center dark:text-white">
-                        Soccer Fantasy Manager
-                    </h1>
                 </div>
-            </Header>
+            </Header> */}
             <hr></hr>
             <RenderCurrentScene
                 scene={scene}
@@ -260,25 +300,18 @@ function App(): JSX.Element {
             ></RenderCurrentScene>
             <br></br>
             {/* Set Scene Button */}
-            <div>
-                {scene === "MAIN" ? null : (
-                    <Button
-                        className="text-2xl text-center dark:text-white"
-                        onClick={simulateGame}
-                    >
-                        Simulate Game
-                    </Button>
-                )}
-            </div>
             <br className="height:60px"></br>
-            <Button
-                className="text-2xl text-center dark:text-white"
-                onClick={() => setScene(scene === "MAIN" ? "PLAY" : "MAIN")}
-            >
-                {scene === "MAIN" ? "Simulation Mode" : "Team Management Mode"}
-            </Button>
-
-            <footer className="bg-neutral-50 dark:bg-neutral-900 dark:text-white">
+            <div className="p-8">
+                <Button
+                    className="text-2xl text-center dark:text-white font-bold py-2 px-4 rounded-full hover:border-transparent bg-blue-500 hover:bg-blue-600"
+                    onClick={() => setScene(scene === "MAIN" ? "PLAY" : "MAIN")}
+                >
+                    {scene === "MAIN"
+                        ? "Simulation Mode"
+                        : "Team Management Mode"}
+                </Button>
+            </div>
+            <footer className="bg-neutral-50 dark:bg-neutral-900 dark:text-white p-4 text-2xl font-bold">
                 Created by Trevor, Tyran, Mbiet, Shawn, & Gage
             </footer>
         </div>
