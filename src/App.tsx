@@ -8,7 +8,7 @@ import UserDropDownButton from "./components/UserDropDownButton";
 import { TeamDropDownButton } from "./components/TeamDropDownButton";
 import { User } from "./interfaces/user";
 import { PlayScene } from "./scenes/PlayScene";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Player } from "./interfaces/player";
 import { PlayerCreator } from "./components/PlayerCreator";
 import { Team } from "./interfaces/team";
