@@ -12,7 +12,7 @@ import { User } from "../interfaces/user";
  * @param User
  * @returns JSX.Element
  */
-export function PlayerBanner({
+export default function PlayerBanner({
     player,
     setPlayer,
     user,
@@ -104,7 +104,7 @@ export function PlayerBanner({
  * @param setPlayerName (boolean) => void: setter for playerName Hook
  * @returns
  */
-function RenderPlayerName({
+export function RenderPlayerName({
     editMode,
     playerName,
     setPlayerName
@@ -130,7 +130,7 @@ function RenderPlayerName({
     }
 }
 
-function RenderPlayerPosition({
+export function RenderPlayerPosition({
     editMode,
     playerPos,
     setPlayerPos
@@ -162,7 +162,7 @@ function RenderPlayerPosition({
     }
 }
 
-function RenderPlayerRating({
+export function RenderPlayerRating({
     editMode,
     playerRating,
     setPlayerRating
@@ -193,7 +193,7 @@ function RenderPlayerRating({
     }
 }
 
-function RenderEditSwitch({
+export function RenderEditSwitch({
     editMode,
     setEditMode
 }: {

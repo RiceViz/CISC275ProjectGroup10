@@ -4,7 +4,7 @@ import soccer from "./assets/soccer-landing.jpeg";
 import { MainScene } from "./scenes/MainScene";
 import Header from "./components/Header";
 import ThemeToggle from "./components/ThemeToggle";
-import { UserDropDownButton } from "./components/UserDropDownButton";
+import UserDropDownButton from "./components/UserDropDownButton";
 import { TeamDropDownButton } from "./components/TeamDropDownButton";
 import { User } from "./interfaces/user";
 import { PlayScene } from "./scenes/PlayScene";

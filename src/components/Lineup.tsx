@@ -1,6 +1,6 @@
 import React from "react";
 import { Player } from "../interfaces/player";
-import { PlayerBanner } from "./PlayerBanner";
+import PlayerBanner from "./PlayerBanner";
 import { User } from "../interfaces/user";
 import { AddPlayerButton } from "./AddPlayerButton";
 
