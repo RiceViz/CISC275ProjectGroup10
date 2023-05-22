@@ -14,9 +14,7 @@ export function PlayScene({
     teams,
     setYourTeamPlayers,
     setYourTeamPlayers2,
-    yourStartingLineUp,
     setYourStartingLineUp,
-    yourStartingLineUp2,
     setYourStartingLineUp2
 }: {
     user: User;
@@ -36,7 +34,7 @@ export function PlayScene({
     const [teamA, setTeamA] = useState<Team>(team);
     const [teamB, setTeamB] = useState<Team>(team);
     function simulateGame() {
-        const result: number = WinFormula(teamA.players, teamB.players);
+        const result: number = WinFormula(teamA.lineup, teamB.lineup);
         if (result === 1) {
             //if team1 wins
             teamA.wins++;
@@ -54,6 +52,9 @@ export function PlayScene({
                     // eslint-disable-next-line prettier/prettier
                     `Congratulations ${teamB.name}'s team, you win! Your current win-loss record is ${teamB.wins}-${teamB.losses}`
                 );
+            } else if (result === 3) {
+                //if you are trying to simulate a game with the same teams
+                alert("You can't simulate a game against yourself.");
             } else {
                 //if either team does not have exactly 11 players
                 alert(
@@ -72,12 +73,39 @@ export function PlayScene({
 
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
-
+        if (
+            oldPlayer.name ===
+            teamA.players.find(
+                (a_player: Player): boolean => a_player.name === newPlayer.name
+            )?.name
+        ) {
+            const sum = teamA.lineup.reduce(
+                (total: number, a_player: Player) =>
+                    a_player.imageURL === newPlayer.imageURL
+                        ? total + 1
+                        : total,
+                1
+            );
+            if (sum !== 0) {
+                newPlayer.name = newPlayer.name + " (" + sum + ")";
+            }
+        }
         // add the player to the list
         if (newPlayer !== undefined) {
-            if (yourStartingLineUp.length < 11) {
-                setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
+            if (teamA.lineup.length < 11) {
+                setYourStartingLineUp([...teamA.lineup, newPlayer]);
+                teamA.lineup.push(newPlayer);
             }
+        }
+        if (
+            newPlayer.imageURL !==
+            teamA.players.find(
+                (a_player: Player): boolean =>
+                    a_player.imageURL === newPlayer.imageURL
+            )?.imageURL
+        ) {
+            setYourTeamPlayers([...teamA.players, newPlayer]);
+            teamA.players.push(newPlayer);
         }
     }
 
@@ -91,12 +119,39 @@ export function PlayScene({
 
         // make a new copy of the player (might not be neccessary?)
         const newPlayer = { ...oldPlayer };
-
+        if (
+            oldPlayer.name ===
+            teamB.players.find(
+                (a_player: Player): boolean => a_player.name === newPlayer.name
+            )?.name
+        ) {
+            const sum = teamB.lineup.reduce(
+                (total: number, a_player: Player) =>
+                    a_player.imageURL === newPlayer.imageURL
+                        ? total + 1
+                        : total,
+                1
+            );
+            if (sum !== 0) {
+                newPlayer.name = newPlayer.name + " (" + sum + ")";
+            }
+        }
         // add the player to the list
         if (newPlayer !== undefined) {
-            if (yourStartingLineUp2.length < 11) {
-                setYourStartingLineUp2([...yourStartingLineUp2, newPlayer]);
+            if (teamB.lineup.length < 11) {
+                setYourStartingLineUp2([...teamB.lineup, newPlayer]);
+                teamB.lineup.push(newPlayer);
             }
+        }
+        if (
+            newPlayer.imageURL !==
+            teamB.players.find(
+                (a_player: Player): boolean =>
+                    a_player.imageURL === newPlayer.imageURL
+            )?.imageURL
+        ) {
+            setYourTeamPlayers2([...teamB.players, newPlayer]);
+            teamB.players.push(newPlayer);
         }
     }
 

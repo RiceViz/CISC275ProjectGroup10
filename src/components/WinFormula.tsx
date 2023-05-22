@@ -7,18 +7,15 @@ import { Player } from "../interfaces/player";
  * Formula used to see which team wins the simulated game after the draft
  * @returns string: a message to the Team's coach that they won the game
  */
-export function WinFormula(
-    yourStartingLineUp: Player[],
-    yourStartingLineUp2: Player[]
-): number {
+export function WinFormula(teamA: Player[], teamB: Player[]): number {
     //const [show, setShow] = useState(true);
     //const handleClose = () => setShow(false);
     //the following 2 variables calculate total team rating
-    const t1Rating: number = yourStartingLineUp.reduce(
+    const t1Rating: number = teamA.reduce(
         (total, player) => total + player.rating,
         0
     );
-    const t2Rating: number = yourStartingLineUp2.reduce(
+    const t2Rating: number = teamB.reduce(
         (total, player) => total + player.rating,
         0
     );
@@ -29,8 +26,11 @@ export function WinFormula(
     //const t2Odds = 1 - t1Odds, not needed
     //adds randomness and weighs it based on odds above:
     const rand: number = Math.random(); //.89
-    if (yourStartingLineUp.length === 11) {
-        if (yourStartingLineUp2.length === 11) {
+    if (teamA === teamB) {
+        return 3;
+    }
+    if (teamA.length === 11) {
+        if (teamB.length === 11) {
             if (rand <= t1Odds) {
                 return 1;
             } else {
