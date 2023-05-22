@@ -179,13 +179,22 @@ export function MainScene({
                 (a_player: Player): boolean => a_player.name === newPlayer.name
             )?.name
         ) {
-            const sum = team.lineup.reduce(
+            let sum = team.lineup.reduce(
                 (total: number, a_player: Player) =>
                     a_player.imageURL === newPlayer.imageURL
                         ? total + 1
                         : total,
                 1
             );
+            while (
+                oldPlayer.name + " (" + sum + ")" ===
+                team.lineup.find(
+                    (a_player: Player): boolean =>
+                        a_player.name === newPlayer.name + " (" + sum + ")"
+                )?.name
+            ) {
+                sum++;
+            }
             if (sum !== 0) {
                 newPlayer.name = newPlayer.name + " (" + sum + ")";
             }
@@ -234,19 +243,21 @@ export function MainScene({
                     </button>
                 </div>
                 <div>
-                    <select
-                        className="filter-dropdown"
-                        value={selectedPositionFilter}
-                        onChange={(e) =>
-                            setSelectedPositionFilter(e.target.value)
-                        }
-                    >
-                        <option value="">All Positions</option>
-                        <option value="Forward">Forwards</option>
-                        <option value="Midfielder">Midfielders</option>
-                        <option value="Defender">Defenders</option>
-                        <option value="Goalkeeper">Goalkeepers</option>
-                    </select>
+                    {user !== "Coach" ? (
+                        <select
+                            className="filter-dropdown"
+                            value={selectedPositionFilter}
+                            onChange={(e) =>
+                                setSelectedPositionFilter(e.target.value)
+                            }
+                        >
+                            <option value="">All Positions</option>
+                            <option value="Forward">Forwards</option>
+                            <option value="Midfielder">Midfielders</option>
+                            <option value="Defender">Defenders</option>
+                            <option value="Goalkeeper">Goalkeepers</option>
+                        </select>
+                    ) : null}
                 </div>
                 <Container>
                     <div className="flex justify-center">

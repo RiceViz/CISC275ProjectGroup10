@@ -165,11 +165,13 @@ export function PlayScene({
                 <Container>
                     <Row>
                         <Col>
-                            <TeamDropDownButton
-                                team={teamA}
-                                setTeam={setTeamA}
-                                teams={teams}
-                            ></TeamDropDownButton>
+                            <div className="pl-56 pt-8">
+                                <TeamDropDownButton
+                                    team={teamA}
+                                    setTeam={setTeamA}
+                                    teams={teams}
+                                ></TeamDropDownButton>
+                            </div>
                             <div className="flex justify-center">
                                 <Lineup
                                     title={teamA.name + " Players"}
@@ -181,26 +183,30 @@ export function PlayScene({
                             </div>
                         </Col>
                         <Col>
-                            <div
-                                className="flex justify-center"
-                                onDrop={handleOnDropStartingLineup}
-                                onDragOver={handleDragOver}
-                            >
-                                <Lineup
-                                    title={teamA.name + " Lineup"}
-                                    players={teamA.lineup}
-                                    setPlayers={setYourStartingLineUp}
-                                    user={user}
-                                    playersEditable={false}
-                                ></Lineup>
+                            <div className="pt-20">
+                                <div
+                                    className="flex justify-center"
+                                    onDrop={handleOnDropStartingLineup}
+                                    onDragOver={handleDragOver}
+                                >
+                                    <Lineup
+                                        title={teamA.name + " Lineup"}
+                                        players={teamA.lineup}
+                                        setPlayers={setYourStartingLineUp}
+                                        user={user}
+                                        playersEditable={false}
+                                    ></Lineup>
+                                </div>
                             </div>
                         </Col>
                         <Col>
-                            <TeamDropDownButton
-                                team={teamB}
-                                setTeam={setTeamB}
-                                teams={teams}
-                            ></TeamDropDownButton>
+                            <div className="pl-56 pt-8">
+                                <TeamDropDownButton
+                                    team={teamB}
+                                    setTeam={setTeamB}
+                                    teams={teams}
+                                ></TeamDropDownButton>
+                            </div>
                             <div className="flex justify-center">
                                 <Lineup
                                     title={teamB.name + " Players"}
@@ -212,26 +218,28 @@ export function PlayScene({
                             </div>
                         </Col>
                         <Col>
-                            <div
-                                className="flex justify-center"
-                                onDrop={handleOnDropStartingLineup2}
-                                onDragOver={handleDragOver}
-                            >
-                                <Lineup
-                                    title={teamB.name + " Lineup"}
-                                    players={teamB.lineup}
-                                    setPlayers={setYourStartingLineUp2}
-                                    user={user}
-                                    playersEditable={false}
-                                ></Lineup>
+                            <div className="pt-20">
+                                <div
+                                    className="flex justify-center"
+                                    onDrop={handleOnDropStartingLineup2}
+                                    onDragOver={handleDragOver}
+                                >
+                                    <Lineup
+                                        title={teamB.name + " Lineup"}
+                                        players={teamB.lineup}
+                                        setPlayers={setYourStartingLineUp2}
+                                        user={user}
+                                        playersEditable={false}
+                                    ></Lineup>
+                                </div>
                             </div>
                         </Col>
                     </Row>
                 </Container>
                 <br></br>
-                <div>
+                <div className="pt-10">
                     <Button
-                        className="text-2xl text-center dark:text-white"
+                        className="text-2xl text-center dark:text-white font-bold py-2 px-4 rounded-full hover:border-transparent bg-blue-500 hover:bg-blue-600"
                         onClick={simulateGame}
                     >
                         Simulate Game

@@ -123,14 +123,14 @@ export function AddTeamButton({
             <Modal.Footer>
                 <Button
                     variant="secondary"
-                    className="bg-neutral-500 hover:bg-neutral-600"
+                    className="bg-neutral-500 hover:bg-neutral-600 font-bold py-2 px-4 rounded-full"
                     onClick={handleClose}
                 >
                     Cancel
                 </Button>
                 <Button
                     variant="primary"
-                    className="bg-blue-500 hover:bg-blue-600"
+                    className="bg-blue-500 hover:bg-blue-600 font-bold py-2 px-4 rounded-full"
                     onClick={() => {
                         const newTeam: Team = {
                             ...team
@@ -149,7 +149,7 @@ export function AddTeamButton({
         <div>
             <Button
                 variant="primary"
-                className="flex justify-between p-"
+                className="flex justify-between p- hover:border-transparent rounded bg-blue-500 hover:bg-blue-600"
                 onClick={handleShow}
             >
                 Add Team
