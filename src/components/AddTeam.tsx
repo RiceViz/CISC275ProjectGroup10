@@ -129,6 +129,8 @@ export function AddTeamButton({
                     Cancel
                 </Button>
                 <Button
+                    name="Add Team"
+                    id="innner"
                     variant="primary"
                     className="bg-blue-500 hover:bg-blue-600"
                     onClick={() => {
@@ -139,7 +141,7 @@ export function AddTeamButton({
                         handleClose();
                     }}
                 >
-                    Add Team
+                    Add
                 </Button>
             </Modal.Footer>
         </Modal>

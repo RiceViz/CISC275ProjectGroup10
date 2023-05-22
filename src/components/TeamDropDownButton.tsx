@@ -12,31 +12,6 @@ export function TeamDropDownButton({
     setTeamNum: (newTeamNum: number) => void;
     teams: Team[];
 }): JSX.Element {
-    // if (logo) {
-    //     return (
-    //         <Dropdown>
-    //             <Dropdown.Toggle
-    //                 className="focus:border-transparent dark:text-white"
-    //                 variant="transparent"
-    //                 id="dropdown-basic"
-    //             >
-    //                 {logo}
-    //             </Dropdown.Toggle>
-    //             <Dropdown.Menu>
-    //                 {options.map((userOption: User) => (
-    //                     <Dropdown.Item
-    //                         key={userOption}
-    //                         eventKey={userOption}
-    //                         onSelect={updateUser}
-    //                     >
-    //                         {userOption}
-    //                     </Dropdown.Item>
-    //                 ))}
-    //             </Dropdown.Menu>
-    //         </Dropdown>
-    //     );
-    // }
-
     return (
         <div>
             <Form.Group className="max-w-fit p-2" controlId="choices">
