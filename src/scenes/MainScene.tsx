@@ -226,12 +226,10 @@ export function MainScene({
         setIsRemoveButtonHovered(false);
     }
 
-    const yourStartingLineUpCount = yourStartingLineUp.length;
-
     return (
         <>
             <div>
-                {user === "League Manager" || user === "Team Manager") && (
+                {(user === "League Manager" || user === "Team Manager") && (
                     <div
                         className={`removeButton ${
                             isRemoveButtonHovered ? "removeButtonHover" : ""
@@ -267,7 +265,7 @@ export function MainScene({
                     <div className="flex justify-center">
                         {user === "League Manager" ||
                         user === "Team Manager" ? (
-                            <div className="flex justify-center">
+                            <div className="flex justify-center pt-10">
                                 <Lineup
                                     title="All Players"
                                     players={allPlayers.filter((player) =>
@@ -284,7 +282,7 @@ export function MainScene({
                         ) : null}
 
                         <div
-                            className="justify-center"
+                            className="justify-center pt-10"
                             onDrop={handleOnDropTeam}
                             onDragOver={handleDragOver}
                         >
@@ -301,12 +299,15 @@ export function MainScene({
                             onDrop={handleOnDropStartingLineup}
                             onDragOver={handleDragOver}
                         >
-                            <h3>
-                                {"Player Count (" +
-                                    yourStartingLineUpCount +
-                                    ")"}
+                            <h3 className="justify-center pl-20">
+                                <div className="bg-gray-300 bg-opacity-75 w-56">
+                                    {"Player Count (" +
+                                        team.lineup.length +
+                                        ")"}
+                                    <br></br>
+                                    You Need 5 Or 11 Players
+                                </div>
                             </h3>
-                            <h4>You need 11 or 5 Players</h4>
                             <Lineup
                                 title={team.name + " Lineup"}
                                 players={team.lineup}

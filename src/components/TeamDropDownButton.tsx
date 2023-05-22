@@ -5,16 +5,15 @@ import { Team } from "../interfaces/team";
 
 export function TeamDropDownButton({
     team,
-    setTeamNum,
+    setTeam,
     teams
 }: {
     team: Team;
-    setTeamNum: (newTeamNum: number) => void;
+    setTeam: (newTeam: Team) => void;
     teams: Team[];
 }): JSX.Element {
     return (
         <div>
-            Select User:
             <Form.Group className="max-w-fit p-2" controlId="choices">
                 <Form.Select
                     value={team.name}

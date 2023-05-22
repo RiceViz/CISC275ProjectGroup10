@@ -19,7 +19,6 @@ function RenderCurrentScene({
     user,
     team,
     teams,
-    setTeams,
     allPlayers,
     setAllPlayers,
     yourTeamPlayers,
@@ -70,8 +69,17 @@ function RenderCurrentScene({
                 <PlayScene
                     user={user}
                     allPlayers={allPlayers}
+                    team={team}
                     teams={teams}
-                    setTeams={setTeams}
+                    setAllPlayers={setAllPlayers}
+                    yourTeamPlayers={yourTeamPlayers}
+                    setYourTeamPlayers={setYourTeamPlayers}
+                    yourTeamPlayers2={yourTeamPlayers2}
+                    setYourTeamPlayers2={setYourTeamPlayers2}
+                    yourStartingLineUp={yourStartingLineUp}
+                    setYourStartingLineUp={setYourStartingLineUp}
+                    yourStartingLineUp2={yourStartingLineUp2}
+                    setYourStartingLineUp2={setYourStartingLineUp2}
                 ></PlayScene>
             );
         default:
@@ -120,7 +128,6 @@ function App(): JSX.Element {
     const [yourStartingLineUp2, setYourStartingLineUp2] = useState<Player[]>(
         team.lineup
     );
-  
     function changeTeam(a_team: Team) {
         setTeam(a_team);
         setYourTeamPlayers(a_team.players);
@@ -149,11 +156,16 @@ function App(): JSX.Element {
                                 setUser={setUser}
                             ></UserDropDownButton>
                             {scene === "MAIN" ? (
-                                <TeamDropDownButton
-                                    team={team}
-                                    setTeam={(team: Team) => changeTeam(team)}
-                                    teams={teams}
-                                ></TeamDropDownButton>
+                                <div className="block">
+                                    <h1 className="pt-1">Select User:</h1>
+                                    <TeamDropDownButton
+                                        team={team}
+                                        setTeam={(team: Team) =>
+                                            changeTeam(team)
+                                        }
+                                        teams={teams}
+                                    ></TeamDropDownButton>
+                                </div>
                             ) : null}
                         </div>
                         <div className="pl-48">
