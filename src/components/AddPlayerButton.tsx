@@ -33,7 +33,7 @@ export function AddPlayerButton({
     const imageOnErrorHandler = (
         event: React.SyntheticEvent<HTMLImageElement, Event>
     ) => {
-        properUrl = getPath("");
+        properUrl = process.env.PUBLIC_URL + "/blankprofilepicture.png";
         event.currentTarget.src = properUrl;
     };
 
