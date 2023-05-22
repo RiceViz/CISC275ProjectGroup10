@@ -250,10 +250,11 @@ export function MainScene({
                             onDragOver={handleDragOver}
                         >
                             <h3>
-                                {"Players Count (" +
+                                {"Player Count (" +
                                     yourStartingLineUpCount +
                                     ")"}
                             </h3>
+                            <h4>You need 11 or 5 Players</h4>
                             <Lineup
                                 title={team.name + " Lineup"}
                                 players={yourStartingLineUp}
