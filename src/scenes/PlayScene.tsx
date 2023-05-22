@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import { User } from "../interfaces/user";
 import { Team } from "../interfaces/team";
 import { TeamDropDownButton } from "../components/TeamDropDownButton";
+import { WinFormula } from "../components/WinFormula";
 export function PlayScene({
     user,
     allPlayers,
@@ -34,6 +35,33 @@ export function PlayScene({
 }): JSX.Element {
     const [teamA, setTeamA] = useState<Team>(team);
     const [teamB, setTeamB] = useState<Team>(team);
+    function simulateGame() {
+        const result: number = WinFormula(teamA.players, teamB.players);
+        if (result === 1) {
+            //if team1 wins
+            teamA.wins++;
+            teamB.losses++;
+            alert(
+                // eslint-disable-next-line prettier/prettier
+                `Congratulations ${teamA.name}'s team, you win! Your current win-loss record is ${teamA.wins}-${teamA.losses}`
+            );
+        } else {
+            if (result === 2) {
+                //if team 2 wins
+                teamB.wins++;
+                teamA.losses++;
+                alert(
+                    // eslint-disable-next-line prettier/prettier
+                    `Congratulations ${teamB.name}'s team, you win! Your current win-loss record is ${teamB.wins}-${teamB.losses}`
+                );
+            } else {
+                //if either team does not have exactly 11 players
+                alert(
+                    "Please ensure both teams have 11 Players in their lineups."
+                );
+            }
+        }
+    } //end of simulateGame (counts Ws and Ls)
     function handleOnDropStartingLineup(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
@@ -146,6 +174,14 @@ export function PlayScene({
                     </Row>
                 </Container>
                 <br></br>
+                <div>
+                    <Button
+                        className="text-2xl text-center dark:text-white"
+                        onClick={simulateGame}
+                    >
+                        Simulate Game
+                    </Button>
+                </div>
             </div>
         </>
     );

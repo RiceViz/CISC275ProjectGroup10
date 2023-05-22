@@ -128,41 +128,7 @@ function App(): JSX.Element {
     const [yourStartingLineUp2, setYourStartingLineUp2] = useState<Player[]>(
         team.lineup
     );
-    const [team1Wins, setTeam1Wins] = useState(team.wins);
-    const [team2Wins, setTeam2Wins] = useState(team.wins);
 
-    function simulateGame() {
-        const result: number = WinFormula(
-            yourStartingLineUp,
-            yourStartingLineUp2
-        );
-        if (result === 1) {
-            //if team1 wins
-            setTeam1Wins((prev: number) => prev + 1);
-            alert(
-                // eslint-disable-next-line prettier/prettier
-                `Congratulations Team 1, you win! Your current win-loss record is ${
-                    team1Wins + 1
-                }-${team2Wins}`
-            );
-        } else {
-            if (result === 2) {
-                //if team 2 wins
-                setTeam2Wins((prev) => prev + 1);
-                alert(
-                    // eslint-disable-next-line prettier/prettier
-                    `Congratulations Team 2, you win! Your current win-loss record is ${
-                        team2Wins + 1
-                    }-${team1Wins}`
-                );
-            } else {
-                //if either team does not have exactly 11 players
-                alert(
-                    "Please ensure both teams have 11 Players in their lineups."
-                );
-            }
-        }
-    } //end of simulateGame (counts Ws and Ls)
     function changeTeam(a_team: Team) {
         setTeam(a_team);
         setYourTeamPlayers(a_team.players);
@@ -264,16 +230,6 @@ function App(): JSX.Element {
             ></RenderCurrentScene>
             <br></br>
             {/* Set Scene Button */}
-            <div>
-                {scene === "MAIN" ? null : (
-                    <Button
-                        className="text-2xl text-center dark:text-white"
-                        onClick={simulateGame}
-                    >
-                        Simulate Game
-                    </Button>
-                )}
-            </div>
             <br className="height:60px"></br>
             <Button
                 className="text-2xl text-center dark:text-white"

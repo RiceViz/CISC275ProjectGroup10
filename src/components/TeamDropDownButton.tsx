@@ -51,6 +51,12 @@ export function TeamDropDownButton({
                         );
                         teams[ind2] = team;
                         setTeam(teams[ind]);
+                        console.log(
+                            "Players: " +
+                                teams[ind].players +
+                                " Lineup: " +
+                                teams[ind].lineup
+                        );
                     }}
                 >
                     {teams.map((teamOption: Team) => (
