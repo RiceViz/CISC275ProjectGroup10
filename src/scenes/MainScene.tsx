@@ -150,7 +150,7 @@ export function MainScene({
 
         // add the player to the list
         if (newPlayer !== undefined) {
-            if (yourStartingLineUp.length < 11) {
+            if (yourStartingLineUp.length < 12) {
                 setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
                 team.lineup.push(newPlayer);
             }
@@ -174,37 +174,44 @@ export function MainScene({
         setIsRemoveButtonHovered(false);
     }
 
+    const yourTeamPlayersCount = yourTeamPlayers.length;
+    const yourStartingLineUpCount = yourStartingLineUp.length;
+
     return (
         <>
             <div>
-                <div
-                    className={`removeButton ${
-                        isRemoveButtonHovered ? "removeButtonHover" : ""
-                    }`}
-                    onDrop={handleRemovePlayer}
-                    onDragOver={handleDragOver}
-                    onMouseEnter={handleRemoveButtonMouseEnter}
-                    onMouseLeave={handleRemoveButtonMouseLeave}
-                >
-                    <button className="removeButtonHover">
-                        Drag Player Here To Remove
-                    </button>
-                </div>
-                <div>
-                    <select
-                        className="filter-dropdown"
-                        value={selectedPositionFilter}
-                        onChange={(e) =>
-                            setSelectedPositionFilter(e.target.value)
-                        }
+                {user === "League Manager" && (
+                    <div
+                        className={`removeButton ${
+                            isRemoveButtonHovered ? "removeButtonHover" : ""
+                        }`}
+                        onDrop={handleRemovePlayer}
+                        onDragOver={handleDragOver}
+                        onMouseEnter={handleRemoveButtonMouseEnter}
+                        onMouseLeave={handleRemoveButtonMouseLeave}
                     >
-                        <option value="">All Positions</option>
-                        <option value="Forward">Forwards</option>
-                        <option value="Midfielder">Midfielders</option>
-                        <option value="Defender">Defenders</option>
-                        <option value="Goalkeeper">Goalkeepers</option>
-                    </select>
-                </div>
+                        <button className="removeButtonHover">
+                            Drag Player Here To Remove
+                        </button>
+                    </div>
+                )}
+                {user === "League Manager" || user === "Team Manager" ? (
+                    <div>
+                        <select
+                            className="filter-dropdown"
+                            value={selectedPositionFilter}
+                            onChange={(e) =>
+                                setSelectedPositionFilter(e.target.value)
+                            }
+                        >
+                            <option value="">All Positions</option>
+                            <option value="Forward">Forwards</option>
+                            <option value="Midfielder">Midfielders</option>
+                            <option value="Defender">Defenders</option>
+                            <option value="Goalkeeper">Goalkeepers</option>
+                        </select>
+                    </div>
+                ) : null}
                 <Container>
                     <div className="flex justify-center">
                         {user === "League Manager" ||
@@ -229,6 +236,9 @@ export function MainScene({
                             onDrop={handleOnDropTeam}
                             onDragOver={handleDragOver}
                         >
+                            <h3>
+                                {"Players Count (" + yourTeamPlayersCount + ")"}
+                            </h3>
                             <Lineup
                                 title={team.name + " Players"}
                                 players={yourTeamPlayers}
@@ -242,6 +252,11 @@ export function MainScene({
                             onDrop={handleOnDropStartingLineup}
                             onDragOver={handleDragOver}
                         >
+                            <h3>
+                                {"Players Count (" +
+                                    yourStartingLineUpCount +
+                                    ")"}
+                            </h3>
                             <Lineup
                                 title={team.name + " Lineup"}
                                 players={yourStartingLineUp}
