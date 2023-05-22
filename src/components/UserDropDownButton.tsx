@@ -18,6 +18,7 @@ export default function UserDropDownButton({
     return (
         <div>
             {logo}
+            Select Role:
             <Form.Group className="max-w-fit p-2" controlId="choices">
                 <Form.Select
                     value={user}

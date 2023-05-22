@@ -30,7 +30,7 @@ export function AddTeamButton({
     const modal = (
         <Modal show={show} onHide={handleClose} backdrop="static">
             <Modal.Header closeButton>
-                <Modal.Title>Add Team</Modal.Title>
+                <Modal.Title>Add User</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 {/* Input Name */}
@@ -148,13 +148,13 @@ export function AddTeamButton({
     );
 
     return (
-        <div>
+        <div className="button">
             <Button
                 variant="primary"
-                className="flex justify-between p-"
+                className="bg-blue-600/80 hover:bg-blue-600/100"
                 onClick={handleShow}
             >
-                Add Team
+                Add User
             </Button>
             {modal}
         </div>

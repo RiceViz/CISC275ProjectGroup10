@@ -1,5 +1,10 @@
 import React from "react";
-import { render, fireEvent, getByTestId, getByRole } from "@testing-library/react";
+import {
+    render,
+    fireEvent,
+    getByTestId,
+    getByRole
+} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { AddTeamButton } from "./AddTeam";
 
@@ -26,7 +31,7 @@ describe("AddTeamButton", () => {
         fireEvent.click(getByText("Cancel"));
     });
 
-    it('calls the addTeam prop when the "Add Team" button in the modal is clicked', () => {
+    it("calls the addTeam prop when the Add Team button in the modal is clicked", () => {
         const { getByText, getByLabelText, getByRole } = render(
             <AddTeamButton addTeam={addTeamMock} />
         );

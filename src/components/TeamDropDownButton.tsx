@@ -14,6 +14,7 @@ export function TeamDropDownButton({
 }): JSX.Element {
     return (
         <div>
+            Select User:
             <Form.Group className="max-w-fit p-2" controlId="choices">
                 <Form.Select
                     value={team.name}

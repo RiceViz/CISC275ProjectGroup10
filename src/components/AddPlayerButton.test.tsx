@@ -16,7 +16,6 @@ describe("AddPlayerButton", () => {
             <AddPlayerButton addPlayer={addPlayerMock} />
         );
 
-
         // Click the "Add Player" button
         fireEvent.click(getByText("Add Player"));
 
@@ -27,7 +26,7 @@ describe("AddPlayerButton", () => {
         fireEvent.click(getByText("Cancel"));
     });
 
-    it('calls the addPlayer prop when the "Add Player" button in the modal is clicked', () => {
+    it("calls the addPlayer prop when the Add Player button in the modal is clicked", () => {
         const { getByText, getByLabelText } = render(
             <AddPlayerButton addPlayer={addPlayerMock} />
         );

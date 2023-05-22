@@ -174,7 +174,6 @@ export function MainScene({
         setIsRemoveButtonHovered(false);
     }
 
-    const yourTeamPlayersCount = yourTeamPlayers.length;
     const yourStartingLineUpCount = yourStartingLineUp.length;
 
     return (
@@ -231,14 +230,12 @@ export function MainScene({
                                 ></Lineup>
                             </div>
                         ) : null}
+
                         <div
                             className="justify-center"
                             onDrop={handleOnDropTeam}
                             onDragOver={handleDragOver}
                         >
-                            <h3>
-                                {"Players Count (" + yourTeamPlayersCount + ")"}
-                            </h3>
                             <Lineup
                                 title={team.name + " Players"}
                                 players={yourTeamPlayers}
@@ -253,10 +250,11 @@ export function MainScene({
                             onDragOver={handleDragOver}
                         >
                             <h3>
-                                {"Players Count (" +
+                                {"Player Count (" +
                                     yourStartingLineUpCount +
                                     ")"}
                             </h3>
+                            <h4>You need 11 or 5 Players</h4>
                             <Lineup
                                 title={team.name + " Lineup"}
                                 players={yourStartingLineUp}
