@@ -230,6 +230,7 @@ export function MainScene({
                                 ></Lineup>
                             </div>
                         ) : null}
+
                         <div
                             className="justify-center"
                             onDrop={handleOnDropTeam}
