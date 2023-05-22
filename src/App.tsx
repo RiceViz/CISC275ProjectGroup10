@@ -8,7 +8,7 @@ import UserDropDownButton from "./components/UserDropDownButton";
 import { TeamDropDownButton } from "./components/TeamDropDownButton";
 import { User } from "./interfaces/user";
 import { PlayScene } from "./scenes/PlayScene";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Player } from "./interfaces/player";
 import { PlayerCreator } from "./components/PlayerCreator";
 import { Team } from "./interfaces/team";
@@ -17,35 +17,19 @@ import { AddTeamButton } from "./components/AddTeam";
 function RenderCurrentScene({
     scene,
     user,
-    team,
-    teams,
-    setTeams,
     allPlayers,
     setAllPlayers,
-    yourTeamPlayers,
-    setYourTeamPlayers,
-    yourTeamPlayers2,
-    setYourTeamPlayers2,
-    yourStartingLineUp,
-    setYourStartingLineUp,
-    yourStartingLineUp2,
-    setYourStartingLineUp2
+    teams,
+    setTeams,
+    teamIndex
 }: {
     scene: string;
     user: User;
-    team: Team;
-    teams: Team[];
-    setTeams: (teams: Team[]) => void;
     allPlayers: Player[];
     setAllPlayers: (players: Player[]) => void;
-    yourTeamPlayers: Player[];
-    setYourTeamPlayers: (players: Player[]) => void;
-    yourTeamPlayers2: Player[];
-    setYourTeamPlayers2: (players: Player[]) => void;
-    yourStartingLineUp: Player[];
-    setYourStartingLineUp: (players: Player[]) => void;
-    yourStartingLineUp2: Player[];
-    setYourStartingLineUp2: (players: Player[]) => void;
+    teams: Team[];
+    setTeams: (teams: Team[]) => void;
+    teamIndex: number;
 }): JSX.Element {
     switch (scene) {
         case "MAIN":
@@ -53,16 +37,10 @@ function RenderCurrentScene({
                 <MainScene
                     user={user}
                     allPlayers={allPlayers}
-                    team={team}
                     setAllPlayers={setAllPlayers}
-                    yourTeamPlayers={yourTeamPlayers}
-                    setYourTeamPlayers={setYourTeamPlayers}
-                    yourTeamPlayers2={yourTeamPlayers2}
-                    setYourTeamPlayers2={setYourTeamPlayers2}
-                    yourStartingLineUp={yourStartingLineUp}
-                    setYourStartingLineUp={setYourStartingLineUp}
-                    yourStartingLineUp2={yourStartingLineUp2}
-                    setYourStartingLineUp2={setYourStartingLineUp2}
+                    teams={teams}
+                    setTeams={setTeams}
+                    teamIndex={teamIndex}
                 ></MainScene>
             );
         case "PLAY":
@@ -79,16 +57,10 @@ function RenderCurrentScene({
                 <MainScene
                     user={user}
                     allPlayers={allPlayers}
-                    team={team}
                     setAllPlayers={setAllPlayers}
-                    yourTeamPlayers={yourTeamPlayers}
-                    setYourTeamPlayers={setYourTeamPlayers}
-                    yourTeamPlayers2={yourTeamPlayers2}
-                    setYourTeamPlayers2={setYourTeamPlayers2}
-                    yourStartingLineUp={yourStartingLineUp}
-                    setYourStartingLineUp={setYourStartingLineUp}
-                    yourStartingLineUp2={yourStartingLineUp2}
-                    setYourStartingLineUp2={setYourStartingLineUp2}
+                    teams={teams}
+                    setTeams={setTeams}
+                    teamIndex={teamIndex}
                 ></MainScene>
             );
     }
@@ -105,27 +77,9 @@ function App(): JSX.Element {
             losses: 0
         }
     ]);
-    const [team, setTeam] = useState<Team>(teams[0]);
+    const [teamIndex, setTeamIndex] = useState<number>(0);
     const [scene, setScene] = useState<string>("MAIN");
     const [allPlayers, setAllPlayers] = useState<Player[]>(PlayerCreator());
-    const [yourTeamPlayers, setYourTeamPlayers] = useState<Player[]>(
-        team.players
-    );
-    const [yourStartingLineUp, setYourStartingLineUp] = useState<Player[]>(
-        team.lineup
-    );
-    const [yourTeamPlayers2, setYourTeamPlayers2] = useState<Player[]>(
-        team.players
-    );
-    const [yourStartingLineUp2, setYourStartingLineUp2] = useState<Player[]>(
-        team.lineup
-    );
-  
-    function changeTeam(a_team: Team) {
-        setTeam(a_team);
-        setYourTeamPlayers(a_team.players);
-        setYourStartingLineUp(a_team.lineup);
-    }
 
     return (
         <div
@@ -150,8 +104,8 @@ function App(): JSX.Element {
                             ></UserDropDownButton>
                             {scene === "MAIN" ? (
                                 <TeamDropDownButton
-                                    team={team}
-                                    setTeam={(team: Team) => changeTeam(team)}
+                                    team={teams[teamIndex]}
+                                    setTeamNum={setTeamIndex}
                                     teams={teams}
                                 ></TeamDropDownButton>
                             ) : null}
@@ -159,25 +113,11 @@ function App(): JSX.Element {
                         <div className="pl-48">
                             {user === "League Manager" && scene === "MAIN" && (
                                 <AddTeamButton
-                                    addTeam={(team: Team) =>
+                                    addTeam={(newTeam: Team) =>
                                         setTeams([
                                             ...teams,
                                             {
-                                                ...team,
-                                                players: team.players.map(
-                                                    (
-                                                        a_player: Player
-                                                    ): Player => ({
-                                                        ...a_player
-                                                    })
-                                                ),
-                                                lineup: team.lineup.map(
-                                                    (
-                                                        a_player: Player
-                                                    ): Player => ({
-                                                        ...a_player
-                                                    })
-                                                )
+                                                ...newTeam
                                             }
                                         ])
                                     }
@@ -187,116 +127,15 @@ function App(): JSX.Element {
                     </div>
                 </div>
             </Header>
-            {/* <Header className="App-header">
-                <div className="flex flex-col dark:text-white h-500">
-                    <div className="flex justify-between p- flex-wrap h-500">
-                        <ThemeToggle></ThemeToggle>
-                        <Container className="flex justify-end flow-root">
-                            <Row>
-                                <div className="flex justify-end flex-col">
-                                    <Col>
-                                        <span className="flex justify-end">
-                                            <UserDropDownButton
-                                                //logo={<BiUserCircle size={25} />}
-                                                user={user}
-                                                setUser={setUser}
-                                            ></UserDropDownButton>
-                                        </span>
-                                    </Col>
-                                    <Col>
-                                        <span className="text-4xl text-center dark:text-white h-500">
-                                            Soccer Fantasy Manager
-                                        </span>
-                                        {scene === "MAIN" ? (
-                                            <span className="flex justify-end">
-                                                <TeamDropDownButton
-                                                    team={team}
-                                                    setTeam={(team: Team) =>
-                                                        changeTeam(team)
-                                                    }
-                                                    teams={teams}
-                                                ></TeamDropDownButton>
-                                            </span>
-                                        ) : null}
-                                    </Col>
-                                </div>
-                                <Col>
-                                    <div className="flex justify-end">
-                                        <UserDropDownButton
-                                            //logo={<BiUserCircle size={25} />}
-                                            user={user}
-                                            setUser={setUser}
-                                        ></UserDropDownButton>
-                                    </div>
-                                </Col>
-                                <Col>
-                                    {scene === "MAIN" ? (
-                                        <div className="flex justify-end">
-                                            <TeamDropDownButton
-                                                team={team}
-                                                setTeamNum={(teamNum: number) =>
-                                                    changeTeam(teams[teamNum])
-                                                }
-                                                teams={teams}
-                                            ></TeamDropDownButton>
-                                        </div>
-                                    ) : null}
-                                </Col>
-                            </Row>
-                            <Row>
-                                {scene === "MAIN" ? (
-                                    <span className="flex justify-end">
-                                        {user === "League Manager" && (
-                                            <AddTeamButton
-                                                addTeam={(team: Team) =>
-                                                    setTeams([
-                                                        ...teams,
-                                                        {
-                                                            ...team,
-                                                            players:
-                                                                team.players.map(
-                                                                    (
-                                                                        a_player: Player
-                                                                    ): Player => ({
-                                                                        ...a_player
-                                                                    })
-                                                                ),
-                                                            lineup: team.lineup.map(
-                                                                (
-                                                                    a_player: Player
-                                                                ): Player => ({
-                                                                    ...a_player
-                                                                })
-                                                            )
-                                                        }
-                                                    ])
-                                                }
-                                            ></AddTeamButton>
-                                        )}
-                                    </span>
-                                ) : null}
-                            </Row>
-                        </Container>
-                    </div>
-                </div>
-            </Header> */}
             <hr></hr>
             <RenderCurrentScene
                 scene={scene}
                 user={user}
-                team={team}
-                teams={teams}
-                setTeams={setTeams}
                 allPlayers={allPlayers}
                 setAllPlayers={setAllPlayers}
-                yourTeamPlayers={yourTeamPlayers}
-                setYourTeamPlayers={setYourTeamPlayers}
-                yourTeamPlayers2={yourTeamPlayers2}
-                setYourTeamPlayers2={setYourTeamPlayers2}
-                yourStartingLineUp={yourStartingLineUp}
-                setYourStartingLineUp={setYourStartingLineUp}
-                yourStartingLineUp2={yourStartingLineUp2}
-                setYourStartingLineUp2={setYourStartingLineUp2}
+                teams={teams}
+                setTeams={setTeams}
+                teamIndex={teamIndex}
             ></RenderCurrentScene>
             <br></br>
             {/* Set Scene Button */}

@@ -30,6 +30,7 @@
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
         "lint": "eslint ./src --ext .tsx --ext .ts --max-warnings 0",
+        "lintfix": "eslint ./src --ext .tsx --ext .ts --max-warnings 0 --fix",
         "format": "prettier --config .prettierrc --write src/**/*.{ts,tsx}"
     },
     "eslintConfig": {
