@@ -9,31 +9,40 @@ import { TeamDropDownButton } from "../components/TeamDropDownButton";
 export function PlayScene({
     user,
     allPlayers,
-    team,
     teams,
-    setYourTeamPlayers,
-    setYourTeamPlayers2,
-    yourStartingLineUp,
-    setYourStartingLineUp,
-    yourStartingLineUp2,
-    setYourStartingLineUp2
+    setTeams
 }: {
     user: User;
     allPlayers: Player[];
-    team: Team;
     teams: Team[];
-    setAllPlayers: (players: Player[]) => void;
-    yourTeamPlayers: Player[];
-    setYourTeamPlayers: (players: Player[]) => void;
-    yourTeamPlayers2: Player[];
-    setYourTeamPlayers2: (players: Player[]) => void;
-    yourStartingLineUp: Player[];
-    setYourStartingLineUp: (players: Player[]) => void;
-    yourStartingLineUp2: Player[];
-    setYourStartingLineUp2: (players: Player[]) => void;
+    setTeams: (teams: Team[]) => void;
 }): JSX.Element {
-    const [teamA, setTeamA] = useState<Team>(team);
-    const [teamB, setTeamB] = useState<Team>(team);
+    const [teamNumA, setTeamNumA] = useState<number>(0);
+    const [teamNumB, setTeamNumB] = useState<number>(0);
+
+    const teamA = teams[teamNumA];
+    const teamB = teams[teamNumB];
+
+    function setTeamLineUp(teamNumber: number, newLineup: Player[]) {
+        const tmpteams = [...teams];
+        const newTeam: Team = {
+            ...tmpteams[teamNumber],
+            lineup: newLineup
+        };
+        tmpteams.splice(teamNumber, 1, newTeam);
+        setTeams(tmpteams);
+    }
+
+    function setTeamPlayers(teamNumber: number, newPlayers: Player[]) {
+        const tmpteams = [...teams];
+        const newTeam: Team = {
+            ...tmpteams[teamNumber],
+            players: newPlayers
+        };
+        tmpteams.splice(teamNumber, 1, newTeam);
+        setTeams(tmpteams);
+    }
+
     function handleOnDropStartingLineup(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
@@ -47,8 +56,8 @@ export function PlayScene({
 
         // add the player to the list
         if (newPlayer !== undefined) {
-            if (yourStartingLineUp.length < 11) {
-                setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
+            if (teams[teamNumA].lineup.length < 11) {
+                setTeamLineUp(teamNumA, [...teams[teamNumA].lineup, newPlayer]);
             }
         }
     }
@@ -66,8 +75,8 @@ export function PlayScene({
 
         // add the player to the list
         if (newPlayer !== undefined) {
-            if (yourStartingLineUp2.length < 11) {
-                setYourStartingLineUp2([...yourStartingLineUp2, newPlayer]);
+            if (teams[teamNumB].lineup.length < 11) {
+                setTeamLineUp(teamNumB, [...teams[teamNumB].lineup, newPlayer]);
             }
         }
     }
@@ -83,15 +92,17 @@ export function PlayScene({
                     <Row>
                         <Col>
                             <TeamDropDownButton
-                                team={teamA}
-                                setTeam={setTeamA}
+                                team={teams[teamNumA]}
+                                setTeamNum={setTeamNumA}
                                 teams={teams}
                             ></TeamDropDownButton>
                             <div className="flex justify-center">
                                 <Lineup
                                     title={teamA.name + " Players"}
                                     players={teamA.players}
-                                    setPlayers={setYourTeamPlayers}
+                                    setPlayers={(newPlayers: Player[]) =>
+                                        setTeamPlayers(teamNumA, newPlayers)
+                                    }
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
@@ -106,7 +117,9 @@ export function PlayScene({
                                 <Lineup
                                     title={teamA.name + " Lineup"}
                                     players={teamA.lineup}
-                                    setPlayers={setYourStartingLineUp}
+                                    setPlayers={(newLineup: Player[]) =>
+                                        setTeamPlayers(teamNumA, newLineup)
+                                    }
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
@@ -115,14 +128,16 @@ export function PlayScene({
                         <Col>
                             <TeamDropDownButton
                                 team={teamB}
-                                setTeam={setTeamB}
+                                setTeamNum={setTeamNumB}
                                 teams={teams}
                             ></TeamDropDownButton>
                             <div className="flex justify-center">
                                 <Lineup
                                     title={teamB.name + " Players"}
                                     players={teamB.players}
-                                    setPlayers={setYourTeamPlayers2}
+                                    setPlayers={(newPlayers: Player[]) =>
+                                        setTeamPlayers(teamNumB, newPlayers)
+                                    }
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
@@ -137,7 +152,9 @@ export function PlayScene({
                                 <Lineup
                                     title={teamB.name + " Lineup"}
                                     players={teamB.lineup}
-                                    setPlayers={setYourStartingLineUp2}
+                                    setPlayers={(newLineup: Player[]) =>
+                                        setTeamPlayers(teamNumB, newLineup)
+                                    }
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
