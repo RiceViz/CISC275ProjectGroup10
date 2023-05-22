@@ -11,7 +11,6 @@ import { PlayScene } from "./scenes/PlayScene";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { Player } from "./interfaces/player";
 import { PlayerCreator } from "./components/PlayerCreator";
-import { WinFormula } from "./components/WinFormula";
 import { Team } from "./interfaces/team";
 import { AddTeamButton } from "./components/AddTeam";
 
