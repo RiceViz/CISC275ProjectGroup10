@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable indent */
 import React, { useState } from "react";
 import "../App.css";
@@ -60,6 +61,17 @@ export function MainScene({
                 setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
                 team.players.push(newPlayer);
                 return;
+                // } else if (
+                //     !yourTeamPlayers.some(
+                //         (player: Player) =>
+                //             player.name === newPlayer.name &&
+                //             player.rating === newPlayer.rating &&
+                //             player.position === newPlayer.position
+                //     )
+                // ) {
+                //     setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+                //     team.players.push(newPlayer);
+                //     return;
             } else {
                 return;
             }
@@ -77,6 +89,7 @@ export function MainScene({
             const newteam = [...yourTeamPlayers];
             newteam.splice(indexOfPlayer, 1, newPlayer);
             setYourTeamPlayers(newteam);
+            team.players = newteam;
         }
     }
 
@@ -171,7 +184,7 @@ export function MainScene({
                     a_player.imageURL === newPlayer.imageURL
                         ? total + 1
                         : total,
-                0
+                1
             );
             if (sum !== 0) {
                 newPlayer.name = newPlayer.name + " (" + sum + ")";
