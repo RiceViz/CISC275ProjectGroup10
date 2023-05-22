@@ -12,7 +12,7 @@ describe("AddPlayerButton", () => {
     });
 
     it("opens and closes the modal", () => {
-        const { getByText, queryByText } = render(
+        const { getByText } = render(
             <AddPlayerButton addPlayer={addPlayerMock} />
         );
 

@@ -1,10 +1,6 @@
 import React from "react";
-import {
-    render,
-    fireEvent,
-    getByTestId,
-    getByRole
-} from "@testing-library/react";
+// eslint-disable-next-line prettier/prettier
+import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { AddTeamButton } from "./AddTeam";
 
@@ -17,9 +13,7 @@ describe("AddTeamButton", () => {
     });
 
     it("opens and closes the modal", () => {
-        const { getByText, queryByText } = render(
-            <AddTeamButton addTeam={addTeamMock} />
-        );
+        const { getByText } = render(<AddTeamButton addTeam={addTeamMock} />);
 
         // Click the "Add Team" button
         fireEvent.click(getByText("Add Team"));
@@ -32,7 +26,7 @@ describe("AddTeamButton", () => {
     });
 
     it("calls the addTeam prop when the Add Team button in the modal is clicked", () => {
-        const { getByText, getByLabelText, getByRole } = render(
+        const { getByText, getByLabelText } = render(
             <AddTeamButton addTeam={addTeamMock} />
         );
 

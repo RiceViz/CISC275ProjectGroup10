@@ -1,12 +1,14 @@
+/* eslint-disable indent */
+/* eslint-disable quotes */
+/* eslint-disable prettier/prettier */
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import PlayerBanner, {
     RenderPlayerName,
-    RenderPlayerPosition,
     RenderPlayerRating,
     RenderEditSwitch
 } from "./PlayerBanner";
-import { Player, Position } from "../interfaces/player";
+import { Player } from "../interfaces/player";
 import { User } from "../interfaces/user";
 
 // Mock player and user data
@@ -62,47 +64,46 @@ describe("RenderPlayerName Subcomponent", () => {
 
 // Continue from the previous code
 
-describe('RenderPlayerName Subcomponent', () => {
-  it('renders player name in edit mode', () => {
-    const setPlayerNameMock = jest.fn();
-    const { getByDisplayValue } = render(
-      <RenderPlayerName
-        editMode={true}
-        playerName={mockPlayer.name}
-        setPlayerName={setPlayerNameMock}
-      />
-    );
-    expect(getByDisplayValue('Player 1')).toBeInTheDocument();
-  });
+describe("RenderPlayerName Subcomponent", () => {
+    it("renders player name in edit mode", () => {
+        const setPlayerNameMock = jest.fn();
+        const { getByDisplayValue } = render(
+            <RenderPlayerName
+                editMode={true}
+                playerName={mockPlayer.name}
+                setPlayerName={setPlayerNameMock}
+            />
+        );
+        expect(getByDisplayValue("Player 1")).toBeInTheDocument();
+    });
 });
 
-describe('RenderPlayerRating Subcomponent', () => {
-
-  it('renders player rating in edit mode', () => {
-    const setPlayerRatingMock = jest.fn();
-    const { getByDisplayValue } = render(
-      <RenderPlayerRating
-        editMode={true}
-        playerRating={mockPlayer.rating}
-        setPlayerRating={setPlayerRatingMock}
-      />
-    );
-    expect(getByDisplayValue('8')).toBeInTheDocument();
-  });
+describe("RenderPlayerRating Subcomponent", () => {
+    it("renders player rating in edit mode", () => {
+        const setPlayerRatingMock = jest.fn();
+        const { getByDisplayValue } = render(
+            <RenderPlayerRating
+                editMode={true}
+                playerRating={mockPlayer.rating}
+                setPlayerRating={setPlayerRatingMock}
+            />
+        );
+        expect(getByDisplayValue("8")).toBeInTheDocument();
+    });
 });
 
-describe('RenderEditSwitch Subcomponent', () => {
-  it('checks edit switch', () => {
-    const setEditModeMock = jest.fn();
-    const { getByLabelText } = render(
-      <RenderEditSwitch
-        editMode={mockPlayer.editMode}
-        setEditMode={setEditModeMock}
-      />
-    );
-    const switchElement = getByLabelText('Edit') as HTMLInputElement;
-    expect(switchElement.checked).toEqual(mockPlayer.editMode);
-    fireEvent.click(switchElement);
-    expect(setEditModeMock).toHaveBeenCalledTimes(1);
-  });
+describe("RenderEditSwitch Subcomponent", () => {
+    it("checks edit switch", () => {
+        const setEditModeMock = jest.fn();
+        const { getByLabelText } = render(
+            <RenderEditSwitch
+                editMode={mockPlayer.editMode}
+                setEditMode={setEditModeMock}
+            />
+        );
+        const switchElement = getByLabelText("Edit") as HTMLInputElement;
+        expect(switchElement.checked).toEqual(mockPlayer.editMode);
+        fireEvent.click(switchElement);
+        expect(setEditModeMock).toHaveBeenCalledTimes(1);
+    });
 });

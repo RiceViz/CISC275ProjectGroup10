@@ -1,7 +1,7 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { Lineup } from "./Lineup";
-import { Player, Position } from "../interfaces/player";
+import { Player } from "../interfaces/player";
 import { User } from "../interfaces/user";
 
 // Prepare mock data

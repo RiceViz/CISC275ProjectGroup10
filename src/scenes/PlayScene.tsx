@@ -10,6 +10,7 @@ import { WinFormula } from "../components/WinFormula";
 export function PlayScene({
     user,
     allPlayers,
+    team,
     teams,
     setYourTeamPlayers,
     setYourTeamPlayers2,
@@ -18,8 +19,17 @@ export function PlayScene({
 }: {
     user: User;
     allPlayers: Player[];
+    team: Team;
     teams: Team[];
-    setTeams: (teams: Team[]) => void;
+    setAllPlayers: (players: Player[]) => void;
+    yourTeamPlayers: Player[];
+    setYourTeamPlayers: (players: Player[]) => void;
+    yourTeamPlayers2: Player[];
+    setYourTeamPlayers2: (players: Player[]) => void;
+    yourStartingLineUp: Player[];
+    setYourStartingLineUp: (players: Player[]) => void;
+    yourStartingLineUp2: Player[];
+    setYourStartingLineUp2: (players: Player[]) => void;
 }): JSX.Element {
     const [teamA, setTeamA] = useState<Team>(team);
     const [teamB, setTeamB] = useState<Team>(team);
@@ -150,96 +160,92 @@ export function PlayScene({
     }
 
     return (
-        <>
-            <div>
-                <Container>
-                    <Row>
-                        <Col>
-                            <div className="pl-56 pt-8">
-                                <TeamDropDownButton
-                                    team={teamA}
-                                    setTeam={setTeamA}
-                                    teams={teams}
-                                ></TeamDropDownButton>
-                            </div>
-                            <div className="flex justify-center">
+        <div>
+            <Container>
+                <Row>
+                    <Col>
+                        <div className="pl-56 pt-8">
+                            <TeamDropDownButton
+                                team={teamA}
+                                setTeam={setTeamA}
+                                teams={teams}
+                            ></TeamDropDownButton>
+                        </div>
+                        <div className="flex justify-center">
+                            <Lineup
+                                title={teamA.name + " Players"}
+                                players={teamA.players}
+                                setPlayers={setYourTeamPlayers}
+                                user={user}
+                                playersEditable={false}
+                            ></Lineup>
+                        </div>
+                    </Col>
+                    <Col>
+                        <div className="pt-20">
+                            <div
+                                className="flex justify-center"
+                                onDrop={handleOnDropStartingLineup}
+                                onDragOver={handleDragOver}
+                            >
                                 <Lineup
-                                    title={teamA.name + " Players"}
-                                    players={teamA.players}
-                                    setPlayers={(newPlayers: Player[]) =>
-                                        setTeamPlayers(teamNumA, newPlayers)
-                                    }
+                                    title={teamA.name + " Lineup"}
+                                    players={teamA.lineup}
+                                    setPlayers={setYourStartingLineUp}
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
                             </div>
-                        </Col>
-                        <Col>
-                            <div className="pt-20">
-                                <div
-                                    className="flex justify-center"
-                                    onDrop={handleOnDropStartingLineup}
-                                    onDragOver={handleDragOver}
-                                >
-                                    <Lineup
-                                        title={teamA.name + " Lineup"}
-                                        players={teamA.lineup}
-                                        setPlayers={setYourStartingLineUp}
-                                        user={user}
-                                        playersEditable={false}
-                                    ></Lineup>
-                                </div>
-                            </div>
-                        </Col>
-                        <Col>
-                            <div className="pl-56 pt-8">
-                                <TeamDropDownButton
-                                    team={teamB}
-                                    setTeam={setTeamB}
-                                    teams={teams}
-                                ></TeamDropDownButton>
-                            </div>
-                            <div className="flex justify-center">
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <div className="pl-56 pt-8">
+                            <TeamDropDownButton
+                                team={teamB}
+                                setTeam={setTeamB}
+                                teams={teams}
+                            ></TeamDropDownButton>
+                        </div>
+                        <div className="flex justify-center">
+                            <Lineup
+                                title={teamB.name + " Players"}
+                                players={teamB.players}
+                                setPlayers={setYourTeamPlayers2}
+                                user={user}
+                                playersEditable={false}
+                            ></Lineup>
+                        </div>
+                    </Col>
+                    <Col>
+                        <div className="pt-20">
+                            <div
+                                className="flex justify-center"
+                                onDrop={handleOnDropStartingLineup2}
+                                onDragOver={handleDragOver}
+                            >
                                 <Lineup
-                                    title={teamB.name + " Players"}
-                                    players={teamB.players}
-                                    setPlayers={(newPlayers: Player[]) =>
-                                        setTeamPlayers(teamNumB, newPlayers)
-                                    }
+                                    title={teamB.name + " Lineup"}
+                                    players={teamB.lineup}
+                                    setPlayers={setYourStartingLineUp2}
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
                             </div>
-                        </Col>
-                        <Col>
-                            <div className="pt-20">
-                                <div
-                                    className="flex justify-center"
-                                    onDrop={handleOnDropStartingLineup2}
-                                    onDragOver={handleDragOver}
-                                >
-                                    <Lineup
-                                        title={teamB.name + " Lineup"}
-                                        players={teamB.lineup}
-                                        setPlayers={setYourStartingLineUp2}
-                                        user={user}
-                                        playersEditable={false}
-                                    ></Lineup>
-                                </div>
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
-                <br></br>
-                <div className="pt-10">
-                    <Button
-                        className="text-2xl text-center dark:text-white font-bold py-2 px-4 rounded-full hover:border-transparent bg-blue-500 hover:bg-blue-600"
-                        onClick={simulateGame}
-                    >
-                        Simulate Game
-                    </Button>
-                </div>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+            <br></br>
+            <div className="pt-10">
+                <Button
+                    className="text-2xl text-center dark:text-white font-bold py-2 px-4 rounded-full hover:border-transparent bg-blue-500 hover:bg-blue-600"
+                    onClick={simulateGame}
+                >
+                    Simulate Game
+                </Button>
             </div>
-        </>
+        </div>
     );
 }

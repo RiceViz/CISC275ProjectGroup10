@@ -30,8 +30,7 @@ export function WinFormula(teamA: Player[], teamB: Player[]): number {
         return 3;
     }
     if (
-        (teamA.length === 11 &&
-            teamB.length === 11) ||
+        (teamA.length === 11 && teamB.length === 11) ||
         (teamA.length === 5 && teamB.length === 5)
     ) {
         if (rand <= t1Odds) {

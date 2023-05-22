@@ -54,9 +54,10 @@ const teams: Team[] = [
 test("change selected team in TeamDropDownButton", () => {
     const setTeamNum = jest.fn();
     const { getByRole } = render(
+        // eslint-disable-next-line react/react-in-jsx-scope
         <TeamDropDownButton
             team={teams[0]}
-            setTeamNum={setTeamNum}
+            setTeam={setTeamNum}
             teams={teams}
         />
     );
