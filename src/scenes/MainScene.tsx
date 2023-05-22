@@ -174,7 +174,6 @@ export function MainScene({
         setIsRemoveButtonHovered(false);
     }
 
-    const yourTeamPlayersCount = yourTeamPlayers.length;
     const yourStartingLineUpCount = yourStartingLineUp.length;
 
     return (
@@ -236,9 +235,6 @@ export function MainScene({
                             onDrop={handleOnDropTeam}
                             onDragOver={handleDragOver}
                         >
-                            <h3>
-                                {"Players Count (" + yourTeamPlayersCount + ")"}
-                            </h3>
                             <Lineup
                                 title={team.name + " Players"}
                                 players={yourTeamPlayers}
