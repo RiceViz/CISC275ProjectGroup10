@@ -4,7 +4,7 @@ import soccer from "./assets/soccer-landing.jpeg";
 import { MainScene } from "./scenes/MainScene";
 import Header from "./components/Header";
 import ThemeToggle from "./components/ThemeToggle";
-import { UserDropDownButton } from "./components/UserDropDownButton";
+import UserDropDownButton from "./components/UserDropDownButton";
 import { TeamDropDownButton } from "./components/TeamDropDownButton";
 import { User } from "./interfaces/user";
 import { PlayScene } from "./scenes/PlayScene";
@@ -19,6 +19,7 @@ function RenderCurrentScene({
     user,
     team,
     teams,
+    setTeams,
     allPlayers,
     setAllPlayers,
     yourTeamPlayers,
@@ -34,6 +35,7 @@ function RenderCurrentScene({
     user: User;
     team: Team;
     teams: Team[];
+    setTeams: (teams: Team[]) => void;
     allPlayers: Player[];
     setAllPlayers: (players: Player[]) => void;
     yourTeamPlayers: Player[];
@@ -68,17 +70,8 @@ function RenderCurrentScene({
                 <PlayScene
                     user={user}
                     allPlayers={allPlayers}
-                    team={team}
                     teams={teams}
-                    setAllPlayers={setAllPlayers}
-                    yourTeamPlayers={yourTeamPlayers}
-                    setYourTeamPlayers={setYourTeamPlayers}
-                    yourTeamPlayers2={yourTeamPlayers2}
-                    setYourTeamPlayers2={setYourTeamPlayers2}
-                    yourStartingLineUp={yourStartingLineUp}
-                    setYourStartingLineUp={setYourStartingLineUp}
-                    yourStartingLineUp2={yourStartingLineUp2}
-                    setYourStartingLineUp2={setYourStartingLineUp2}
+                    setTeams={setTeams}
                 ></PlayScene>
             );
         default:
@@ -127,12 +120,13 @@ function App(): JSX.Element {
     const [yourStartingLineUp2, setYourStartingLineUp2] = useState<Player[]>(
         team.lineup
     );
-
+  
     function changeTeam(a_team: Team) {
         setTeam(a_team);
         setYourTeamPlayers(a_team.players);
         setYourStartingLineUp(a_team.lineup);
     }
+
     return (
         <div
             className="App"
@@ -226,6 +220,28 @@ function App(): JSX.Element {
                                         ) : null}
                                     </Col>
                                 </div>
+                                <Col>
+                                    <div className="flex justify-end">
+                                        <UserDropDownButton
+                                            //logo={<BiUserCircle size={25} />}
+                                            user={user}
+                                            setUser={setUser}
+                                        ></UserDropDownButton>
+                                    </div>
+                                </Col>
+                                <Col>
+                                    {scene === "MAIN" ? (
+                                        <div className="flex justify-end">
+                                            <TeamDropDownButton
+                                                team={team}
+                                                setTeamNum={(teamNum: number) =>
+                                                    changeTeam(teams[teamNum])
+                                                }
+                                                teams={teams}
+                                            ></TeamDropDownButton>
+                                        </div>
+                                    ) : null}
+                                </Col>
                             </Row>
                             <Row>
                                 {scene === "MAIN" ? (
@@ -270,6 +286,7 @@ function App(): JSX.Element {
                 user={user}
                 team={team}
                 teams={teams}
+                setTeams={setTeams}
                 allPlayers={allPlayers}
                 setAllPlayers={setAllPlayers}
                 yourTeamPlayers={yourTeamPlayers}

@@ -201,7 +201,7 @@ export function MainScene({
         }
         // add the player to the list
         if (newPlayer !== undefined) {
-            if (yourStartingLineUp.length < 11) {
+            if (yourStartingLineUp.length < 12) {
                 setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
                 team.lineup.push(newPlayer);
             }
@@ -226,24 +226,28 @@ export function MainScene({
         setIsRemoveButtonHovered(false);
     }
 
+    const yourStartingLineUpCount = yourStartingLineUp.length;
+
     return (
         <>
             <div>
-                <div
-                    className={`removeButton ${
-                        isRemoveButtonHovered ? "removeButtonHover" : ""
-                    }`}
-                    onDrop={handleRemovePlayer}
-                    onDragOver={handleDragOver}
-                    onMouseEnter={handleRemoveButtonMouseEnter}
-                    onMouseLeave={handleRemoveButtonMouseLeave}
-                >
-                    <button className="removeButtonHover">
-                        Drag Player Here To Remove
-                    </button>
-                </div>
-                <div>
-                    {user !== "Coach" ? (
+                {user === "League Manager" || user === "Team Manager") && (
+                    <div
+                        className={`removeButton ${
+                            isRemoveButtonHovered ? "removeButtonHover" : ""
+                        }`}
+                        onDrop={handleRemovePlayer}
+                        onDragOver={handleDragOver}
+                        onMouseEnter={handleRemoveButtonMouseEnter}
+                        onMouseLeave={handleRemoveButtonMouseLeave}
+                    >
+                        <button className="removeButtonHover">
+                            Drag Player Here To Remove
+                        </button>
+                    </div>
+                )}
+                {user === "League Manager" || user === "Team Manager" ? (
+                    <div>
                         <select
                             className="filter-dropdown"
                             value={selectedPositionFilter}
@@ -257,8 +261,8 @@ export function MainScene({
                             <option value="Defender">Defenders</option>
                             <option value="Goalkeeper">Goalkeepers</option>
                         </select>
-                    ) : null}
-                </div>
+                    </div>
+                ) : null}
                 <Container>
                     <div className="flex justify-center">
                         {user === "League Manager" ||
@@ -278,6 +282,7 @@ export function MainScene({
                                 ></Lineup>
                             </div>
                         ) : null}
+
                         <div
                             className="justify-center"
                             onDrop={handleOnDropTeam}
@@ -296,6 +301,12 @@ export function MainScene({
                             onDrop={handleOnDropStartingLineup}
                             onDragOver={handleDragOver}
                         >
+                            <h3>
+                                {"Player Count (" +
+                                    yourStartingLineUpCount +
+                                    ")"}
+                            </h3>
+                            <h4>You need 11 or 5 Players</h4>
                             <Lineup
                                 title={team.name + " Lineup"}
                                 players={team.lineup}

@@ -10,7 +10,6 @@ import { WinFormula } from "../components/WinFormula";
 export function PlayScene({
     user,
     allPlayers,
-    team,
     teams,
     setYourTeamPlayers,
     setYourTeamPlayers2,
@@ -19,17 +18,8 @@ export function PlayScene({
 }: {
     user: User;
     allPlayers: Player[];
-    team: Team;
     teams: Team[];
-    setAllPlayers: (players: Player[]) => void;
-    yourTeamPlayers: Player[];
-    setYourTeamPlayers: (players: Player[]) => void;
-    yourTeamPlayers2: Player[];
-    setYourTeamPlayers2: (players: Player[]) => void;
-    yourStartingLineUp: Player[];
-    setYourStartingLineUp: (players: Player[]) => void;
-    yourStartingLineUp2: Player[];
-    setYourStartingLineUp2: (players: Player[]) => void;
+    setTeams: (teams: Team[]) => void;
 }): JSX.Element {
     const [teamA, setTeamA] = useState<Team>(team);
     const [teamB, setTeamB] = useState<Team>(team);
@@ -58,7 +48,7 @@ export function PlayScene({
             } else {
                 //if either team does not have exactly 11 players
                 alert(
-                    "Please ensure both teams have 11 Players in their lineups."
+                    "Please ensure both teams have 5 or 11 Players in their lineups."
                 );
             }
         }
@@ -176,7 +166,9 @@ export function PlayScene({
                                 <Lineup
                                     title={teamA.name + " Players"}
                                     players={teamA.players}
-                                    setPlayers={setYourTeamPlayers}
+                                    setPlayers={(newPlayers: Player[]) =>
+                                        setTeamPlayers(teamNumA, newPlayers)
+                                    }
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>
@@ -211,7 +203,9 @@ export function PlayScene({
                                 <Lineup
                                     title={teamB.name + " Players"}
                                     players={teamB.players}
-                                    setPlayers={setYourTeamPlayers2}
+                                    setPlayers={(newPlayers: Player[]) =>
+                                        setTeamPlayers(teamNumB, newPlayers)
+                                    }
                                     user={user}
                                     playersEditable={false}
                                 ></Lineup>

@@ -3,7 +3,7 @@ import React from "react";
 import { Form } from "react-bootstrap";
 import { User } from "../interfaces/user";
 
-export function UserDropDownButton({
+export default function UserDropDownButton({
     logo,
     user,
     setUser
@@ -15,34 +15,10 @@ export function UserDropDownButton({
     const options: User[] = ["League Manager", "Team Manager", "Coach"];
     const goBetween: string[] = ["League Manager", "Team Manager", "Coach"];
 
-    // if (logo) {
-    //     return (
-    //         <Dropdown>
-    //             <Dropdown.Toggle
-    //                 className="focus:border-transparent dark:text-white"
-    //                 variant="transparent"
-    //                 id="dropdown-basic"
-    //             >
-    //                 {logo}
-    //             </Dropdown.Toggle>
-    //             <Dropdown.Menu>
-    //                 {options.map((userOption: User) => (
-    //                     <Dropdown.Item
-    //                         key={userOption}
-    //                         eventKey={userOption}
-    //                         onSelect={updateUser}
-    //                     >
-    //                         {userOption}
-    //                     </Dropdown.Item>
-    //                 ))}
-    //             </Dropdown.Menu>
-    //         </Dropdown>
-    //     );
-    // }
-
     return (
         <div>
             {logo}
+            Select Role:
             <Form.Group className="max-w-fit p-2" controlId="choices">
                 <Form.Select
                     value={user}

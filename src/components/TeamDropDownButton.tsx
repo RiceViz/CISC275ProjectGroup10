@@ -5,40 +5,16 @@ import { Team } from "../interfaces/team";
 
 export function TeamDropDownButton({
     team,
-    setTeam,
+    setTeamNum,
     teams
 }: {
     team: Team;
-    setTeam: (newTeam: Team) => void;
+    setTeamNum: (newTeamNum: number) => void;
     teams: Team[];
 }): JSX.Element {
-    // if (logo) {
-    //     return (
-    //         <Dropdown>
-    //             <Dropdown.Toggle
-    //                 className="focus:border-transparent dark:text-white"
-    //                 variant="transparent"
-    //                 id="dropdown-basic"
-    //             >
-    //                 {logo}
-    //             </Dropdown.Toggle>
-    //             <Dropdown.Menu>
-    //                 {options.map((userOption: User) => (
-    //                     <Dropdown.Item
-    //                         key={userOption}
-    //                         eventKey={userOption}
-    //                         onSelect={updateUser}
-    //                     >
-    //                         {userOption}
-    //                     </Dropdown.Item>
-    //                 ))}
-    //             </Dropdown.Menu>
-    //         </Dropdown>
-    //     );
-    // }
-
     return (
         <div>
+            Select User:
             <Form.Group className="max-w-fit p-2" controlId="choices">
                 <Form.Select
                     value={team.name}

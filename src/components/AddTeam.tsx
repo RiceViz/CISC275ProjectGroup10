@@ -30,7 +30,7 @@ export function AddTeamButton({
     const modal = (
         <Modal show={show} onHide={handleClose} backdrop="static">
             <Modal.Header closeButton>
-                <Modal.Title>Add Team</Modal.Title>
+                <Modal.Title>Add User</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 {/* Input Name */}
@@ -129,6 +129,8 @@ export function AddTeamButton({
                     Cancel
                 </Button>
                 <Button
+                    name="Add Team"
+                    id="innner"
                     variant="primary"
                     className="bg-blue-500 hover:bg-blue-600 font-bold py-2 px-4 rounded-full"
                     onClick={() => {
@@ -139,20 +141,20 @@ export function AddTeamButton({
                         handleClose();
                     }}
                 >
-                    Add Team
+                    Add
                 </Button>
             </Modal.Footer>
         </Modal>
     );
 
     return (
-        <div>
+        <div className="button">
             <Button
                 variant="primary"
                 className="flex justify-between p- hover:border-transparent rounded bg-blue-500 hover:bg-blue-600"
                 onClick={handleShow}
             >
-                Add Team
+                Add User
             </Button>
             {modal}
         </div>

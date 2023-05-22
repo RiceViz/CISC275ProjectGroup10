@@ -22,28 +22,26 @@ export function WinFormula(teamA: Player[], teamB: Player[]): number {
     //this variable calculates total rating in order to add randomness
     const totRating: number = t1Rating + t2Rating;
     //these variables give each team their odds, to be put into random func.
-    const t1Odds: number = t1Rating / totRating; //.70
+    const t1Odds: number = t1Rating / totRating;
     //const t2Odds = 1 - t1Odds, not needed
     //adds randomness and weighs it based on odds above:
     const rand: number = Math.random(); //.89
     if (teamA === teamB) {
         return 3;
     }
-    if (teamA.length === 11) {
-        if (teamB.length === 11) {
-            if (rand <= t1Odds) {
-                return 1;
-            } else {
-                return 2;
-            }
+    if (
+        (teamA.length === 11 &&
+            teamB.length === 11) ||
+        (teamA.length === 5 && teamB.length === 5)
+    ) {
+        if (rand <= t1Odds) {
+            return 1;
         } else {
-            return 0;
-        } //checks if startinglineup2 is proper size
-    } //outer if to make sure starting lineup1 is proper size
-    else {
-        0;
-    }
-    return 0;
+            return 2;
+        }
+    } else {
+        return 0;
+    } //if else tree to use random number to determine winner
 
     /*const modal = (
         <Modal show={show} onHide={handleClose} backdrop="static">

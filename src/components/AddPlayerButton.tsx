@@ -199,7 +199,7 @@ export function AddPlayerButton({
                         handleClose();
                     }}
                 >
-                    Add Player
+                    Add
                 </Button>
             </Modal.Footer>
         </Modal>
