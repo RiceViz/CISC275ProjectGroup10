@@ -7,11 +7,11 @@ export default function Header({ children }: any) {
         <div
             className={` max-w-full overflow-visible sticky z-40 ${
                 scrollDirection === "down"
-                    ? "-top-28"
+                    ? "-top-32"
                     : scrollDirection === "up"
                     ? "top-0"
                     : " top-0"
-            } h-28 transition-all duration-300 bg-neutral-50 dark:bg-neutral-900`}
+            } h-32 transition-all duration-300 bg-neutral-50 dark:bg-neutral-900`}
         >
             <div className=" font-bold">{children}</div>
         </div>

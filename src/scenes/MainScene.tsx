@@ -228,10 +228,10 @@ export function MainScene({
 
     return (
         <>
-            <div>
+            <div className="flex flex-col min-h-[78vh]">
                 {(user === "League Manager" || user === "Team Manager") && (
                     <div
-                        className={`removeButton ${
+                        className={`self-center removeButton ${
                             isRemoveButtonHovered ? "removeButtonHover" : ""
                         }`}
                         onDrop={handleRemovePlayer}

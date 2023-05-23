@@ -1,5 +1,6 @@
 .App {
     text-align: center;
+    min-height: 100vh;
 }
 
 .App-logo {
@@ -41,16 +42,17 @@
 
 .removeButton {
     position: relative;
-    margin-left: 1140px;
     background-color: red;
     font-size: 20px;
     height: 4%;
     padding: 15px;
-    transition: all 0.5s;
+    transition: all 0.3s;
     cursor: pointer;
     width: 200px;
     border-radius: 8px;
     text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 .filter-dropdown {
