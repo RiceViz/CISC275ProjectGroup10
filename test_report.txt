@@ -104,19 +104,38 @@ FAIL src/components/AddTeam.test.tsx
       at Object.<anonymous> (src/components/AddTeam.test.tsx:34:25)
 
 PASS src/components/WinFormula.test.tsx
-PASS src/components/Header.test.tsx
+FAIL src/components/Header.test.tsx
+  ● Header component › applies the correct class based on scroll direction
+
+    expect(element).toHaveClass("-top-28")
+
+    Expected the element to have class:
+      -top-28
+    Received:
+      max-w-full overflow-visible sticky z-40 -top-32 h-32 transition-all duration-300 bg-neutral-50 dark:bg-neutral-900
+
+      22 |             fireEvent.scroll(window);
+      23 |         });
+    > 24 |         expect(container.firstChild).toHaveClass("-top-28");
+         |                                      ^
+      25 |
+      26 |         act(() => {
+      27 |             window.pageYOffset = 100;
+
+      at Object.<anonymous> (src/components/Header.test.tsx:24:38)
+
 PASS src/components/UserDropDownButton.test.tsx
 PASS src/components/ThemeToggle.test.tsx
 -------------------------|---------|----------|---------|---------|----------------------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                
 -------------------------|---------|----------|---------|---------|----------------------------------
-All files                |   36.61 |     28.1 |   34.48 |   36.53 |                                  
+All files                |    36.3 |    26.14 |   34.48 |   36.22 |                                  
  src                     |       0 |        0 |       0 |       0 |                                  
   App.tsx                |       0 |        0 |       0 |       0 | 49-319                           
- src/components          |   70.05 |    65.15 |    60.6 |    70.3 |                                  
+ src/components          |   69.46 |     60.6 |    60.6 |   69.69 |                                  
   AddPlayerButton.tsx    |      84 |      100 |      75 |   83.33 | 39-40,132,170                    
   AddTeam.tsx            |      35 |      100 |      20 |   36.84 | 26-27,46-141                     
-  Header.tsx             |     100 |    65.21 |     100 |     100 | 11,32-35,68-78                   
+  Header.tsx             |   97.14 |    52.17 |     100 |   97.14 | 39                               
   Lineup.tsx             |   33.33 |    54.54 |      50 |   33.33 | 28-38,52,67-69                   
   PlayerBanner.tsx       |   48.14 |    78.57 |   33.33 |   48.14 | 31,38-90,123-125,143-151,182-184 
   PlayerCreator.tsx      |   28.57 |       25 |      50 |   28.57 | 7-342                            
@@ -135,8 +154,8 @@ All files                |   36.61 |     28.1 |   34.48 |   36.53 |
   PlayScene.tsx          |       0 |        0 |       0 |       0 | 34-162                           
 -------------------------|---------|----------|---------|---------|----------------------------------
 
-Test Suites: 2 failed, 7 passed, 9 total
-Tests:       3 failed, 23 passed, 26 total
+Test Suites: 3 failed, 6 passed, 9 total
+Tests:       4 failed, 22 passed, 26 total
 Snapshots:   0 total
-Time:        6.982 s
+Time:        6.396 s
 Ran all test suites.
