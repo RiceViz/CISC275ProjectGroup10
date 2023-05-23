@@ -160,7 +160,7 @@ export function PlayScene({
     }
 
     return (
-        <div>
+        <div className="min-h-[77vh]">
             <Container>
                 <Row>
                     <Col>
