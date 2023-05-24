@@ -70,6 +70,7 @@ export function InspectPlayerButton({
                                 <li>
                                     <Form.Control
                                         type="text"
+                                        placeholder="Add Team"
                                         value={tempName}
                                         onChange={(
                                             event: React.ChangeEvent<HTMLInputElement>
