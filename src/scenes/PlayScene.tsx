@@ -6,6 +6,7 @@ import { Row, Col, Container, Button } from "react-bootstrap";
 import { User } from "../interfaces/user";
 import { Team } from "../interfaces/team";
 import { TeamDropDownButton } from "../components/TeamDropDownButton";
+import { WinFormula } from "../components/WinFormula";
 export function PlayScene({
     user,
     allPlayers,
