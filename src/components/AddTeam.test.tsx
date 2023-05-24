@@ -7,7 +7,7 @@ import { AddTeamButton } from "./AddTeam";
 // Create a mock function for the addTeam prop
 const addTeamMock = jest.fn();
 
-describe("AddTeamButton", () => {
+describe("AddUserButton", () => {
     it("renders without crashing", () => {
         render(<AddTeamButton addTeam={addTeamMock} />);
     });
@@ -16,7 +16,7 @@ describe("AddTeamButton", () => {
         const { getByText } = render(<AddTeamButton addTeam={addTeamMock} />);
 
         // Click the "Add Team" button
-        fireEvent.click(getByText("Add Team"));
+        fireEvent.click(getByText("Add User"));
 
         // The modal should now be visible
         expect(getByText("Add")).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe("AddTeamButton", () => {
         );
 
         // Click the "Add Team" button
-        fireEvent.click(getByText("Add Team"));
+        fireEvent.click(getByText("Add User"));
 
         // Enter some details for the new team
         fireEvent.change(getByLabelText("Name:"), {

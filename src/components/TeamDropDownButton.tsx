@@ -5,11 +5,11 @@ import { Team } from "../interfaces/team";
 
 export function TeamDropDownButton({
     team,
-    setTeam,
+    setTeamNum,
     teams
 }: {
     team: Team;
-    setTeam: (newTeam: Team) => void;
+    setTeamNum: (newTeamNum: number) => void;
     teams: Team[];
 }): JSX.Element {
     return (
@@ -25,7 +25,7 @@ export function TeamDropDownButton({
                             (a_team: Team): boolean => a_team.name === team.name
                         );
                         teams[ind2] = team;
-                        setTeam(teams[ind]);
+                        setTeamNum(ind);
                         console.log(
                             "Players: " +
                                 teams[ind].players +

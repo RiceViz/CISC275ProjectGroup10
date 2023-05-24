@@ -21,7 +21,7 @@ describe("Header component", () => {
             window.pageYOffset = 500;
             fireEvent.scroll(window);
         });
-        expect(container.firstChild).toHaveClass("-top-28");
+        expect(container.firstChild).toHaveClass("-top-32");
 
         act(() => {
             window.pageYOffset = 100;

@@ -2,7 +2,12 @@
 /* eslint-disable quotes */
 /* eslint-disable prettier/prettier */
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import {
+    render,
+    fireEvent
+    // getByTestId
+    // getByLabelText
+} from "@testing-library/react";
 import PlayerBanner, {
     RenderPlayerName,
     RenderPlayerRating,
@@ -27,6 +32,7 @@ const mockUser: User = "League Manager";
 
 // Mock function for setting player
 const setPlayerMock = jest.fn();
+const setPlayersMock = jest.fn();
 
 describe("PlayerBanner Component", () => {
     it("renders without crashing", () => {
@@ -35,6 +41,7 @@ describe("PlayerBanner Component", () => {
                 index={1}
                 player={mockPlayer}
                 setPlayer={setPlayerMock}
+                removePlayer={setPlayersMock}
                 user={mockUser}
                 isPlayerEditable={true}
             />

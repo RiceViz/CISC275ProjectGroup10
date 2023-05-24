@@ -1,3 +1,4 @@
+import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { TeamDropDownButton } from "../components/TeamDropDownButton";
 import { Player } from "../interfaces/player";
@@ -57,7 +58,7 @@ test("change selected team in TeamDropDownButton", () => {
         // eslint-disable-next-line react/react-in-jsx-scope
         <TeamDropDownButton
             team={teams[0]}
-            setTeam={setTeamNum}
+            setTeamNum={setTeamNum}
             teams={teams}
         />
     );
