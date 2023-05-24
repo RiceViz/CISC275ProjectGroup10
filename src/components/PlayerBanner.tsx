@@ -4,6 +4,7 @@ import { Player, Position, abbrevToPos } from "../interfaces/player";
 import { Container, Row, Col, Image, Form } from "react-bootstrap";
 import { posToAbbrev } from "../interfaces/player";
 import { User } from "../interfaces/user";
+import { InspectPlayerButton } from "./InspectPlayerButton";
 
 /**
  * Makes a condensed, editable player card
@@ -15,11 +16,13 @@ import { User } from "../interfaces/user";
 export default function PlayerBanner({
     player,
     setPlayer,
+    removePlayer,
     user,
     isPlayerEditable
 }: {
     player: Player;
     setPlayer: (player: Player) => void;
+    removePlayer: () => void;
     user: User;
     index: number;
     isPlayerEditable: boolean;
@@ -38,6 +41,11 @@ export default function PlayerBanner({
             onDragStart={(e) => handleOnDrag(e, player.name)}
         >
             <Container>
+                <InspectPlayerButton
+                    player={player}
+                    setPlayer={setPlayer}
+                    removePlayer={removePlayer}
+                ></InspectPlayerButton>
                 <Row className="align-items-center justify-content-center">
                     {/* Column 1 */}
                     <Col sm={5}>

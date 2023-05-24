@@ -68,6 +68,11 @@ export function Lineup({
                                     newlist.splice(index, 1, newp);
                                     setPlayers(newlist);
                                 }}
+                                removePlayer={() => {
+                                    const newlist = [...players];
+                                    newlist.splice(index, 1);
+                                    setPlayers(newlist);
+                                }}
                                 key={player.name}
                                 user={user}
                                 index={index}
