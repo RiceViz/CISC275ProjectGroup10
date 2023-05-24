@@ -3,15 +3,20 @@ import { Col, Form, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Player } from "../interfaces/player";
+import { User } from "../interfaces/user";
 
 export function InspectPlayerButton({
+    user,
     player,
     setPlayer,
-    removePlayer
+    removePlayer,
+    isEditable
 }: {
+    user: User;
     player: Player;
     setPlayer: (player: Player) => void;
     removePlayer: () => void;
+    isEditable: boolean;
 }): JSX.Element {
     const [show, setShow] = useState(false);
     const [editmode, seteditmode] = useState(false);
@@ -103,13 +108,15 @@ export function InspectPlayerButton({
                 </Row>
             </Modal.Body>
             <Modal.Footer>
-                <Button
-                    variant="primary"
-                    className="bg-blue-600/80 hover:bg-blue-600/100"
-                    onClick={() => seteditmode(!editmode)}
-                >
-                    {editmode ? "Save Player" : "Edit Player"}
-                </Button>
+                {user === "Coach" && isEditable && (
+                    <Button
+                        variant="primary"
+                        className="bg-blue-600/80 hover:bg-blue-600/100"
+                        onClick={() => seteditmode(!editmode)}
+                    >
+                        {editmode ? "Save Player" : "Edit Player"}
+                    </Button>
+                )}
                 <Button
                     variant="secondary"
                     className="bg-red-600/80 hover:bg-red-600/100"

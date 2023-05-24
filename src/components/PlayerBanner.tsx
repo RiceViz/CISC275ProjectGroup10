@@ -42,9 +42,11 @@ export default function PlayerBanner({
         >
             <Container>
                 <InspectPlayerButton
+                    user={user}
                     player={player}
                     setPlayer={setPlayer}
                     removePlayer={removePlayer}
+                    isEditable={isPlayerEditable}
                 ></InspectPlayerButton>
                 <Row className="align-items-center justify-content-center">
                     {/* Column 1 */}

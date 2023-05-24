@@ -323,7 +323,7 @@ export function MainScene({
                                 players={currentTeam.lineup}
                                 setPlayers={setTeamLineUp}
                                 user={user}
-                                playersEditable={false}
+                                playersEditable={false || user === "Coach"}
                             ></Lineup>
                         </div>
                     </div>
