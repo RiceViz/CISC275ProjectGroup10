@@ -15,6 +15,7 @@ export function InspectPlayerButton({
 }): JSX.Element {
     const [show, setShow] = useState(false);
     const [editmode, seteditmode] = useState(false);
+    const [tempName, setTempName] = useState("");
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -35,25 +36,60 @@ export function InspectPlayerButton({
                         <br />
                         <ul>
                             Team History:
-                            {player.teamHistory.map((team: string) => (
-                                <li key={team}>
-                                    {team}{" "}
-                                    {editmode && (
-                                        <span>
-                                            <Button
-                                                variant="secondary"
-                                                className="bg-red-600/80 hover:bg-red-600/100"
-                                                onClick={() =>
-                                                    seteditmode(!editmode)
-                                                }
-                                            >
-                                                Remove Team
-                                            </Button>
-                                        </span>
-                                    )}
+                            {player.teamHistory.map(
+                                (team: string, index: number) => (
+                                    <li key={team}>
+                                        {team}{" "}
+                                        {editmode && (
+                                            <span>
+                                                <Button
+                                                    variant="secondary"
+                                                    className="bg-red-600/80 hover:bg-red-600/100"
+                                                    onClick={() => {
+                                                        const newlist = [
+                                                            ...player.teamHistory
+                                                        ];
+                                                        newlist.splice(
+                                                            index,
+                                                            1
+                                                        );
+                                                        setPlayer({
+                                                            ...player,
+                                                            teamHistory: newlist
+                                                        });
+                                                    }}
+                                                >
+                                                    Remove Team
+                                                </Button>
+                                            </span>
+                                        )}
+                                    </li>
+                                )
+                            )}
+                            {editmode && (
+                                <li>
+                                    <Form.Control
+                                        type="text"
+                                        value={tempName}
+                                        onChange={(
+                                            event: React.ChangeEvent<HTMLInputElement>
+                                        ) => setTempName(event.target.value)}
+                                        onKeyPress={(event) => {
+                                            if (event.key === "Enter") {
+                                                const newlist = [
+                                                    ...player.teamHistory
+                                                ];
+                                                newlist.push(tempName);
+                                                setPlayer({
+                                                    ...player,
+                                                    teamHistory: newlist
+                                                });
+                                                setTempName("");
+                                            }
+                                        }}
+                                    />
                                 </li>
-                            ))}
-                            {editmode}
+                            )}
                         </ul>
                     </Col>
                     <Col>
