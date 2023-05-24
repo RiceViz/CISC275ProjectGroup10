@@ -68,6 +68,7 @@ export function Lineup({
                                     newlist.splice(index, 1, newp);
                                     setPlayers(newlist);
                                 }}
+                                setPlayers={setPlayers}
                                 key={player.name}
                                 user={user}
                                 index={index}
