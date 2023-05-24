@@ -43,6 +43,37 @@ export function PlayScene({
         setTeams(tmpteams);
     }
 
+    function simulateGame() {
+        const result: number = WinFormula(teamA.lineup, teamB.lineup);
+        if (result === 1) {
+            //if team1 wins
+            teamA.wins++;
+            teamB.losses++;
+            alert(
+                // eslint-disable-next-line prettier/prettier
+                `Congratulations ${teamA.name}'s team, you win! Your current win-loss record is ${teamA.wins}-${teamA.losses}`
+            );
+        } else {
+            if (result === 2) {
+                //if team 2 wins
+                teamB.wins++;
+                teamA.losses++;
+                alert(
+                    // eslint-disable-next-line prettier/prettier
+                    `Congratulations ${teamB.name}'s team, you win! Your current win-loss record is ${teamB.wins}-${teamB.losses}`
+                );
+            } else if (result === 3) {
+                //if you are trying to simulate a game with the same teams
+                alert("You can't simulate a game against yourself.");
+            } else {
+                //if either team does not have exactly 11 players
+                alert(
+                    "Please ensure both teams have 5 or 11 Players in their lineups."
+                );
+            }
+        }
+    } //end of simulateGame (counts Ws and Ls)
+
     function handleOnDropStartingLineup(e: React.DragEvent) {
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
