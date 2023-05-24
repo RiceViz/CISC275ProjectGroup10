@@ -15,26 +15,40 @@ import { Team } from "../interfaces/team";
 export function MainScene({
     user,
     allPlayers,
-    team,
     setAllPlayers,
-    yourTeamPlayers,
-    setYourTeamPlayers,
-    yourStartingLineUp,
-    setYourStartingLineUp
+    teams,
+    setTeams,
+    teamIndex
 }: {
     user: User;
     allPlayers: Player[];
-    team: Team;
     setAllPlayers: (players: Player[]) => void;
-    yourTeamPlayers: Player[];
-    setYourTeamPlayers: (players: Player[]) => void;
-    yourTeamPlayers2: Player[];
-    setYourTeamPlayers2: (players: Player[]) => void;
-    yourStartingLineUp: Player[];
-    setYourStartingLineUp: (players: Player[]) => void;
-    yourStartingLineUp2: Player[];
-    setYourStartingLineUp2: (players: Player[]) => void;
+    teams: Team[];
+    setTeams: (newTeams: Team[]) => void;
+    teamIndex: number;
 }): JSX.Element {
+    const currentTeam: Team = teams[teamIndex];
+
+    function setTeamLineUp(newLineup: Player[]) {
+        const tmpteams = [...teams];
+        const newTeam: Team = {
+            ...tmpteams[teamIndex],
+            lineup: newLineup
+        };
+        tmpteams.splice(teamIndex, 1, newTeam);
+        setTeams(tmpteams);
+    }
+
+    function setTeamPlayers(newPlayers: Player[]) {
+        const tmpteams = [...teams];
+        const newTeam: Team = {
+            ...tmpteams[teamIndex],
+            players: newPlayers
+        };
+        tmpteams.splice(teamIndex, 1, newTeam);
+        setTeams(tmpteams);
+    }
+
     const [isRemoveButtonHovered, setIsRemoveButtonHovered] = useState(false);
     const [selectedPositionFilter, setSelectedPositionFilter] = useState("");
 
@@ -42,34 +56,32 @@ export function MainScene({
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
         // find dropped player object based on name
-        const oldPlayer = allPlayers.find(
+        const newPlayer = allPlayers.find(
             (player) => player.name === widgetType
         ) as Player;
 
         // make a new copy of the player (might not be neccessary?)
-        const newPlayer = { ...oldPlayer };
 
         if (
             newPlayer.imageURL ===
             process.env.PUBLIC_URL + "/blankprofilepicture.png"
         ) {
             if (
-                !yourTeamPlayers.some((player: Player) =>
+                !currentTeam.players.some((player: Player) =>
                     checkIdenticalPlayers(player, newPlayer)
                 )
             ) {
-                setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
-                team.players.push(newPlayer);
+                setTeamPlayers([...currentTeam.players, newPlayer]);
                 return;
                 // } else if (
-                //     !yourTeamPlayers.some(
+                //     !currentTeam.players.some(
                 //         (player: Player) =>
                 //             player.name === newPlayer.name &&
                 //             player.rating === newPlayer.rating &&
                 //             player.position === newPlayer.position
                 //     )
                 // ) {
-                //     setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
+                //     setTeamPlayers([...currentTeam.players, newPlayer]);
                 //     team.players.push(newPlayer);
                 //     return;
             } else {
@@ -77,19 +89,17 @@ export function MainScene({
             }
         }
 
-        const indexOfPlayer = yourTeamPlayers.findIndex((player: Player) =>
+        const indexOfPlayer = currentTeam.players.findIndex((player: Player) =>
             checkIdenticalURLs(player, newPlayer)
         );
 
         // add the player to the list
         if (indexOfPlayer === -1) {
-            setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
-            team.players.push(newPlayer);
+            setTeamPlayers([...currentTeam.players, newPlayer]);
         } else {
-            const newteam = [...yourTeamPlayers];
+            const newteam = [...currentTeam.players];
             newteam.splice(indexOfPlayer, 1, newPlayer);
-            setYourTeamPlayers(newteam);
-            team.players = newteam;
+            setTeamPlayers(newteam);
         }
     }
 
@@ -107,34 +117,34 @@ export function MainScene({
         const widgetType = e.dataTransfer.getData("widgetType") as string;
 
         // Find the dropped player object based on name in first team
-        const playerToRemoveFromTeam = team.players.find(
+        const playerToRemoveFromTeam = currentTeam.players.find(
             (player) => player.name === widgetType
         );
-        const playerToRemoveFromLineup = team.lineup.find(
+        const playerToRemoveFromLineup = currentTeam.lineup.find(
             (player) => player.name === widgetType
         );
         if (
             playerToRemoveFromTeam ===
-            team.players.find(
+            currentTeam.players.find(
                 (a_player: Player): boolean =>
                     a_player === playerToRemoveFromTeam
             )
         ) {
             if (playerToRemoveFromTeam) {
                 // Remove the player from the team players' list
-                const updatedTeamPlayers = yourTeamPlayers.filter(
+                const updatedTeamPlayers = currentTeam.players.filter(
                     (player) => player !== playerToRemoveFromTeam
                 );
-                setYourTeamPlayers(updatedTeamPlayers);
-                team.players = team.players.filter(
+                setTeamPlayers(updatedTeamPlayers);
+                currentTeam.players = currentTeam.players.filter(
                     (a_player: Player): boolean =>
                         a_player.imageURL !== playerToRemoveFromTeam.imageURL
                 );
-                const updatedLineupPlayers = yourStartingLineUp.filter(
+                const updatedLineupPlayers = currentTeam.lineup.filter(
                     (player) => player !== playerToRemoveFromTeam
                 );
-                setYourStartingLineUp(updatedLineupPlayers);
-                team.lineup = team.lineup.filter(
+                setTeamLineUp(updatedLineupPlayers);
+                currentTeam.lineup = currentTeam.lineup.filter(
                     (a_player: Player): boolean =>
                         a_player.imageURL !== playerToRemoveFromTeam.imageURL
                 );
@@ -143,18 +153,18 @@ export function MainScene({
         }
         if (
             playerToRemoveFromLineup ===
-            team.lineup.find(
+            currentTeam.lineup.find(
                 (a_player: Player): boolean =>
                     a_player === playerToRemoveFromLineup
             )
         ) {
             if (playerToRemoveFromLineup) {
                 // Remove the player from the team players' list
-                const updatedTeamPlayers = yourStartingLineUp.filter(
+                const updatedTeamPlayers = currentTeam.lineup.filter(
                     (player) => player !== playerToRemoveFromLineup
                 );
-                setYourStartingLineUp(updatedTeamPlayers);
-                team.lineup = team.lineup.filter(
+                setTeamLineUp(updatedTeamPlayers);
+                currentTeam.lineup = currentTeam.lineup.filter(
                     (a_player: Player): boolean =>
                         a_player.name !== playerToRemoveFromLineup.name
                 );
@@ -175,11 +185,11 @@ export function MainScene({
         const newPlayer = { ...oldPlayer };
         if (
             oldPlayer.name ===
-            team.players.find(
+            currentTeam.players.find(
                 (a_player: Player): boolean => a_player.name === newPlayer.name
             )?.name
         ) {
-            let sum = team.lineup.reduce(
+            let sum = currentTeam.lineup.reduce(
                 (total: number, a_player: Player) =>
                     a_player.imageURL === newPlayer.imageURL
                         ? total + 1
@@ -188,7 +198,7 @@ export function MainScene({
             );
             while (
                 oldPlayer.name + " (" + sum + ")" ===
-                team.lineup.find(
+                currentTeam.lineup.find(
                     (a_player: Player): boolean =>
                         a_player.name === newPlayer.name + " (" + sum + ")"
                 )?.name
@@ -201,20 +211,20 @@ export function MainScene({
         }
         // add the player to the list
         if (newPlayer !== undefined) {
-            if (yourStartingLineUp.length < 12) {
-                setYourStartingLineUp([...yourStartingLineUp, newPlayer]);
-                team.lineup.push(newPlayer);
+            if (currentTeam.lineup.length < 12) {
+                setTeamLineUp([...currentTeam.lineup, newPlayer]);
+                currentTeam.lineup.push(newPlayer);
             }
         }
         if (
             newPlayer.imageURL !==
-            team.players.find(
+            currentTeam.players.find(
                 (a_player: Player): boolean =>
                     a_player.imageURL === newPlayer.imageURL
             )?.imageURL
         ) {
-            setYourTeamPlayers([...yourTeamPlayers, newPlayer]);
-            team.players.push(newPlayer);
+            setTeamPlayers([...currentTeam.players, newPlayer]);
+            currentTeam.players.push(newPlayer);
         }
     }
 
@@ -287,9 +297,9 @@ export function MainScene({
                             onDragOver={handleDragOver}
                         >
                             <Lineup
-                                title={team.name + " Players"}
-                                players={team.players}
-                                setPlayers={setYourTeamPlayers}
+                                title={currentTeam.name + " Players"}
+                                players={currentTeam.players}
+                                setPlayers={setTeamPlayers}
                                 user={user}
                                 playersEditable={false}
                             ></Lineup>
@@ -302,16 +312,16 @@ export function MainScene({
                             <h3 className="justify-center pl-20">
                                 <div className="bg-gray-300 bg-opacity-75 w-56">
                                     {"Player Count (" +
-                                        team.lineup.length +
+                                        currentTeam.lineup.length +
                                         ")"}
                                     <br></br>
                                     You Need 5 Or 11 Players
                                 </div>
                             </h3>
                             <Lineup
-                                title={team.name + " Lineup"}
-                                players={team.lineup}
-                                setPlayers={setYourStartingLineUp}
+                                title={currentTeam.name + " Lineup"}
+                                players={currentTeam.lineup}
+                                setPlayers={setTeamLineUp}
                                 user={user}
                                 playersEditable={false}
                             ></Lineup>

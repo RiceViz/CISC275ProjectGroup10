@@ -150,7 +150,7 @@ export function RenderPlayerPosition({
     if (editMode) {
         return (
             <Form.Group controlId="positionsDropdown">
-                Pos:{" "}
+                <Form.Label>Pos: </Form.Label>
                 <Form.Select
                     value={playerPos}
                     onChange={(e) => setPlayerPos(abbrevToPos[e.target.value])}

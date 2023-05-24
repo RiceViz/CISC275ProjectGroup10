@@ -2,7 +2,12 @@
 /* eslint-disable quotes */
 /* eslint-disable prettier/prettier */
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import {
+    render,
+    fireEvent
+    // getByTestId
+    // getByLabelText
+} from "@testing-library/react";
 import PlayerBanner, {
     RenderPlayerName,
     RenderPlayerRating,

@@ -25,7 +25,7 @@ export function TeamDropDownButton({
                             (a_team: Team): boolean => a_team.name === team.name
                         );
                         teams[ind2] = team;
-                        setTeam(teams[ind]);
+                        setTeamNum(ind);
                         console.log(
                             "Players: " +
                                 teams[ind].players +
