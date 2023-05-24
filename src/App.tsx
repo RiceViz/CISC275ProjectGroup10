@@ -50,7 +50,6 @@ function RenderCurrentScene({
                     allPlayers={allPlayers}
                     teams={teams}
                     setTeams={setTeams}
-                    setAllPlayers={setAllPlayers}
                 ></PlayScene>
             );
         default:

@@ -2,30 +2,20 @@ import React, { useState } from "react";
 import "../App.css";
 import { Lineup } from "../components/Lineup";
 import { Player } from "../interfaces/player";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import { User } from "../interfaces/user";
 import { Team } from "../interfaces/team";
 import { TeamDropDownButton } from "../components/TeamDropDownButton";
 export function PlayScene({
     user,
     allPlayers,
-    team,
     teams,
     setTeams
 }: {
     user: User;
     allPlayers: Player[];
-    team: Team;
     teams: Team[];
-    setAllPlayers: (players: Player[]) => void;
-    yourTeamPlayers: Player[];
-    setYourTeamPlayers: (players: Player[]) => void;
-    yourTeamPlayers2: Player[];
-    setYourTeamPlayers2: (players: Player[]) => void;
-    yourStartingLineUp: Player[];
-    setYourStartingLineUp: (players: Player[]) => void;
-    yourStartingLineUp2: Player[];
-    setYourStartingLineUp2: (players: Player[]) => void;
+    setTeams: (teams: Team[]) => void;
 }): JSX.Element {
     const [teamNumA, setTeamNumA] = useState<number>(0);
     const [teamNumB, setTeamNumB] = useState<number>(0);
