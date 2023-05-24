@@ -117,16 +117,18 @@ export function InspectPlayerButton({
                         {editmode ? "Save Player" : "Edit Player"}
                     </Button>
                 )}
-                <Button
-                    variant="secondary"
-                    className="bg-red-600/80 hover:bg-red-600/100"
-                    onClick={() => {
-                        removePlayer();
-                        handleClose();
-                    }}
-                >
-                    Delete Player
-                </Button>
+                {(user === "League Manager" || user === "Coach") && isEditable && (
+                    <Button
+                        variant="secondary"
+                        className="bg-red-600/80 hover:bg-red-600/100"
+                        onClick={() => {
+                            removePlayer();
+                            handleClose();
+                        }}
+                    >
+                        Delete Player
+                    </Button>
+                )}
                 <Button
                     variant="secondary"
                     className="bg-neutral-500 hover:bg-neutral-600"
